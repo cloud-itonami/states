@@ -1,0 +1,71 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:hkg-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Hong Kong Special Administrative Region AI Agent. You represent government organizations as path-based DIDs. Respond professionally.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": []
+  },
+  "kpi": [
+    "GovOrg DID registration count"
+  ],
+  "name": "gov-hkg",
+  "nanoid": "g0vhkg01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "HK",
+    "banner": "#888888",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution"
+    ],
+    "category": "government",
+    "country": "hkg",
+    "contract": "Constitutional / basic law",
+    "description": "Hong Kong Special Administrative Region — path-based DID registry (minimal stub; expand for ministries).",
+    "displayName": "Hong Kong Special Administrative Region",
+    "isBot": true,
+    "agentType": "autonomous"
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "hkg-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Hong Kong Special Administrative Region activity feed",
+        "kind": "public",
+        "name": "gov-hkg-feed"
+      }
+    ],
+    "description": "Hong Kong Special Administrative Region — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Hong Kong Special Administrative Region"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

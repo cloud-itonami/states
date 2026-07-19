@@ -1,0 +1,4 @@
+{"path": "israel-defense", "name": "Israel Defense", "nameEn": "Israel Defense", "website": "", "contract": "Defence Act", "tags": ["cofog:02", "defence", "office"], "orgTier": "office", "cofogCode": "02", "countryCode": "isr"}
+{"path": "israel", "name": "Israel", "nameEn": "Israel", "website": "", "contract": "Public Order and Safety Act", "tags": ["cofog:03", "public-order-safety", "office"], "orgTier": "office", "cofogCode": "03", "countryCode": "isr"}
+{"path": "knesset", "name": "Knesset", "nameEn": "Knesset", "website": "", "contract": "General Public Services Act", "tags": ["cofog:01", "general-public-services", "office"], "orgTier": "office", "cofogCode": "01", "countryCode": "isr"}
+{"path": "supreme-court", "name": "Supreme Court", "nameEn": "Supreme Court", "website": "", "contract": "Public Order and Safety Act", "tags": ["cofog:03", "public-order-safety", "office"], "orgTier": "office", "cofogCode": "03", "countryCode": "isr"}

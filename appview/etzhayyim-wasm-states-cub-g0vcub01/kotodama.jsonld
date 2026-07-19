@@ -1,0 +1,149 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:cub-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Cuba (República de Cuba) AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-cub",
+  "nanoid": "g0vcub01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "CU",
+    "banner": "#000000",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "cub",
+    "contract": "Constitución de la República de Cuba 2019",
+    "description": "Cuba Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "República de Cuba (Republic of Cuba)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 4,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/cub/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Havana",
+        "addressLocality": "Havana",
+        "country": "CU"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.gob.cu/",
+        "label": "gob.cu"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.presidencia.gob.cu/",
+        "label": "Presidencia"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Gobierno de Cuba — citizen inquiry",
+        "uri": "https://www.gob.cu/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "cub.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Gobierno de Cuba — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "cub.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Gobierno de Cuba — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "cub.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Gobierno de Cuba — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "cub.lopp-7-1977",
+        "title": "LOPP 7/1977",
+        "titleLocal": "Ley de los Órganos del Poder Popular 7/1977",
+        "basis": "Ley No.7/1977",
+        "uri": "https://www.parlamentocubano.gob.cu/"
+      },
+      {
+        "id": "cub.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Gobierno de Cuba",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Gobierno de Cuba — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "cub-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Cuba government activity feed",
+        "kind": "public",
+        "name": "gov-cub-feed"
+      }
+    ],
+    "description": "Government of Cuba — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "República de Cuba (Republic of Cuba)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

@@ -1,0 +1,153 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:mng-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Mongolia AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-mng",
+  "nanoid": "g0vmng01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "MN",
+    "banner": "#c4272f",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "mng",
+    "contract": "Монгол Улсын Үндсэн Хуулъ 1992",
+    "description": "Mongolia Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Монгол Улс (Mongolia)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 1,
+    "contractCount": 1,
+    "bpmnCount": 8,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/mng/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Ulaanbaatar",
+        "addressLocality": "Ulaanbaatar",
+        "country": "MN"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://mongolia.gov.mn/",
+        "label": "Mongolia — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Mongolia — citizen inquiry",
+        "uri": "https://mongolia.gov.mn/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "mng.executive",
+        "title": "Executive",
+        "titleLocal": "Executive",
+        "authority": "Executive",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/mng/bpmn/executive.bpmn"
+      },
+      {
+        "id": "mng.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Mongolia — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "mng.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Mongolia — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "mng.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Mongolia — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "mng.municipal-government-act",
+        "title": "Municipal Government Act",
+        "titleLocal": "Municipal Government Act",
+        "basis": "General Administrative Law",
+        "uri": ""
+      },
+      {
+        "id": "mng.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Mongolia",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Mongolia — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "mng-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Mongolia government activity feed",
+        "kind": "public",
+        "name": "gov-mng-feed"
+      }
+    ],
+    "description": "Government of Mongolia — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Монгол Улс (Mongolia)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

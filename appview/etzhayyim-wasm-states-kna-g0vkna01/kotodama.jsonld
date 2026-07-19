@@ -1,0 +1,121 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:kna-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Federation of Saint Kitts and Nevis AI Agent. You represent government organizations as path-based DIDs. Respond professionally.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": []
+  },
+  "kpi": [
+    "GovOrg DID registration count"
+  ],
+  "name": "gov-kna",
+  "nanoid": "g0vkna01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "KN",
+    "banner": "#888888",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution"
+    ],
+    "category": "government",
+    "country": "kna",
+    "contract": "Constitutional / basic law",
+    "description": "Federation of Saint Kitts and Nevis — path-based DID registry (minimal stub; expand for ministries).",
+    "displayName": "Federation of Saint Kitts and Nevis",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 0,
+    "bpmnCount": 0,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/kna/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Basseterre",
+        "addressLocality": "Basseterre",
+        "country": "KN"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.gov.kn/",
+        "label": "Federation of Saint Kitts and Nevis — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Federation of Saint Kitts and Nevis — citizen inquiry",
+        "uri": "https://www.gov.kn/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "fed.access_info",
+        "title": "Access to Public Information",
+        "authority": "Federation of Saint Kitts and Nevis"
+      },
+      {
+        "id": "fed.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Federation of Saint Kitts and Nevis — passport authority"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "kn.access_info.v1",
+        "title": "Access to public information request — template",
+        "authority": "Federation of Saint Kitts and Nevis"
+      }
+    ],
+    "complianceFrameworks": [
+      "Federation of Saint Kitts and Nevis — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "kna-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Federation of Saint Kitts and Nevis activity feed",
+        "kind": "public",
+        "name": "gov-kna-feed"
+      }
+    ],
+    "description": "Federation of Saint Kitts and Nevis — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Federation of Saint Kitts and Nevis"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

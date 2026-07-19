@@ -1,0 +1,121 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:lie-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Principality of Liechtenstein AI Agent. You represent government organizations as path-based DIDs. Respond professionally.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": []
+  },
+  "kpi": [
+    "GovOrg DID registration count"
+  ],
+  "name": "gov-lie",
+  "nanoid": "g0vlie01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "LI",
+    "banner": "#888888",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution"
+    ],
+    "category": "government",
+    "country": "lie",
+    "contract": "Constitutional / basic law",
+    "description": "Principality of Liechtenstein — path-based DID registry (minimal stub; expand for ministries).",
+    "displayName": "Principality of Liechtenstein",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 0,
+    "bpmnCount": 0,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/lie/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Vaduz",
+        "addressLocality": "Vaduz",
+        "country": "LI"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.liechtenstein.li/",
+        "label": "Principality of Liechtenstein — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Principality of Liechtenstein — citizen inquiry",
+        "uri": "https://www.liechtenstein.li/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "pri.access_info",
+        "title": "Access to Public Information",
+        "authority": "Principality of Liechtenstein"
+      },
+      {
+        "id": "pri.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Principality of Liechtenstein — passport authority"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "li.access_info.v1",
+        "title": "Access to public information request — template",
+        "authority": "Principality of Liechtenstein"
+      }
+    ],
+    "complianceFrameworks": [
+      "Principality of Liechtenstein — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "lie-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Principality of Liechtenstein activity feed",
+        "kind": "public",
+        "name": "gov-lie-feed"
+      }
+    ],
+    "description": "Principality of Liechtenstein — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Principality of Liechtenstein"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

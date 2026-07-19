@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_kor_law_enforcement_national_police_agen"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_kor_law_enforcement_national_police_agen">
+    <bpmn:participant id="Pool_kor_law_enforcement_national_police_agen" name="Law Enforcement National Police Agen (law-enfo)" processRef="Process_kor_law_enforcement_national_police_agen" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_kor_law_enforcement_national_police_agen" name="Law Enforcement National Police Agen — Public Order & Safety" isExecutable="true">
+    <bpmn:startEvent id="Start_kor_law_enforcement_national_police_agen" name="Incident
+reported"><bpmn:outgoing>F_kor_law_enforcement_national_police_agen_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:serviceTask id="T_kor_law_enforcement_national_police_agen_triage" name="Triage Incident
+(severity classification)">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.kor.law-enforcement-national-police-agen.triage" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="response_time_minutes" />
+          <zeebe:header key="cofog" value="03" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_kor_law_enforcement_national_police_agen_01</bpmn:incoming>
+      <bpmn:outgoing>F_kor_law_enforcement_national_police_agen_02</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="GW_kor_law_enforcement_national_police_agen_sev" name="Severity?" isMarkerVisible="true">
+      <bpmn:incoming>F_kor_law_enforcement_national_police_agen_02</bpmn:incoming>
+      <bpmn:outgoing>F_kor_law_enforcement_national_police_agen_03a</bpmn:outgoing>
+      <bpmn:outgoing>F_kor_law_enforcement_national_police_agen_03b</bpmn:outgoing>
+      <bpmn:outgoing>F_kor_law_enforcement_national_police_agen_03c</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_kor_law_enforcement_national_police_agen_emergency" name="Deploy Emergency
+Response">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.kor.law-enforcement-national-police-agen.emergency_response" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="emergency" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_kor_law_enforcement_national_police_agen_03a</bpmn:incoming>
+      <bpmn:outgoing>F_kor_law_enforcement_national_police_agen_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_kor_law_enforcement_national_police_agen_investigate" name="Open Investigation
+& Assign Officers">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.kor.law-enforcement-national-police-agen.investigate" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="investigate" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_kor_law_enforcement_national_police_agen_03b</bpmn:incoming>
+      <bpmn:outgoing>F_kor_law_enforcement_national_police_agen_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_kor_law_enforcement_national_police_agen_log" name="Log Report
+& Close">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.kor.law-enforcement-national-police-agen.log_close" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="log" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_kor_law_enforcement_national_police_agen_03c</bpmn:incoming>
+      <bpmn:outgoing>F_kor_law_enforcement_national_police_agen_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_kor_law_enforcement_national_police_agen_report" name="File Incident
+Report">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.kor.law-enforcement-national-police-agen.file_report" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_kor_law_enforcement_national_police_agen_06</bpmn:incoming>
+      <bpmn:outgoing>F_kor_law_enforcement_national_police_agen_07</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_kor_law_enforcement_national_police_agen" name="Incident resolved">
+      <bpmn:incoming>F_kor_law_enforcement_national_police_agen_07</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_kor_law_enforcement_national_police_agen_01" sourceRef="Start_kor_law_enforcement_national_police_agen" targetRef="T_kor_law_enforcement_national_police_agen_triage">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_kor_law_enforcement_national_police_agen_02" sourceRef="T_kor_law_enforcement_national_police_agen_triage" targetRef="GW_kor_law_enforcement_national_police_agen_sev">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_kor_law_enforcement_national_police_agen_03a" sourceRef="GW_kor_law_enforcement_national_police_agen_sev" targetRef="T_kor_law_enforcement_national_police_agen_emergency" name="Critical">
+      <bpmn:conditionExpression>=severity = 'critical'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_kor_law_enforcement_national_police_agen_03b" sourceRef="GW_kor_law_enforcement_national_police_agen_sev" targetRef="T_kor_law_enforcement_national_police_agen_investigate" name="Standard">
+      <bpmn:conditionExpression>=severity = 'standard'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_kor_law_enforcement_national_police_agen_03c" sourceRef="GW_kor_law_enforcement_national_police_agen_sev" targetRef="T_kor_law_enforcement_national_police_agen_log" name="Minor">
+      <bpmn:conditionExpression>=severity = 'minor'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_kor_law_enforcement_national_police_agen_06" sourceRef="T_kor_law_enforcement_national_police_agen_emergency" targetRef="T_kor_law_enforcement_national_police_agen_report">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_kor_law_enforcement_national_police_agen_06b" sourceRef="T_kor_law_enforcement_national_police_agen_investigate" targetRef="T_kor_law_enforcement_national_police_agen_report">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_kor_law_enforcement_national_police_agen_06c" sourceRef="T_kor_law_enforcement_national_police_agen_log" targetRef="T_kor_law_enforcement_national_police_agen_report">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_kor_law_enforcement_national_police_agen_07" sourceRef="T_kor_law_enforcement_national_police_agen_report" targetRef="End_kor_law_enforcement_national_police_agen">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_kor_law_enforcement_national_police_agen">
+    <bpmndi:BPMNPlane id="BPMNPlane_kor_law_enforcement_national_police_agen" bpmnElement="Collaboration_kor_law_enforcement_national_police_agen" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

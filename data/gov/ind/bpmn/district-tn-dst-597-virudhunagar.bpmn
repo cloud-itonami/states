@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_ind_district_tn_dst_597_virudhunagar"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_ind_district_tn_dst_597_virudhunagar">
+    <bpmn:participant id="Pool_ind_district_tn_dst_597_virudhunagar" name="Tn Dst 597 Virudhunagar (district)" processRef="Process_ind_district_tn_dst_597_virudhunagar" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_ind_district_tn_dst_597_virudhunagar" name="Tn Dst 597 Virudhunagar — General Public Services" isExecutable="true">
+    <bpmn:startEvent id="Start_ind_district_tn_dst_597_virudhunagar" name="Policy trigger
+received"><bpmn:outgoing>F_ind_district_tn_dst_597_virudhunagar_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:parallelGateway id="GW_ind_district_tn_dst_597_virudhunagar_open" name="Parallel checks">
+      <bpmn:incoming>F_ind_district_tn_dst_597_virudhunagar_01</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_tn_dst_597_virudhunagar_02</bpmn:outgoing>
+      <bpmn:outgoing>F_ind_district_tn_dst_597_virudhunagar_03</bpmn:outgoing>
+      <bpmn:outgoing>F_ind_district_tn_dst_597_virudhunagar_04</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:serviceTask id="T_ind_district_tn_dst_597_virudhunagar_policy" name="Draft Policy
+Proposal">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.ind.district:tn-dst-597-virudhunagar.draft_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="policy_output" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_ind_district_tn_dst_597_virudhunagar_02</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_tn_dst_597_virudhunagar_05</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_ind_district_tn_dst_597_virudhunagar_budget" name="Allocate Budget
+(COFOG 01)">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.ind.district:tn-dst-597-virudhunagar.allocate_budget" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="budget_execution_rate" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_ind_district_tn_dst_597_virudhunagar_03</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_tn_dst_597_virudhunagar_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_ind_district_tn_dst_597_virudhunagar_coord" name="Inter-Agency
+Coordination">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.ind.district:tn-dst-597-virudhunagar.coordinate" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="coordination_score" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_ind_district_tn_dst_597_virudhunagar_04</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_tn_dst_597_virudhunagar_07</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="GW_ind_district_tn_dst_597_virudhunagar_join" name="Checks complete">
+      <bpmn:incoming>F_ind_district_tn_dst_597_virudhunagar_05</bpmn:incoming>
+      <bpmn:incoming>F_ind_district_tn_dst_597_virudhunagar_06</bpmn:incoming>
+      <bpmn:incoming>F_ind_district_tn_dst_597_virudhunagar_07</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_tn_dst_597_virudhunagar_08</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:userTask id="T_ind_district_tn_dst_597_virudhunagar_review" name="Minister Review
+& Sign-off">
+      <bpmn:extensionElements>
+        <zeebe:assignmentDefinition assignee="gov-official" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_ind_district_tn_dst_597_virudhunagar_08</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_tn_dst_597_virudhunagar_09</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="GW_ind_district_tn_dst_597_virudhunagar_risk" name="Approved?" isMarkerVisible="true">
+      <bpmn:incoming>F_ind_district_tn_dst_597_virudhunagar_09</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_tn_dst_597_virudhunagar_10a</bpmn:outgoing>
+      <bpmn:outgoing>F_ind_district_tn_dst_597_virudhunagar_10b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_ind_district_tn_dst_597_virudhunagar_publish" name="Publish Policy
+& Notify Citizens">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.ind.district:tn-dst-597-virudhunagar.publish_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="publish" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_ind_district_tn_dst_597_virudhunagar_10a</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_tn_dst_597_virudhunagar_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_ind_district_tn_dst_597_virudhunagar_revise" name="Return for
+Revision">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.ind.district:tn-dst-597-virudhunagar.request_revision" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="revise" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_ind_district_tn_dst_597_virudhunagar_10b</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_tn_dst_597_virudhunagar_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_ind_district_tn_dst_597_virudhunagar" name="Process complete">
+      <bpmn:incoming>F_ind_district_tn_dst_597_virudhunagar_11</bpmn:incoming>
+      <bpmn:incoming>F_ind_district_tn_dst_597_virudhunagar_11b</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_ind_district_tn_dst_597_virudhunagar_01" sourceRef="Start_ind_district_tn_dst_597_virudhunagar" targetRef="GW_ind_district_tn_dst_597_virudhunagar_open">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_tn_dst_597_virudhunagar_02" sourceRef="GW_ind_district_tn_dst_597_virudhunagar_open" targetRef="T_ind_district_tn_dst_597_virudhunagar_policy">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_tn_dst_597_virudhunagar_03" sourceRef="GW_ind_district_tn_dst_597_virudhunagar_open" targetRef="T_ind_district_tn_dst_597_virudhunagar_budget">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_tn_dst_597_virudhunagar_04" sourceRef="GW_ind_district_tn_dst_597_virudhunagar_open" targetRef="T_ind_district_tn_dst_597_virudhunagar_coord">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_tn_dst_597_virudhunagar_05" sourceRef="T_ind_district_tn_dst_597_virudhunagar_policy" targetRef="GW_ind_district_tn_dst_597_virudhunagar_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_tn_dst_597_virudhunagar_06" sourceRef="T_ind_district_tn_dst_597_virudhunagar_budget" targetRef="GW_ind_district_tn_dst_597_virudhunagar_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_tn_dst_597_virudhunagar_07" sourceRef="T_ind_district_tn_dst_597_virudhunagar_coord" targetRef="GW_ind_district_tn_dst_597_virudhunagar_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_tn_dst_597_virudhunagar_08" sourceRef="GW_ind_district_tn_dst_597_virudhunagar_join" targetRef="T_ind_district_tn_dst_597_virudhunagar_review">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_tn_dst_597_virudhunagar_09" sourceRef="T_ind_district_tn_dst_597_virudhunagar_review" targetRef="GW_ind_district_tn_dst_597_virudhunagar_risk">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_tn_dst_597_virudhunagar_10a" sourceRef="GW_ind_district_tn_dst_597_virudhunagar_risk" targetRef="T_ind_district_tn_dst_597_virudhunagar_publish" name="Approved">
+      <bpmn:conditionExpression>=approved = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_tn_dst_597_virudhunagar_10b" sourceRef="GW_ind_district_tn_dst_597_virudhunagar_risk" targetRef="T_ind_district_tn_dst_597_virudhunagar_revise" name="Rejected">
+      <bpmn:conditionExpression>=approved = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_tn_dst_597_virudhunagar_11" sourceRef="T_ind_district_tn_dst_597_virudhunagar_publish" targetRef="End_ind_district_tn_dst_597_virudhunagar">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_tn_dst_597_virudhunagar_11b" sourceRef="T_ind_district_tn_dst_597_virudhunagar_revise" targetRef="End_ind_district_tn_dst_597_virudhunagar">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_ind_district_tn_dst_597_virudhunagar">
+    <bpmndi:BPMNPlane id="BPMNPlane_ind_district_tn_dst_597_virudhunagar" bpmnElement="Collaboration_ind_district_tn_dst_597_virudhunagar" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

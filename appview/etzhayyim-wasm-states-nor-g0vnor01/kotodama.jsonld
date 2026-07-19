@@ -1,0 +1,126 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:nor-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Norway AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-nor",
+  "nanoid": "g0vnor01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "NO",
+    "banner": "#ef2b2d",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "nor",
+    "contract": "Grunnloven 1814",
+    "description": "Norway Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Kongeriket Norge (Kingdom of Norway)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 3,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/nor/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Statsministerens kontor",
+        "addressLocality": "Oslo",
+        "country": "NO"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.regjeringen.no/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://lovdata.no/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.stortinget.no/"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "offentleglova",
+        "label": "Offentleglova innsynskrav",
+        "basis": "Offentleglova 2006"
+      }
+    ],
+    "procedures": [],
+    "documentTemplates": [
+      {
+        "id": "nor.kommuneloven",
+        "title": "Local Government Act",
+        "titleLocal": "Kommuneloven",
+        "basis": "LOV-2018-06-22-83",
+        "uri": "https://lovdata.no/"
+      }
+    ],
+    "complianceFrameworks": [
+      "Grunnloven (1814)",
+      "Offentleglova (2006)",
+      "Forvaltningsloven (1967)"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "nor-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Norway government activity feed",
+        "kind": "public",
+        "name": "gov-nor-feed"
+      }
+    ],
+    "description": "Government of Norway — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Kongeriket Norge (Kingdom of Norway)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

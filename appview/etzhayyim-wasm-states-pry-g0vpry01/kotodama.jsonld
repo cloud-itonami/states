@@ -1,0 +1,149 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:pry-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Paraguay (República del Paraguay) AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-pry",
+  "nanoid": "g0vpry01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "PR",
+    "banner": "#000000",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "pry",
+    "contract": "Constitución de la República del Paraguay 1992",
+    "description": "Paraguay Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "República del Paraguay (Republic of Paraguay)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 3,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/pry/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Asuncion",
+        "addressLocality": "Asuncion",
+        "country": "PY"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.presidencia.gov.py/",
+        "label": "Presidencia"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.bacn.gov.py/",
+        "label": "Legislative archive"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Gobierno de Paraguay — citizen inquiry",
+        "uri": "https://www.presidencia.gov.py/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "pry.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Gobierno de Paraguay — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "pry.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Gobierno de Paraguay — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "pry.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Gobierno de Paraguay — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "pry.lom-3966-2010",
+        "title": "LOM 3966/2010",
+        "titleLocal": "Ley Orgánica Municipal 3966/2010",
+        "basis": "Ley 3966",
+        "uri": "https://www.congreso.gov.py/"
+      },
+      {
+        "id": "pry.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Gobierno de Paraguay",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Gobierno de Paraguay — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "pry-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Paraguay government activity feed",
+        "kind": "public",
+        "name": "gov-pry-feed"
+      }
+    ],
+    "description": "Government of Paraguay — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "República del Paraguay (Republic of Paraguay)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

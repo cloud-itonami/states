@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_bra_district_dst_02961436_theobroma"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_bra_district_dst_02961436_theobroma">
+    <bpmn:participant id="Pool_bra_district_dst_02961436_theobroma" name="Dst 02961436 Theobroma (02961436)" processRef="Process_bra_district_dst_02961436_theobroma" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_bra_district_dst_02961436_theobroma" name="Dst 02961436 Theobroma — General Public Services" isExecutable="true">
+    <bpmn:startEvent id="Start_bra_district_dst_02961436_theobroma" name="Policy trigger
+received"><bpmn:outgoing>F_bra_district_dst_02961436_theobroma_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:parallelGateway id="GW_bra_district_dst_02961436_theobroma_open" name="Parallel checks">
+      <bpmn:incoming>F_bra_district_dst_02961436_theobroma_01</bpmn:incoming>
+      <bpmn:outgoing>F_bra_district_dst_02961436_theobroma_02</bpmn:outgoing>
+      <bpmn:outgoing>F_bra_district_dst_02961436_theobroma_03</bpmn:outgoing>
+      <bpmn:outgoing>F_bra_district_dst_02961436_theobroma_04</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:serviceTask id="T_bra_district_dst_02961436_theobroma_policy" name="Draft Policy
+Proposal">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.bra.district:dst-02961436-theobroma.draft_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="policy_output" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_bra_district_dst_02961436_theobroma_02</bpmn:incoming>
+      <bpmn:outgoing>F_bra_district_dst_02961436_theobroma_05</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_bra_district_dst_02961436_theobroma_budget" name="Allocate Budget
+(COFOG 01)">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.bra.district:dst-02961436-theobroma.allocate_budget" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="budget_execution_rate" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_bra_district_dst_02961436_theobroma_03</bpmn:incoming>
+      <bpmn:outgoing>F_bra_district_dst_02961436_theobroma_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_bra_district_dst_02961436_theobroma_coord" name="Inter-Agency
+Coordination">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.bra.district:dst-02961436-theobroma.coordinate" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="coordination_score" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_bra_district_dst_02961436_theobroma_04</bpmn:incoming>
+      <bpmn:outgoing>F_bra_district_dst_02961436_theobroma_07</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="GW_bra_district_dst_02961436_theobroma_join" name="Checks complete">
+      <bpmn:incoming>F_bra_district_dst_02961436_theobroma_05</bpmn:incoming>
+      <bpmn:incoming>F_bra_district_dst_02961436_theobroma_06</bpmn:incoming>
+      <bpmn:incoming>F_bra_district_dst_02961436_theobroma_07</bpmn:incoming>
+      <bpmn:outgoing>F_bra_district_dst_02961436_theobroma_08</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:userTask id="T_bra_district_dst_02961436_theobroma_review" name="Minister Review
+& Sign-off">
+      <bpmn:extensionElements>
+        <zeebe:assignmentDefinition assignee="gov-official" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_bra_district_dst_02961436_theobroma_08</bpmn:incoming>
+      <bpmn:outgoing>F_bra_district_dst_02961436_theobroma_09</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="GW_bra_district_dst_02961436_theobroma_risk" name="Approved?" isMarkerVisible="true">
+      <bpmn:incoming>F_bra_district_dst_02961436_theobroma_09</bpmn:incoming>
+      <bpmn:outgoing>F_bra_district_dst_02961436_theobroma_10a</bpmn:outgoing>
+      <bpmn:outgoing>F_bra_district_dst_02961436_theobroma_10b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_bra_district_dst_02961436_theobroma_publish" name="Publish Policy
+& Notify Citizens">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.bra.district:dst-02961436-theobroma.publish_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="publish" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_bra_district_dst_02961436_theobroma_10a</bpmn:incoming>
+      <bpmn:outgoing>F_bra_district_dst_02961436_theobroma_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_bra_district_dst_02961436_theobroma_revise" name="Return for
+Revision">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.bra.district:dst-02961436-theobroma.request_revision" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="revise" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_bra_district_dst_02961436_theobroma_10b</bpmn:incoming>
+      <bpmn:outgoing>F_bra_district_dst_02961436_theobroma_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_bra_district_dst_02961436_theobroma" name="Process complete">
+      <bpmn:incoming>F_bra_district_dst_02961436_theobroma_11</bpmn:incoming>
+      <bpmn:incoming>F_bra_district_dst_02961436_theobroma_11b</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_bra_district_dst_02961436_theobroma_01" sourceRef="Start_bra_district_dst_02961436_theobroma" targetRef="GW_bra_district_dst_02961436_theobroma_open">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_bra_district_dst_02961436_theobroma_02" sourceRef="GW_bra_district_dst_02961436_theobroma_open" targetRef="T_bra_district_dst_02961436_theobroma_policy">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_bra_district_dst_02961436_theobroma_03" sourceRef="GW_bra_district_dst_02961436_theobroma_open" targetRef="T_bra_district_dst_02961436_theobroma_budget">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_bra_district_dst_02961436_theobroma_04" sourceRef="GW_bra_district_dst_02961436_theobroma_open" targetRef="T_bra_district_dst_02961436_theobroma_coord">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_bra_district_dst_02961436_theobroma_05" sourceRef="T_bra_district_dst_02961436_theobroma_policy" targetRef="GW_bra_district_dst_02961436_theobroma_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_bra_district_dst_02961436_theobroma_06" sourceRef="T_bra_district_dst_02961436_theobroma_budget" targetRef="GW_bra_district_dst_02961436_theobroma_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_bra_district_dst_02961436_theobroma_07" sourceRef="T_bra_district_dst_02961436_theobroma_coord" targetRef="GW_bra_district_dst_02961436_theobroma_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_bra_district_dst_02961436_theobroma_08" sourceRef="GW_bra_district_dst_02961436_theobroma_join" targetRef="T_bra_district_dst_02961436_theobroma_review">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_bra_district_dst_02961436_theobroma_09" sourceRef="T_bra_district_dst_02961436_theobroma_review" targetRef="GW_bra_district_dst_02961436_theobroma_risk">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_bra_district_dst_02961436_theobroma_10a" sourceRef="GW_bra_district_dst_02961436_theobroma_risk" targetRef="T_bra_district_dst_02961436_theobroma_publish" name="Approved">
+      <bpmn:conditionExpression>=approved = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_bra_district_dst_02961436_theobroma_10b" sourceRef="GW_bra_district_dst_02961436_theobroma_risk" targetRef="T_bra_district_dst_02961436_theobroma_revise" name="Rejected">
+      <bpmn:conditionExpression>=approved = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_bra_district_dst_02961436_theobroma_11" sourceRef="T_bra_district_dst_02961436_theobroma_publish" targetRef="End_bra_district_dst_02961436_theobroma">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_bra_district_dst_02961436_theobroma_11b" sourceRef="T_bra_district_dst_02961436_theobroma_revise" targetRef="End_bra_district_dst_02961436_theobroma">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_bra_district_dst_02961436_theobroma">
+    <bpmndi:BPMNPlane id="BPMNPlane_bra_district_dst_02961436_theobroma" bpmnElement="Collaboration_bra_district_dst_02961436_theobroma" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

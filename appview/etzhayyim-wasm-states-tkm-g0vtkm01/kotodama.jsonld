@@ -1,0 +1,144 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:tkm-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Turkmenistan AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution 2008"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-tkm",
+  "nanoid": "g0vtkm01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "TKM",
+    "banner": "#000000",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "tkm",
+    "contract": "Constitution 2008",
+    "description": "Turkmenistan Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Türkmenistan (Turkmenistan)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 2,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/tkm/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Ashgabat",
+        "addressLocality": "Ashgabat",
+        "country": "TM"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.turkmenistan.gov.tm/",
+        "label": "Turkmenistan — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Turkmenistan — citizen inquiry",
+        "uri": "https://www.turkmenistan.gov.tm/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "tkm.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Turkmenistan — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "tkm.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Turkmenistan — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "tkm.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Turkmenistan — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "tkm.lsga-1999",
+        "title": "Law on Status of Ashgabat",
+        "titleLocal": "Закон о статусе города Ашхабада 1999",
+        "basis": "Закон 1999 г.",
+        "uri": "https://minjust.gov.tm/"
+      },
+      {
+        "id": "tkm.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Turkmenistan",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Turkmenistan — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "tkm-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Turkmenistan government activity feed",
+        "kind": "public",
+        "name": "gov-tkm-feed"
+      }
+    ],
+    "description": "Government of Turkmenistan — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Türkmenistan (Turkmenistan)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

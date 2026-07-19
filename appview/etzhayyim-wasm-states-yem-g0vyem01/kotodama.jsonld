@@ -1,0 +1,153 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:yem-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Yemen AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution 1991"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-yem",
+  "nanoid": "g0vyem01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "YEM",
+    "banner": "#000000",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "yem",
+    "contract": "Constitution 1991",
+    "description": "Yemen Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "الجمهورية اليمنية (Republic of Yemen)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 1,
+    "contractCount": 1,
+    "bpmnCount": 19,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/yem/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Sana'a",
+        "addressLocality": "Sana'a",
+        "country": "YE"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.presidenthadi.gov.ye/",
+        "label": "Republic of Yemen — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Republic of Yemen — citizen inquiry",
+        "uri": "https://www.presidenthadi.gov.ye/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "yem.executive",
+        "title": "Executive",
+        "titleLocal": "Executive",
+        "authority": "Executive",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/yem/bpmn/executive.bpmn"
+      },
+      {
+        "id": "yem.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Republic of Yemen — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "yem.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Republic of Yemen — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "yem.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Republic of Yemen — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "yem.law-4-2000-yem",
+        "title": "Local Authority Law No.4/2000",
+        "titleLocal": "قانون السلطة المحلية رقم 4 لسنة 2000",
+        "basis": "Law No.4 of 2000",
+        "uri": "https://www.yemenlaw.net/"
+      },
+      {
+        "id": "yem.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Republic of Yemen",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Republic of Yemen — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "yem-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Yemen government activity feed",
+        "kind": "public",
+        "name": "gov-yem-feed"
+      }
+    ],
+    "description": "Government of Yemen — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "الجمهورية اليمنية (Republic of Yemen)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

@@ -1,0 +1,253 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:usa-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of United States AI Agent. You represent all government organizations — central ministries, departments, and subnational units — as path-based DIDs. Respond professionally. Data sourced from site.etzhayyim.com government topic.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution",
+      "Government Organization Act"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "site.etzhayyim.com government topic follows",
+    "delta ingestion updates"
+  ],
+  "name": "gov-usa",
+  "nanoid": "g0vusa01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "US",
+    "banner": "#002868",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "usa",
+    "contract": "U.S. Constitution",
+    "description": "United States Government — path-based DID registry for all ministries, departments, and subnational units. Data sourced via site.etzhayyim.com government topic.",
+    "displayName": "United States Government",
+    "isBot": true,
+    "agentType": "autonomous",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "The White House",
+        "streetAddress": "1600 Pennsylvania Ave NW",
+        "addressLocality": "Washington",
+        "addressRegion": "DC",
+        "postalCode": "20500",
+        "country": "US"
+      },
+      {
+        "kind": "legislative",
+        "label": "U.S. Capitol",
+        "addressLocality": "Washington",
+        "addressRegion": "DC",
+        "postalCode": "20004",
+        "country": "US"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.usa.gov/"
+      },
+      {
+        "kind": "website",
+        "uri": "https://www.whitehouse.gov/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.congress.gov/",
+        "label": "Congress.gov"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.foia.gov/",
+        "label": "FOIA.gov"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "foi",
+        "label": "FOIA portal",
+        "uri": "https://www.foia.gov/",
+        "basis": "5 U.S.C. Sec.552"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "usa.department-of-defense",
+        "title": "Department Of Defense",
+        "titleLocal": "Department Of Defense",
+        "authority": "Department Of Defense",
+        "basis": "Defence Act",
+        "portalUri": "https://www.defense.gov/",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/usa/bpmn/department-of-defense.bpmn"
+      },
+      {
+        "id": "usa.federal-bureau-of-investigation",
+        "title": "Federal Bureau Of Investigation",
+        "titleLocal": "Federal Bureau Of Investigation",
+        "authority": "Federal Bureau Of Investigation",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/usa/bpmn/federal-bureau-of-investigation.bpmn"
+      },
+      {
+        "id": "usa.finance-department-of-treasury",
+        "title": "Finance Department Of Treasury",
+        "titleLocal": "Finance Department Of Treasury",
+        "authority": "Finance Department Of Treasury",
+        "basis": "Economic Affairs Act",
+        "portalUri": "https://home.treasury.gov/",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/usa/bpmn/finance-department-of-treasury.bpmn"
+      },
+      {
+        "id": "usa.foreign-department-of-state",
+        "title": "Foreign Department Of State",
+        "titleLocal": "Foreign Department Of State",
+        "authority": "Foreign Department Of State",
+        "basis": "General Public Services Act",
+        "portalUri": "https://www.state.gov/",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/usa/bpmn/foreign-department-of-state.bpmn"
+      },
+      {
+        "id": "usa.justice-department-of-justice",
+        "title": "Justice Department Of Justice",
+        "titleLocal": "Justice Department Of Justice",
+        "authority": "Justice Department Of Justice",
+        "basis": "Public Order and Safety Act",
+        "portalUri": "https://www.justice.gov/",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/usa/bpmn/justice-department-of-justice.bpmn"
+      },
+      {
+        "id": "usa.executive-office-of-president",
+        "title": "Executive Office Of President",
+        "titleLocal": "Executive Office Of President",
+        "authority": "Executive Office Of President",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/usa/bpmn/executive-office-of-president.bpmn"
+      },
+      {
+        "id": "usa.foia.request",
+        "title": "FOIA Request - federal records access",
+        "basis": "5 U.S.C. Sec.552",
+        "authority": "Each federal agency",
+        "portalUri": "https://www.foia.gov/"
+      },
+      {
+        "id": "usa.passport.apply",
+        "title": "U.S. Passport Application (Form DS-11)",
+        "basis": "22 U.S.C. Sec.211a",
+        "authority": "U.S. Department of State",
+        "portalUri": "https://travel.state.gov/content/travel/en/passports.html"
+      },
+      {
+        "id": "usa.visa.esta",
+        "title": "ESTA - Visa Waiver Program",
+        "basis": "8 U.S.C. Sec.1187",
+        "authority": "CBP",
+        "portalUri": "https://esta.cbp.dhs.gov/"
+      },
+      {
+        "id": "usa.tax.1040",
+        "title": "Individual Income Tax Return (Form 1040)",
+        "basis": "26 U.S.C. Sec.6012",
+        "authority": "IRS",
+        "portalUri": "https://www.irs.gov/forms-pubs/about-form-1040"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "usa.state-municipal-charter",
+        "title": "State Municipal Charter",
+        "titleLocal": "State Municipal Charter",
+        "basis": "US Constitution 10th Amendment",
+        "uri": "https://www.usa.gov/"
+      },
+      {
+        "id": "usa.foia.request.v1",
+        "title": "FOIA Request Letter template",
+        "basis": "5 U.S.C. Sec.552",
+        "uri": "https://www.foia.gov/how-to.html"
+      },
+      {
+        "id": "usa.ds11.v1",
+        "title": "Form DS-11 - U.S. Passport Application",
+        "authority": "Department of State",
+        "uri": "https://eforms.state.gov/Forms/ds11.pdf"
+      },
+      {
+        "id": "usa.form1040.v1",
+        "title": "Form 1040 - Individual Income Tax Return",
+        "authority": "IRS",
+        "uri": "https://www.irs.gov/pub/irs-pdf/f1040.pdf"
+      },
+      {
+        "id": "usa.i9.v1",
+        "title": "Form I-9 - Employment Eligibility",
+        "authority": "USCIS",
+        "uri": "https://www.uscis.gov/sites/default/files/document/forms/i-9.pdf"
+      }
+    ],
+    "ministryCount": 6,
+    "contractCount": 1,
+    "bpmnCount": 133,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/usa/",
+    "complianceFrameworks": [
+      "U.S. Constitution (1789)",
+      "Freedom of Information Act (5 U.S.C. §552)",
+      "Administrative Procedure Act (1946)"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "usa-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "United States government organization activity — ministry updates, subnational government announcements, policy changes",
+        "kind": "public",
+        "name": "gov-usa-feed"
+      }
+    ],
+    "description": "Government of United States — AI Agent registry for government organization DIDs.",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "United States Government"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

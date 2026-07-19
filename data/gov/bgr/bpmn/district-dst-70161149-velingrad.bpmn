@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_bgr_district_dst_70161149_velingrad"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_bgr_district_dst_70161149_velingrad">
+    <bpmn:participant id="Pool_bgr_district_dst_70161149_velingrad" name="Dst 70161149 Velingrad (70161149)" processRef="Process_bgr_district_dst_70161149_velingrad" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_bgr_district_dst_70161149_velingrad" name="Dst 70161149 Velingrad — General Public Services" isExecutable="true">
+    <bpmn:startEvent id="Start_bgr_district_dst_70161149_velingrad" name="Policy trigger
+received"><bpmn:outgoing>F_bgr_district_dst_70161149_velingrad_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:parallelGateway id="GW_bgr_district_dst_70161149_velingrad_open" name="Parallel checks">
+      <bpmn:incoming>F_bgr_district_dst_70161149_velingrad_01</bpmn:incoming>
+      <bpmn:outgoing>F_bgr_district_dst_70161149_velingrad_02</bpmn:outgoing>
+      <bpmn:outgoing>F_bgr_district_dst_70161149_velingrad_03</bpmn:outgoing>
+      <bpmn:outgoing>F_bgr_district_dst_70161149_velingrad_04</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:serviceTask id="T_bgr_district_dst_70161149_velingrad_policy" name="Draft Policy
+Proposal">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.bgr.district:dst-70161149-velingrad.draft_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="policy_output" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_bgr_district_dst_70161149_velingrad_02</bpmn:incoming>
+      <bpmn:outgoing>F_bgr_district_dst_70161149_velingrad_05</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_bgr_district_dst_70161149_velingrad_budget" name="Allocate Budget
+(COFOG 01)">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.bgr.district:dst-70161149-velingrad.allocate_budget" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="budget_execution_rate" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_bgr_district_dst_70161149_velingrad_03</bpmn:incoming>
+      <bpmn:outgoing>F_bgr_district_dst_70161149_velingrad_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_bgr_district_dst_70161149_velingrad_coord" name="Inter-Agency
+Coordination">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.bgr.district:dst-70161149-velingrad.coordinate" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="coordination_score" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_bgr_district_dst_70161149_velingrad_04</bpmn:incoming>
+      <bpmn:outgoing>F_bgr_district_dst_70161149_velingrad_07</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="GW_bgr_district_dst_70161149_velingrad_join" name="Checks complete">
+      <bpmn:incoming>F_bgr_district_dst_70161149_velingrad_05</bpmn:incoming>
+      <bpmn:incoming>F_bgr_district_dst_70161149_velingrad_06</bpmn:incoming>
+      <bpmn:incoming>F_bgr_district_dst_70161149_velingrad_07</bpmn:incoming>
+      <bpmn:outgoing>F_bgr_district_dst_70161149_velingrad_08</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:userTask id="T_bgr_district_dst_70161149_velingrad_review" name="Minister Review
+& Sign-off">
+      <bpmn:extensionElements>
+        <zeebe:assignmentDefinition assignee="gov-official" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_bgr_district_dst_70161149_velingrad_08</bpmn:incoming>
+      <bpmn:outgoing>F_bgr_district_dst_70161149_velingrad_09</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="GW_bgr_district_dst_70161149_velingrad_risk" name="Approved?" isMarkerVisible="true">
+      <bpmn:incoming>F_bgr_district_dst_70161149_velingrad_09</bpmn:incoming>
+      <bpmn:outgoing>F_bgr_district_dst_70161149_velingrad_10a</bpmn:outgoing>
+      <bpmn:outgoing>F_bgr_district_dst_70161149_velingrad_10b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_bgr_district_dst_70161149_velingrad_publish" name="Publish Policy
+& Notify Citizens">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.bgr.district:dst-70161149-velingrad.publish_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="publish" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_bgr_district_dst_70161149_velingrad_10a</bpmn:incoming>
+      <bpmn:outgoing>F_bgr_district_dst_70161149_velingrad_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_bgr_district_dst_70161149_velingrad_revise" name="Return for
+Revision">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.bgr.district:dst-70161149-velingrad.request_revision" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="revise" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_bgr_district_dst_70161149_velingrad_10b</bpmn:incoming>
+      <bpmn:outgoing>F_bgr_district_dst_70161149_velingrad_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_bgr_district_dst_70161149_velingrad" name="Process complete">
+      <bpmn:incoming>F_bgr_district_dst_70161149_velingrad_11</bpmn:incoming>
+      <bpmn:incoming>F_bgr_district_dst_70161149_velingrad_11b</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_bgr_district_dst_70161149_velingrad_01" sourceRef="Start_bgr_district_dst_70161149_velingrad" targetRef="GW_bgr_district_dst_70161149_velingrad_open">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_bgr_district_dst_70161149_velingrad_02" sourceRef="GW_bgr_district_dst_70161149_velingrad_open" targetRef="T_bgr_district_dst_70161149_velingrad_policy">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_bgr_district_dst_70161149_velingrad_03" sourceRef="GW_bgr_district_dst_70161149_velingrad_open" targetRef="T_bgr_district_dst_70161149_velingrad_budget">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_bgr_district_dst_70161149_velingrad_04" sourceRef="GW_bgr_district_dst_70161149_velingrad_open" targetRef="T_bgr_district_dst_70161149_velingrad_coord">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_bgr_district_dst_70161149_velingrad_05" sourceRef="T_bgr_district_dst_70161149_velingrad_policy" targetRef="GW_bgr_district_dst_70161149_velingrad_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_bgr_district_dst_70161149_velingrad_06" sourceRef="T_bgr_district_dst_70161149_velingrad_budget" targetRef="GW_bgr_district_dst_70161149_velingrad_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_bgr_district_dst_70161149_velingrad_07" sourceRef="T_bgr_district_dst_70161149_velingrad_coord" targetRef="GW_bgr_district_dst_70161149_velingrad_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_bgr_district_dst_70161149_velingrad_08" sourceRef="GW_bgr_district_dst_70161149_velingrad_join" targetRef="T_bgr_district_dst_70161149_velingrad_review">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_bgr_district_dst_70161149_velingrad_09" sourceRef="T_bgr_district_dst_70161149_velingrad_review" targetRef="GW_bgr_district_dst_70161149_velingrad_risk">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_bgr_district_dst_70161149_velingrad_10a" sourceRef="GW_bgr_district_dst_70161149_velingrad_risk" targetRef="T_bgr_district_dst_70161149_velingrad_publish" name="Approved">
+      <bpmn:conditionExpression>=approved = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_bgr_district_dst_70161149_velingrad_10b" sourceRef="GW_bgr_district_dst_70161149_velingrad_risk" targetRef="T_bgr_district_dst_70161149_velingrad_revise" name="Rejected">
+      <bpmn:conditionExpression>=approved = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_bgr_district_dst_70161149_velingrad_11" sourceRef="T_bgr_district_dst_70161149_velingrad_publish" targetRef="End_bgr_district_dst_70161149_velingrad">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_bgr_district_dst_70161149_velingrad_11b" sourceRef="T_bgr_district_dst_70161149_velingrad_revise" targetRef="End_bgr_district_dst_70161149_velingrad">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_bgr_district_dst_70161149_velingrad">
+    <bpmndi:BPMNPlane id="BPMNPlane_bgr_district_dst_70161149_velingrad" bpmnElement="Collaboration_bgr_district_dst_70161149_velingrad" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

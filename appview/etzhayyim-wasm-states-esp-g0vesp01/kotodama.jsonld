@@ -1,0 +1,168 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:esp-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Spain AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-esp",
+  "nanoid": "g0vesp01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "ES",
+    "banner": "#c60b1e",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "esp",
+    "contract": "Constitución Española 1978",
+    "description": "Spain Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Reino de España (Kingdom of Spain)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 1,
+    "contractCount": 1,
+    "bpmnCount": 30,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/esp/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Palacio de la Moncloa",
+        "addressLocality": "Madrid",
+        "postalCode": "28071",
+        "country": "ES"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.lamoncloa.gob.es/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.boe.es/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://administracion.gob.es/"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "transparency",
+        "label": "Portal Transparencia",
+        "uri": "https://transparencia.gob.es/",
+        "basis": "Ley 19/2013"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "esp.executive",
+        "title": "Executive",
+        "titleLocal": "Executive",
+        "authority": "Executive",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/esp/bpmn/executive.bpmn"
+      },
+      {
+        "id": "esp.transparencia",
+        "title": "Solicitud de acceso a informacion publica",
+        "basis": "Ley 19/2013",
+        "portalUri": "https://transparencia.gob.es/"
+      },
+      {
+        "id": "esp.dni",
+        "title": "DNI - Documento Nacional de Identidad",
+        "authority": "Policia Nacional",
+        "portalUri": "https://www.dnielectronico.es/"
+      },
+      {
+        "id": "esp.pasaporte",
+        "title": "Pasaporte espanol",
+        "authority": "Policia Nacional",
+        "portalUri": "https://www.policia.es/_es/documentacion_pasaporte.php"
+      },
+      {
+        "id": "esp.irpf",
+        "title": "Declaracion de la Renta (IRPF)",
+        "authority": "Agencia Tributaria",
+        "portalUri": "https://sede.agenciatributaria.gob.es/"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "esp.lbrl-7-1985",
+        "title": "Ley Bases Régimen Local",
+        "titleLocal": "Ley de Bases del Régimen Local 7/1985",
+        "basis": "LBRL 7/1985 de 2 de abril",
+        "uri": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-5392"
+      },
+      {
+        "id": "esp.modelo100.v1",
+        "title": "Modelo 100 - IRPF",
+        "authority": "AEAT",
+        "uri": "https://sede.agenciatributaria.gob.es/Sede/irpf.html"
+      }
+    ],
+    "complianceFrameworks": [
+      "Constitución Española de 1978",
+      "Ley 19/2013 de Transparencia",
+      "Ley 39/2015 del Procedimiento Administrativo"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "esp-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Spain government activity feed",
+        "kind": "public",
+        "name": "gov-esp-feed"
+      }
+    ],
+    "description": "Government of Spain — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Reino de España (Kingdom of Spain)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

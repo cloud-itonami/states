@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_guy_city_georgetown"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_guy_city_georgetown">
+    <bpmn:participant id="Pool_guy_city_georgetown" name="Georgetown (city:geo)" processRef="Process_guy_city_georgetown" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_guy_city_georgetown" name="Georgetown — General Public Services" isExecutable="true">
+    <bpmn:startEvent id="Start_guy_city_georgetown" name="Policy trigger
+received"><bpmn:outgoing>F_guy_city_georgetown_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:parallelGateway id="GW_guy_city_georgetown_open" name="Parallel checks">
+      <bpmn:incoming>F_guy_city_georgetown_01</bpmn:incoming>
+      <bpmn:outgoing>F_guy_city_georgetown_02</bpmn:outgoing>
+      <bpmn:outgoing>F_guy_city_georgetown_03</bpmn:outgoing>
+      <bpmn:outgoing>F_guy_city_georgetown_04</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:serviceTask id="T_guy_city_georgetown_policy" name="Draft Policy
+Proposal">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.guy.city:georgetown.draft_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="policy_output" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_guy_city_georgetown_02</bpmn:incoming>
+      <bpmn:outgoing>F_guy_city_georgetown_05</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_guy_city_georgetown_budget" name="Allocate Budget
+(COFOG 01)">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.guy.city:georgetown.allocate_budget" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="budget_execution_rate" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_guy_city_georgetown_03</bpmn:incoming>
+      <bpmn:outgoing>F_guy_city_georgetown_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_guy_city_georgetown_coord" name="Inter-Agency
+Coordination">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.guy.city:georgetown.coordinate" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="coordination_score" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_guy_city_georgetown_04</bpmn:incoming>
+      <bpmn:outgoing>F_guy_city_georgetown_07</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="GW_guy_city_georgetown_join" name="Checks complete">
+      <bpmn:incoming>F_guy_city_georgetown_05</bpmn:incoming>
+      <bpmn:incoming>F_guy_city_georgetown_06</bpmn:incoming>
+      <bpmn:incoming>F_guy_city_georgetown_07</bpmn:incoming>
+      <bpmn:outgoing>F_guy_city_georgetown_08</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:userTask id="T_guy_city_georgetown_review" name="Minister Review
+&amp; Sign-off">
+      <bpmn:extensionElements>
+        <zeebe:assignmentDefinition assignee="gov-official" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_guy_city_georgetown_08</bpmn:incoming>
+      <bpmn:outgoing>F_guy_city_georgetown_09</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="GW_guy_city_georgetown_risk" name="Approved?" isMarkerVisible="true">
+      <bpmn:incoming>F_guy_city_georgetown_09</bpmn:incoming>
+      <bpmn:outgoing>F_guy_city_georgetown_10a</bpmn:outgoing>
+      <bpmn:outgoing>F_guy_city_georgetown_10b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_guy_city_georgetown_publish" name="Publish Policy
+&amp; Notify Citizens">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.guy.city:georgetown.publish_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="publish" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_guy_city_georgetown_10a</bpmn:incoming>
+      <bpmn:outgoing>F_guy_city_georgetown_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_guy_city_georgetown_revise" name="Return for
+Revision">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.guy.city:georgetown.request_revision" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="revise" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_guy_city_georgetown_10b</bpmn:incoming>
+      <bpmn:outgoing>F_guy_city_georgetown_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_guy_city_georgetown" name="Process complete">
+      <bpmn:incoming>F_guy_city_georgetown_11</bpmn:incoming>
+      <bpmn:incoming>F_guy_city_georgetown_11b</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_guy_city_georgetown_01" sourceRef="Start_guy_city_georgetown" targetRef="GW_guy_city_georgetown_open">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_guy_city_georgetown_02" sourceRef="GW_guy_city_georgetown_open" targetRef="T_guy_city_georgetown_policy">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_guy_city_georgetown_03" sourceRef="GW_guy_city_georgetown_open" targetRef="T_guy_city_georgetown_budget">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_guy_city_georgetown_04" sourceRef="GW_guy_city_georgetown_open" targetRef="T_guy_city_georgetown_coord">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_guy_city_georgetown_05" sourceRef="T_guy_city_georgetown_policy" targetRef="GW_guy_city_georgetown_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_guy_city_georgetown_06" sourceRef="T_guy_city_georgetown_budget" targetRef="GW_guy_city_georgetown_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_guy_city_georgetown_07" sourceRef="T_guy_city_georgetown_coord" targetRef="GW_guy_city_georgetown_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_guy_city_georgetown_08" sourceRef="GW_guy_city_georgetown_join" targetRef="T_guy_city_georgetown_review">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_guy_city_georgetown_09" sourceRef="T_guy_city_georgetown_review" targetRef="GW_guy_city_georgetown_risk">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_guy_city_georgetown_10a" sourceRef="GW_guy_city_georgetown_risk" targetRef="T_guy_city_georgetown_publish" name="Approved">
+      <bpmn:conditionExpression>=approved = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_guy_city_georgetown_10b" sourceRef="GW_guy_city_georgetown_risk" targetRef="T_guy_city_georgetown_revise" name="Rejected">
+      <bpmn:conditionExpression>=approved = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_guy_city_georgetown_11" sourceRef="T_guy_city_georgetown_publish" targetRef="End_guy_city_georgetown">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_guy_city_georgetown_11b" sourceRef="T_guy_city_georgetown_revise" targetRef="End_guy_city_georgetown">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_guy_city_georgetown">
+    <bpmndi:BPMNPlane id="BPMNPlane_guy_city_georgetown" bpmnElement="Collaboration_guy_city_georgetown" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

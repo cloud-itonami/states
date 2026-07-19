@@ -1,0 +1,137 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:nam-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Republic of Namibia AI Agent. You represent government organizations as path-based DIDs. Respond professionally.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": []
+  },
+  "kpi": [
+    "GovOrg DID registration count"
+  ],
+  "name": "gov-nam",
+  "nanoid": "g0vnam01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "NA",
+    "banner": "#888888",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution"
+    ],
+    "category": "government",
+    "country": "nam",
+    "contract": "Constitutional / basic law",
+    "description": "Republic of Namibia — path-based DID registry (minimal stub; expand for ministries).",
+    "displayName": "Republic of Namibia",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 3,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/nam/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Windhoek",
+        "addressLocality": "Windhoek",
+        "country": "NA"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.op.gov.na/",
+        "label": "Republic of Namibia — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Republic of Namibia — citizen inquiry",
+        "uri": "https://www.op.gov.na/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "nam.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Republic of Namibia — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "nam.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Republic of Namibia — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "nam.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Republic of Namibia — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "nam.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Republic of Namibia",
+        "basis": "Access-to-information statute"
+      },
+      {
+        "id": "nam.laa-23-1992-nam",
+        "title": "Local Authorities Act",
+        "titleLocal": "Local Authorities Act 23/1992",
+        "basis": "Act No.23 of 1992",
+        "uri": "https://www.lac.org.na/"
+      }
+    ],
+    "complianceFrameworks": [
+      "Republic of Namibia — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "nam-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Republic of Namibia activity feed",
+        "kind": "public",
+        "name": "gov-nam-feed"
+      }
+    ],
+    "description": "Republic of Namibia — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Republic of Namibia"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

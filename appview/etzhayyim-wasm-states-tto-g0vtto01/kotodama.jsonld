@@ -1,0 +1,135 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:tto-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Trinidad and Tobago AI Agent. You represent government organizations as path-based DIDs. Respond professionally.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": []
+  },
+  "kpi": [
+    "GovOrg DID registration count"
+  ],
+  "name": "gov-tto",
+  "nanoid": "g0vtto01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "TT",
+    "banner": "#888888",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution"
+    ],
+    "category": "government",
+    "country": "tto",
+    "contract": "Constitutional / basic law",
+    "description": "Government of Trinidad and Tobago — path-based DID registry (minimal stub; expand for ministries).",
+    "displayName": "Government of Trinidad and Tobago",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 0,
+    "bpmnCount": 0,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/tto/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Port of Spain",
+        "addressLocality": "Port of Spain",
+        "country": "TT"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.opm.gov.tt/",
+        "label": "Office of PM"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.ttparliament.org/",
+        "label": "Parliament"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Government of Trinidad and Tobago — citizen inquiry",
+        "uri": "https://www.opm.gov.tt/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "tto.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Government of Trinidad and Tobago — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "tto.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Government of Trinidad and Tobago — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "tto.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Government of Trinidad and Tobago — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "tto.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Government of Trinidad and Tobago",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Government of Trinidad and Tobago — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "tto-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Government of Trinidad and Tobago activity feed",
+        "kind": "public",
+        "name": "gov-tto-feed"
+      }
+    ],
+    "description": "Government of Trinidad and Tobago — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Government of Trinidad and Tobago"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

@@ -1,0 +1,144 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:alb-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Albania AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-alb",
+  "nanoid": "g0valb01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "AL",
+    "banner": "#e41e20",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "alb",
+    "contract": "Kushtetuta e Shqipërisë 1998",
+    "description": "Albania Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Republika e Shqipërisë (Republic of Albania)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 2,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/alb/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Tirana",
+        "addressLocality": "Tirana",
+        "country": "AL"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://kryeministria.al/",
+        "label": "Republic of Albania — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Republic of Albania — citizen inquiry",
+        "uri": "https://kryeministria.al/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "alb.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Republic of Albania — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "alb.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Republic of Albania — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "alb.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Republic of Albania — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "alb.ligji-139-2015",
+        "title": "Law on Local Government 139/2015",
+        "titleLocal": "Ligji për qeverisjen vendore Nr. 139/2015",
+        "basis": "Ligji nr. 139/2015",
+        "uri": "https://www.qbz.gov.al/"
+      },
+      {
+        "id": "alb.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Republic of Albania",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Republic of Albania — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "alb-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Albania government activity feed",
+        "kind": "public",
+        "name": "gov-alb-feed"
+      }
+    ],
+    "description": "Government of Albania — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Republika e Shqipërisë (Republic of Albania)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

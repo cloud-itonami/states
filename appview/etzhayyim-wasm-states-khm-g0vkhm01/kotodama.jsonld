@@ -1,0 +1,149 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:khm-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Cambodia AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-khm",
+  "nanoid": "g0vkhm01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "KH",
+    "banner": "#032ea1",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "khm",
+    "contract": "Constitution of Cambodia 1993",
+    "description": "Cambodia Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "ព្រះរាជាណាចក្រកម្ពុជា (Kingdom of Cambodia)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 3,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/khm/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Phnom Penh",
+        "addressLocality": "Phnom Penh",
+        "country": "KH"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.cambodia.gov.kh/",
+        "label": "cambodia.gov.kh"
+      },
+      {
+        "kind": "portal",
+        "uri": "http://pressocm.gov.kh/",
+        "label": "Press OCM"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Royal Government of Cambodia — citizen inquiry",
+        "uri": "https://www.cambodia.gov.kh/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "khm.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Royal Government of Cambodia — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "khm.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Royal Government of Cambodia — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "khm.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Royal Government of Cambodia — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "khm.ammcdmk-2008",
+        "title": "AMMCDMK Law 2008",
+        "titleLocal": "Law on Administrative Management of the Capital, Provinces, Municipalities, Districts and Khans 2008",
+        "basis": "NS/RKM/0508/017",
+        "uri": "https://www.interior.gov.kh/"
+      },
+      {
+        "id": "khm.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Royal Government of Cambodia",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Royal Government of Cambodia — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "khm-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Cambodia government activity feed",
+        "kind": "public",
+        "name": "gov-khm-feed"
+      }
+    ],
+    "description": "Government of Cambodia — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "ព្រះរាជាណាចក្រកម្ពុជា (Kingdom of Cambodia)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

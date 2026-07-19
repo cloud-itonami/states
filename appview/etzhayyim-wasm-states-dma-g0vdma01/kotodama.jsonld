@@ -1,0 +1,128 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:dma-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Dominica AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-dma",
+  "nanoid": "g0vdma01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "DM",
+    "banner": "#006B3F",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "parish-coverage"
+    ],
+    "category": "government",
+    "country": "dma",
+    "contract": "Constitution of Dominica 1978",
+    "description": "Dominica Government — path-based DID registry for ministries and subnational units.",
+    "displayName": "Commonwealth of Dominica",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 0,
+    "bpmnCount": 0,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/dma/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Roseau",
+        "addressLocality": "Roseau",
+        "country": "DM"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://dominica.gov.dm/",
+        "label": "Commonwealth of Dominica — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Commonwealth of Dominica — citizen inquiry",
+        "uri": "https://dominica.gov.dm/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "com.access_info",
+        "title": "Access to Public Information",
+        "authority": "Commonwealth of Dominica"
+      },
+      {
+        "id": "com.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Commonwealth of Dominica — passport authority"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "dm.access_info.v1",
+        "title": "Access to public information request — template",
+        "authority": "Commonwealth of Dominica"
+      }
+    ],
+    "complianceFrameworks": [
+      "Commonwealth of Dominica — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "dma-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Dominica government activity feed",
+        "kind": "public",
+        "name": "gov-dma-feed"
+      }
+    ],
+    "description": "Government of Dominica — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Commonwealth of Dominica"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

@@ -1,0 +1,149 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:cmr-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Cameroon AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-cmr",
+  "nanoid": "g0vcmr01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "CM",
+    "banner": "#000000",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "cmr",
+    "contract": "Constitution of Cameroon 1972 (revised 1996)",
+    "description": "Cameroon Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "République du Cameroun (Republic of Cameroon)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 3,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/cmr/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Yaounde",
+        "addressLocality": "Yaounde",
+        "country": "CM"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.spm.gov.cm/",
+        "label": "Services du PM"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.prc.cm/",
+        "label": "Presidence"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Gouvernement du Cameroun — citizen inquiry",
+        "uri": "https://www.spm.gov.cm/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "cmr.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Gouvernement du Cameroun — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "cmr.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Gouvernement du Cameroun — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "cmr.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Gouvernement du Cameroun — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "cmr.loi-2004-017",
+        "title": "Decentralisation Law 2004",
+        "titleLocal": "Loi 2004/017 sur l'orientation de la décentralisation",
+        "basis": "Loi No.2004/017",
+        "uri": "https://www.spm.gov.cm/"
+      },
+      {
+        "id": "cmr.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Gouvernement du Cameroun",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Gouvernement du Cameroun — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "cmr-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Cameroon government activity feed",
+        "kind": "public",
+        "name": "gov-cmr-feed"
+      }
+    ],
+    "description": "Government of Cameroon — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "République du Cameroun (Republic of Cameroon)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

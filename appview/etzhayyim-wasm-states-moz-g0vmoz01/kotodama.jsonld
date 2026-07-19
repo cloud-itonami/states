@@ -1,0 +1,158 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:moz-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Mozambique AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-moz",
+  "nanoid": "g0vmoz01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "MZ",
+    "banner": "#000000",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "moz",
+    "contract": "Constitution of Mozambique 2004",
+    "description": "Mozambique Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "República de Moçambique (Republic of Mozambique)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 1,
+    "contractCount": 1,
+    "bpmnCount": 18,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/moz/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Maputo",
+        "addressLocality": "Maputo",
+        "country": "MZ"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.portaldogoverno.gov.mz/",
+        "label": "Governo portal"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.parlamento.mz/",
+        "label": "Parliament"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Governo de Mocambique — citizen inquiry",
+        "uri": "https://www.portaldogoverno.gov.mz/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "moz.executive",
+        "title": "Executive",
+        "titleLocal": "Executive",
+        "authority": "Executive",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/moz/bpmn/executive.bpmn"
+      },
+      {
+        "id": "moz.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Governo de Mocambique — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "moz.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Governo de Mocambique — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "moz.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Governo de Mocambique — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "moz.lei-municipios-2-1997",
+        "title": "Municipalities Law 2/1997",
+        "titleLocal": "Lei dos Municípios 2/1997",
+        "basis": "Lei n.o 2/1997",
+        "uri": "https://www.portaldogoverno.gov.mz/"
+      },
+      {
+        "id": "moz.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Governo de Mocambique",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Governo de Mocambique — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "moz-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Mozambique government activity feed",
+        "kind": "public",
+        "name": "gov-moz-feed"
+      }
+    ],
+    "description": "Government of Mozambique — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "República de Moçambique (Republic of Mozambique)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

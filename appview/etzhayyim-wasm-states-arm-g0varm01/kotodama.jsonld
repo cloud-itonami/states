@@ -1,0 +1,137 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:arm-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Republic of Armenia AI Agent. You represent government organizations as path-based DIDs. Respond professionally.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": []
+  },
+  "kpi": [
+    "GovOrg DID registration count"
+  ],
+  "name": "gov-arm",
+  "nanoid": "g0varm01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "AR",
+    "banner": "#888888",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution"
+    ],
+    "category": "government",
+    "country": "arm",
+    "contract": "Constitutional / basic law",
+    "description": "Republic of Armenia — path-based DID registry (minimal stub; expand for ministries).",
+    "displayName": "Republic of Armenia",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 2,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/arm/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Yerevan",
+        "addressLocality": "Yerevan",
+        "country": "AM"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.gov.am/",
+        "label": "Republic of Armenia — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Republic of Armenia — citizen inquiry",
+        "uri": "https://www.gov.am/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "arm.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Republic of Armenia — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "arm.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Republic of Armenia — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "arm.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Republic of Armenia — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "arm.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Republic of Armenia",
+        "basis": "Access-to-information statute"
+      },
+      {
+        "id": "arm.latd-arm",
+        "title": "Law on ATD",
+        "titleLocal": "Закон об административно-территориальном делении",
+        "basis": "ЗА от 07.11.1995",
+        "uri": "https://www.parliament.am/"
+      }
+    ],
+    "complianceFrameworks": [
+      "Republic of Armenia — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "arm-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Republic of Armenia activity feed",
+        "kind": "public",
+        "name": "gov-arm-feed"
+      }
+    ],
+    "description": "Republic of Armenia — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Republic of Armenia"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

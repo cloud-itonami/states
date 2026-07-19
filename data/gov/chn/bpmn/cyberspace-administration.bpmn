@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_chn_cyberspace_administration"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_chn_cyberspace_administration">
+    <bpmn:participant id="Pool_chn_cyberspace_administration" name="Cyberspace Administration (cyberspa)" processRef="Process_chn_cyberspace_administration" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_chn_cyberspace_administration" name="Cyberspace Administration — General Public Services" isExecutable="true">
+    <bpmn:startEvent id="Start_chn_cyberspace_administration" name="Policy trigger
+received"><bpmn:outgoing>F_chn_cyberspace_administration_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:parallelGateway id="GW_chn_cyberspace_administration_open" name="Parallel checks">
+      <bpmn:incoming>F_chn_cyberspace_administration_01</bpmn:incoming>
+      <bpmn:outgoing>F_chn_cyberspace_administration_02</bpmn:outgoing>
+      <bpmn:outgoing>F_chn_cyberspace_administration_03</bpmn:outgoing>
+      <bpmn:outgoing>F_chn_cyberspace_administration_04</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:serviceTask id="T_chn_cyberspace_administration_policy" name="Draft Policy
+Proposal">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.chn.cyberspace-administration.draft_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="policy_output" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_chn_cyberspace_administration_02</bpmn:incoming>
+      <bpmn:outgoing>F_chn_cyberspace_administration_05</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_chn_cyberspace_administration_budget" name="Allocate Budget
+(COFOG 01)">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.chn.cyberspace-administration.allocate_budget" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="budget_execution_rate" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_chn_cyberspace_administration_03</bpmn:incoming>
+      <bpmn:outgoing>F_chn_cyberspace_administration_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_chn_cyberspace_administration_coord" name="Inter-Agency
+Coordination">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.chn.cyberspace-administration.coordinate" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="coordination_score" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_chn_cyberspace_administration_04</bpmn:incoming>
+      <bpmn:outgoing>F_chn_cyberspace_administration_07</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="GW_chn_cyberspace_administration_join" name="Checks complete">
+      <bpmn:incoming>F_chn_cyberspace_administration_05</bpmn:incoming>
+      <bpmn:incoming>F_chn_cyberspace_administration_06</bpmn:incoming>
+      <bpmn:incoming>F_chn_cyberspace_administration_07</bpmn:incoming>
+      <bpmn:outgoing>F_chn_cyberspace_administration_08</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:userTask id="T_chn_cyberspace_administration_review" name="Minister Review
+& Sign-off">
+      <bpmn:extensionElements>
+        <zeebe:assignmentDefinition assignee="gov-official" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_chn_cyberspace_administration_08</bpmn:incoming>
+      <bpmn:outgoing>F_chn_cyberspace_administration_09</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="GW_chn_cyberspace_administration_risk" name="Approved?" isMarkerVisible="true">
+      <bpmn:incoming>F_chn_cyberspace_administration_09</bpmn:incoming>
+      <bpmn:outgoing>F_chn_cyberspace_administration_10a</bpmn:outgoing>
+      <bpmn:outgoing>F_chn_cyberspace_administration_10b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_chn_cyberspace_administration_publish" name="Publish Policy
+& Notify Citizens">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.chn.cyberspace-administration.publish_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="publish" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_chn_cyberspace_administration_10a</bpmn:incoming>
+      <bpmn:outgoing>F_chn_cyberspace_administration_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_chn_cyberspace_administration_revise" name="Return for
+Revision">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.chn.cyberspace-administration.request_revision" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="revise" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_chn_cyberspace_administration_10b</bpmn:incoming>
+      <bpmn:outgoing>F_chn_cyberspace_administration_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_chn_cyberspace_administration" name="Process complete">
+      <bpmn:incoming>F_chn_cyberspace_administration_11</bpmn:incoming>
+      <bpmn:incoming>F_chn_cyberspace_administration_11b</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_chn_cyberspace_administration_01" sourceRef="Start_chn_cyberspace_administration" targetRef="GW_chn_cyberspace_administration_open">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_chn_cyberspace_administration_02" sourceRef="GW_chn_cyberspace_administration_open" targetRef="T_chn_cyberspace_administration_policy">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_chn_cyberspace_administration_03" sourceRef="GW_chn_cyberspace_administration_open" targetRef="T_chn_cyberspace_administration_budget">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_chn_cyberspace_administration_04" sourceRef="GW_chn_cyberspace_administration_open" targetRef="T_chn_cyberspace_administration_coord">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_chn_cyberspace_administration_05" sourceRef="T_chn_cyberspace_administration_policy" targetRef="GW_chn_cyberspace_administration_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_chn_cyberspace_administration_06" sourceRef="T_chn_cyberspace_administration_budget" targetRef="GW_chn_cyberspace_administration_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_chn_cyberspace_administration_07" sourceRef="T_chn_cyberspace_administration_coord" targetRef="GW_chn_cyberspace_administration_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_chn_cyberspace_administration_08" sourceRef="GW_chn_cyberspace_administration_join" targetRef="T_chn_cyberspace_administration_review">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_chn_cyberspace_administration_09" sourceRef="T_chn_cyberspace_administration_review" targetRef="GW_chn_cyberspace_administration_risk">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_chn_cyberspace_administration_10a" sourceRef="GW_chn_cyberspace_administration_risk" targetRef="T_chn_cyberspace_administration_publish" name="Approved">
+      <bpmn:conditionExpression>=approved = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_chn_cyberspace_administration_10b" sourceRef="GW_chn_cyberspace_administration_risk" targetRef="T_chn_cyberspace_administration_revise" name="Rejected">
+      <bpmn:conditionExpression>=approved = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_chn_cyberspace_administration_11" sourceRef="T_chn_cyberspace_administration_publish" targetRef="End_chn_cyberspace_administration">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_chn_cyberspace_administration_11b" sourceRef="T_chn_cyberspace_administration_revise" targetRef="End_chn_cyberspace_administration">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_chn_cyberspace_administration">
+    <bpmndi:BPMNPlane id="BPMNPlane_chn_cyberspace_administration" bpmnElement="Collaboration_chn_cyberspace_administration" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

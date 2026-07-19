@@ -1,0 +1,158 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:dza-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Algeria AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English and Arabic.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-dza",
+  "nanoid": "g0vdza01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "DZ",
+    "banner": "#006233",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "dza",
+    "contract": "الدستور الجزائري 2020",
+    "description": "Algeria Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "الجمهورية الجزائرية (People's Democratic Republic of Algeria)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 1,
+    "contractCount": 1,
+    "bpmnCount": 18,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/dza/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Algiers",
+        "addressLocality": "Algiers",
+        "country": "DZ"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.premier-ministre.gov.dz/",
+        "label": "Premier Ministre"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.joradp.dz/",
+        "label": "Official Journal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Gouvernement d'Algerie — citizen inquiry",
+        "uri": "https://www.premier-ministre.gov.dz/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "dza.executive",
+        "title": "Executive",
+        "titleLocal": "Executive",
+        "authority": "Executive",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/dza/bpmn/executive.bpmn"
+      },
+      {
+        "id": "dza.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Gouvernement d'Algerie — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "dza.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Gouvernement d'Algerie — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "dza.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Gouvernement d'Algerie — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "dza.municipal-government-act",
+        "title": "Municipal Government Act",
+        "titleLocal": "Municipal Government Act",
+        "basis": "General Administrative Law",
+        "uri": ""
+      },
+      {
+        "id": "dza.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Gouvernement d'Algerie",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Gouvernement d'Algerie — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "dza-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Algeria government activity feed",
+        "kind": "public",
+        "name": "gov-dza-feed"
+      }
+    ],
+    "description": "Government of Algeria — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "الجمهورية الجزائرية (People's Democratic Republic of Algeria)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

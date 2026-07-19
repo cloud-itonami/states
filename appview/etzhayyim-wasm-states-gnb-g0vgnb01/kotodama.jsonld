@@ -1,0 +1,137 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:gnb-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Republic of Guinea-Bissau AI Agent. You represent government organizations as path-based DIDs. Respond professionally.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": []
+  },
+  "kpi": [
+    "GovOrg DID registration count"
+  ],
+  "name": "gov-gnb",
+  "nanoid": "g0vgnb01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "GN",
+    "banner": "#888888",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution"
+    ],
+    "category": "government",
+    "country": "gnb",
+    "contract": "Constitutional / basic law",
+    "description": "Republic of Guinea-Bissau — path-based DID registry (minimal stub; expand for ministries).",
+    "displayName": "Republic of Guinea-Bissau",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 2,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/gnb/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Bissau",
+        "addressLocality": "Bissau",
+        "country": "GW"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.presidencia.gw/",
+        "label": "Republic of Guinea-Bissau — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Republic of Guinea-Bissau — citizen inquiry",
+        "uri": "https://www.presidencia.gw/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "gnb.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Republic of Guinea-Bissau — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "gnb.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Republic of Guinea-Bissau — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "gnb.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Republic of Guinea-Bissau — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "gnb.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Republic of Guinea-Bissau",
+        "basis": "Access-to-information statute"
+      },
+      {
+        "id": "gnb.municipal-government-act",
+        "title": "Municipal Government Act",
+        "titleLocal": "Municipal Government Act",
+        "basis": "General Administrative Law",
+        "uri": ""
+      }
+    ],
+    "complianceFrameworks": [
+      "Republic of Guinea-Bissau — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "gnb-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Republic of Guinea-Bissau activity feed",
+        "kind": "public",
+        "name": "gov-gnb-feed"
+      }
+    ],
+    "description": "Republic of Guinea-Bissau — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Republic of Guinea-Bissau"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

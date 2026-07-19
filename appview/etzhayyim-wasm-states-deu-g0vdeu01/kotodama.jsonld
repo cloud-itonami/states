@@ -1,0 +1,188 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:deu-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Germany AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-deu",
+  "nanoid": "g0vdeu01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "DE",
+    "banner": "#000000",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "deu",
+    "contract": "Grundgesetz (Basic Law) 1949",
+    "description": "Germany Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Bundesrepublik Deutschland (Federal Republic of Germany)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Bundeskanzleramt",
+        "streetAddress": "Willy-Brandt-Straße 1",
+        "addressLocality": "Berlin",
+        "postalCode": "10557",
+        "country": "DE"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.bundesregierung.de/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.gesetze-im-internet.de/",
+        "label": "Gesetze im Internet"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.bundestag.de/"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "ifg",
+        "label": "IFG request",
+        "uri": "https://fragdenstaat.de/",
+        "basis": "IFG Sec.1"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "deu.executive",
+        "title": "Executive",
+        "titleLocal": "Executive",
+        "authority": "Executive",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/deu/bpmn/executive.bpmn"
+      },
+      {
+        "id": "deu.ifg.request",
+        "title": "IFG Antrag - Informationsfreiheitsgesetz",
+        "basis": "IFG Sec.1",
+        "authority": "Bundesbehoerden",
+        "portalUri": "https://fragdenstaat.de/"
+      },
+      {
+        "id": "deu.personalausweis",
+        "title": "Personalausweis - German ID card",
+        "authority": "Buergeramt",
+        "portalUri": "https://www.personalausweisportal.de/"
+      },
+      {
+        "id": "deu.reisepass",
+        "title": "Reisepass - German passport",
+        "authority": "Buergeramt / Bundesdruckerei"
+      },
+      {
+        "id": "deu.anmeldung",
+        "title": "Anmeldung - Residence registration",
+        "basis": "BMG Sec.17",
+        "authority": "Buergeramt"
+      },
+      {
+        "id": "deu.elster",
+        "title": "ELSTER - Electronic Tax Return",
+        "authority": "Finanzamt",
+        "portalUri": "https://www.elster.de/"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "deu.grundgesetz-art-28",
+        "title": "Gemeindeordnung (Grundgesetz Art.28)",
+        "titleLocal": "Gemeindeordnung / GG Art.28",
+        "basis": "GG Art. 28 Abs. 2",
+        "uri": "https://www.gesetze-im-internet.de/gg/art_28.html"
+      },
+      {
+        "id": "deu.ifg.request.v1",
+        "title": "IFG Antrag template",
+        "basis": "IFG Sec.7",
+        "uri": "https://fragdenstaat.de/info/ifg-anleitung/"
+      },
+      {
+        "id": "deu.anmeldung.v1",
+        "title": "Wohnsitzanmeldung",
+        "basis": "BMG Sec.17",
+        "uri": "https://www.berlin.de/formularserver/formular.php?55868"
+      },
+      {
+        "id": "deu.elster.v1",
+        "title": "ELSTER ESt 1 A",
+        "authority": "Finanzamt",
+        "uri": "https://www.elster.de/eportal/formulare-leistungen/alleformulare"
+      }
+    ],
+    "ministryCount": 1,
+    "contractCount": 1,
+    "bpmnCount": 44,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/deu/",
+    "complianceFrameworks": [
+      "Grundgesetz (Basic Law, 1949)",
+      "Informationsfreiheitsgesetz (IFG, 2005)",
+      "Verwaltungsverfahrensgesetz"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "deu-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Germany government activity feed",
+        "kind": "public",
+        "name": "gov-deu-feed"
+      }
+    ],
+    "description": "Government of Germany — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Bundesrepublik Deutschland (Federal Republic of Germany)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

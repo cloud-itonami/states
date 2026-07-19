@@ -1,0 +1,144 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:tjk-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Tajikistan AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution 1994"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-tjk",
+  "nanoid": "g0vtjk01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "TJK",
+    "banner": "#000000",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "tjk",
+    "contract": "Constitution 1994",
+    "description": "Tajikistan Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Ҷумҳурии Тоҷикистон (Republic of Tajikistan)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 2,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/tjk/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Dushanbe",
+        "addressLocality": "Dushanbe",
+        "country": "TJ"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.president.tj/",
+        "label": "Republic of Tajikistan — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Republic of Tajikistan — citizen inquiry",
+        "uri": "https://www.president.tj/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "tjk.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Republic of Tajikistan — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "tjk.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Republic of Tajikistan — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "tjk.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Republic of Tajikistan — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "tjk.lmsg-tjk",
+        "title": "Law on LSG in Settlements",
+        "titleLocal": "Закон о местном самоуправлении в посёлках и сёлах",
+        "basis": "Закон от 01.12.2004 No.68",
+        "uri": "https://mmk.tj/"
+      },
+      {
+        "id": "tjk.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Republic of Tajikistan",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Republic of Tajikistan — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "tjk-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Tajikistan government activity feed",
+        "kind": "public",
+        "name": "gov-tjk-feed"
+      }
+    ],
+    "description": "Government of Tajikistan — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Ҷумҳурии Тоҷикистон (Republic of Tajikistan)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

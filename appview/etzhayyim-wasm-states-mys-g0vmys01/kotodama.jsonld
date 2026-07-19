@@ -1,0 +1,133 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:mys-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Malaysia AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-mys",
+  "nanoid": "g0vmys01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "MY",
+    "banner": "#cc0001",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "mys",
+    "contract": "Federal Constitution of Malaysia 1957",
+    "description": "Malaysia Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Malaysia",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 1,
+    "contractCount": 1,
+    "bpmnCount": 19,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/mys/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Perdana Putra Building",
+        "addressLocality": "Putrajaya",
+        "country": "MY"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.malaysia.gov.my/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://lom.agc.gov.my/",
+        "label": "Laws of Malaysia"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "MyGovernment portal",
+        "uri": "https://www.malaysia.gov.my/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "mys.executive",
+        "title": "Executive",
+        "titleLocal": "Executive",
+        "authority": "Executive",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/mys/bpmn/executive.bpmn"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "mys.lga-171-1976",
+        "title": "Local Government Act 171/1976",
+        "titleLocal": "Local Government Act 171/1976",
+        "basis": "Act 171 of 1976",
+        "uri": "https://www.parlimen.gov.my/"
+      }
+    ],
+    "complianceFrameworks": [
+      "Perlembagaan Persekutuan (Federal Constitution, 1957)",
+      "State-level Right to Information Enactments",
+      "Administrative justice via judicial review"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "mys-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Malaysia government activity feed",
+        "kind": "public",
+        "name": "gov-mys-feed"
+      }
+    ],
+    "description": "Government of Malaysia — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Malaysia"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

@@ -1,0 +1,207 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:gbr-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of United Kingdom AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-gbr",
+  "nanoid": "g0vgbr01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "UK",
+    "banner": "#012169",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "gbr",
+    "contract": "UK Parliamentary Acts",
+    "description": "United Kingdom Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "United Kingdom Government",
+    "isBot": true,
+    "agentType": "autonomous",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "10 Downing Street",
+        "streetAddress": "10 Downing Street",
+        "addressLocality": "London",
+        "postalCode": "SW1A 2AA",
+        "country": "GB"
+      },
+      {
+        "kind": "legislative",
+        "label": "Palace of Westminster",
+        "addressLocality": "London",
+        "postalCode": "SW1A 0AA",
+        "country": "GB"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.gov.uk/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.legislation.gov.uk/",
+        "label": "legislation.gov.uk"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.parliament.uk/"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "foi",
+        "label": "FOI request",
+        "uri": "https://www.gov.uk/make-a-freedom-of-information-request",
+        "basis": "FOIA 2000"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "gbr.cabinet",
+        "title": "Cabinet",
+        "titleLocal": "Cabinet",
+        "authority": "Cabinet",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/gbr/bpmn/cabinet.bpmn"
+      },
+      {
+        "id": "gbr.executive",
+        "title": "Executive",
+        "titleLocal": "Executive",
+        "authority": "Executive",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/gbr/bpmn/executive.bpmn"
+      },
+      {
+        "id": "gbr.ministry-of",
+        "title": "Ministry Of",
+        "titleLocal": "Ministry Of",
+        "authority": "Ministry Of",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/gbr/bpmn/ministry-of.bpmn"
+      },
+      {
+        "id": "gbr.foi.request",
+        "title": "Freedom of Information Request",
+        "basis": "FOIA 2000 s.1",
+        "portalUri": "https://www.gov.uk/make-a-freedom-of-information-request"
+      },
+      {
+        "id": "gbr.passport.apply",
+        "title": "Apply/Renew British Passport",
+        "authority": "HM Passport Office",
+        "portalUri": "https://www.gov.uk/apply-renew-passport"
+      },
+      {
+        "id": "gbr.hmrc.sa",
+        "title": "Self Assessment Tax Return",
+        "authority": "HMRC",
+        "portalUri": "https://www.gov.uk/self-assessment-tax-returns"
+      },
+      {
+        "id": "gbr.dvla.licence",
+        "title": "Apply for a Driving Licence",
+        "authority": "DVLA",
+        "portalUri": "https://www.gov.uk/apply-first-provisional-driving-licence"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "gbr.local-government-act-1972",
+        "title": "Local Government Act 1972",
+        "titleLocal": "Local Government Act 1972",
+        "basis": "Local Government Act 1972",
+        "uri": "https://www.legislation.gov.uk/ukpga/1972/70"
+      },
+      {
+        "id": "gbr.foi.request.v1",
+        "title": "FOI Request template",
+        "basis": "FOIA 2000",
+        "uri": "https://ico.org.uk/your-data-matters/official-information/"
+      },
+      {
+        "id": "gbr.sa100.v1",
+        "title": "SA100 Self Assessment",
+        "authority": "HMRC",
+        "uri": "https://www.gov.uk/government/publications/self-assessment-tax-return-sa100"
+      },
+      {
+        "id": "gbr.passport.form.v1",
+        "title": "Passport Application form",
+        "authority": "HM Passport Office",
+        "uri": "https://www.gov.uk/order-passport-forms"
+      }
+    ],
+    "ministryCount": 3,
+    "contractCount": 1,
+    "bpmnCount": 31,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/gbr/",
+    "complianceFrameworks": [
+      "Uncodified constitution (Parliamentary sovereignty)",
+      "Freedom of Information Act 2000",
+      "Human Rights Act 1998"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "gbr-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "United Kingdom government activity feed",
+        "kind": "public",
+        "name": "gov-gbr-feed"
+      }
+    ],
+    "description": "Government of United Kingdom — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "United Kingdom Government"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

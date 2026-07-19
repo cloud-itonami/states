@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_esp_finance_reg"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_esp_finance_reg">
+    <bpmn:participant id="Pool_esp_finance_reg" name="Finance Reg (e1s2f3r4)" processRef="Process_esp_finance_reg" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_esp_finance_reg" name="Finance Reg — Economic Affairs / Licensing" isExecutable="true">
+    <bpmn:startEvent id="Start_esp_finance_reg" name="License / Permit
+application received"><bpmn:outgoing>F_esp_finance_reg_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:serviceTask id="T_esp_finance_reg_screen" name="Screen Application
+(completeness check)">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.esp.finance-reg.screen_application" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="processing_days" />
+          <zeebe:header key="cofog" value="04" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_esp_finance_reg_01</bpmn:incoming>
+      <bpmn:outgoing>F_esp_finance_reg_02</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="GW_esp_finance_reg_complete" name="Complete?" isMarkerVisible="true">
+      <bpmn:incoming>F_esp_finance_reg_02</bpmn:incoming>
+      <bpmn:outgoing>F_esp_finance_reg_03a</bpmn:outgoing>
+      <bpmn:outgoing>F_esp_finance_reg_03b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_esp_finance_reg_return" name="Return for
+Additional Info">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.esp.finance-reg.return_application" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_esp_finance_reg_03b</bpmn:incoming>
+      <bpmn:outgoing>F_esp_finance_reg_end1</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="GW_esp_finance_reg_checks" name="Parallel review">
+      <bpmn:incoming>F_esp_finance_reg_03a</bpmn:incoming>
+      <bpmn:outgoing>F_esp_finance_reg_04a</bpmn:outgoing>
+      <bpmn:outgoing>F_esp_finance_reg_04b</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:serviceTask id="T_esp_finance_reg_legal" name="Legal Compliance
+Review">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.esp.finance-reg.legal_review" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="compliance_pass_rate" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_esp_finance_reg_04a</bpmn:incoming>
+      <bpmn:outgoing>F_esp_finance_reg_05</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_esp_finance_reg_technical" name="Technical
+Assessment">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.esp.finance-reg.technical_assessment" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="technical_score" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_esp_finance_reg_04b</bpmn:incoming>
+      <bpmn:outgoing>F_esp_finance_reg_05b</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="GW_esp_finance_reg_join" name="Reviews complete">
+      <bpmn:incoming>F_esp_finance_reg_05</bpmn:incoming>
+      <bpmn:incoming>F_esp_finance_reg_05b</bpmn:incoming>
+      <bpmn:outgoing>F_esp_finance_reg_06</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:userTask id="T_esp_finance_reg_decision" name="Approval Decision
+by Authority">
+      <bpmn:extensionElements>
+        <zeebe:assignmentDefinition assignee="gov-official" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_esp_finance_reg_06</bpmn:incoming>
+      <bpmn:outgoing>F_esp_finance_reg_07</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="GW_esp_finance_reg_approve" name="Decision?" isMarkerVisible="true">
+      <bpmn:incoming>F_esp_finance_reg_07</bpmn:incoming>
+      <bpmn:outgoing>F_esp_finance_reg_08a</bpmn:outgoing>
+      <bpmn:outgoing>F_esp_finance_reg_08b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_esp_finance_reg_issue" name="Issue License
+/ Permit">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.esp.finance-reg.issue_license" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="issue" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_esp_finance_reg_08a</bpmn:incoming>
+      <bpmn:outgoing>F_esp_finance_reg_end1</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_esp_finance_reg_deny" name="Send Denial
+Notice">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.esp.finance-reg.deny_application" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="deny" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_esp_finance_reg_08b</bpmn:incoming>
+      <bpmn:outgoing>F_esp_finance_reg_end1</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_esp_finance_reg" name="Application
+processed">
+      <bpmn:incoming>F_esp_finance_reg_end1</bpmn:incoming>
+      <bpmn:incoming>F_esp_finance_reg_end1b</bpmn:incoming>
+      <bpmn:incoming>F_esp_finance_reg_end1c</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_esp_finance_reg_01" sourceRef="Start_esp_finance_reg" targetRef="T_esp_finance_reg_screen">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_esp_finance_reg_02" sourceRef="T_esp_finance_reg_screen" targetRef="GW_esp_finance_reg_complete">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_esp_finance_reg_03a" sourceRef="GW_esp_finance_reg_complete" targetRef="GW_esp_finance_reg_checks" name="Yes">
+      <bpmn:conditionExpression>=complete = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_esp_finance_reg_03b" sourceRef="GW_esp_finance_reg_complete" targetRef="T_esp_finance_reg_return" name="No">
+      <bpmn:conditionExpression>=complete = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_esp_finance_reg_04a" sourceRef="GW_esp_finance_reg_checks" targetRef="T_esp_finance_reg_legal">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_esp_finance_reg_04b" sourceRef="GW_esp_finance_reg_checks" targetRef="T_esp_finance_reg_technical">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_esp_finance_reg_05" sourceRef="T_esp_finance_reg_legal" targetRef="GW_esp_finance_reg_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_esp_finance_reg_05b" sourceRef="T_esp_finance_reg_technical" targetRef="GW_esp_finance_reg_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_esp_finance_reg_06" sourceRef="GW_esp_finance_reg_join" targetRef="T_esp_finance_reg_decision">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_esp_finance_reg_07" sourceRef="T_esp_finance_reg_decision" targetRef="GW_esp_finance_reg_approve">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_esp_finance_reg_08a" sourceRef="GW_esp_finance_reg_approve" targetRef="T_esp_finance_reg_issue" name="Approved">
+      <bpmn:conditionExpression>=approved = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_esp_finance_reg_08b" sourceRef="GW_esp_finance_reg_approve" targetRef="T_esp_finance_reg_deny" name="Denied">
+      <bpmn:conditionExpression>=approved = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_esp_finance_reg_end1" sourceRef="T_esp_finance_reg_issue" targetRef="End_esp_finance_reg">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_esp_finance_reg_end1b" sourceRef="T_esp_finance_reg_deny" targetRef="End_esp_finance_reg">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_esp_finance_reg_end1c" sourceRef="T_esp_finance_reg_return" targetRef="End_esp_finance_reg">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_esp_finance_reg">
+    <bpmndi:BPMNPlane id="BPMNPlane_esp_finance_reg" bpmnElement="Collaboration_esp_finance_reg" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

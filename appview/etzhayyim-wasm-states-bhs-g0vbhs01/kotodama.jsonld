@@ -1,0 +1,137 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:bhs-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Commonwealth of The Bahamas AI Agent. You represent government organizations as path-based DIDs. Respond professionally.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": []
+  },
+  "kpi": [
+    "GovOrg DID registration count"
+  ],
+  "name": "gov-bhs",
+  "nanoid": "g0vbhs01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "BH",
+    "banner": "#888888",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution"
+    ],
+    "category": "government",
+    "country": "bhs",
+    "contract": "Constitutional / basic law",
+    "description": "Commonwealth of The Bahamas — path-based DID registry (minimal stub; expand for ministries).",
+    "displayName": "Commonwealth of The Bahamas",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 2,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/bhs/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Nassau",
+        "addressLocality": "Nassau",
+        "country": "BS"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://opm.gov.bs/",
+        "label": "Commonwealth of The Bahamas — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Commonwealth of The Bahamas — citizen inquiry",
+        "uri": "https://opm.gov.bs/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "bhs.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Commonwealth of The Bahamas — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "bhs.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Commonwealth of The Bahamas — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "bhs.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Commonwealth of The Bahamas — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "bhs.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Commonwealth of The Bahamas",
+        "basis": "Access-to-information statute"
+      },
+      {
+        "id": "bhs.municipal-government-act",
+        "title": "Municipal Government Act",
+        "titleLocal": "Municipal Government Act",
+        "basis": "General Administrative Law",
+        "uri": ""
+      }
+    ],
+    "complianceFrameworks": [
+      "Commonwealth of The Bahamas — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "bhs-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Commonwealth of The Bahamas activity feed",
+        "kind": "public",
+        "name": "gov-bhs-feed"
+      }
+    ],
+    "description": "Commonwealth of The Bahamas — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Commonwealth of The Bahamas"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

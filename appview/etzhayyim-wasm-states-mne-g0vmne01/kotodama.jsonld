@@ -1,0 +1,128 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:mne-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Montenegro AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-mne",
+  "nanoid": "g0vmne01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "ME",
+    "banner": "#000000",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "mne",
+    "contract": "Constitution of Montenegro 2007",
+    "description": "Montenegro Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Crna Gora (Montenegro)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 0,
+    "bpmnCount": 0,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/mne/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Podgorica",
+        "addressLocality": "Podgorica",
+        "country": "ME"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.gov.me/",
+        "label": "Montenegro — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Montenegro — citizen inquiry",
+        "uri": "https://www.gov.me/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "mon.access_info",
+        "title": "Access to Public Information",
+        "authority": "Montenegro"
+      },
+      {
+        "id": "mon.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Montenegro — passport authority"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "me.access_info.v1",
+        "title": "Access to public information request — template",
+        "authority": "Montenegro"
+      }
+    ],
+    "complianceFrameworks": [
+      "Montenegro — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "mne-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Montenegro government activity feed",
+        "kind": "public",
+        "name": "gov-mne-feed"
+      }
+    ],
+    "description": "Government of Montenegro — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Crna Gora (Montenegro)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

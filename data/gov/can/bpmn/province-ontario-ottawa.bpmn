@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_can_province_ontario_ottawa"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_can_province_ontario_ottawa">
+    <bpmn:participant id="Pool_can_province_ontario_ottawa" name="Ottawa (province)" processRef="Process_can_province_ontario_ottawa" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_can_province_ontario_ottawa" name="Ottawa — General Public Services" isExecutable="true">
+    <bpmn:startEvent id="Start_can_province_ontario_ottawa" name="Policy trigger
+received"><bpmn:outgoing>F_can_province_ontario_ottawa_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:parallelGateway id="GW_can_province_ontario_ottawa_open" name="Parallel checks">
+      <bpmn:incoming>F_can_province_ontario_ottawa_01</bpmn:incoming>
+      <bpmn:outgoing>F_can_province_ontario_ottawa_02</bpmn:outgoing>
+      <bpmn:outgoing>F_can_province_ontario_ottawa_03</bpmn:outgoing>
+      <bpmn:outgoing>F_can_province_ontario_ottawa_04</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:serviceTask id="T_can_province_ontario_ottawa_policy" name="Draft Policy
+Proposal">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.can.province:ontario:ottawa.draft_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="policy_output" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_can_province_ontario_ottawa_02</bpmn:incoming>
+      <bpmn:outgoing>F_can_province_ontario_ottawa_05</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_can_province_ontario_ottawa_budget" name="Allocate Budget
+(COFOG 01)">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.can.province:ontario:ottawa.allocate_budget" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="budget_execution_rate" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_can_province_ontario_ottawa_03</bpmn:incoming>
+      <bpmn:outgoing>F_can_province_ontario_ottawa_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_can_province_ontario_ottawa_coord" name="Inter-Agency
+Coordination">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.can.province:ontario:ottawa.coordinate" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="coordination_score" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_can_province_ontario_ottawa_04</bpmn:incoming>
+      <bpmn:outgoing>F_can_province_ontario_ottawa_07</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="GW_can_province_ontario_ottawa_join" name="Checks complete">
+      <bpmn:incoming>F_can_province_ontario_ottawa_05</bpmn:incoming>
+      <bpmn:incoming>F_can_province_ontario_ottawa_06</bpmn:incoming>
+      <bpmn:incoming>F_can_province_ontario_ottawa_07</bpmn:incoming>
+      <bpmn:outgoing>F_can_province_ontario_ottawa_08</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:userTask id="T_can_province_ontario_ottawa_review" name="Minister Review
+&amp; Sign-off">
+      <bpmn:extensionElements>
+        <zeebe:assignmentDefinition assignee="gov-official" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_can_province_ontario_ottawa_08</bpmn:incoming>
+      <bpmn:outgoing>F_can_province_ontario_ottawa_09</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="GW_can_province_ontario_ottawa_risk" name="Approved?" isMarkerVisible="true">
+      <bpmn:incoming>F_can_province_ontario_ottawa_09</bpmn:incoming>
+      <bpmn:outgoing>F_can_province_ontario_ottawa_10a</bpmn:outgoing>
+      <bpmn:outgoing>F_can_province_ontario_ottawa_10b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_can_province_ontario_ottawa_publish" name="Publish Policy
+&amp; Notify Citizens">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.can.province:ontario:ottawa.publish_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="publish" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_can_province_ontario_ottawa_10a</bpmn:incoming>
+      <bpmn:outgoing>F_can_province_ontario_ottawa_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_can_province_ontario_ottawa_revise" name="Return for
+Revision">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.can.province:ontario:ottawa.request_revision" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="revise" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_can_province_ontario_ottawa_10b</bpmn:incoming>
+      <bpmn:outgoing>F_can_province_ontario_ottawa_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_can_province_ontario_ottawa" name="Process complete">
+      <bpmn:incoming>F_can_province_ontario_ottawa_11</bpmn:incoming>
+      <bpmn:incoming>F_can_province_ontario_ottawa_11b</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_can_province_ontario_ottawa_01" sourceRef="Start_can_province_ontario_ottawa" targetRef="GW_can_province_ontario_ottawa_open">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_can_province_ontario_ottawa_02" sourceRef="GW_can_province_ontario_ottawa_open" targetRef="T_can_province_ontario_ottawa_policy">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_can_province_ontario_ottawa_03" sourceRef="GW_can_province_ontario_ottawa_open" targetRef="T_can_province_ontario_ottawa_budget">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_can_province_ontario_ottawa_04" sourceRef="GW_can_province_ontario_ottawa_open" targetRef="T_can_province_ontario_ottawa_coord">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_can_province_ontario_ottawa_05" sourceRef="T_can_province_ontario_ottawa_policy" targetRef="GW_can_province_ontario_ottawa_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_can_province_ontario_ottawa_06" sourceRef="T_can_province_ontario_ottawa_budget" targetRef="GW_can_province_ontario_ottawa_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_can_province_ontario_ottawa_07" sourceRef="T_can_province_ontario_ottawa_coord" targetRef="GW_can_province_ontario_ottawa_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_can_province_ontario_ottawa_08" sourceRef="GW_can_province_ontario_ottawa_join" targetRef="T_can_province_ontario_ottawa_review">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_can_province_ontario_ottawa_09" sourceRef="T_can_province_ontario_ottawa_review" targetRef="GW_can_province_ontario_ottawa_risk">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_can_province_ontario_ottawa_10a" sourceRef="GW_can_province_ontario_ottawa_risk" targetRef="T_can_province_ontario_ottawa_publish" name="Approved">
+      <bpmn:conditionExpression>=approved = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_can_province_ontario_ottawa_10b" sourceRef="GW_can_province_ontario_ottawa_risk" targetRef="T_can_province_ontario_ottawa_revise" name="Rejected">
+      <bpmn:conditionExpression>=approved = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_can_province_ontario_ottawa_11" sourceRef="T_can_province_ontario_ottawa_publish" targetRef="End_can_province_ontario_ottawa">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_can_province_ontario_ottawa_11b" sourceRef="T_can_province_ontario_ottawa_revise" targetRef="End_can_province_ontario_ottawa">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_can_province_ontario_ottawa">
+    <bpmndi:BPMNPlane id="BPMNPlane_can_province_ontario_ottawa" bpmnElement="Collaboration_can_province_ontario_ottawa" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

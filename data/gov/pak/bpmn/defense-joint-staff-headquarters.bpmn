@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_pak_defense_joint_staff_headquarters"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_pak_defense_joint_staff_headquarters">
+    <bpmn:participant id="Pool_pak_defense_joint_staff_headquarters" name="Defense Joint Staff Headquarters (p1k2j3s4)" processRef="Process_pak_defense_joint_staff_headquarters" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_pak_defense_joint_staff_headquarters" name="Defense Joint Staff Headquarters — Defence Operations" isExecutable="true">
+    <bpmn:startEvent id="Start_pak_defense_joint_staff_headquarters" name="Readiness
+assessment triggered"><bpmn:outgoing>F_pak_defense_joint_staff_headquarters_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:serviceTask id="T_pak_defense_joint_staff_headquarters_assess" name="Assess Operational
+Readiness">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.pak.defense-joint-staff-headquarters.assess_readiness" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="readiness_score" />
+          <zeebe:header key="cofog" value="02" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_pak_defense_joint_staff_headquarters_01</bpmn:incoming>
+      <bpmn:outgoing>F_pak_defense_joint_staff_headquarters_02</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="GW_pak_defense_joint_staff_headquarters_ready" name="Readiness level?" isMarkerVisible="true">
+      <bpmn:incoming>F_pak_defense_joint_staff_headquarters_02</bpmn:incoming>
+      <bpmn:outgoing>F_pak_defense_joint_staff_headquarters_03a</bpmn:outgoing>
+      <bpmn:outgoing>F_pak_defense_joint_staff_headquarters_03b</bpmn:outgoing>
+      <bpmn:outgoing>F_pak_defense_joint_staff_headquarters_03c</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_pak_defense_joint_staff_headquarters_ops" name="Execute Operations
+Plan">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.pak.defense-joint-staff-headquarters.execute_ops" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="execute" />
+          <zeebe:header key="kpi" value="mission_success_rate" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_pak_defense_joint_staff_headquarters_03a</bpmn:incoming>
+      <bpmn:outgoing>F_pak_defense_joint_staff_headquarters_04</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_pak_defense_joint_staff_headquarters_proc" name="Initiate Procurement
+& Logistics">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.pak.defense-joint-staff-headquarters.procurement" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="procure" />
+          <zeebe:header key="kpi" value="procurement_cycle_days" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_pak_defense_joint_staff_headquarters_03b</bpmn:incoming>
+      <bpmn:outgoing>F_pak_defense_joint_staff_headquarters_04</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_pak_defense_joint_staff_headquarters_alert" name="Raise Alert
+& Escalate">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.pak.defense-joint-staff-headquarters.escalate" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="escalate" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_pak_defense_joint_staff_headquarters_03c</bpmn:incoming>
+      <bpmn:outgoing>F_pak_defense_joint_staff_headquarters_04</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_pak_defense_joint_staff_headquarters_report" name="Submit Readiness
+Report">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.pak.defense-joint-staff-headquarters.submit_report" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_pak_defense_joint_staff_headquarters_04</bpmn:incoming>
+      <bpmn:outgoing>F_pak_defense_joint_staff_headquarters_05</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_pak_defense_joint_staff_headquarters" name="Assessment complete">
+      <bpmn:incoming>F_pak_defense_joint_staff_headquarters_05</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_pak_defense_joint_staff_headquarters_01" sourceRef="Start_pak_defense_joint_staff_headquarters" targetRef="T_pak_defense_joint_staff_headquarters_assess">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_pak_defense_joint_staff_headquarters_02" sourceRef="T_pak_defense_joint_staff_headquarters_assess" targetRef="GW_pak_defense_joint_staff_headquarters_ready">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_pak_defense_joint_staff_headquarters_03a" sourceRef="GW_pak_defense_joint_staff_headquarters_ready" targetRef="T_pak_defense_joint_staff_headquarters_ops" name="High">
+      <bpmn:conditionExpression>=readiness = 'high'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_pak_defense_joint_staff_headquarters_03b" sourceRef="GW_pak_defense_joint_staff_headquarters_ready" targetRef="T_pak_defense_joint_staff_headquarters_proc" name="Medium">
+      <bpmn:conditionExpression>=readiness = 'medium'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_pak_defense_joint_staff_headquarters_03c" sourceRef="GW_pak_defense_joint_staff_headquarters_ready" targetRef="T_pak_defense_joint_staff_headquarters_alert" name="Low">
+      <bpmn:conditionExpression>=readiness = 'low'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_pak_defense_joint_staff_headquarters_04" sourceRef="T_pak_defense_joint_staff_headquarters_ops" targetRef="T_pak_defense_joint_staff_headquarters_report">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_pak_defense_joint_staff_headquarters_04b" sourceRef="T_pak_defense_joint_staff_headquarters_proc" targetRef="T_pak_defense_joint_staff_headquarters_report">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_pak_defense_joint_staff_headquarters_04c" sourceRef="T_pak_defense_joint_staff_headquarters_alert" targetRef="T_pak_defense_joint_staff_headquarters_report">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_pak_defense_joint_staff_headquarters_05" sourceRef="T_pak_defense_joint_staff_headquarters_report" targetRef="End_pak_defense_joint_staff_headquarters">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_pak_defense_joint_staff_headquarters">
+    <bpmndi:BPMNPlane id="BPMNPlane_pak_defense_joint_staff_headquarters" bpmnElement="Collaboration_pak_defense_joint_staff_headquarters" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,0 +1,132 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:pol-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Poland AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-pol",
+  "nanoid": "g0vpol01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "PL",
+    "banner": "#dc143c",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "pol",
+    "contract": "Konstytucja RP 1997",
+    "description": "Poland Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Rzeczpospolita Polska (Republic of Poland)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 1,
+    "contractCount": 1,
+    "bpmnCount": 19,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/pol/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Kancelaria Prezesa Rady Ministrow",
+        "addressLocality": "Warszawa",
+        "country": "PL"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.gov.pl/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://isap.sejm.gov.pl/"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "dostep",
+        "label": "Dostep do informacji publicznej",
+        "basis": "Ustawa 6 wrzesnia 2001"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "pol.executive",
+        "title": "Executive",
+        "titleLocal": "Executive",
+        "authority": "Executive",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/pol/bpmn/executive.bpmn"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "pol.ustawa-samorzad-gminny",
+        "title": "Local Government Act",
+        "titleLocal": "Ustawa o samorządzie gminnym",
+        "basis": "Dz. U. 1990 nr 16 poz. 95",
+        "uri": "https://isap.sejm.gov.pl/"
+      }
+    ],
+    "complianceFrameworks": [
+      "Konstytucja Rzeczypospolitej Polskiej (1997)",
+      "Ustawa z 6 września 2001 o dostępie do informacji publicznej",
+      "Kodeks postępowania administracyjnego"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "pol-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Poland government activity feed",
+        "kind": "public",
+        "name": "gov-pol-feed"
+      }
+    ],
+    "description": "Government of Poland — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Rzeczpospolita Polska (Republic of Poland)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

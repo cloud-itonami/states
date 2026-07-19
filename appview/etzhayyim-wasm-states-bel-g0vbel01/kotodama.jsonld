@@ -1,0 +1,132 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:bel-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Belgium AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-bel",
+  "nanoid": "g0vbel01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "BE",
+    "banner": "#000000",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "bel",
+    "contract": "Constitution belge 1831",
+    "description": "Belgium Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Royaume de Belgique (Kingdom of Belgium)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 1,
+    "contractCount": 1,
+    "bpmnCount": 17,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/bel/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Palais de la Nation",
+        "addressLocality": "Bruxelles",
+        "country": "BE"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.belgium.be/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.ejustice.just.fgov.be/"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "transparency",
+        "label": "Transparence",
+        "basis": "Loi du 11 avril 1994"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "bel.executive",
+        "title": "Executive",
+        "titleLocal": "Executive",
+        "authority": "Executive",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/bel/bpmn/executive.bpmn"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "bel.new-municipal-law",
+        "title": "New Municipal Law",
+        "titleLocal": "Gemeentewet / Code de la démocratie locale",
+        "basis": "Nouvelle loi communale 1988",
+        "uri": "https://www.belgium.be/"
+      }
+    ],
+    "complianceFrameworks": [
+      "Constitution belge / Belgische Grondwet (1831)",
+      "Loi du 11 avril 1994 (Transparence)",
+      "Loi du 29 juillet 1991"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "bel-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Belgium government activity feed",
+        "kind": "public",
+        "name": "gov-bel-feed"
+      }
+    ],
+    "description": "Government of Belgium — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Royaume de Belgique (Kingdom of Belgium)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

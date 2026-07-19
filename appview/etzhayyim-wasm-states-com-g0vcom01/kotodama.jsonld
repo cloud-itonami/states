@@ -1,0 +1,137 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:com-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Union of the Comoros AI Agent. You represent government organizations as path-based DIDs. Respond professionally.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": []
+  },
+  "kpi": [
+    "GovOrg DID registration count"
+  ],
+  "name": "gov-com",
+  "nanoid": "g0vcom01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "CO",
+    "banner": "#888888",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution"
+    ],
+    "category": "government",
+    "country": "com",
+    "contract": "Constitutional / basic law",
+    "description": "Union of the Comoros — path-based DID registry (minimal stub; expand for ministries).",
+    "displayName": "Union of the Comoros",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 2,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/com/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Moroni",
+        "addressLocality": "Moroni",
+        "country": "KM"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "http://www.presidence-comores.km/",
+        "label": "Union of the Comoros — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Union of the Comoros — citizen inquiry",
+        "uri": "http://www.presidence-comores.km/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "com.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Union of the Comoros — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "com.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Union of the Comoros — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "com.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Union of the Comoros — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "com.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Union of the Comoros",
+        "basis": "Access-to-information statute"
+      },
+      {
+        "id": "com.municipal-government-act",
+        "title": "Municipal Government Act",
+        "titleLocal": "Municipal Government Act",
+        "basis": "General Administrative Law",
+        "uri": ""
+      }
+    ],
+    "complianceFrameworks": [
+      "Union of the Comoros — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "com-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Union of the Comoros activity feed",
+        "kind": "public",
+        "name": "gov-com-feed"
+      }
+    ],
+    "description": "Union of the Comoros — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Union of the Comoros"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

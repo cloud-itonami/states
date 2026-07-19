@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_sau_district_dst_49206602_al_khubar_governorate"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_sau_district_dst_49206602_al_khubar_governorate">
+    <bpmn:participant id="Pool_sau_district_dst_49206602_al_khubar_governorate" name="Dst 49206602 Al Khubar Governorate (49206602)" processRef="Process_sau_district_dst_49206602_al_khubar_governorate" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_sau_district_dst_49206602_al_khubar_governorate" name="Dst 49206602 Al Khubar Governorate — General Public Services" isExecutable="true">
+    <bpmn:startEvent id="Start_sau_district_dst_49206602_al_khubar_governorate" name="Policy trigger
+received"><bpmn:outgoing>F_sau_district_dst_49206602_al_khubar_governorate_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:parallelGateway id="GW_sau_district_dst_49206602_al_khubar_governorate_open" name="Parallel checks">
+      <bpmn:incoming>F_sau_district_dst_49206602_al_khubar_governorate_01</bpmn:incoming>
+      <bpmn:outgoing>F_sau_district_dst_49206602_al_khubar_governorate_02</bpmn:outgoing>
+      <bpmn:outgoing>F_sau_district_dst_49206602_al_khubar_governorate_03</bpmn:outgoing>
+      <bpmn:outgoing>F_sau_district_dst_49206602_al_khubar_governorate_04</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:serviceTask id="T_sau_district_dst_49206602_al_khubar_governorate_policy" name="Draft Policy
+Proposal">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.sau.district:dst-49206602-al-khubar-governorate.draft_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="policy_output" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_sau_district_dst_49206602_al_khubar_governorate_02</bpmn:incoming>
+      <bpmn:outgoing>F_sau_district_dst_49206602_al_khubar_governorate_05</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_sau_district_dst_49206602_al_khubar_governorate_budget" name="Allocate Budget
+(COFOG 01)">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.sau.district:dst-49206602-al-khubar-governorate.allocate_budget" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="budget_execution_rate" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_sau_district_dst_49206602_al_khubar_governorate_03</bpmn:incoming>
+      <bpmn:outgoing>F_sau_district_dst_49206602_al_khubar_governorate_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_sau_district_dst_49206602_al_khubar_governorate_coord" name="Inter-Agency
+Coordination">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.sau.district:dst-49206602-al-khubar-governorate.coordinate" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="coordination_score" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_sau_district_dst_49206602_al_khubar_governorate_04</bpmn:incoming>
+      <bpmn:outgoing>F_sau_district_dst_49206602_al_khubar_governorate_07</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="GW_sau_district_dst_49206602_al_khubar_governorate_join" name="Checks complete">
+      <bpmn:incoming>F_sau_district_dst_49206602_al_khubar_governorate_05</bpmn:incoming>
+      <bpmn:incoming>F_sau_district_dst_49206602_al_khubar_governorate_06</bpmn:incoming>
+      <bpmn:incoming>F_sau_district_dst_49206602_al_khubar_governorate_07</bpmn:incoming>
+      <bpmn:outgoing>F_sau_district_dst_49206602_al_khubar_governorate_08</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:userTask id="T_sau_district_dst_49206602_al_khubar_governorate_review" name="Minister Review
+& Sign-off">
+      <bpmn:extensionElements>
+        <zeebe:assignmentDefinition assignee="gov-official" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_sau_district_dst_49206602_al_khubar_governorate_08</bpmn:incoming>
+      <bpmn:outgoing>F_sau_district_dst_49206602_al_khubar_governorate_09</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="GW_sau_district_dst_49206602_al_khubar_governorate_risk" name="Approved?" isMarkerVisible="true">
+      <bpmn:incoming>F_sau_district_dst_49206602_al_khubar_governorate_09</bpmn:incoming>
+      <bpmn:outgoing>F_sau_district_dst_49206602_al_khubar_governorate_10a</bpmn:outgoing>
+      <bpmn:outgoing>F_sau_district_dst_49206602_al_khubar_governorate_10b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_sau_district_dst_49206602_al_khubar_governorate_publish" name="Publish Policy
+& Notify Citizens">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.sau.district:dst-49206602-al-khubar-governorate.publish_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="publish" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_sau_district_dst_49206602_al_khubar_governorate_10a</bpmn:incoming>
+      <bpmn:outgoing>F_sau_district_dst_49206602_al_khubar_governorate_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_sau_district_dst_49206602_al_khubar_governorate_revise" name="Return for
+Revision">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.sau.district:dst-49206602-al-khubar-governorate.request_revision" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="revise" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_sau_district_dst_49206602_al_khubar_governorate_10b</bpmn:incoming>
+      <bpmn:outgoing>F_sau_district_dst_49206602_al_khubar_governorate_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_sau_district_dst_49206602_al_khubar_governorate" name="Process complete">
+      <bpmn:incoming>F_sau_district_dst_49206602_al_khubar_governorate_11</bpmn:incoming>
+      <bpmn:incoming>F_sau_district_dst_49206602_al_khubar_governorate_11b</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_sau_district_dst_49206602_al_khubar_governorate_01" sourceRef="Start_sau_district_dst_49206602_al_khubar_governorate" targetRef="GW_sau_district_dst_49206602_al_khubar_governorate_open">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_sau_district_dst_49206602_al_khubar_governorate_02" sourceRef="GW_sau_district_dst_49206602_al_khubar_governorate_open" targetRef="T_sau_district_dst_49206602_al_khubar_governorate_policy">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_sau_district_dst_49206602_al_khubar_governorate_03" sourceRef="GW_sau_district_dst_49206602_al_khubar_governorate_open" targetRef="T_sau_district_dst_49206602_al_khubar_governorate_budget">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_sau_district_dst_49206602_al_khubar_governorate_04" sourceRef="GW_sau_district_dst_49206602_al_khubar_governorate_open" targetRef="T_sau_district_dst_49206602_al_khubar_governorate_coord">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_sau_district_dst_49206602_al_khubar_governorate_05" sourceRef="T_sau_district_dst_49206602_al_khubar_governorate_policy" targetRef="GW_sau_district_dst_49206602_al_khubar_governorate_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_sau_district_dst_49206602_al_khubar_governorate_06" sourceRef="T_sau_district_dst_49206602_al_khubar_governorate_budget" targetRef="GW_sau_district_dst_49206602_al_khubar_governorate_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_sau_district_dst_49206602_al_khubar_governorate_07" sourceRef="T_sau_district_dst_49206602_al_khubar_governorate_coord" targetRef="GW_sau_district_dst_49206602_al_khubar_governorate_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_sau_district_dst_49206602_al_khubar_governorate_08" sourceRef="GW_sau_district_dst_49206602_al_khubar_governorate_join" targetRef="T_sau_district_dst_49206602_al_khubar_governorate_review">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_sau_district_dst_49206602_al_khubar_governorate_09" sourceRef="T_sau_district_dst_49206602_al_khubar_governorate_review" targetRef="GW_sau_district_dst_49206602_al_khubar_governorate_risk">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_sau_district_dst_49206602_al_khubar_governorate_10a" sourceRef="GW_sau_district_dst_49206602_al_khubar_governorate_risk" targetRef="T_sau_district_dst_49206602_al_khubar_governorate_publish" name="Approved">
+      <bpmn:conditionExpression>=approved = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_sau_district_dst_49206602_al_khubar_governorate_10b" sourceRef="GW_sau_district_dst_49206602_al_khubar_governorate_risk" targetRef="T_sau_district_dst_49206602_al_khubar_governorate_revise" name="Rejected">
+      <bpmn:conditionExpression>=approved = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_sau_district_dst_49206602_al_khubar_governorate_11" sourceRef="T_sau_district_dst_49206602_al_khubar_governorate_publish" targetRef="End_sau_district_dst_49206602_al_khubar_governorate">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_sau_district_dst_49206602_al_khubar_governorate_11b" sourceRef="T_sau_district_dst_49206602_al_khubar_governorate_revise" targetRef="End_sau_district_dst_49206602_al_khubar_governorate">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_sau_district_dst_49206602_al_khubar_governorate">
+    <bpmndi:BPMNPlane id="BPMNPlane_sau_district_dst_49206602_al_khubar_governorate" bpmnElement="Collaboration_sau_district_dst_49206602_al_khubar_governorate" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

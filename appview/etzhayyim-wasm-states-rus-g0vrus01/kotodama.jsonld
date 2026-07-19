@@ -1,0 +1,172 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:rus-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Russia AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-rus",
+  "nanoid": "g0vrus01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "RU",
+    "banner": "#CC0000",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "rus",
+    "contract": "Конституция Российской Федерации 1993",
+    "description": "Russia Government — path-based DID registry for ministries and federal subjects.",
+    "displayName": "Правительство Российской Федерации (Government of Russia)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 5,
+    "contractCount": 1,
+    "bpmnCount": 85,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/rus/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Kremlin / Government House",
+        "addressLocality": "Moscow",
+        "country": "RU"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "http://government.ru/"
+      },
+      {
+        "kind": "website",
+        "uri": "http://kremlin.ru/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.gosuslugi.ru/"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "info_request",
+        "label": "Public Services Portal",
+        "uri": "https://www.gosuslugi.ru/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "rus.executive-presidential-admin",
+        "title": "Executive Presidential Admin",
+        "titleLocal": "Executive Presidential Admin",
+        "authority": "Executive Presidential Admin",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/rus/bpmn/executive-presidential-admin.bpmn"
+      },
+      {
+        "id": "rus.finance-ministry-of-finance",
+        "title": "Finance Ministry Of Finance",
+        "titleLocal": "Finance Ministry Of Finance",
+        "authority": "Finance Ministry Of Finance",
+        "basis": "Economic Affairs Act",
+        "portalUri": "https://minfin.gov.ru/",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/rus/bpmn/finance-ministry-of-finance.bpmn"
+      },
+      {
+        "id": "rus.foreign-ministry-of-foreign-affairs",
+        "title": "Foreign Ministry Of Foreign Affairs",
+        "titleLocal": "Foreign Ministry Of Foreign Affairs",
+        "authority": "Foreign Ministry Of Foreign Affairs",
+        "basis": "General Public Services Act",
+        "portalUri": "https://www.mid.ru/",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/rus/bpmn/foreign-ministry-of-foreign-affairs.bpmn"
+      },
+      {
+        "id": "rus.military-ministry-of-defence",
+        "title": "Military Ministry Of Defence",
+        "titleLocal": "Military Ministry Of Defence",
+        "authority": "Military Ministry Of Defence",
+        "basis": "Defence Act",
+        "portalUri": "https://eng.mil.ru/",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/rus/bpmn/military-ministry-of-defence.bpmn"
+      },
+      {
+        "id": "rus.legislative-federation-council",
+        "title": "Legislative Federation Council",
+        "titleLocal": "Legislative Federation Council",
+        "authority": "Legislative Federation Council",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/rus/bpmn/legislative-federation-council.bpmn"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "rus.federal-law-131-2003",
+        "title": "Federal Law on Local Self-Government No.131-FZ",
+        "titleLocal": "Федеральный закон 131-ФЗ",
+        "basis": "131-ФЗ от 6 октября 2003",
+        "uri": "https://www.consultant.ru/document/cons_doc_LAW_44571/"
+      }
+    ],
+    "complianceFrameworks": [
+      "Конституция Российской Федерации (1993)",
+      "Федеральный закон от 09.02.2009 N 8-ФЗ (Об обеспечении доступа)",
+      "Административный процессуальный кодекс"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "rus-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Russia government activity feed",
+        "kind": "public",
+        "name": "gov-rus-feed"
+      }
+    ],
+    "description": "Government of Russia — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Правительство Российской Федерации (Government of Russia)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

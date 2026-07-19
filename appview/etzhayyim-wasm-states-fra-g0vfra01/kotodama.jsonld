@@ -1,0 +1,179 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:fra-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of France AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-fra",
+  "nanoid": "g0vfra01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "FR",
+    "banner": "#002395",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "fra",
+    "contract": "Constitution de la Ve République 1958",
+    "description": "France Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "République française (French Republic)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 1,
+    "contractCount": 1,
+    "bpmnCount": 42,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/fra/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Palais de l'Elysee",
+        "streetAddress": "55 Rue du Faubourg Saint-Honore",
+        "addressLocality": "Paris",
+        "postalCode": "75008",
+        "country": "FR"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.elysee.fr/"
+      },
+      {
+        "kind": "website",
+        "uri": "https://www.gouvernement.fr/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.legifrance.gouv.fr/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.service-public.fr/"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "cada",
+        "label": "CADA",
+        "uri": "https://www.cada.fr/",
+        "basis": "Loi 78-753"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "fra.executive",
+        "title": "Executive",
+        "titleLocal": "Executive",
+        "authority": "Executive",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/fra/bpmn/executive.bpmn"
+      },
+      {
+        "id": "fra.cada",
+        "title": "Demande CADA - acces documents administratifs",
+        "basis": "Loi 78-753 / Code des relations entre le public et l'administration",
+        "authority": "CADA",
+        "portalUri": "https://www.cada.fr/"
+      },
+      {
+        "id": "fra.passeport",
+        "title": "Demande de passeport",
+        "authority": "Prefecture",
+        "portalUri": "https://www.service-public.fr/particuliers/vosdroits/N360"
+      },
+      {
+        "id": "fra.cni",
+        "title": "Carte nationale d'identite",
+        "authority": "Mairie",
+        "portalUri": "https://www.service-public.fr/particuliers/vosdroits/N358"
+      },
+      {
+        "id": "fra.impots",
+        "title": "Declaration de revenus",
+        "authority": "DGFiP",
+        "portalUri": "https://www.impots.gouv.fr/"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "fra.cgct",
+        "title": "Code général des collectivités territoriales",
+        "titleLocal": "Code général des collectivités territoriales",
+        "basis": "CGCT L2111-1",
+        "uri": "https://www.legifrance.gouv.fr/"
+      },
+      {
+        "id": "fra.2042.v1",
+        "title": "Formulaire 2042 - declaration des revenus",
+        "authority": "DGFiP",
+        "uri": "https://www.impots.gouv.fr/formulaire/2042/declaration-des-revenus"
+      },
+      {
+        "id": "fra.cerfa12668.v1",
+        "title": "Cerfa 12668 - demande de passeport",
+        "authority": "Prefecture"
+      }
+    ],
+    "complianceFrameworks": [
+      "Constitution de 1958 (Fifth Republic)",
+      "Loi n°78-753 du 17 juillet 1978 (CADA)",
+      "Code des relations entre le public et l'administration"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "fra-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "France government activity feed",
+        "kind": "public",
+        "name": "gov-fra-feed"
+      }
+    ],
+    "description": "Government of France — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "République française (French Republic)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

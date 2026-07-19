@@ -1,0 +1,132 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:per-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Peru (República del Perú) AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-per",
+  "nanoid": "g0vper01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "PE",
+    "banner": "#000000",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "per",
+    "contract": "Constitución Política del Perú 1993",
+    "description": "Peru Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "República del Perú (Republic of Peru)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 1,
+    "contractCount": 1,
+    "bpmnCount": 19,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/per/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Palacio de Gobierno",
+        "addressLocality": "Lima",
+        "country": "PE"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.gob.pe/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.leyes.congreso.gob.pe/"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "transparency",
+        "label": "Ley de Transparencia",
+        "basis": "Ley 27806"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "per.executive",
+        "title": "Executive",
+        "titleLocal": "Executive",
+        "authority": "Executive",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/per/bpmn/executive.bpmn"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "per.lom-27972-2003",
+        "title": "LOM 27972/2003",
+        "titleLocal": "Ley Orgánica de Municipalidades 27972/2003",
+        "basis": "Ley No.27972",
+        "uri": "https://www.congreso.gob.pe/"
+      }
+    ],
+    "complianceFrameworks": [
+      "Constitución Política del Perú 1993",
+      "Ley 27806 de Transparencia",
+      "Ley 27444 Procedimiento Administrativo General"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "per-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Peru government activity feed",
+        "kind": "public",
+        "name": "gov-per-feed"
+      }
+    ],
+    "description": "Government of Peru — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "República del Perú (Republic of Peru)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

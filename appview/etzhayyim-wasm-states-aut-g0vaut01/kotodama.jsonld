@@ -1,0 +1,134 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:aut-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Austria AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-aut",
+  "nanoid": "g0vaut01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "AT",
+    "banner": "#c8102e",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "aut",
+    "contract": "Bundes-Verfassungsgesetz 1920",
+    "description": "Austria Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Republik Österreich (Republic of Austria)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 1,
+    "contractCount": 1,
+    "bpmnCount": 18,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/aut/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Bundeskanzleramt",
+        "streetAddress": "Ballhausplatz 2",
+        "addressLocality": "Wien",
+        "postalCode": "1010",
+        "country": "AT"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.bundeskanzleramt.gv.at/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.ris.bka.gv.at/"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "auskunft",
+        "label": "Auskunftspflichtgesetz",
+        "basis": "BGBl. Nr. 287/1987"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "aut.executive",
+        "title": "Executive",
+        "titleLocal": "Executive",
+        "authority": "Executive",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/aut/bpmn/executive.bpmn"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "aut.gemeindeordnung",
+        "title": "Gemeindeordnung",
+        "titleLocal": "Gemeindeordnung per Land",
+        "basis": "B-VG Art.116",
+        "uri": "https://www.ris.bka.gv.at/"
+      }
+    ],
+    "complianceFrameworks": [
+      "Bundesverfassungsgesetz (B-VG, 1920)",
+      "Auskunftspflichtgesetz (BGBl. Nr. 287/1987)",
+      "Allgemeines Verwaltungsverfahrensgesetz"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "aut-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Austria government activity feed",
+        "kind": "public",
+        "name": "gov-aut-feed"
+      }
+    ],
+    "description": "Government of Austria — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Republik Österreich (Republic of Austria)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

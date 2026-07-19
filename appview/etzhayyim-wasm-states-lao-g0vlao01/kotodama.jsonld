@@ -1,0 +1,144 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:lao-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Lao PDR AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-lao",
+  "nanoid": "g0vlao01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "LA",
+    "banner": "#CE1126",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "province-coverage"
+    ],
+    "category": "government",
+    "country": "lao",
+    "contract": "Constitution of Lao PDR 1991 (amended 2015)",
+    "description": "Lao PDR Government — path-based DID registry for ministries and provinces.",
+    "displayName": "ສາທາລະນະລັດ ປະຊາທິປະໄຕ ປະຊາຊົນລາວ (Lao PDR)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 3,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/lao/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Vientiane",
+        "addressLocality": "Vientiane",
+        "country": "LA"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.laogov.gov.la/",
+        "label": "Lao People's Democratic Republic — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Lao People's Democratic Republic — citizen inquiry",
+        "uri": "https://www.laogov.gov.la/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "lao.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Lao People's Democratic Republic — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "lao.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Lao People's Democratic Republic — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "lao.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Lao People's Democratic Republic — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "lao.loa-2015",
+        "title": "Law on Local Administration",
+        "titleLocal": "Law on Local Administration 2015",
+        "basis": "LNA No.44 of 2015",
+        "uri": "https://www.na.gov.la/"
+      },
+      {
+        "id": "lao.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Lao People's Democratic Republic",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Lao People's Democratic Republic — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "lao-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Lao PDR government activity feed",
+        "kind": "public",
+        "name": "gov-lao-feed"
+      }
+    ],
+    "description": "Government of Lao PDR — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "ສາທາລະນະລັດ ປະຊາທິປະໄຕ ປະຊາຊົນລາວ (Lao PDR)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

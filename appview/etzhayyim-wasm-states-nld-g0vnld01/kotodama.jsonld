@@ -1,0 +1,136 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:nld-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of the Netherlands AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-nld",
+  "nanoid": "g0vnld01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "NL",
+    "banner": "#ae1c28",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "nld",
+    "contract": "Grondwet 1814/1983",
+    "description": "Netherlands Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Koninkrijk der Nederlanden (Kingdom of the Netherlands)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 1,
+    "contractCount": 1,
+    "bpmnCount": 7,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/nld/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Binnenhof",
+        "addressLocality": "Den Haag",
+        "country": "NL"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.rijksoverheid.nl/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://wetten.overheid.nl/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.tweedekamer.nl/"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "woo",
+        "label": "Woo-verzoek",
+        "basis": "Wet open overheid"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "nld.executive",
+        "title": "Executive",
+        "titleLocal": "Executive",
+        "authority": "Executive",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/nld/bpmn/executive.bpmn"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "nld.gemeentewet",
+        "title": "Municipalities Act",
+        "titleLocal": "Gemeentewet",
+        "basis": "Wet van 14 februari 1992",
+        "uri": "https://wetten.overheid.nl/BWBR0005416/"
+      }
+    ],
+    "complianceFrameworks": [
+      "Grondwet van het Koninkrijk der Nederlanden",
+      "Wet open overheid (Woo, 2022)",
+      "Algemene wet bestuursrecht"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "nld-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Netherlands government activity feed",
+        "kind": "public",
+        "name": "gov-nld-feed"
+      }
+    ],
+    "description": "Government of the Netherlands — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Koninkrijk der Nederlanden (Kingdom of the Netherlands)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

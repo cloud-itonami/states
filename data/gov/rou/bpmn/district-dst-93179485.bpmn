@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_rou_district_dst_93179485"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_rou_district_dst_93179485">
+    <bpmn:participant id="Pool_rou_district_dst_93179485" name="Dst 93179485 (dabuleni)" processRef="Process_rou_district_dst_93179485" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_rou_district_dst_93179485" name="Dst 93179485 — General Public Services" isExecutable="true">
+    <bpmn:startEvent id="Start_rou_district_dst_93179485" name="Policy trigger
+received"><bpmn:outgoing>F_rou_district_dst_93179485_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:parallelGateway id="GW_rou_district_dst_93179485_open" name="Parallel checks">
+      <bpmn:incoming>F_rou_district_dst_93179485_01</bpmn:incoming>
+      <bpmn:outgoing>F_rou_district_dst_93179485_02</bpmn:outgoing>
+      <bpmn:outgoing>F_rou_district_dst_93179485_03</bpmn:outgoing>
+      <bpmn:outgoing>F_rou_district_dst_93179485_04</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:serviceTask id="T_rou_district_dst_93179485_policy" name="Draft Policy
+Proposal">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.rou.district:dst-93179485.draft_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="policy_output" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_rou_district_dst_93179485_02</bpmn:incoming>
+      <bpmn:outgoing>F_rou_district_dst_93179485_05</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_rou_district_dst_93179485_budget" name="Allocate Budget
+(COFOG 01)">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.rou.district:dst-93179485.allocate_budget" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="budget_execution_rate" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_rou_district_dst_93179485_03</bpmn:incoming>
+      <bpmn:outgoing>F_rou_district_dst_93179485_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_rou_district_dst_93179485_coord" name="Inter-Agency
+Coordination">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.rou.district:dst-93179485.coordinate" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="coordination_score" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_rou_district_dst_93179485_04</bpmn:incoming>
+      <bpmn:outgoing>F_rou_district_dst_93179485_07</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="GW_rou_district_dst_93179485_join" name="Checks complete">
+      <bpmn:incoming>F_rou_district_dst_93179485_05</bpmn:incoming>
+      <bpmn:incoming>F_rou_district_dst_93179485_06</bpmn:incoming>
+      <bpmn:incoming>F_rou_district_dst_93179485_07</bpmn:incoming>
+      <bpmn:outgoing>F_rou_district_dst_93179485_08</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:userTask id="T_rou_district_dst_93179485_review" name="Minister Review
+& Sign-off">
+      <bpmn:extensionElements>
+        <zeebe:assignmentDefinition assignee="gov-official" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_rou_district_dst_93179485_08</bpmn:incoming>
+      <bpmn:outgoing>F_rou_district_dst_93179485_09</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="GW_rou_district_dst_93179485_risk" name="Approved?" isMarkerVisible="true">
+      <bpmn:incoming>F_rou_district_dst_93179485_09</bpmn:incoming>
+      <bpmn:outgoing>F_rou_district_dst_93179485_10a</bpmn:outgoing>
+      <bpmn:outgoing>F_rou_district_dst_93179485_10b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_rou_district_dst_93179485_publish" name="Publish Policy
+& Notify Citizens">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.rou.district:dst-93179485.publish_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="publish" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_rou_district_dst_93179485_10a</bpmn:incoming>
+      <bpmn:outgoing>F_rou_district_dst_93179485_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_rou_district_dst_93179485_revise" name="Return for
+Revision">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.rou.district:dst-93179485.request_revision" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="revise" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_rou_district_dst_93179485_10b</bpmn:incoming>
+      <bpmn:outgoing>F_rou_district_dst_93179485_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_rou_district_dst_93179485" name="Process complete">
+      <bpmn:incoming>F_rou_district_dst_93179485_11</bpmn:incoming>
+      <bpmn:incoming>F_rou_district_dst_93179485_11b</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_rou_district_dst_93179485_01" sourceRef="Start_rou_district_dst_93179485" targetRef="GW_rou_district_dst_93179485_open">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_rou_district_dst_93179485_02" sourceRef="GW_rou_district_dst_93179485_open" targetRef="T_rou_district_dst_93179485_policy">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_rou_district_dst_93179485_03" sourceRef="GW_rou_district_dst_93179485_open" targetRef="T_rou_district_dst_93179485_budget">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_rou_district_dst_93179485_04" sourceRef="GW_rou_district_dst_93179485_open" targetRef="T_rou_district_dst_93179485_coord">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_rou_district_dst_93179485_05" sourceRef="T_rou_district_dst_93179485_policy" targetRef="GW_rou_district_dst_93179485_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_rou_district_dst_93179485_06" sourceRef="T_rou_district_dst_93179485_budget" targetRef="GW_rou_district_dst_93179485_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_rou_district_dst_93179485_07" sourceRef="T_rou_district_dst_93179485_coord" targetRef="GW_rou_district_dst_93179485_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_rou_district_dst_93179485_08" sourceRef="GW_rou_district_dst_93179485_join" targetRef="T_rou_district_dst_93179485_review">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_rou_district_dst_93179485_09" sourceRef="T_rou_district_dst_93179485_review" targetRef="GW_rou_district_dst_93179485_risk">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_rou_district_dst_93179485_10a" sourceRef="GW_rou_district_dst_93179485_risk" targetRef="T_rou_district_dst_93179485_publish" name="Approved">
+      <bpmn:conditionExpression>=approved = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_rou_district_dst_93179485_10b" sourceRef="GW_rou_district_dst_93179485_risk" targetRef="T_rou_district_dst_93179485_revise" name="Rejected">
+      <bpmn:conditionExpression>=approved = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_rou_district_dst_93179485_11" sourceRef="T_rou_district_dst_93179485_publish" targetRef="End_rou_district_dst_93179485">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_rou_district_dst_93179485_11b" sourceRef="T_rou_district_dst_93179485_revise" targetRef="End_rou_district_dst_93179485">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_rou_district_dst_93179485">
+    <bpmndi:BPMNPlane id="BPMNPlane_rou_district_dst_93179485" bpmnElement="Collaboration_rou_district_dst_93179485" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

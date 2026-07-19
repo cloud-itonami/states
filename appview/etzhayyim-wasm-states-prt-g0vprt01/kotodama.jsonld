@@ -1,0 +1,122 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:prt-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Portugal AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-prt",
+  "nanoid": "g0vprt01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "PT",
+    "banner": "#006600",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "prt",
+    "contract": "Constituição da República 1976",
+    "description": "Portugal Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "República Portuguesa (Portuguese Republic)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 4,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/prt/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Palacio de Sao Bento",
+        "addressLocality": "Lisboa",
+        "country": "PT"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.portugal.gov.pt/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://dre.pt/"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "ladajp",
+        "label": "LADAJP",
+        "basis": "Lei 26/2016"
+      }
+    ],
+    "procedures": [],
+    "documentTemplates": [
+      {
+        "id": "prt.lei-75-2013",
+        "title": "Local Authorities Framework Law",
+        "titleLocal": "Lei das Autarquias Locais 75/2013",
+        "basis": "Lei n.º 75/2013",
+        "uri": "https://www.pgdlisboa.pt/"
+      }
+    ],
+    "complianceFrameworks": [
+      "Constituição da República Portuguesa (1976)",
+      "Lei 26/2016 (LADAJP)",
+      "Código do Procedimento Administrativo"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "prt-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Portugal government activity feed",
+        "kind": "public",
+        "name": "gov-prt-feed"
+      }
+    ],
+    "description": "Government of Portugal — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "República Portuguesa (Portuguese Republic)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

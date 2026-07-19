@@ -1,0 +1,860 @@
+{
+"are": [
+"Government of the United Arab Emirates",
+"Abu Dhabi",
+"AE",
+[
+[
+"https://u.ae/",
+"u.ae citizen portal"
+],
+[
+"https://www.mofa.gov.ae/",
+"MoFA"
+]
+],
+null
+],
+"qat": [
+"State of Qatar",
+"Doha",
+"QA",
+[
+[
+"https://www.gco.gov.qa/",
+"Government Comms"
+],
+[
+"https://www.hukoomi.gov.qa/",
+"Hukoomi citizen portal"
+]
+],
+null
+],
+"kwt": [
+"Government of Kuwait",
+"Kuwait City",
+"KW",
+[
+[
+"https://www.e.gov.kw/",
+"e.gov.kw"
+],
+[
+"https://www.da.gov.kw/",
+"Audit Bureau"
+]
+],
+null
+],
+"omn": [
+"Sultanate of Oman",
+"Muscat",
+"OM",
+[
+[
+"https://www.oman.om/",
+"oman.om"
+],
+[
+"https://www.mol.gov.om/",
+"Ministry of Legal"
+]
+],
+null
+],
+"bhr": [
+"Kingdom of Bahrain",
+"Manama",
+"BH",
+[
+[
+"https://www.bahrain.bh/",
+"bahrain.bh"
+],
+[
+"https://www.legalaffairs.gov.bh/",
+"Legal Affairs"
+]
+],
+null
+],
+"irn": [
+"Government of the Islamic Republic of Iran",
+"Tehran",
+"IR",
+[
+[
+"https://president.ir/",
+"President"
+],
+[
+"https://www.mfa.ir/",
+"MoFA"
+]
+],
+null
+],
+"lbn": [
+"Republic of Lebanon",
+"Beirut",
+"LB",
+[
+[
+"https://www.presidency.gov.lb/",
+"Presidency"
+],
+[
+"http://www.pcm.gov.lb/",
+"Council of Ministers"
+]
+],
+null
+],
+"jor": [
+"Hashemite Kingdom of Jordan",
+"Amman",
+"JO",
+[
+[
+"https://www.jordan.gov.jo/",
+"jordan.gov.jo"
+],
+[
+"https://www.pm.gov.jo/",
+"PM Office"
+]
+],
+null
+],
+"hun": [
+"Government of Hungary",
+"Budapest",
+"HU",
+[
+[
+"https://kormany.hu/",
+"kormany.hu"
+],
+[
+"https://njt.hu/",
+"National Legislation"
+]
+],
+null
+],
+"cze": [
+"Government of the Czech Republic",
+"Prague",
+"CZ",
+[
+[
+"https://www.vlada.cz/",
+"vlada.cz"
+],
+[
+"https://www.zakonyprolidi.cz/",
+"Legal database"
+]
+],
+null
+],
+"svk": [
+"Government of the Slovak Republic",
+"Bratislava",
+"SK",
+[
+[
+"https://www.vlada.gov.sk/",
+"vlada.gov.sk"
+],
+[
+"https://www.slov-lex.sk/",
+"Slov-Lex"
+]
+],
+null
+],
+"ukr": [
+"Government of Ukraine",
+"Kyiv",
+"UA",
+[
+[
+"https://www.kmu.gov.ua/",
+"kmu.gov.ua"
+],
+[
+"https://zakon.rada.gov.ua/",
+"Legal database"
+]
+],
+null
+],
+"rou": [
+"Government of Romania",
+"Bucharest",
+"RO",
+[
+[
+"https://gov.ro/",
+"gov.ro"
+],
+[
+"https://www.cdep.ro/",
+"Chamber of Deputies"
+]
+],
+null
+],
+"hrv": [
+"Government of the Republic of Croatia",
+"Zagreb",
+"HR",
+[
+[
+"https://vlada.gov.hr/",
+"vlada.gov.hr"
+],
+[
+"https://narodne-novine.nn.hr/",
+"Official Gazette"
+]
+],
+null
+],
+"srb": [
+"Government of the Republic of Serbia",
+"Belgrade",
+"RS",
+[
+[
+"https://www.srbija.gov.rs/",
+"srbija.gov.rs"
+],
+[
+"http://www.parlament.gov.rs/",
+"Parliament"
+]
+],
+null
+],
+"blr": [
+"Government of the Republic of Belarus",
+"Minsk",
+"BY",
+[
+[
+"https://www.government.by/",
+"government.by"
+],
+[
+"https://pravo.by/",
+"Legal portal"
+]
+],
+null
+],
+"kaz": [
+"Government of the Republic of Kazakhstan",
+"Astana",
+"KZ",
+[
+[
+"https://www.gov.kz/",
+"gov.kz"
+],
+[
+"https://adilet.zan.kz/",
+"Adilet legal DB"
+]
+],
+null
+],
+"uzb": [
+"Government of the Republic of Uzbekistan",
+"Tashkent",
+"UZ",
+[
+[
+"https://www.gov.uz/",
+"gov.uz"
+],
+[
+"https://lex.uz/",
+"LexUz legal DB"
+]
+],
+null
+],
+"pak": [
+"Government of Pakistan",
+"Islamabad",
+"PK",
+[
+[
+"https://www.pakistan.gov.pk/",
+"pakistan.gov.pk"
+],
+[
+"https://na.gov.pk/",
+"National Assembly"
+]
+],
+null
+],
+"bgd": [
+"Government of Bangladesh",
+"Dhaka",
+"BD",
+[
+[
+"https://bangladesh.gov.bd/",
+"bangladesh.gov.bd"
+],
+[
+"http://bdlaws.minlaw.gov.bd/",
+"Laws of Bangladesh"
+]
+],
+[
+[
+"bangladesh.rti",
+"RTI Application",
+"RTI Act 2009",
+"Each public authority"
+]
+]
+],
+"lka": [
+"Government of Sri Lanka",
+"Colombo",
+"LK",
+[
+[
+"https://www.gov.lk/",
+"gov.lk"
+],
+[
+"https://www.parliament.lk/",
+"Parliament"
+]
+],
+[
+[
+"srilanka.rti",
+"Right to Information",
+"RTI Act 2016",
+"Each public authority"
+]
+]
+],
+"npl": [
+"Government of Nepal",
+"Kathmandu",
+"NP",
+[
+[
+"https://www.nepal.gov.np/",
+"nepal.gov.np"
+],
+[
+"http://www.lawcommission.gov.np/",
+"Law Commission"
+]
+],
+null
+],
+"mmr": [
+"Government of Myanmar",
+"Naypyidaw",
+"MM",
+[
+[
+"https://www.mnpt.gov.mm/",
+"Government"
+],
+[
+"https://www.president-office.gov.mm/",
+"President"
+]
+],
+null
+],
+"khm": [
+"Royal Government of Cambodia",
+"Phnom Penh",
+"KH",
+[
+[
+"https://www.cambodia.gov.kh/",
+"cambodia.gov.kh"
+],
+[
+"http://pressocm.gov.kh/",
+"Press OCM"
+]
+],
+null
+],
+"col": [
+"Gobierno de Colombia",
+"Bogota",
+"CO",
+[
+[
+"https://www.presidencia.gov.co/",
+"Presidencia"
+]
+],
+null
+],
+"ven": [
+"Gobierno de Venezuela",
+"Caracas",
+"VE",
+[
+[
+"http://www.gobiernoenlinea.ve/",
+"Gobierno en Linea"
+],
+[
+"http://www.mppre.gob.ve/",
+"MPPRE"
+]
+],
+null
+],
+"ecu": [
+"Gobierno de Ecuador",
+"Quito",
+"EC",
+[
+[
+"https://www.gob.ec/",
+"gob.ec"
+],
+[
+"https://www.asambleanacional.gob.ec/",
+"Asamblea Nacional"
+]
+],
+null
+],
+"bol": [
+"Gobierno de Bolivia",
+"La Paz",
+"BO",
+[
+[
+"https://www.gob.bo/",
+"gob.bo"
+],
+[
+"https://www.senado.bo/",
+"Senado"
+]
+],
+null
+],
+"pry": [
+"Gobierno de Paraguay",
+"Asuncion",
+"PY",
+[
+[
+"https://www.presidencia.gov.py/",
+"Presidencia"
+],
+[
+"https://www.bacn.gov.py/",
+"Legislative archive"
+]
+],
+null
+],
+"ury": [
+"Gobierno del Uruguay",
+"Montevideo",
+"UY",
+[
+[
+"https://www.gub.uy/",
+"gub.uy"
+],
+[
+"https://www.impo.com.uy/",
+"IMPO legal DB"
+]
+],
+null
+],
+"cri": [
+"Gobierno de Costa Rica",
+"San Jose",
+"CR",
+[
+[
+"https://www.presidencia.go.cr/",
+"Presidencia"
+],
+[
+"http://www.pgrweb.go.cr/",
+"Legal system"
+]
+],
+null
+],
+"pan": [
+"Gobierno de Panama",
+"Panama City",
+"PA",
+[
+[
+"https://www.presidencia.gob.pa/",
+"Presidencia"
+],
+[
+"https://www.organojudicial.gob.pa/",
+"Judicial"
+]
+],
+null
+],
+"gtm": [
+"Gobierno de Guatemala",
+"Guatemala City",
+"GT",
+[
+[
+"https://www.guatemala.gob.gt/",
+"guatemala.gob.gt"
+],
+[
+"https://www.congreso.gob.gt/",
+"Congreso"
+]
+],
+null
+],
+"cub": [
+"Gobierno de Cuba",
+"Havana",
+"CU",
+[
+[
+"https://www.gob.cu/",
+"gob.cu"
+],
+[
+"https://www.presidencia.gob.cu/",
+"Presidencia"
+]
+],
+null
+],
+"dom": [
+"Gobierno de Republica Dominicana",
+"Santo Domingo",
+"DO",
+[
+[
+"https://www.presidencia.gob.do/",
+"Presidencia"
+],
+[
+"https://transparencia.gob.do/",
+"Transparency portal"
+]
+],
+null
+],
+"jam": [
+"Government of Jamaica",
+"Kingston",
+"JM",
+[
+[
+"https://opm.gov.jm/",
+"Office of PM"
+],
+[
+"https://japarliament.gov.jm/",
+"Parliament"
+]
+],
+null
+],
+"tto": [
+"Government of Trinidad and Tobago",
+"Port of Spain",
+"TT",
+[
+[
+"https://www.opm.gov.tt/",
+"Office of PM"
+],
+[
+"https://www.ttparliament.org/",
+"Parliament"
+]
+],
+null
+],
+"eth": [
+"Federal Democratic Republic of Ethiopia",
+"Addis Ababa",
+"ET",
+[
+[
+"https://www.pmo.gov.et/",
+"Office of PM"
+],
+[
+"https://www.fdrelaws.gov.et/",
+"Legal DB"
+]
+],
+null
+],
+"tza": [
+"United Republic of Tanzania",
+"Dodoma",
+"TZ",
+[
+[
+"https://www.tanzania.go.tz/",
+"tanzania.go.tz"
+],
+[
+"https://www.parliament.go.tz/",
+"Parliament"
+]
+],
+null
+],
+"uga": [
+"Government of Uganda",
+"Kampala",
+"UG",
+[
+[
+"https://www.gou.go.ug/",
+"gou.go.ug"
+],
+[
+"https://www.parliament.go.ug/",
+"Parliament"
+]
+],
+null
+],
+"rwa": [
+"Government of the Republic of Rwanda",
+"Kigali",
+"RW",
+[
+[
+"https://www.gov.rw/",
+"gov.rw"
+],
+[
+"https://www.minijust.gov.rw/",
+"Ministry of Justice"
+]
+],
+null
+],
+"sen": [
+"Gouvernement du Senegal",
+"Dakar",
+"SN",
+[
+[
+"https://www.sec.gouv.sn/",
+"Secretariat"
+],
+[
+"https://www.gouv.sn/",
+"gouv.sn"
+]
+],
+null
+],
+"civ": [
+"Gouvernement de Cote d'Ivoire",
+"Yamoussoukro",
+"CI",
+[
+[
+"https://www.gouv.ci/",
+"gouv.ci"
+],
+[
+"https://www.presidence.ci/",
+"Presidence"
+]
+],
+null
+],
+"gha": [
+"Government of Ghana",
+"Accra",
+"GH",
+[
+[
+"https://www.ghana.gov.gh/",
+"ghana.gov.gh"
+],
+[
+"https://www.parliament.gh/",
+"Parliament"
+]
+],
+null
+],
+"cmr": [
+"Gouvernement du Cameroun",
+"Yaounde",
+"CM",
+[
+[
+"https://www.spm.gov.cm/",
+"Services du PM"
+],
+[
+"https://www.prc.cm/",
+"Presidence"
+]
+],
+null
+],
+"cod": [
+"Gouvernement de la RDC",
+"Kinshasa",
+"CD",
+[
+[
+"https://www.primature.cd/",
+"Primature"
+],
+[
+"https://www.presidence.cd/",
+"Presidence"
+]
+],
+null
+],
+"ago": [
+"Governo de Angola",
+"Luanda",
+"AO",
+[
+[
+"https://www.governo.gov.ao/",
+"governo.gov.ao"
+],
+[
+"https://www.parlamento.ao/",
+"Parliament"
+]
+],
+null
+],
+"moz": [
+"Governo de Mocambique",
+"Maputo",
+"MZ",
+[
+[
+"https://www.portaldogoverno.gov.mz/",
+"Governo portal"
+],
+[
+"https://www.parlamento.mz/",
+"Parliament"
+]
+],
+null
+],
+"zmb": [
+"Government of Zambia",
+"Lusaka",
+"ZM",
+[
+[
+"https://www.zambia.gov.zm/",
+"zambia.gov.zm"
+],
+[
+"https://www.parliament.gov.zm/",
+"Parliament"
+]
+],
+null
+],
+"zwe": [
+"Government of Zimbabwe",
+"Harare",
+"ZW",
+[
+[
+"http://www.zim.gov.zw/",
+"zim.gov.zw"
+],
+[
+"http://www.parlzim.gov.zw/",
+"Parliament"
+]
+],
+null
+],
+"mdg": [
+"Gouvernement de Madagascar",
+"Antananarivo",
+"MG",
+[
+[
+"https://www.presidence.gov.mg/",
+"Presidence"
+],
+[
+"https://www.primature.gov.mg/",
+"Primature"
+]
+],
+null
+],
+"tun": [
+"Gouvernement de Tunisie",
+"Tunis",
+"TN",
+[
+[
+"https://www.finances.gov.tn/",
+"Ministry of Finance"
+],
+[
+"https://www.legislation.tn/",
+"Legal DB"
+]
+],
+null
+],
+"dza": [
+"Gouvernement d'Algerie",
+"Algiers",
+"DZ",
+[
+[
+"https://www.premier-ministre.gov.dz/",
+"Premier Ministre"
+],
+[
+"https://www.joradp.dz/",
+"Official Journal"
+]
+],
+null
+]
+}

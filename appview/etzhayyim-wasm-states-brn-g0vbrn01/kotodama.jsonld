@@ -1,0 +1,144 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:brn-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Brunei Darussalam AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-brn",
+  "nanoid": "g0vbrn01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "BN",
+    "banner": "#F7D117",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "district-coverage"
+    ],
+    "category": "government",
+    "country": "brn",
+    "contract": "Constitution of Brunei Darussalam 1959 (amended)",
+    "description": "Brunei Darussalam Government — path-based DID registry for ministries and districts.",
+    "displayName": "Negara Brunei Darussalam",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 2,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/brn/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Bandar Seri Begawan",
+        "addressLocality": "Bandar Seri Begawan",
+        "country": "BN"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.pmo.gov.bn/",
+        "label": "Nation of Brunei — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Nation of Brunei — citizen inquiry",
+        "uri": "https://www.pmo.gov.bn/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "brn.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Nation of Brunei — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "brn.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Nation of Brunei — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "brn.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Nation of Brunei — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "brn.municipal-government-act",
+        "title": "Municipal Government Act",
+        "titleLocal": "Municipal Government Act",
+        "basis": "General Administrative Law",
+        "uri": ""
+      },
+      {
+        "id": "brn.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Nation of Brunei",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Nation of Brunei — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "brn-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Brunei Darussalam government activity feed",
+        "kind": "public",
+        "name": "gov-brn-feed"
+      }
+    ],
+    "description": "Government of Brunei Darussalam — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Negara Brunei Darussalam"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

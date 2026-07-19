@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_rus_law_enforcement_federal"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_rus_law_enforcement_federal">
+    <bpmn:participant id="Pool_rus_law_enforcement_federal" name="Law Enforcement Federal (security)" processRef="Process_rus_law_enforcement_federal" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_rus_law_enforcement_federal" name="Law Enforcement Federal — Public Order & Safety" isExecutable="true">
+    <bpmn:startEvent id="Start_rus_law_enforcement_federal" name="Incident
+reported"><bpmn:outgoing>F_rus_law_enforcement_federal_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:serviceTask id="T_rus_law_enforcement_federal_triage" name="Triage Incident
+(severity classification)">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.rus.law-enforcement-federal.triage" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="response_time_minutes" />
+          <zeebe:header key="cofog" value="03" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_rus_law_enforcement_federal_01</bpmn:incoming>
+      <bpmn:outgoing>F_rus_law_enforcement_federal_02</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="GW_rus_law_enforcement_federal_sev" name="Severity?" isMarkerVisible="true">
+      <bpmn:incoming>F_rus_law_enforcement_federal_02</bpmn:incoming>
+      <bpmn:outgoing>F_rus_law_enforcement_federal_03a</bpmn:outgoing>
+      <bpmn:outgoing>F_rus_law_enforcement_federal_03b</bpmn:outgoing>
+      <bpmn:outgoing>F_rus_law_enforcement_federal_03c</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_rus_law_enforcement_federal_emergency" name="Deploy Emergency
+Response">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.rus.law-enforcement-federal.emergency_response" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="emergency" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_rus_law_enforcement_federal_03a</bpmn:incoming>
+      <bpmn:outgoing>F_rus_law_enforcement_federal_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_rus_law_enforcement_federal_investigate" name="Open Investigation
+& Assign Officers">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.rus.law-enforcement-federal.investigate" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="investigate" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_rus_law_enforcement_federal_03b</bpmn:incoming>
+      <bpmn:outgoing>F_rus_law_enforcement_federal_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_rus_law_enforcement_federal_log" name="Log Report
+& Close">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.rus.law-enforcement-federal.log_close" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="log" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_rus_law_enforcement_federal_03c</bpmn:incoming>
+      <bpmn:outgoing>F_rus_law_enforcement_federal_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_rus_law_enforcement_federal_report" name="File Incident
+Report">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.rus.law-enforcement-federal.file_report" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_rus_law_enforcement_federal_06</bpmn:incoming>
+      <bpmn:outgoing>F_rus_law_enforcement_federal_07</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_rus_law_enforcement_federal" name="Incident resolved">
+      <bpmn:incoming>F_rus_law_enforcement_federal_07</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_rus_law_enforcement_federal_01" sourceRef="Start_rus_law_enforcement_federal" targetRef="T_rus_law_enforcement_federal_triage">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_rus_law_enforcement_federal_02" sourceRef="T_rus_law_enforcement_federal_triage" targetRef="GW_rus_law_enforcement_federal_sev">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_rus_law_enforcement_federal_03a" sourceRef="GW_rus_law_enforcement_federal_sev" targetRef="T_rus_law_enforcement_federal_emergency" name="Critical">
+      <bpmn:conditionExpression>=severity = 'critical'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_rus_law_enforcement_federal_03b" sourceRef="GW_rus_law_enforcement_federal_sev" targetRef="T_rus_law_enforcement_federal_investigate" name="Standard">
+      <bpmn:conditionExpression>=severity = 'standard'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_rus_law_enforcement_federal_03c" sourceRef="GW_rus_law_enforcement_federal_sev" targetRef="T_rus_law_enforcement_federal_log" name="Minor">
+      <bpmn:conditionExpression>=severity = 'minor'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_rus_law_enforcement_federal_06" sourceRef="T_rus_law_enforcement_federal_emergency" targetRef="T_rus_law_enforcement_federal_report">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_rus_law_enforcement_federal_06b" sourceRef="T_rus_law_enforcement_federal_investigate" targetRef="T_rus_law_enforcement_federal_report">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_rus_law_enforcement_federal_06c" sourceRef="T_rus_law_enforcement_federal_log" targetRef="T_rus_law_enforcement_federal_report">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_rus_law_enforcement_federal_07" sourceRef="T_rus_law_enforcement_federal_report" targetRef="End_rus_law_enforcement_federal">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_rus_law_enforcement_federal">
+    <bpmndi:BPMNPlane id="BPMNPlane_rus_law_enforcement_federal" bpmnElement="Collaboration_rus_law_enforcement_federal" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

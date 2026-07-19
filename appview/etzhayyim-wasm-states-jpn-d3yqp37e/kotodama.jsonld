@@ -1,0 +1,241 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:jpn-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Japan AI Agent. You represent all Japanese government organizations — 15 central ministries (省), bureaus (局), divisions (課), 47 prefectures, and 1,680 municipalities — as path-based DIDs. Respond in Japanese or English as appropriate. Data sourced from site.etzhayyim.com government topic.",
+  "duties": [
+    "勤労の義務",
+    "行政情報の公開義務"
+  ],
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "行政機関情報公開法",
+      "地方自治法"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID 登録数",
+    "site.etzhayyim.com government topic follow 数",
+    "delta ingestion 更新検出数"
+  ],
+  "name": "gov-jpn",
+  "nanoid": "d3yqp37e",
+  "performerType": "service",
+  "profile": {
+    "avatar": "JP",
+    "banner": "#c0001a",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "prefecture-coverage",
+      "municipality-coverage"
+    ],
+    "category": "government",
+    "country": "jpn",
+    "contract": "内閣法・国家行政組織法・地方自治法",
+    "description": "Japanese Government — MOJ-depth path-based DID registry for all ministries, bureaus, prefectures and municipalities. Data sourced via site.etzhayyim.com government topic.",
+    "displayName": "日本国政府 (Government of Japan)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "内閣官房 / Cabinet Secretariat",
+        "addressLocality": "Chiyoda-ku",
+        "addressRegion": "Tokyo",
+        "postalCode": "100-8914",
+        "streetAddress": "2-1-2 Nagata-cho",
+        "country": "JP",
+        "latlng": "35.6739,139.7475"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.japan.go.jp/"
+      },
+      {
+        "kind": "website",
+        "uri": "https://www.kantei.go.jp/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.e-gov.go.jp/",
+        "label": "e-Gov"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://elaws.e-gov.go.jp/",
+        "label": "e-Gov law search"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "foi",
+        "label": "行政機関情報公開",
+        "uri": "https://www.soumu.go.jp/main_sosiki/gyoukan/kanri/law_index.html",
+        "basis": "行政機関情報公開法"
+      },
+      {
+        "kind": "mynumber",
+        "label": "マイナンバー総合ダイヤル",
+        "tel": "+81-120-95-0178"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "jpn.cao",
+        "title": "Cabinet Office",
+        "titleLocal": "内閣府",
+        "authority": "内閣府",
+        "basis": "内閣府設置法",
+        "portalUri": "https://www.cao.go.jp/",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/jpn/bpmn/cao.bpmn"
+      },
+      {
+        "id": "jpn.cao-digital",
+        "title": "Digital Agency",
+        "titleLocal": "デジタル庁",
+        "authority": "デジタル庁",
+        "basis": "デジタル庁設置法",
+        "portalUri": "https://www.digital.go.jp/",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/jpn/bpmn/cao-digital.bpmn"
+      },
+      {
+        "id": "jpn.cao-ai-strategy-council",
+        "title": "AI Strategy Council",
+        "titleLocal": "AI戦略会議",
+        "authority": "AI戦略会議",
+        "basis": "内閣府設置法",
+        "portalUri": "https://www.cao.go.jp/",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/jpn/bpmn/cao-ai-strategy-council.bpmn"
+      },
+      {
+        "id": "jpn.cao-cybersecurity-strategy-hq",
+        "title": "Cybersecurity Strategy Headquarters",
+        "titleLocal": "サイバーセキュリティ戦略本部",
+        "authority": "サイバーセキュリティ戦略本部",
+        "basis": "サイバーセキュリティ基本法",
+        "portalUri": "https://www.nisc.go.jp/",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/jpn/bpmn/cao-cybersecurity-strategy-hq.bpmn"
+      },
+      {
+        "id": "jpn.cao-aisi",
+        "title": "AI Safety Institute",
+        "titleLocal": "AI安全研究所",
+        "authority": "AI安全研究所",
+        "basis": "内閣府設置法",
+        "portalUri": "https://aisi.go.jp/",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/jpn/bpmn/cao-aisi.bpmn"
+      },
+      {
+        "id": "jpn.cao-digital-next-mynumber-card-taskforce",
+        "title": "Next-Gen My Number Card Task Force",
+        "titleLocal": "次世代マイナンバーカードタスクフォース",
+        "authority": "次世代マイナンバーカードタスクフォース",
+        "basis": "デジタル庁設置法",
+        "portalUri": "https://www.digital.go.jp/",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/jpn/bpmn/cao-digital-next-mynumber-card-taskforce.bpmn"
+      },
+      {
+        "id": "openJpnGov.resolveMinistry",
+        "title": "省庁 DID 解決",
+        "bpmn": "etzhayyim-root/60-apps/etzhayyim-project-open-jpn-gov/bpmn/resolve-ministry.bpmn",
+        "form": "60-apps/etzhayyim-project-open-jpn-gov/forms/resolveMinistry.form.json",
+        "xrpcRef": "com.etzhayyim.apps.openJpnGov.getMinistry"
+      },
+      {
+        "id": "openJpnGov.searchLaw",
+        "title": "法令検索 (e-Gov 法令API v2 proxy)",
+        "bpmn": "etzhayyim-root/60-apps/etzhayyim-project-open-jpn-gov/bpmn/search-law.bpmn",
+        "form": "60-apps/etzhayyim-project-open-jpn-gov/forms/searchLaw.form.json",
+        "xrpcRef": "com.etzhayyim.apps.openJpnGov.searchLaws"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "jpn.local-autonomy-act",
+        "title": "Local Autonomy Act",
+        "titleLocal": "地方自治法",
+        "basis": "Act No. 67 of 1947",
+        "uri": "https://elaws.e-gov.go.jp/document?lawid=322AC0000000067"
+      },
+      {
+        "id": "foi.request.jpn.v1",
+        "title": "行政文書開示請求書 雛形",
+        "basis": "行政機関情報公開法 第4条",
+        "authority": "各行政機関",
+        "uri": "https://www8.cao.go.jp/koubun/pdf/seikyu.pdf"
+      },
+      {
+        "id": "notary.seal.jpn.v1",
+        "title": "印鑑登録申請書 雛形",
+        "basis": "印鑑登録証明事務処理要領",
+        "authority": "市区町村"
+      },
+      {
+        "id": "residence.move.jpn.v1",
+        "title": "転入届 雛形",
+        "basis": "住民基本台帳法 第22条",
+        "authority": "市区町村"
+      }
+    ],
+    "ministryCount": 23,
+    "contractCount": 1,
+    "bpmnCount": 141,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/jpn/",
+    "complianceFrameworks": [
+      "日本国憲法 (Constitution of Japan, 1947)",
+      "行政機関情報公開法 (1999)",
+      "地方自治法 (1947)"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "jpn-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Japanese government organization activity — ministry updates, prefectural announcements, policy changes",
+        "kind": "public",
+        "name": "gov-jpn-feed"
+      }
+    ],
+    "description": "Government of Japan — AI Agent registry for 1,700+ government organization DIDs. Path-based DID resolution for ministries, prefectures, municipalities.",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "日本国政府"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain",
+        "com.etzhayyim.apps.sashiosae.choushuuCase",
+        "com.etzhayyim.apps.sashiosae.sashiosaeNotice",
+        "com.etzhayyim.apps.sashiosae.sashiosaeRelease",
+        "com.etzhayyim.apps.sashiosae.kankaResult"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

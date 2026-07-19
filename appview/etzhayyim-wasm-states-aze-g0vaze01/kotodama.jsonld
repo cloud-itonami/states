@@ -1,0 +1,137 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:aze-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Republic of Azerbaijan AI Agent. You represent government organizations as path-based DIDs. Respond professionally.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": []
+  },
+  "kpi": [
+    "GovOrg DID registration count"
+  ],
+  "name": "gov-aze",
+  "nanoid": "g0vaze01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "AZ",
+    "banner": "#888888",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution"
+    ],
+    "category": "government",
+    "country": "aze",
+    "contract": "Constitutional / basic law",
+    "description": "Republic of Azerbaijan — path-based DID registry (minimal stub; expand for ministries).",
+    "displayName": "Republic of Azerbaijan",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 2,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/aze/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Baku",
+        "addressLocality": "Baku",
+        "country": "AZ"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://president.az/",
+        "label": "Republic of Azerbaijan — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Republic of Azerbaijan — citizen inquiry",
+        "uri": "https://president.az/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "aze.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Republic of Azerbaijan — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "aze.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Republic of Azerbaijan — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "aze.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Republic of Azerbaijan — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "aze.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Republic of Azerbaijan",
+        "basis": "Access-to-information statute"
+      },
+      {
+        "id": "aze.qbh-aze",
+        "title": "Law on Municipalities",
+        "titleLocal": "Qanun bələdiyyələr haqqında",
+        "basis": "31.07.1999-cu il 697-IQ",
+        "uri": "https://www.e-qanun.az/"
+      }
+    ],
+    "complianceFrameworks": [
+      "Republic of Azerbaijan — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "aze-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Republic of Azerbaijan activity feed",
+        "kind": "public",
+        "name": "gov-aze-feed"
+      }
+    ],
+    "description": "Republic of Azerbaijan — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Republic of Azerbaijan"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

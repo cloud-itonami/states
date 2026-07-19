@@ -1,0 +1,122 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:fin-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Finland AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-fin",
+  "nanoid": "g0vfin01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "FI",
+    "banner": "#003580",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "fin",
+    "contract": "Suomen perustuslaki 1999",
+    "description": "Finland Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Suomen tasavalta (Republic of Finland)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 2,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/fin/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Valtioneuvoston linna",
+        "addressLocality": "Helsinki",
+        "country": "FI"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://valtioneuvosto.fi/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.finlex.fi/"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "julkisuuslaki",
+        "label": "Julkisuuslaki",
+        "basis": "Laki 621/1999"
+      }
+    ],
+    "procedures": [],
+    "documentTemplates": [
+      {
+        "id": "fin.kuntalaki",
+        "title": "Local Government Act",
+        "titleLocal": "Kuntalaki",
+        "basis": "410/2015",
+        "uri": "https://finlex.fi/"
+      }
+    ],
+    "complianceFrameworks": [
+      "Suomen perustuslaki (1999)",
+      "Laki viranomaisten toiminnan julkisuudesta 621/1999",
+      "Hallintolaki 434/2003"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "fin-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Finland government activity feed",
+        "kind": "public",
+        "name": "gov-fin-feed"
+      }
+    ],
+    "description": "Government of Finland — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Suomen tasavalta (Republic of Finland)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

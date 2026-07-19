@@ -1,0 +1,183 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:bra-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Brazil AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-bra",
+  "nanoid": "g0vbra01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "BR",
+    "banner": "#009C3B",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "bra",
+    "contract": "Constituição Federal de 1988",
+    "description": "Brazil Government — path-based DID registry for ministries and subnational units.",
+    "displayName": "República Federativa do Brasil (Federative Republic of Brazil)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 3,
+    "contractCount": 1,
+    "bpmnCount": 110,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/bra/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Palacio do Planalto",
+        "addressLocality": "Brasilia",
+        "addressRegion": "DF",
+        "postalCode": "70150-900",
+        "country": "BR"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.gov.br/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.planalto.gov.br/ccivil_03/leis/"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "lai",
+        "label": "LAI",
+        "uri": "https://www.gov.br/acessoainformacao/",
+        "basis": "Lei 12.527/2011"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "bra.defense-ministerio-da-defesa",
+        "title": "Defense Ministerio Da Defesa",
+        "titleLocal": "Defense Ministerio Da Defesa",
+        "authority": "Defense Ministerio Da Defesa",
+        "basis": "Defence Act",
+        "portalUri": "https://www.gov.br/defesa/",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/bra/bpmn/defense-ministerio-da-defesa.bpmn"
+      },
+      {
+        "id": "bra.justice-ministerio-justica",
+        "title": "Justice Ministerio Justica",
+        "titleLocal": "Justice Ministerio Justica",
+        "authority": "Justice Ministerio Justica",
+        "basis": "Public Order and Safety Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/bra/bpmn/justice-ministerio-justica.bpmn"
+      },
+      {
+        "id": "bra.executive-palacio-planalto",
+        "title": "Executive Palacio Planalto",
+        "titleLocal": "Executive Palacio Planalto",
+        "authority": "Executive Palacio Planalto",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/bra/bpmn/executive-palacio-planalto.bpmn"
+      },
+      {
+        "id": "bra.lai",
+        "title": "Pedido de Acesso a Informacao",
+        "basis": "Lei 12.527/2011",
+        "portalUri": "https://falabr.cgu.gov.br/"
+      },
+      {
+        "id": "bra.passaporte",
+        "title": "Passaporte brasileiro",
+        "authority": "Policia Federal",
+        "portalUri": "https://www.gov.br/pf/pt-br/assuntos/passaporte"
+      },
+      {
+        "id": "bra.cpf",
+        "title": "CPF - Cadastro de Pessoas Fisicas",
+        "authority": "Receita Federal",
+        "portalUri": "https://www.gov.br/receitafederal/pt-br/servicos/cadastro/cpf"
+      },
+      {
+        "id": "bra.irpf",
+        "title": "Declaracao do Imposto de Renda",
+        "authority": "Receita Federal",
+        "portalUri": "https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "bra.constituicao-federal-art-29",
+        "title": "Constituição Federal Arts. 29-31",
+        "titleLocal": "Constituição Federal Art.29-31",
+        "basis": "CF/1988 Art. 29",
+        "uri": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+      },
+      {
+        "id": "bra.dirpf.v1",
+        "title": "Declaracao IRPF",
+        "authority": "RFB",
+        "uri": "https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda"
+      }
+    ],
+    "complianceFrameworks": [
+      "Constituição da República Federativa do Brasil (1988)",
+      "Lei 12.527/2011 (LAI)",
+      "Lei 9.784/1999 (Processo administrativo)"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "bra-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Brazil government activity feed",
+        "kind": "public",
+        "name": "gov-bra-feed"
+      }
+    ],
+    "description": "Government of Brazil — AI Agent DID registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "República Federativa do Brasil (Federative Republic of Brazil)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

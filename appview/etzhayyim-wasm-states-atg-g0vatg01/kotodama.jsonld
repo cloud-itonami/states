@@ -1,0 +1,128 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:atg-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Antigua and Barbuda AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-atg",
+  "nanoid": "g0vatg01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "AG",
+    "banner": "#CE1126",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "island-coverage"
+    ],
+    "category": "government",
+    "country": "atg",
+    "contract": "Constitution of Antigua and Barbuda 1981",
+    "description": "Antigua and Barbuda Government — path-based DID registry for ministries and subnational units.",
+    "displayName": "Antigua and Barbuda",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 0,
+    "bpmnCount": 0,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/atg/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Saint John's",
+        "addressLocality": "Saint John's",
+        "country": "AG"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://ab.gov.ag/",
+        "label": "Antigua and Barbuda — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Antigua and Barbuda — citizen inquiry",
+        "uri": "https://ab.gov.ag/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "ant.access_info",
+        "title": "Access to Public Information",
+        "authority": "Antigua and Barbuda"
+      },
+      {
+        "id": "ant.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Antigua and Barbuda — passport authority"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "ag.access_info.v1",
+        "title": "Access to public information request — template",
+        "authority": "Antigua and Barbuda"
+      }
+    ],
+    "complianceFrameworks": [
+      "Antigua and Barbuda — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "atg-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Antigua and Barbuda government activity feed",
+        "kind": "public",
+        "name": "gov-atg-feed"
+      }
+    ],
+    "description": "Government of Antigua and Barbuda — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Antigua and Barbuda"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

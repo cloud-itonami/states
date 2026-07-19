@@ -1,0 +1,158 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:rou-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Romania AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-rou",
+  "nanoid": "g0vrou01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "RO",
+    "banner": "#002b7f",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "rou",
+    "contract": "Constituția României 1991",
+    "description": "Romania Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "România (Romania)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 1,
+    "contractCount": 1,
+    "bpmnCount": 73,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/rou/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Bucharest",
+        "addressLocality": "Bucharest",
+        "country": "RO"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://gov.ro/",
+        "label": "gov.ro"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.cdep.ro/",
+        "label": "Chamber of Deputies"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Government of Romania — citizen inquiry",
+        "uri": "https://gov.ro/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "rou.executive",
+        "title": "Executive",
+        "titleLocal": "Executive",
+        "authority": "Executive",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/rou/bpmn/executive.bpmn"
+      },
+      {
+        "id": "rou.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Government of Romania — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "rou.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Government of Romania — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "rou.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Government of Romania — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "rou.legea-215-2001",
+        "title": "Local Public Administration Law",
+        "titleLocal": "Legea administrației publice locale 215/2001",
+        "basis": "Legea nr. 215/2001",
+        "uri": "https://legislatie.just.ro/"
+      },
+      {
+        "id": "rou.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Government of Romania",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Government of Romania — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "rou-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Romania government activity feed",
+        "kind": "public",
+        "name": "gov-rou-feed"
+      }
+    ],
+    "description": "Government of Romania — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "România (Romania)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

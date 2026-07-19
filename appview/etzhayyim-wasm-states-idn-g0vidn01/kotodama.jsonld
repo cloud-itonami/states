@@ -1,0 +1,126 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:idn-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Indonesia AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English and Indonesian.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-idn",
+  "nanoid": "g0vidn01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "ID",
+    "banner": "#CE1126",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "idn",
+    "contract": "Undang-Undang Dasar Negara Republik Indonesia 1945",
+    "description": "Indonesia Government — path-based DID registry for kementerian and provinsi.",
+    "displayName": "Pemerintah Republik Indonesia (Government of Indonesia)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 32,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/idn/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Istana Merdeka",
+        "addressLocality": "Jakarta",
+        "country": "ID"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.presidenri.go.id/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://peraturan.go.id/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.indonesia.go.id/"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "kip",
+        "label": "KIP",
+        "basis": "UU 14/2008 Keterbukaan Informasi Publik"
+      }
+    ],
+    "procedures": [],
+    "documentTemplates": [
+      {
+        "id": "idn.uu-23-2014",
+        "title": "Local Government Law No.23/2014",
+        "titleLocal": "UU No.23 Tahun 2014",
+        "basis": "Undang-Undang Nomor 23 Tahun 2014",
+        "uri": "https://jdih.kemenkeu.go.id/"
+      }
+    ],
+    "complianceFrameworks": [
+      "UUD 1945 (Constitution)",
+      "UU 14/2008 Keterbukaan Informasi Publik",
+      "UU 30/2014 Administrasi Pemerintahan"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "idn-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Indonesia government activity feed",
+        "kind": "public",
+        "name": "gov-idn-feed"
+      }
+    ],
+    "description": "Government of Indonesia — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Pemerintah Republik Indonesia (Government of Indonesia)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

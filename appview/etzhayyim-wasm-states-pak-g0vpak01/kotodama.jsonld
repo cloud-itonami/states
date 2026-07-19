@@ -1,0 +1,203 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:pak-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Pakistan AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-pak",
+  "nanoid": "g0vpak01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "PK",
+    "banner": "#01411c",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "pak",
+    "contract": "Constitution of Pakistan 1973",
+    "description": "Pakistan Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "اسلامی جمہوریہ پاکستان (Islamic Republic of Pakistan)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 7,
+    "contractCount": 1,
+    "bpmnCount": 32,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/pak/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Islamabad",
+        "addressLocality": "Islamabad",
+        "country": "PK"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.pakistan.gov.pk/",
+        "label": "pakistan.gov.pk"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://na.gov.pk/",
+        "label": "National Assembly"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Government of Pakistan — citizen inquiry",
+        "uri": "https://www.pakistan.gov.pk/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "pak.defense-ministry-of-defence",
+        "title": "Defense Ministry Of Defence",
+        "titleLocal": "Defense Ministry Of Defence",
+        "authority": "Defense Ministry Of Defence",
+        "basis": "Defence Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/pak/bpmn/defense-ministry-of-defence.bpmn"
+      },
+      {
+        "id": "pak.finance-ministry-of-finance",
+        "title": "Finance Ministry Of Finance",
+        "titleLocal": "Finance Ministry Of Finance",
+        "authority": "Finance Ministry Of Finance",
+        "basis": "Economic Affairs Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/pak/bpmn/finance-ministry-of-finance.bpmn"
+      },
+      {
+        "id": "pak.foreign-ministry-of-foreign-affairs",
+        "title": "Foreign Ministry Of Foreign Affairs",
+        "titleLocal": "Foreign Ministry Of Foreign Affairs",
+        "authority": "Foreign Ministry Of Foreign Affairs",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/pak/bpmn/foreign-ministry-of-foreign-affairs.bpmn"
+      },
+      {
+        "id": "pak.interior-ministry-of-interior",
+        "title": "Interior Ministry Of Interior",
+        "titleLocal": "Interior Ministry Of Interior",
+        "authority": "Interior Ministry Of Interior",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/pak/bpmn/interior-ministry-of-interior.bpmn"
+      },
+      {
+        "id": "pak.justice-ministry-of-law-justice",
+        "title": "Justice Ministry Of Law Justice",
+        "titleLocal": "Justice Ministry Of Law Justice",
+        "authority": "Justice Ministry Of Law Justice",
+        "basis": "Public Order and Safety Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/pak/bpmn/justice-ministry-of-law-justice.bpmn"
+      },
+      {
+        "id": "pak.executive-prime-ministers-office",
+        "title": "Executive Prime Ministers Office",
+        "titleLocal": "Executive Prime Ministers Office",
+        "authority": "Executive Prime Ministers Office",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/pak/bpmn/executive-prime-ministers-office.bpmn"
+      },
+      {
+        "id": "pak.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Government of Pakistan — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "pak.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Government of Pakistan — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "pak.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Government of Pakistan — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "pak.local-government-act-pak",
+        "title": "Local Government Act per province",
+        "titleLocal": "قانون حکومت مقامی",
+        "basis": "LGA various provincial",
+        "uri": "https://www.na.gov.pk/"
+      },
+      {
+        "id": "pak.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Government of Pakistan",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Government of Pakistan — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "pak-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Pakistan government activity feed",
+        "kind": "public",
+        "name": "gov-pak-feed"
+      }
+    ],
+    "description": "Government of Pakistan — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "اسلامی جمہوریہ پاکستان (Islamic Republic of Pakistan)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

@@ -1,0 +1,137 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:slb-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Solomon Islands AI Agent. You represent government organizations as path-based DIDs. Respond professionally.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": []
+  },
+  "kpi": [
+    "GovOrg DID registration count"
+  ],
+  "name": "gov-slb",
+  "nanoid": "g0vslb01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "SL",
+    "banner": "#888888",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution"
+    ],
+    "category": "government",
+    "country": "slb",
+    "contract": "Constitutional / basic law",
+    "description": "Solomon Islands — path-based DID registry (minimal stub; expand for ministries).",
+    "displayName": "Solomon Islands",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 2,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/slb/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Honiara",
+        "addressLocality": "Honiara",
+        "country": "SB"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://solomons.gov.sb/",
+        "label": "Solomon Islands — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Solomon Islands — citizen inquiry",
+        "uri": "https://solomons.gov.sb/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "slb.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Solomon Islands — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "slb.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Solomon Islands — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "slb.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Solomon Islands — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "slb.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Solomon Islands",
+        "basis": "Access-to-information statute"
+      },
+      {
+        "id": "slb.municipal-government-act",
+        "title": "Municipal Government Act",
+        "titleLocal": "Municipal Government Act",
+        "basis": "General Administrative Law",
+        "uri": ""
+      }
+    ],
+    "complianceFrameworks": [
+      "Solomon Islands — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "slb-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Solomon Islands activity feed",
+        "kind": "public",
+        "name": "gov-slb-feed"
+      }
+    ],
+    "description": "Solomon Islands — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Solomon Islands"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

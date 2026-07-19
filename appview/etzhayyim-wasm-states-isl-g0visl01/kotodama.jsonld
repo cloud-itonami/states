@@ -1,0 +1,144 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:isl-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Iceland AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-isl",
+  "nanoid": "g0visl01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "IS",
+    "banner": "#000000",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "isl",
+    "contract": "Constitution of Iceland 1944",
+    "description": "Iceland Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Ísland (Iceland)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 2,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/isl/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Reykjavik",
+        "addressLocality": "Reykjavik",
+        "country": "IS"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.government.is/",
+        "label": "Republic of Iceland — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Republic of Iceland — citizen inquiry",
+        "uri": "https://www.government.is/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "isl.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Republic of Iceland — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "isl.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Republic of Iceland — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "isl.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Republic of Iceland — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "isl.sveitarstjornarlog",
+        "title": "Local Government Act 138/2011",
+        "titleLocal": "Sveitarstjórnarlög nr. 138/2011",
+        "basis": "Nr. 138/2011",
+        "uri": "https://www.althingi.is/"
+      },
+      {
+        "id": "isl.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Republic of Iceland",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Republic of Iceland — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "isl-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Iceland government activity feed",
+        "kind": "public",
+        "name": "gov-isl-feed"
+      }
+    ],
+    "description": "Government of Iceland — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Ísland (Iceland)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

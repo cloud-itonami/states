@@ -1,0 +1,144 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:kgz-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Kyrgyzstan AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution 2021"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-kgz",
+  "nanoid": "g0vkgz01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "KGZ",
+    "banner": "#000000",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "kgz",
+    "contract": "Constitution 2021",
+    "description": "Kyrgyzstan Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Кыргыз Республикасы (Kyrgyz Republic)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 2,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/kgz/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Bishkek",
+        "addressLocality": "Bishkek",
+        "country": "KG"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.president.kg/",
+        "label": "Kyrgyz Republic — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Kyrgyz Republic — citizen inquiry",
+        "uri": "https://www.president.kg/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "kgz.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Kyrgyz Republic — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "kgz.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Kyrgyz Republic — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "kgz.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Kyrgyz Republic — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "kgz.lmsg-2011-kgz",
+        "title": "Law on Local Self-Government",
+        "titleLocal": "Закон о местном самоуправлении 2011",
+        "basis": "Закон от 15.07.2011 No.101",
+        "uri": "https://cbd.minjust.gov.kg/"
+      },
+      {
+        "id": "kgz.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Kyrgyz Republic",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Kyrgyz Republic — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "kgz-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Kyrgyzstan government activity feed",
+        "kind": "public",
+        "name": "gov-kgz-feed"
+      }
+    ],
+    "description": "Government of Kyrgyzstan — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Кыргыз Республикасы (Kyrgyz Republic)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

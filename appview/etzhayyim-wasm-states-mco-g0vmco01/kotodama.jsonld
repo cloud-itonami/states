@@ -1,0 +1,137 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:mco-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Principality of Monaco AI Agent. You represent government organizations as path-based DIDs. Respond professionally.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": []
+  },
+  "kpi": [
+    "GovOrg DID registration count"
+  ],
+  "name": "gov-mco",
+  "nanoid": "g0vmco01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "MC",
+    "banner": "#888888",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution"
+    ],
+    "category": "government",
+    "country": "mco",
+    "contract": "Constitutional / basic law",
+    "description": "Principality of Monaco — path-based DID registry (minimal stub; expand for ministries).",
+    "displayName": "Principality of Monaco",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 2,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/mco/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Monaco",
+        "addressLocality": "Monaco",
+        "country": "MC"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.gouv.mc/",
+        "label": "Principality of Monaco — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Principality of Monaco — citizen inquiry",
+        "uri": "https://www.gouv.mc/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "mco.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Principality of Monaco — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "mco.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Principality of Monaco — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "mco.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Principality of Monaco — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "mco.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Principality of Monaco",
+        "basis": "Access-to-information statute"
+      },
+      {
+        "id": "mco.municipal-government-act",
+        "title": "Municipal Government Act",
+        "titleLocal": "Municipal Government Act",
+        "basis": "General Administrative Law",
+        "uri": ""
+      }
+    ],
+    "complianceFrameworks": [
+      "Principality of Monaco — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "mco-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Principality of Monaco activity feed",
+        "kind": "public",
+        "name": "gov-mco-feed"
+      }
+    ],
+    "description": "Principality of Monaco — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Principality of Monaco"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

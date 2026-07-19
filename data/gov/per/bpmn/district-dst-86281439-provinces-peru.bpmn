@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_per_district_dst_86281439_provinces_peru"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_per_district_dst_86281439_provinces_peru">
+    <bpmn:participant id="Pool_per_district_dst_86281439_provinces_peru" name="Dst 86281439 Provinces Peru (86281439)" processRef="Process_per_district_dst_86281439_provinces_peru" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_per_district_dst_86281439_provinces_peru" name="Dst 86281439 Provinces Peru — General Public Services" isExecutable="true">
+    <bpmn:startEvent id="Start_per_district_dst_86281439_provinces_peru" name="Policy trigger
+received"><bpmn:outgoing>F_per_district_dst_86281439_provinces_peru_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:parallelGateway id="GW_per_district_dst_86281439_provinces_peru_open" name="Parallel checks">
+      <bpmn:incoming>F_per_district_dst_86281439_provinces_peru_01</bpmn:incoming>
+      <bpmn:outgoing>F_per_district_dst_86281439_provinces_peru_02</bpmn:outgoing>
+      <bpmn:outgoing>F_per_district_dst_86281439_provinces_peru_03</bpmn:outgoing>
+      <bpmn:outgoing>F_per_district_dst_86281439_provinces_peru_04</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:serviceTask id="T_per_district_dst_86281439_provinces_peru_policy" name="Draft Policy
+Proposal">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.per.district:dst-86281439-provinces-peru.draft_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="policy_output" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_per_district_dst_86281439_provinces_peru_02</bpmn:incoming>
+      <bpmn:outgoing>F_per_district_dst_86281439_provinces_peru_05</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_per_district_dst_86281439_provinces_peru_budget" name="Allocate Budget
+(COFOG 01)">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.per.district:dst-86281439-provinces-peru.allocate_budget" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="budget_execution_rate" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_per_district_dst_86281439_provinces_peru_03</bpmn:incoming>
+      <bpmn:outgoing>F_per_district_dst_86281439_provinces_peru_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_per_district_dst_86281439_provinces_peru_coord" name="Inter-Agency
+Coordination">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.per.district:dst-86281439-provinces-peru.coordinate" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="coordination_score" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_per_district_dst_86281439_provinces_peru_04</bpmn:incoming>
+      <bpmn:outgoing>F_per_district_dst_86281439_provinces_peru_07</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="GW_per_district_dst_86281439_provinces_peru_join" name="Checks complete">
+      <bpmn:incoming>F_per_district_dst_86281439_provinces_peru_05</bpmn:incoming>
+      <bpmn:incoming>F_per_district_dst_86281439_provinces_peru_06</bpmn:incoming>
+      <bpmn:incoming>F_per_district_dst_86281439_provinces_peru_07</bpmn:incoming>
+      <bpmn:outgoing>F_per_district_dst_86281439_provinces_peru_08</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:userTask id="T_per_district_dst_86281439_provinces_peru_review" name="Minister Review
+& Sign-off">
+      <bpmn:extensionElements>
+        <zeebe:assignmentDefinition assignee="gov-official" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_per_district_dst_86281439_provinces_peru_08</bpmn:incoming>
+      <bpmn:outgoing>F_per_district_dst_86281439_provinces_peru_09</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="GW_per_district_dst_86281439_provinces_peru_risk" name="Approved?" isMarkerVisible="true">
+      <bpmn:incoming>F_per_district_dst_86281439_provinces_peru_09</bpmn:incoming>
+      <bpmn:outgoing>F_per_district_dst_86281439_provinces_peru_10a</bpmn:outgoing>
+      <bpmn:outgoing>F_per_district_dst_86281439_provinces_peru_10b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_per_district_dst_86281439_provinces_peru_publish" name="Publish Policy
+& Notify Citizens">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.per.district:dst-86281439-provinces-peru.publish_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="publish" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_per_district_dst_86281439_provinces_peru_10a</bpmn:incoming>
+      <bpmn:outgoing>F_per_district_dst_86281439_provinces_peru_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_per_district_dst_86281439_provinces_peru_revise" name="Return for
+Revision">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.per.district:dst-86281439-provinces-peru.request_revision" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="revise" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_per_district_dst_86281439_provinces_peru_10b</bpmn:incoming>
+      <bpmn:outgoing>F_per_district_dst_86281439_provinces_peru_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_per_district_dst_86281439_provinces_peru" name="Process complete">
+      <bpmn:incoming>F_per_district_dst_86281439_provinces_peru_11</bpmn:incoming>
+      <bpmn:incoming>F_per_district_dst_86281439_provinces_peru_11b</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_per_district_dst_86281439_provinces_peru_01" sourceRef="Start_per_district_dst_86281439_provinces_peru" targetRef="GW_per_district_dst_86281439_provinces_peru_open">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_per_district_dst_86281439_provinces_peru_02" sourceRef="GW_per_district_dst_86281439_provinces_peru_open" targetRef="T_per_district_dst_86281439_provinces_peru_policy">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_per_district_dst_86281439_provinces_peru_03" sourceRef="GW_per_district_dst_86281439_provinces_peru_open" targetRef="T_per_district_dst_86281439_provinces_peru_budget">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_per_district_dst_86281439_provinces_peru_04" sourceRef="GW_per_district_dst_86281439_provinces_peru_open" targetRef="T_per_district_dst_86281439_provinces_peru_coord">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_per_district_dst_86281439_provinces_peru_05" sourceRef="T_per_district_dst_86281439_provinces_peru_policy" targetRef="GW_per_district_dst_86281439_provinces_peru_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_per_district_dst_86281439_provinces_peru_06" sourceRef="T_per_district_dst_86281439_provinces_peru_budget" targetRef="GW_per_district_dst_86281439_provinces_peru_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_per_district_dst_86281439_provinces_peru_07" sourceRef="T_per_district_dst_86281439_provinces_peru_coord" targetRef="GW_per_district_dst_86281439_provinces_peru_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_per_district_dst_86281439_provinces_peru_08" sourceRef="GW_per_district_dst_86281439_provinces_peru_join" targetRef="T_per_district_dst_86281439_provinces_peru_review">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_per_district_dst_86281439_provinces_peru_09" sourceRef="T_per_district_dst_86281439_provinces_peru_review" targetRef="GW_per_district_dst_86281439_provinces_peru_risk">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_per_district_dst_86281439_provinces_peru_10a" sourceRef="GW_per_district_dst_86281439_provinces_peru_risk" targetRef="T_per_district_dst_86281439_provinces_peru_publish" name="Approved">
+      <bpmn:conditionExpression>=approved = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_per_district_dst_86281439_provinces_peru_10b" sourceRef="GW_per_district_dst_86281439_provinces_peru_risk" targetRef="T_per_district_dst_86281439_provinces_peru_revise" name="Rejected">
+      <bpmn:conditionExpression>=approved = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_per_district_dst_86281439_provinces_peru_11" sourceRef="T_per_district_dst_86281439_provinces_peru_publish" targetRef="End_per_district_dst_86281439_provinces_peru">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_per_district_dst_86281439_provinces_peru_11b" sourceRef="T_per_district_dst_86281439_provinces_peru_revise" targetRef="End_per_district_dst_86281439_provinces_peru">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_per_district_dst_86281439_provinces_peru">
+    <bpmndi:BPMNPlane id="BPMNPlane_per_district_dst_86281439_provinces_peru" bpmnElement="Collaboration_per_district_dst_86281439_provinces_peru" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

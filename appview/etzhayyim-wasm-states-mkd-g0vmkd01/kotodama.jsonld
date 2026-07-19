@@ -1,0 +1,144 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:mkd-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of North Macedonia AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-mkd",
+  "nanoid": "g0vmkd01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "MK",
+    "banner": "#000000",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "mkd",
+    "contract": "Constitution of North Macedonia 1991 (Ohrid Framework 2001)",
+    "description": "North Macedonia Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Северна Македонија (North Macedonia)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 3,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/mkd/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Skopje",
+        "addressLocality": "Skopje",
+        "country": "MK"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://vlada.mk/",
+        "label": "Republic of North Macedonia — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Republic of North Macedonia — citizen inquiry",
+        "uri": "https://vlada.mk/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "mkd.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Republic of North Macedonia — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "mkd.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Republic of North Macedonia — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "mkd.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Republic of North Macedonia — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "mkd.lls-mkd",
+        "title": "Law on Local Self-Government",
+        "titleLocal": "Законот за локалната самоуправа",
+        "basis": "Сл. весник бр. 5/2002",
+        "uri": "https://www.slvesnik.com.mk/"
+      },
+      {
+        "id": "mkd.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Republic of North Macedonia",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Republic of North Macedonia — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "mkd-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "North Macedonia government activity feed",
+        "kind": "public",
+        "name": "gov-mkd-feed"
+      }
+    ],
+    "description": "Government of North Macedonia — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Северна Македонија (North Macedonia)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

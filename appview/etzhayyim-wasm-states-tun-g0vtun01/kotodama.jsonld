@@ -1,0 +1,142 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:tun-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Gouvernement de Tunisie AI Agent. You represent government organizations as path-based DIDs. Respond professionally.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": []
+  },
+  "kpi": [
+    "GovOrg DID registration count"
+  ],
+  "name": "gov-tun",
+  "nanoid": "g0vtun01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "TU",
+    "banner": "#888888",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution"
+    ],
+    "category": "government",
+    "country": "tun",
+    "contract": "Constitutional / basic law",
+    "description": "Gouvernement de Tunisie — path-based DID registry (minimal stub; expand for ministries).",
+    "displayName": "Gouvernement de Tunisie",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 3,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/tun/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Tunis",
+        "addressLocality": "Tunis",
+        "country": "TN"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.finances.gov.tn/",
+        "label": "Ministry of Finance"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.legislation.tn/",
+        "label": "Legal DB"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Gouvernement de Tunisie — citizen inquiry",
+        "uri": "https://www.finances.gov.tn/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "tun.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Gouvernement de Tunisie — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "tun.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Gouvernement de Tunisie — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "tun.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Gouvernement de Tunisie — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "tun.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Gouvernement de Tunisie",
+        "basis": "Access-to-information statute"
+      },
+      {
+        "id": "tun.municipal-government-act",
+        "title": "Municipal Government Act",
+        "titleLocal": "Municipal Government Act",
+        "basis": "General Administrative Law",
+        "uri": ""
+      }
+    ],
+    "complianceFrameworks": [
+      "Gouvernement de Tunisie — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "tun-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Gouvernement de Tunisie activity feed",
+        "kind": "public",
+        "name": "gov-tun-feed"
+      }
+    ],
+    "description": "Gouvernement de Tunisie — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Gouvernement de Tunisie"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

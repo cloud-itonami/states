@@ -1,0 +1,121 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:vct-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Saint Vincent and the Grenadines AI Agent. You represent government organizations as path-based DIDs. Respond professionally.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": []
+  },
+  "kpi": [
+    "GovOrg DID registration count"
+  ],
+  "name": "gov-vct",
+  "nanoid": "g0vvct01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "VC",
+    "banner": "#888888",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution"
+    ],
+    "category": "government",
+    "country": "vct",
+    "contract": "Constitutional / basic law",
+    "description": "Saint Vincent and the Grenadines — path-based DID registry (minimal stub; expand for ministries).",
+    "displayName": "Saint Vincent and the Grenadines",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 0,
+    "bpmnCount": 0,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/vct/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Kingstown",
+        "addressLocality": "Kingstown",
+        "country": "VC"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.gov.vc/",
+        "label": "Saint Vincent and the Grenadines — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Saint Vincent and the Grenadines — citizen inquiry",
+        "uri": "https://www.gov.vc/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "sai.access_info",
+        "title": "Access to Public Information",
+        "authority": "Saint Vincent and the Grenadines"
+      },
+      {
+        "id": "sai.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Saint Vincent and the Grenadines — passport authority"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "vc.access_info.v1",
+        "title": "Access to public information request — template",
+        "authority": "Saint Vincent and the Grenadines"
+      }
+    ],
+    "complianceFrameworks": [
+      "Saint Vincent and the Grenadines — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "vct-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Saint Vincent and the Grenadines activity feed",
+        "kind": "public",
+        "name": "gov-vct-feed"
+      }
+    ],
+    "description": "Saint Vincent and the Grenadines — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Saint Vincent and the Grenadines"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

@@ -1,0 +1,221 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:ind-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of India AI Agent. You represent all government organizations — central ministries, departments, and subnational units — as path-based DIDs. Respond professionally. Data sourced from site.etzhayyim.com government topic.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution",
+      "Government Organization Act"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "site.etzhayyim.com government topic follows",
+    "delta ingestion updates"
+  ],
+  "name": "gov-ind",
+  "nanoid": "hs54vjd0",
+  "performerType": "service",
+  "profile": {
+    "avatar": "IN",
+    "banner": "#FF9933",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "ind",
+    "contract": "Constitution of India",
+    "description": "India Government — path-based DID registry for all ministries, departments, and subnational units. Data sourced via site.etzhayyim.com government topic.",
+    "displayName": "भारत सरकार (Government of India)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 6,
+    "contractCount": 1,
+    "bpmnCount": 812,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/ind/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Prime Minister's Office",
+        "streetAddress": "South Block, Raisina Hill",
+        "addressLocality": "New Delhi",
+        "postalCode": "110011",
+        "country": "IN"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.india.gov.in/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://indiacode.nic.in/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.mygov.in/"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "rti",
+        "label": "RTI Online",
+        "uri": "https://rtionline.gov.in/",
+        "basis": "RTI Act 2005"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "ind.central-bureau-of-investigation",
+        "title": "Central Bureau Of Investigation",
+        "titleLocal": "Central Bureau Of Investigation",
+        "authority": "Central Bureau Of Investigation",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/ind/bpmn/central-bureau-of-investigation.bpmn"
+      },
+      {
+        "id": "ind.ministry-of",
+        "title": "Ministry Of",
+        "titleLocal": "Ministry Of",
+        "authority": "Ministry Of",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/ind/bpmn/ministry-of.bpmn"
+      },
+      {
+        "id": "ind.ministry-of-external",
+        "title": "Ministry Of External",
+        "titleLocal": "Ministry Of External",
+        "authority": "Ministry Of External",
+        "basis": "General Public Services Act",
+        "portalUri": "https://www.mea.gov.in/",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/ind/bpmn/ministry-of-external.bpmn"
+      },
+      {
+        "id": "ind.ministry-of-2",
+        "title": "Ministry Of",
+        "titleLocal": "Ministry Of",
+        "authority": "Ministry Of",
+        "basis": "Economic Affairs Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/ind/bpmn/ministry-of-2.bpmn"
+      },
+      {
+        "id": "ind.ministry-of-home",
+        "title": "Ministry Of Home",
+        "titleLocal": "Ministry Of Home",
+        "authority": "Ministry Of Home",
+        "basis": "General Public Services Act",
+        "portalUri": "https://www.mha.gov.in/",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/ind/bpmn/ministry-of-home.bpmn"
+      },
+      {
+        "id": "ind.prime-ministers",
+        "title": "Prime Ministers",
+        "titleLocal": "Prime Ministers",
+        "authority": "Prime Ministers",
+        "basis": "General Public Services Act",
+        "portalUri": "https://www.pmindia.gov.in/",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/ind/bpmn/prime-ministers.bpmn"
+      },
+      {
+        "id": "ind.rti",
+        "title": "RTI Application",
+        "basis": "RTI Act 2005",
+        "portalUri": "https://rtionline.gov.in/"
+      },
+      {
+        "id": "ind.passport",
+        "title": "Indian Passport",
+        "authority": "Passport Seva (MEA)",
+        "portalUri": "https://www.passportindia.gov.in/"
+      },
+      {
+        "id": "ind.aadhaar",
+        "title": "Aadhaar enrollment / update",
+        "authority": "UIDAI",
+        "portalUri": "https://uidai.gov.in/"
+      },
+      {
+        "id": "ind.itr",
+        "title": "Income Tax Return",
+        "authority": "Income Tax Department",
+        "portalUri": "https://www.incometax.gov.in/"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "ind.constitution-74th-amendment",
+        "title": "74th Amendment",
+        "titleLocal": "74th Constitutional Amendment Act 1992",
+        "basis": "Constitution (74th Amendment) Act 1992",
+        "uri": "https://legislative.gov.in/"
+      },
+      {
+        "id": "ind.rti.v1",
+        "title": "RTI Application Form",
+        "uri": "https://rtionline.gov.in/"
+      },
+      {
+        "id": "ind.itr1.v1",
+        "title": "ITR-1 Sahaj",
+        "authority": "Income Tax Dept",
+        "uri": "https://www.incometax.gov.in/"
+      }
+    ],
+    "complianceFrameworks": [
+      "Constitution of India (1950)",
+      "Right to Information Act 2005",
+      "Administrative Tribunals Act 1985"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "ind-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "India government organization activity — ministry updates, subnational government announcements, policy changes",
+        "kind": "public",
+        "name": "gov-ind-feed"
+      }
+    ],
+    "description": "Government of India — AI Agent registry for government organization DIDs.",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "भारत सरकार (Government of India)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_mex_judiciary_suprema_corte"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_mex_judiciary_suprema_corte">
+    <bpmn:participant id="Pool_mex_judiciary_suprema_corte" name="Judiciary Suprema Corte (m1x2s3c4)" processRef="Process_mex_judiciary_suprema_corte" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_mex_judiciary_suprema_corte" name="Judiciary Suprema Corte — Public Order & Safety" isExecutable="true">
+    <bpmn:startEvent id="Start_mex_judiciary_suprema_corte" name="Incident
+reported"><bpmn:outgoing>F_mex_judiciary_suprema_corte_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:serviceTask id="T_mex_judiciary_suprema_corte_triage" name="Triage Incident
+(severity classification)">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.mex.judiciary-suprema-corte.triage" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="response_time_minutes" />
+          <zeebe:header key="cofog" value="03" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_mex_judiciary_suprema_corte_01</bpmn:incoming>
+      <bpmn:outgoing>F_mex_judiciary_suprema_corte_02</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="GW_mex_judiciary_suprema_corte_sev" name="Severity?" isMarkerVisible="true">
+      <bpmn:incoming>F_mex_judiciary_suprema_corte_02</bpmn:incoming>
+      <bpmn:outgoing>F_mex_judiciary_suprema_corte_03a</bpmn:outgoing>
+      <bpmn:outgoing>F_mex_judiciary_suprema_corte_03b</bpmn:outgoing>
+      <bpmn:outgoing>F_mex_judiciary_suprema_corte_03c</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_mex_judiciary_suprema_corte_emergency" name="Deploy Emergency
+Response">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.mex.judiciary-suprema-corte.emergency_response" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="emergency" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_mex_judiciary_suprema_corte_03a</bpmn:incoming>
+      <bpmn:outgoing>F_mex_judiciary_suprema_corte_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_mex_judiciary_suprema_corte_investigate" name="Open Investigation
+& Assign Officers">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.mex.judiciary-suprema-corte.investigate" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="investigate" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_mex_judiciary_suprema_corte_03b</bpmn:incoming>
+      <bpmn:outgoing>F_mex_judiciary_suprema_corte_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_mex_judiciary_suprema_corte_log" name="Log Report
+& Close">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.mex.judiciary-suprema-corte.log_close" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="log" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_mex_judiciary_suprema_corte_03c</bpmn:incoming>
+      <bpmn:outgoing>F_mex_judiciary_suprema_corte_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_mex_judiciary_suprema_corte_report" name="File Incident
+Report">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.mex.judiciary-suprema-corte.file_report" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_mex_judiciary_suprema_corte_06</bpmn:incoming>
+      <bpmn:outgoing>F_mex_judiciary_suprema_corte_07</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_mex_judiciary_suprema_corte" name="Incident resolved">
+      <bpmn:incoming>F_mex_judiciary_suprema_corte_07</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_mex_judiciary_suprema_corte_01" sourceRef="Start_mex_judiciary_suprema_corte" targetRef="T_mex_judiciary_suprema_corte_triage">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_mex_judiciary_suprema_corte_02" sourceRef="T_mex_judiciary_suprema_corte_triage" targetRef="GW_mex_judiciary_suprema_corte_sev">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_mex_judiciary_suprema_corte_03a" sourceRef="GW_mex_judiciary_suprema_corte_sev" targetRef="T_mex_judiciary_suprema_corte_emergency" name="Critical">
+      <bpmn:conditionExpression>=severity = 'critical'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_mex_judiciary_suprema_corte_03b" sourceRef="GW_mex_judiciary_suprema_corte_sev" targetRef="T_mex_judiciary_suprema_corte_investigate" name="Standard">
+      <bpmn:conditionExpression>=severity = 'standard'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_mex_judiciary_suprema_corte_03c" sourceRef="GW_mex_judiciary_suprema_corte_sev" targetRef="T_mex_judiciary_suprema_corte_log" name="Minor">
+      <bpmn:conditionExpression>=severity = 'minor'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_mex_judiciary_suprema_corte_06" sourceRef="T_mex_judiciary_suprema_corte_emergency" targetRef="T_mex_judiciary_suprema_corte_report">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_mex_judiciary_suprema_corte_06b" sourceRef="T_mex_judiciary_suprema_corte_investigate" targetRef="T_mex_judiciary_suprema_corte_report">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_mex_judiciary_suprema_corte_06c" sourceRef="T_mex_judiciary_suprema_corte_log" targetRef="T_mex_judiciary_suprema_corte_report">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_mex_judiciary_suprema_corte_07" sourceRef="T_mex_judiciary_suprema_corte_report" targetRef="End_mex_judiciary_suprema_corte">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_mex_judiciary_suprema_corte">
+    <bpmndi:BPMNPlane id="BPMNPlane_mex_judiciary_suprema_corte" bpmnElement="Collaboration_mex_judiciary_suprema_corte" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

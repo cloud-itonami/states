@@ -1,0 +1,125 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:isr-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Israel AI Agent. You represent government organizations as path-based DIDs. Respond professionally.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": []
+  },
+  "kpi": [
+    "GovOrg DID registration count"
+  ],
+  "name": "gov-isr",
+  "nanoid": "g0visr01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "IS",
+    "banner": "#888888",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution"
+    ],
+    "category": "government",
+    "country": "isr",
+    "contract": "Constitutional / basic law",
+    "description": "Government of Israel — path-based DID registry (minimal stub; expand for ministries).",
+    "displayName": "Government of Israel",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 1,
+    "contractCount": 1,
+    "bpmnCount": 8,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/isr/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Prime Minister's Office",
+        "addressLocality": "Jerusalem",
+        "country": "IL"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.gov.il/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://main.knesset.gov.il/"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "foi",
+        "label": "Freedom of Information",
+        "basis": "FOI Law 5758-1998"
+      }
+    ],
+    "complianceFrameworks": [
+      "Basic Laws of Israel",
+      "Freedom of Information Law 5758-1998",
+      "Administrative Courts Law 2000"
+    ],
+    "procedures": [
+      {
+        "id": "isr.prime-ministers",
+        "title": "Prime Ministers",
+        "titleLocal": "Prime Ministers",
+        "authority": "Prime Ministers",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/isr/bpmn/prime-ministers.bpmn"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "isr.municipal-government-act",
+        "title": "Municipal Government Act",
+        "titleLocal": "Municipal Government Act",
+        "basis": "General Administrative Law",
+        "uri": ""
+      }
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "isr-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Government of Israel activity feed",
+        "kind": "public",
+        "name": "gov-isr-feed"
+      }
+    ],
+    "description": "Government of Israel — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Government of Israel"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

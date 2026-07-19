@@ -1,0 +1,149 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:jam-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Jamaica (Jamaica) AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-jam",
+  "nanoid": "g0vjam01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "JA",
+    "banner": "#000000",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "jam",
+    "contract": "Constitution of Jamaica 1962",
+    "description": "Jamaica Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Jamaica",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 3,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/jam/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Kingston",
+        "addressLocality": "Kingston",
+        "country": "JM"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://opm.gov.jm/",
+        "label": "Office of PM"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://japarliament.gov.jm/",
+        "label": "Parliament"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Government of Jamaica — citizen inquiry",
+        "uri": "https://opm.gov.jm/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "jam.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Government of Jamaica — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "jam.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Government of Jamaica — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "jam.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Government of Jamaica — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "jam.parish-councils-act-jam",
+        "title": "Parish Councils Act",
+        "titleLocal": "Parish Councils Act 1901 (revised)",
+        "basis": "Cap. 303",
+        "uri": "https://www.japarliament.gov.jm/"
+      },
+      {
+        "id": "jam.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Government of Jamaica",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Government of Jamaica — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "jam-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Jamaica government activity feed",
+        "kind": "public",
+        "name": "gov-jam-feed"
+      }
+    ],
+    "description": "Government of Jamaica — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Jamaica"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

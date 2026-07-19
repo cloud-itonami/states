@@ -1,0 +1,137 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:mli-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Republic of Mali AI Agent. You represent government organizations as path-based DIDs. Respond professionally.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": []
+  },
+  "kpi": [
+    "GovOrg DID registration count"
+  ],
+  "name": "gov-mli",
+  "nanoid": "g0vmli01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "ML",
+    "banner": "#888888",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution"
+    ],
+    "category": "government",
+    "country": "mli",
+    "contract": "Constitutional / basic law",
+    "description": "Republic of Mali — path-based DID registry (minimal stub; expand for ministries).",
+    "displayName": "Republic of Mali",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 2,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/mli/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Bamako",
+        "addressLocality": "Bamako",
+        "country": "ML"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.koulouba.ml/",
+        "label": "Republic of Mali — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Republic of Mali — citizen inquiry",
+        "uri": "https://www.koulouba.ml/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "mli.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Republic of Mali — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "mli.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Republic of Mali — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "mli.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Republic of Mali — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "mli.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Republic of Mali",
+        "basis": "Access-to-information statute"
+      },
+      {
+        "id": "mli.cct-2012-007-mli",
+        "title": "CCT Loi 2012-007",
+        "titleLocal": "Code des collectivités territoriales Loi 2012-007",
+        "basis": "Loi 2012-007",
+        "uri": "https://www.assemblee-nationale.ml/"
+      }
+    ],
+    "complianceFrameworks": [
+      "Republic of Mali — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "mli-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Republic of Mali activity feed",
+        "kind": "public",
+        "name": "gov-mli-feed"
+      }
+    ],
+    "description": "Republic of Mali — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Republic of Mali"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

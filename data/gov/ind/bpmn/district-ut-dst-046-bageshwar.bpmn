@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_ind_district_ut_dst_046_bageshwar"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_ind_district_ut_dst_046_bageshwar">
+    <bpmn:participant id="Pool_ind_district_ut_dst_046_bageshwar" name="Ut Dst 046 Bageshwar (district)" processRef="Process_ind_district_ut_dst_046_bageshwar" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_ind_district_ut_dst_046_bageshwar" name="Ut Dst 046 Bageshwar — General Public Services" isExecutable="true">
+    <bpmn:startEvent id="Start_ind_district_ut_dst_046_bageshwar" name="Policy trigger
+received"><bpmn:outgoing>F_ind_district_ut_dst_046_bageshwar_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:parallelGateway id="GW_ind_district_ut_dst_046_bageshwar_open" name="Parallel checks">
+      <bpmn:incoming>F_ind_district_ut_dst_046_bageshwar_01</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_ut_dst_046_bageshwar_02</bpmn:outgoing>
+      <bpmn:outgoing>F_ind_district_ut_dst_046_bageshwar_03</bpmn:outgoing>
+      <bpmn:outgoing>F_ind_district_ut_dst_046_bageshwar_04</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:serviceTask id="T_ind_district_ut_dst_046_bageshwar_policy" name="Draft Policy
+Proposal">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.ind.district:ut-dst-046-bageshwar.draft_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="policy_output" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_ind_district_ut_dst_046_bageshwar_02</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_ut_dst_046_bageshwar_05</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_ind_district_ut_dst_046_bageshwar_budget" name="Allocate Budget
+(COFOG 01)">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.ind.district:ut-dst-046-bageshwar.allocate_budget" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="budget_execution_rate" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_ind_district_ut_dst_046_bageshwar_03</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_ut_dst_046_bageshwar_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_ind_district_ut_dst_046_bageshwar_coord" name="Inter-Agency
+Coordination">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.ind.district:ut-dst-046-bageshwar.coordinate" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="coordination_score" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_ind_district_ut_dst_046_bageshwar_04</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_ut_dst_046_bageshwar_07</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="GW_ind_district_ut_dst_046_bageshwar_join" name="Checks complete">
+      <bpmn:incoming>F_ind_district_ut_dst_046_bageshwar_05</bpmn:incoming>
+      <bpmn:incoming>F_ind_district_ut_dst_046_bageshwar_06</bpmn:incoming>
+      <bpmn:incoming>F_ind_district_ut_dst_046_bageshwar_07</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_ut_dst_046_bageshwar_08</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:userTask id="T_ind_district_ut_dst_046_bageshwar_review" name="Minister Review
+& Sign-off">
+      <bpmn:extensionElements>
+        <zeebe:assignmentDefinition assignee="gov-official" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_ind_district_ut_dst_046_bageshwar_08</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_ut_dst_046_bageshwar_09</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="GW_ind_district_ut_dst_046_bageshwar_risk" name="Approved?" isMarkerVisible="true">
+      <bpmn:incoming>F_ind_district_ut_dst_046_bageshwar_09</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_ut_dst_046_bageshwar_10a</bpmn:outgoing>
+      <bpmn:outgoing>F_ind_district_ut_dst_046_bageshwar_10b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_ind_district_ut_dst_046_bageshwar_publish" name="Publish Policy
+& Notify Citizens">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.ind.district:ut-dst-046-bageshwar.publish_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="publish" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_ind_district_ut_dst_046_bageshwar_10a</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_ut_dst_046_bageshwar_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_ind_district_ut_dst_046_bageshwar_revise" name="Return for
+Revision">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.ind.district:ut-dst-046-bageshwar.request_revision" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="revise" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_ind_district_ut_dst_046_bageshwar_10b</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_ut_dst_046_bageshwar_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_ind_district_ut_dst_046_bageshwar" name="Process complete">
+      <bpmn:incoming>F_ind_district_ut_dst_046_bageshwar_11</bpmn:incoming>
+      <bpmn:incoming>F_ind_district_ut_dst_046_bageshwar_11b</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_ind_district_ut_dst_046_bageshwar_01" sourceRef="Start_ind_district_ut_dst_046_bageshwar" targetRef="GW_ind_district_ut_dst_046_bageshwar_open">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_ut_dst_046_bageshwar_02" sourceRef="GW_ind_district_ut_dst_046_bageshwar_open" targetRef="T_ind_district_ut_dst_046_bageshwar_policy">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_ut_dst_046_bageshwar_03" sourceRef="GW_ind_district_ut_dst_046_bageshwar_open" targetRef="T_ind_district_ut_dst_046_bageshwar_budget">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_ut_dst_046_bageshwar_04" sourceRef="GW_ind_district_ut_dst_046_bageshwar_open" targetRef="T_ind_district_ut_dst_046_bageshwar_coord">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_ut_dst_046_bageshwar_05" sourceRef="T_ind_district_ut_dst_046_bageshwar_policy" targetRef="GW_ind_district_ut_dst_046_bageshwar_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_ut_dst_046_bageshwar_06" sourceRef="T_ind_district_ut_dst_046_bageshwar_budget" targetRef="GW_ind_district_ut_dst_046_bageshwar_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_ut_dst_046_bageshwar_07" sourceRef="T_ind_district_ut_dst_046_bageshwar_coord" targetRef="GW_ind_district_ut_dst_046_bageshwar_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_ut_dst_046_bageshwar_08" sourceRef="GW_ind_district_ut_dst_046_bageshwar_join" targetRef="T_ind_district_ut_dst_046_bageshwar_review">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_ut_dst_046_bageshwar_09" sourceRef="T_ind_district_ut_dst_046_bageshwar_review" targetRef="GW_ind_district_ut_dst_046_bageshwar_risk">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_ut_dst_046_bageshwar_10a" sourceRef="GW_ind_district_ut_dst_046_bageshwar_risk" targetRef="T_ind_district_ut_dst_046_bageshwar_publish" name="Approved">
+      <bpmn:conditionExpression>=approved = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_ut_dst_046_bageshwar_10b" sourceRef="GW_ind_district_ut_dst_046_bageshwar_risk" targetRef="T_ind_district_ut_dst_046_bageshwar_revise" name="Rejected">
+      <bpmn:conditionExpression>=approved = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_ut_dst_046_bageshwar_11" sourceRef="T_ind_district_ut_dst_046_bageshwar_publish" targetRef="End_ind_district_ut_dst_046_bageshwar">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_ut_dst_046_bageshwar_11b" sourceRef="T_ind_district_ut_dst_046_bageshwar_revise" targetRef="End_ind_district_ut_dst_046_bageshwar">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_ind_district_ut_dst_046_bageshwar">
+    <bpmndi:BPMNPlane id="BPMNPlane_ind_district_ut_dst_046_bageshwar" bpmnElement="Collaboration_ind_district_ut_dst_046_bageshwar" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

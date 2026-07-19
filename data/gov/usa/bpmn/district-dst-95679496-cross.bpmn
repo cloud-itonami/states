@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_usa_district_dst_95679496_cross"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_usa_district_dst_95679496_cross">
+    <bpmn:participant id="Pool_usa_district_dst_95679496_cross" name="Dst 95679496 Cross (95679496)" processRef="Process_usa_district_dst_95679496_cross" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_usa_district_dst_95679496_cross" name="Dst 95679496 Cross — General Public Services" isExecutable="true">
+    <bpmn:startEvent id="Start_usa_district_dst_95679496_cross" name="Policy trigger
+received"><bpmn:outgoing>F_usa_district_dst_95679496_cross_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:parallelGateway id="GW_usa_district_dst_95679496_cross_open" name="Parallel checks">
+      <bpmn:incoming>F_usa_district_dst_95679496_cross_01</bpmn:incoming>
+      <bpmn:outgoing>F_usa_district_dst_95679496_cross_02</bpmn:outgoing>
+      <bpmn:outgoing>F_usa_district_dst_95679496_cross_03</bpmn:outgoing>
+      <bpmn:outgoing>F_usa_district_dst_95679496_cross_04</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:serviceTask id="T_usa_district_dst_95679496_cross_policy" name="Draft Policy
+Proposal">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.usa.district:dst-95679496-cross.draft_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="policy_output" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_usa_district_dst_95679496_cross_02</bpmn:incoming>
+      <bpmn:outgoing>F_usa_district_dst_95679496_cross_05</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_usa_district_dst_95679496_cross_budget" name="Allocate Budget
+(COFOG 01)">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.usa.district:dst-95679496-cross.allocate_budget" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="budget_execution_rate" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_usa_district_dst_95679496_cross_03</bpmn:incoming>
+      <bpmn:outgoing>F_usa_district_dst_95679496_cross_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_usa_district_dst_95679496_cross_coord" name="Inter-Agency
+Coordination">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.usa.district:dst-95679496-cross.coordinate" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="coordination_score" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_usa_district_dst_95679496_cross_04</bpmn:incoming>
+      <bpmn:outgoing>F_usa_district_dst_95679496_cross_07</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="GW_usa_district_dst_95679496_cross_join" name="Checks complete">
+      <bpmn:incoming>F_usa_district_dst_95679496_cross_05</bpmn:incoming>
+      <bpmn:incoming>F_usa_district_dst_95679496_cross_06</bpmn:incoming>
+      <bpmn:incoming>F_usa_district_dst_95679496_cross_07</bpmn:incoming>
+      <bpmn:outgoing>F_usa_district_dst_95679496_cross_08</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:userTask id="T_usa_district_dst_95679496_cross_review" name="Minister Review
+& Sign-off">
+      <bpmn:extensionElements>
+        <zeebe:assignmentDefinition assignee="gov-official" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_usa_district_dst_95679496_cross_08</bpmn:incoming>
+      <bpmn:outgoing>F_usa_district_dst_95679496_cross_09</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="GW_usa_district_dst_95679496_cross_risk" name="Approved?" isMarkerVisible="true">
+      <bpmn:incoming>F_usa_district_dst_95679496_cross_09</bpmn:incoming>
+      <bpmn:outgoing>F_usa_district_dst_95679496_cross_10a</bpmn:outgoing>
+      <bpmn:outgoing>F_usa_district_dst_95679496_cross_10b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_usa_district_dst_95679496_cross_publish" name="Publish Policy
+& Notify Citizens">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.usa.district:dst-95679496-cross.publish_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="publish" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_usa_district_dst_95679496_cross_10a</bpmn:incoming>
+      <bpmn:outgoing>F_usa_district_dst_95679496_cross_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_usa_district_dst_95679496_cross_revise" name="Return for
+Revision">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.usa.district:dst-95679496-cross.request_revision" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="revise" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_usa_district_dst_95679496_cross_10b</bpmn:incoming>
+      <bpmn:outgoing>F_usa_district_dst_95679496_cross_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_usa_district_dst_95679496_cross" name="Process complete">
+      <bpmn:incoming>F_usa_district_dst_95679496_cross_11</bpmn:incoming>
+      <bpmn:incoming>F_usa_district_dst_95679496_cross_11b</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_usa_district_dst_95679496_cross_01" sourceRef="Start_usa_district_dst_95679496_cross" targetRef="GW_usa_district_dst_95679496_cross_open">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_usa_district_dst_95679496_cross_02" sourceRef="GW_usa_district_dst_95679496_cross_open" targetRef="T_usa_district_dst_95679496_cross_policy">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_usa_district_dst_95679496_cross_03" sourceRef="GW_usa_district_dst_95679496_cross_open" targetRef="T_usa_district_dst_95679496_cross_budget">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_usa_district_dst_95679496_cross_04" sourceRef="GW_usa_district_dst_95679496_cross_open" targetRef="T_usa_district_dst_95679496_cross_coord">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_usa_district_dst_95679496_cross_05" sourceRef="T_usa_district_dst_95679496_cross_policy" targetRef="GW_usa_district_dst_95679496_cross_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_usa_district_dst_95679496_cross_06" sourceRef="T_usa_district_dst_95679496_cross_budget" targetRef="GW_usa_district_dst_95679496_cross_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_usa_district_dst_95679496_cross_07" sourceRef="T_usa_district_dst_95679496_cross_coord" targetRef="GW_usa_district_dst_95679496_cross_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_usa_district_dst_95679496_cross_08" sourceRef="GW_usa_district_dst_95679496_cross_join" targetRef="T_usa_district_dst_95679496_cross_review">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_usa_district_dst_95679496_cross_09" sourceRef="T_usa_district_dst_95679496_cross_review" targetRef="GW_usa_district_dst_95679496_cross_risk">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_usa_district_dst_95679496_cross_10a" sourceRef="GW_usa_district_dst_95679496_cross_risk" targetRef="T_usa_district_dst_95679496_cross_publish" name="Approved">
+      <bpmn:conditionExpression>=approved = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_usa_district_dst_95679496_cross_10b" sourceRef="GW_usa_district_dst_95679496_cross_risk" targetRef="T_usa_district_dst_95679496_cross_revise" name="Rejected">
+      <bpmn:conditionExpression>=approved = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_usa_district_dst_95679496_cross_11" sourceRef="T_usa_district_dst_95679496_cross_publish" targetRef="End_usa_district_dst_95679496_cross">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_usa_district_dst_95679496_cross_11b" sourceRef="T_usa_district_dst_95679496_cross_revise" targetRef="End_usa_district_dst_95679496_cross">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_usa_district_dst_95679496_cross">
+    <bpmndi:BPMNPlane id="BPMNPlane_usa_district_dst_95679496_cross" bpmnElement="Collaboration_usa_district_dst_95679496_cross" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

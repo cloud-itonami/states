@@ -1,0 +1,122 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:chl-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Chile (República de Chile) AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-chl",
+  "nanoid": "g0vchl01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "CL",
+    "banner": "#000000",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "chl",
+    "contract": "Constitución Política de la República 1980/2005",
+    "description": "Chile Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "República de Chile (Republic of Chile)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 3,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/chl/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Palacio de la Moneda",
+        "addressLocality": "Santiago",
+        "country": "CL"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.gob.cl/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.bcn.cl/leychile"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "transparency",
+        "label": "Consejo para la Transparencia",
+        "basis": "Ley 20.285"
+      }
+    ],
+    "procedures": [],
+    "documentTemplates": [
+      {
+        "id": "chl.locm-18695",
+        "title": "LOCM 18695",
+        "titleLocal": "Ley Orgánica Constitucional de Municipalidades 18695/1988",
+        "basis": "Ley 18.695",
+        "uri": "https://www.bcn.cl/"
+      }
+    ],
+    "complianceFrameworks": [
+      "Constitución Política de 1980",
+      "Ley 20.285 sobre Acceso a la Información Pública",
+      "Ley 19.880 de Procedimiento Administrativo"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "chl-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Chile government activity feed",
+        "kind": "public",
+        "name": "gov-chl-feed"
+      }
+    ],
+    "description": "Government of Chile — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "República de Chile (Republic of Chile)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

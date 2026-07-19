@@ -1,0 +1,167 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:aus-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Australian Government AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-aus",
+  "nanoid": "g0vaus01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "AU",
+    "banner": "#00008B",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "aus",
+    "contract": "Commonwealth of Australia Constitution Act 1900",
+    "description": "Australia Government — path-based DID registry for departments and subnational units.",
+    "displayName": "Australian Government",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 1,
+    "contractCount": 1,
+    "bpmnCount": 25,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/aus/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Parliament House",
+        "addressLocality": "Canberra",
+        "addressRegion": "ACT",
+        "postalCode": "2600",
+        "country": "AU"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.australia.gov.au/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.legislation.gov.au/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.aph.gov.au/"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "foi",
+        "label": "FOI Request",
+        "uri": "https://www.oaic.gov.au/freedom-of-information",
+        "basis": "FOI Act 1982"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "aus.executive",
+        "title": "Executive",
+        "titleLocal": "Executive",
+        "authority": "Executive",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/aus/bpmn/executive.bpmn"
+      },
+      {
+        "id": "aus.foi",
+        "title": "Freedom of Information Request",
+        "basis": "FOI Act 1982",
+        "portalUri": "https://www.oaic.gov.au/freedom-of-information/foi-guidance-for-government-agencies/foi-requests"
+      },
+      {
+        "id": "aus.passport",
+        "title": "Australian Passport",
+        "authority": "Australian Passport Office",
+        "portalUri": "https://www.passports.gov.au/"
+      },
+      {
+        "id": "aus.tax",
+        "title": "Individual Tax Return",
+        "authority": "Australian Taxation Office",
+        "portalUri": "https://www.ato.gov.au/Individuals/Lodging-your-tax-return/"
+      },
+      {
+        "id": "aus.mygov",
+        "title": "myGov services portal",
+        "portalUri": "https://my.gov.au/"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "aus.local-government-act",
+        "title": "Local Government Act",
+        "titleLocal": "Local Government Act (state)",
+        "basis": "Local Government Acts per state",
+        "uri": "https://www.legislation.gov.au/"
+      },
+      {
+        "id": "aus.foi.v1",
+        "title": "FOI Request form",
+        "uri": "https://www.oaic.gov.au/freedom-of-information/your-foi-rights/requesting-access-to-documents-under-foi"
+      }
+    ],
+    "complianceFrameworks": [
+      "Constitution of Australia (1901)",
+      "Freedom of Information Act 1982",
+      "Administrative Decisions (Judicial Review) Act 1977"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "aus-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Australia government activity feed",
+        "kind": "public",
+        "name": "gov-aus-feed"
+      }
+    ],
+    "description": "Government of Australia — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Australian Government"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

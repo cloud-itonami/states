@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_intl_nato"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_intl_nato">
+    <bpmn:participant id="Pool_intl_nato" name="Nato (nato)" processRef="Process_intl_nato" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_intl_nato" name="Nato — International Coordination" isExecutable="true">
+    <bpmn:startEvent id="Start_intl_nato" name="Multilateral
+agenda item raised"><bpmn:outgoing>F_intl_nato_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:serviceTask id="T_intl_nato_consult" name="Member State
+Consultation">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.intl.nato.consult_members" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="member_participation_rate" />
+          <zeebe:header key="cofog" value="intl" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_intl_nato_01</bpmn:incoming>
+      <bpmn:outgoing>F_intl_nato_02</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_intl_nato_draft" name="Draft Resolution
+/ Treaty Text">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.intl.nato.draft_resolution" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_intl_nato_02</bpmn:incoming>
+      <bpmn:outgoing>F_intl_nato_03</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="T_intl_nato_negotiate" name="Negotiation
+& Amendments">
+      <bpmn:extensionElements>
+        <zeebe:assignmentDefinition assignee="member-state-delegates" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_intl_nato_03</bpmn:incoming>
+      <bpmn:outgoing>F_intl_nato_04</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="GW_intl_nato_consensus" name="Consensus
+reached?" isMarkerVisible="true">
+      <bpmn:incoming>F_intl_nato_04</bpmn:incoming>
+      <bpmn:outgoing>F_intl_nato_05a</bpmn:outgoing>
+      <bpmn:outgoing>F_intl_nato_05b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_intl_nato_adopt" name="Adopt Resolution
+& Notify Members">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.intl.nato.adopt_resolution" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="adopt" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_intl_nato_05a</bpmn:incoming>
+      <bpmn:outgoing>F_intl_nato_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_intl_nato_refer" name="Refer to
+Committee">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.intl.nato.refer_committee" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="refer" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_intl_nato_05b</bpmn:incoming>
+      <bpmn:outgoing>F_intl_nato_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_intl_nato" name="Agenda item
+resolved">
+      <bpmn:incoming>F_intl_nato_06</bpmn:incoming>
+      <bpmn:incoming>F_intl_nato_06b</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_intl_nato_01" sourceRef="Start_intl_nato" targetRef="T_intl_nato_consult">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_intl_nato_02" sourceRef="T_intl_nato_consult" targetRef="T_intl_nato_draft">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_intl_nato_03" sourceRef="T_intl_nato_draft" targetRef="T_intl_nato_negotiate">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_intl_nato_04" sourceRef="T_intl_nato_negotiate" targetRef="GW_intl_nato_consensus">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_intl_nato_05a" sourceRef="GW_intl_nato_consensus" targetRef="T_intl_nato_adopt" name="Yes">
+      <bpmn:conditionExpression>=consensus = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_intl_nato_05b" sourceRef="GW_intl_nato_consensus" targetRef="T_intl_nato_refer" name="No">
+      <bpmn:conditionExpression>=consensus = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_intl_nato_06" sourceRef="T_intl_nato_adopt" targetRef="End_intl_nato">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_intl_nato_06b" sourceRef="T_intl_nato_refer" targetRef="End_intl_nato">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_intl_nato">
+    <bpmndi:BPMNPlane id="BPMNPlane_intl_nato" bpmnElement="Collaboration_intl_nato" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

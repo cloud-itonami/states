@@ -1,0 +1,149 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:sen-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Senegal AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English and French.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-sen",
+  "nanoid": "g0vsen01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "SN",
+    "banner": "#00853f",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "sen",
+    "contract": "Constitution sénégalaise 2001",
+    "description": "Senegal Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "République du Sénégal (Republic of Senegal)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 2,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/sen/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Dakar",
+        "addressLocality": "Dakar",
+        "country": "SN"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.sec.gouv.sn/",
+        "label": "Secretariat"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.gouv.sn/",
+        "label": "gouv.sn"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Gouvernement du Senegal — citizen inquiry",
+        "uri": "https://www.sec.gouv.sn/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "sen.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Gouvernement du Senegal — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "sen.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Gouvernement du Senegal — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "sen.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Gouvernement du Senegal — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "sen.ccl-14-2013",
+        "title": "Code Collectivités locales",
+        "titleLocal": "Code général des Collectivités locales 14/2013",
+        "basis": "Loi 2013-10",
+        "uri": "https://www.gouv.sn/"
+      },
+      {
+        "id": "sen.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Gouvernement du Senegal",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Gouvernement du Senegal — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "sen-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Senegal government activity feed",
+        "kind": "public",
+        "name": "gov-sen-feed"
+      }
+    ],
+    "description": "Government of Senegal — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "République du Sénégal (Republic of Senegal)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

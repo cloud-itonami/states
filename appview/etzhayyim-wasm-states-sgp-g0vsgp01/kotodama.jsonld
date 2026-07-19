@@ -1,0 +1,132 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:sgp-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Singapore AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-sgp",
+  "nanoid": "g0vsgp01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "SG",
+    "banner": "#ef3340",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "sgp",
+    "contract": "Constitution of Singapore 1965",
+    "description": "Singapore Government — path-based DID registry for ministries, statutory boards, and CDC districts.",
+    "displayName": "Republic of Singapore",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 1,
+    "contractCount": 1,
+    "bpmnCount": 7,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/sgp/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Istana",
+        "addressLocality": "Singapore",
+        "country": "SG"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.gov.sg/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://sso.agc.gov.sg/"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "OneService",
+        "uri": "https://www.oneservice.gov.sg/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "sgp.executive",
+        "title": "Executive",
+        "titleLocal": "Executive",
+        "authority": "Executive",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/sgp/bpmn/executive.bpmn"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "sgp.city-state-admin-sgp",
+        "title": "City-State Administration",
+        "titleLocal": "No municipal act (city-state)",
+        "basis": "Singapore Constitution 1965",
+        "uri": "https://www.gov.sg/"
+      }
+    ],
+    "complianceFrameworks": [
+      "Constitution of the Republic of Singapore (1965)",
+      "Public Sector (Governance) Act 2018",
+      "Government Procurement Act"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "sgp-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Singapore government activity feed",
+        "kind": "public",
+        "name": "gov-sgp-feed"
+      }
+    ],
+    "description": "Government of Singapore — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Republic of Singapore"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

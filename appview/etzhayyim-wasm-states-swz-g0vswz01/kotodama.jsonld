@@ -1,0 +1,137 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:swz-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Kingdom of Eswatini AI Agent. You represent government organizations as path-based DIDs. Respond professionally.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": []
+  },
+  "kpi": [
+    "GovOrg DID registration count"
+  ],
+  "name": "gov-swz",
+  "nanoid": "g0vswz01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "SW",
+    "banner": "#888888",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution"
+    ],
+    "category": "government",
+    "country": "swz",
+    "contract": "Constitutional / basic law",
+    "description": "Kingdom of Eswatini — path-based DID registry (minimal stub; expand for ministries).",
+    "displayName": "Kingdom of Eswatini",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 3,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/swz/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Mbabane",
+        "addressLocality": "Mbabane",
+        "country": "SZ"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.gov.sz/",
+        "label": "Kingdom of Eswatini — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Kingdom of Eswatini — citizen inquiry",
+        "uri": "https://www.gov.sz/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "swz.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Kingdom of Eswatini — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "swz.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Kingdom of Eswatini — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "swz.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Kingdom of Eswatini — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "swz.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Kingdom of Eswatini",
+        "basis": "Access-to-information statute"
+      },
+      {
+        "id": "swz.uga-8-1969-swz",
+        "title": "Urban Government Act",
+        "titleLocal": "Swaziland Urban Government Act 8/1969",
+        "basis": "Act No.8 of 1969",
+        "uri": "https://www.gov.sz/"
+      }
+    ],
+    "complianceFrameworks": [
+      "Kingdom of Eswatini — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "swz-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Kingdom of Eswatini activity feed",
+        "kind": "public",
+        "name": "gov-swz-feed"
+      }
+    ],
+    "description": "Kingdom of Eswatini — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Kingdom of Eswatini"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

@@ -1,0 +1,158 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:mmr-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Myanmar AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-mmr",
+  "nanoid": "g0vmmr01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "MM",
+    "banner": "#FECB00",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-region-coverage"
+    ],
+    "category": "government",
+    "country": "mmr",
+    "contract": "Constitution of Myanmar 2008 (suspended 2021)",
+    "description": "Myanmar Government — path-based DID registry for ministries, states and regions.",
+    "displayName": "မြန်မာနိုင်ငံ (Republic of the Union of Myanmar)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 1,
+    "contractCount": 1,
+    "bpmnCount": 30,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/mmr/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Naypyidaw",
+        "addressLocality": "Naypyidaw",
+        "country": "MM"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.mnpt.gov.mm/",
+        "label": "Government"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.president-office.gov.mm/",
+        "label": "President"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Government of Myanmar — citizen inquiry",
+        "uri": "https://www.mnpt.gov.mm/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "mmr.executive",
+        "title": "Executive",
+        "titleLocal": "Executive",
+        "authority": "Executive",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/mmr/bpmn/executive.bpmn"
+      },
+      {
+        "id": "mmr.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Government of Myanmar — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "mmr.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Government of Myanmar — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "mmr.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Government of Myanmar — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "mmr.ward-vt-admin-law-2012",
+        "title": "Ward/VT Administration Law",
+        "titleLocal": "Ward or Village Tract Administration Law 2012",
+        "basis": "Law No.1/2012",
+        "uri": "https://www.moi.gov.mm/"
+      },
+      {
+        "id": "mmr.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Government of Myanmar",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Government of Myanmar — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "mmr-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Myanmar government activity feed",
+        "kind": "public",
+        "name": "gov-mmr-feed"
+      }
+    ],
+    "description": "Government of Myanmar — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "မြန်မာနိုင်ငံ (Republic of the Union of Myanmar)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

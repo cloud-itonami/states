@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "@id": "https://etzhayyim.com",
+  "name": "etzhayyim-project-states",
+  "description": "Government performer actors - 1950 SpinApp MCP components representing government organizations across 50+ countries and international bodies",
+  "url": "https://etzhayyim.com",
+  "applicationCategory": "Government",
+  "operatingSystem": "Kubernetes + SpinApp",
+  "author": {
+    "@type": "Organization",
+    "name": "etzhayyim",
+    "url": "https://etzhayyim.com"
+  },
+  "component": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "gov-performer-actors",
+      "description": "1950 TinyGo SpinApp components implementing MCP JSON-RPC 2.0 for government organization performers (Top 50 population countries fully L1, Top 30 expanded to L2, persistent KV storage enabled)",
+      "applicationCategory": "Backend",
+      "programmingLanguage": "TinyGo",
+      "runtimePlatform": "SpinApp (WebAssembly Component Model)"
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_nga_legislative_senate"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_nga_legislative_senate">
+    <bpmn:participant id="Pool_nga_legislative_senate" name="Legislative Senate (n4g8s1n2)" processRef="Process_nga_legislative_senate" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_nga_legislative_senate" name="Legislative Senate — General Public Services" isExecutable="true">
+    <bpmn:startEvent id="Start_nga_legislative_senate" name="Policy trigger
+received"><bpmn:outgoing>F_nga_legislative_senate_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:parallelGateway id="GW_nga_legislative_senate_open" name="Parallel checks">
+      <bpmn:incoming>F_nga_legislative_senate_01</bpmn:incoming>
+      <bpmn:outgoing>F_nga_legislative_senate_02</bpmn:outgoing>
+      <bpmn:outgoing>F_nga_legislative_senate_03</bpmn:outgoing>
+      <bpmn:outgoing>F_nga_legislative_senate_04</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:serviceTask id="T_nga_legislative_senate_policy" name="Draft Policy
+Proposal">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.nga.legislative-senate.draft_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="policy_output" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_nga_legislative_senate_02</bpmn:incoming>
+      <bpmn:outgoing>F_nga_legislative_senate_05</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_nga_legislative_senate_budget" name="Allocate Budget
+(COFOG 01)">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.nga.legislative-senate.allocate_budget" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="budget_execution_rate" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_nga_legislative_senate_03</bpmn:incoming>
+      <bpmn:outgoing>F_nga_legislative_senate_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_nga_legislative_senate_coord" name="Inter-Agency
+Coordination">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.nga.legislative-senate.coordinate" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="coordination_score" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_nga_legislative_senate_04</bpmn:incoming>
+      <bpmn:outgoing>F_nga_legislative_senate_07</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="GW_nga_legislative_senate_join" name="Checks complete">
+      <bpmn:incoming>F_nga_legislative_senate_05</bpmn:incoming>
+      <bpmn:incoming>F_nga_legislative_senate_06</bpmn:incoming>
+      <bpmn:incoming>F_nga_legislative_senate_07</bpmn:incoming>
+      <bpmn:outgoing>F_nga_legislative_senate_08</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:userTask id="T_nga_legislative_senate_review" name="Minister Review
+& Sign-off">
+      <bpmn:extensionElements>
+        <zeebe:assignmentDefinition assignee="gov-official" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_nga_legislative_senate_08</bpmn:incoming>
+      <bpmn:outgoing>F_nga_legislative_senate_09</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="GW_nga_legislative_senate_risk" name="Approved?" isMarkerVisible="true">
+      <bpmn:incoming>F_nga_legislative_senate_09</bpmn:incoming>
+      <bpmn:outgoing>F_nga_legislative_senate_10a</bpmn:outgoing>
+      <bpmn:outgoing>F_nga_legislative_senate_10b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_nga_legislative_senate_publish" name="Publish Policy
+& Notify Citizens">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.nga.legislative-senate.publish_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="publish" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_nga_legislative_senate_10a</bpmn:incoming>
+      <bpmn:outgoing>F_nga_legislative_senate_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_nga_legislative_senate_revise" name="Return for
+Revision">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.nga.legislative-senate.request_revision" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="revise" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_nga_legislative_senate_10b</bpmn:incoming>
+      <bpmn:outgoing>F_nga_legislative_senate_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_nga_legislative_senate" name="Process complete">
+      <bpmn:incoming>F_nga_legislative_senate_11</bpmn:incoming>
+      <bpmn:incoming>F_nga_legislative_senate_11b</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_nga_legislative_senate_01" sourceRef="Start_nga_legislative_senate" targetRef="GW_nga_legislative_senate_open">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_nga_legislative_senate_02" sourceRef="GW_nga_legislative_senate_open" targetRef="T_nga_legislative_senate_policy">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_nga_legislative_senate_03" sourceRef="GW_nga_legislative_senate_open" targetRef="T_nga_legislative_senate_budget">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_nga_legislative_senate_04" sourceRef="GW_nga_legislative_senate_open" targetRef="T_nga_legislative_senate_coord">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_nga_legislative_senate_05" sourceRef="T_nga_legislative_senate_policy" targetRef="GW_nga_legislative_senate_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_nga_legislative_senate_06" sourceRef="T_nga_legislative_senate_budget" targetRef="GW_nga_legislative_senate_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_nga_legislative_senate_07" sourceRef="T_nga_legislative_senate_coord" targetRef="GW_nga_legislative_senate_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_nga_legislative_senate_08" sourceRef="GW_nga_legislative_senate_join" targetRef="T_nga_legislative_senate_review">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_nga_legislative_senate_09" sourceRef="T_nga_legislative_senate_review" targetRef="GW_nga_legislative_senate_risk">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_nga_legislative_senate_10a" sourceRef="GW_nga_legislative_senate_risk" targetRef="T_nga_legislative_senate_publish" name="Approved">
+      <bpmn:conditionExpression>=approved = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_nga_legislative_senate_10b" sourceRef="GW_nga_legislative_senate_risk" targetRef="T_nga_legislative_senate_revise" name="Rejected">
+      <bpmn:conditionExpression>=approved = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_nga_legislative_senate_11" sourceRef="T_nga_legislative_senate_publish" targetRef="End_nga_legislative_senate">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_nga_legislative_senate_11b" sourceRef="T_nga_legislative_senate_revise" targetRef="End_nga_legislative_senate">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_nga_legislative_senate">
+    <bpmndi:BPMNPlane id="BPMNPlane_nga_legislative_senate" bpmnElement="Collaboration_nga_legislative_senate" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

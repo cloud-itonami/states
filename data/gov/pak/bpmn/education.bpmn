@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_pak_education"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_pak_education">
+    <bpmn:participant id="Pool_pak_education" name="Education (p1k2e3d4)" processRef="Process_pak_education" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_pak_education" name="Education — Education Administration" isExecutable="true">
+    <bpmn:startEvent id="Start_pak_education" name="Academic year
+cycle start"><bpmn:outgoing>F_pak_education_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:serviceTask id="T_pak_education_curriculum" name="Review & Update
+Curriculum">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.pak.education.curriculum_review" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="curriculum_compliance" />
+          <zeebe:header key="cofog" value="09" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_pak_education_01</bpmn:incoming>
+      <bpmn:outgoing>F_pak_education_02</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_pak_education_accredit" name="Institutional
+Accreditation Review">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.pak.education.accreditation" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="accreditation_rate" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_pak_education_02</bpmn:incoming>
+      <bpmn:outgoing>F_pak_education_03</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_pak_education_grants" name="Allocate Education
+Grants & Scholarships">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.pak.education.allocate_grants" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="grant_disbursement_rate" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_pak_education_03</bpmn:incoming>
+      <bpmn:outgoing>F_pak_education_04</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_pak_education_report" name="Publish Education
+Outcomes Report">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.pak.education.publish_outcomes" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_pak_education_04</bpmn:incoming>
+      <bpmn:outgoing>F_pak_education_05</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_pak_education" name="Academic cycle
+complete">
+      <bpmn:incoming>F_pak_education_05</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_pak_education_01" sourceRef="Start_pak_education" targetRef="T_pak_education_curriculum">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_pak_education_02" sourceRef="T_pak_education_curriculum" targetRef="T_pak_education_accredit">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_pak_education_03" sourceRef="T_pak_education_accredit" targetRef="T_pak_education_grants">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_pak_education_04" sourceRef="T_pak_education_grants" targetRef="T_pak_education_report">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_pak_education_05" sourceRef="T_pak_education_report" targetRef="End_pak_education">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_pak_education">
+    <bpmndi:BPMNPlane id="BPMNPlane_pak_education" bpmnElement="Collaboration_pak_education" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

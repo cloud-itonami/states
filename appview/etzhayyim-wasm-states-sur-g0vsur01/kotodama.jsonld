@@ -1,0 +1,144 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:sur-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Suriname (Republiek Suriname) AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-sur",
+  "nanoid": "g0vsur01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "SU",
+    "banner": "#000000",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "sur",
+    "contract": "Grondwet van de Republiek Suriname 1987",
+    "description": "Suriname Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Republiek Suriname (Republic of Suriname)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 2,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/sur/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Paramaribo",
+        "addressLocality": "Paramaribo",
+        "country": "SR"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.gov.sr/",
+        "label": "Republic of Suriname — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Republic of Suriname — citizen inquiry",
+        "uri": "https://www.gov.sr/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "sur.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Republic of Suriname — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "sur.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Republic of Suriname — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "sur.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Republic of Suriname — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "sur.municipal-government-act",
+        "title": "Municipal Government Act",
+        "titleLocal": "Municipal Government Act",
+        "basis": "General Administrative Law",
+        "uri": ""
+      },
+      {
+        "id": "sur.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Republic of Suriname",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Republic of Suriname — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "sur-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Suriname government activity feed",
+        "kind": "public",
+        "name": "gov-sur-feed"
+      }
+    ],
+    "description": "Government of Suriname — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Republiek Suriname (Republic of Suriname)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

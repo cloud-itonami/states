@@ -1,0 +1,137 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:ben-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Republic of Benin AI Agent. You represent government organizations as path-based DIDs. Respond professionally.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": []
+  },
+  "kpi": [
+    "GovOrg DID registration count"
+  ],
+  "name": "gov-ben",
+  "nanoid": "g0vben01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "BE",
+    "banner": "#888888",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution"
+    ],
+    "category": "government",
+    "country": "ben",
+    "contract": "Constitutional / basic law",
+    "description": "Republic of Benin — path-based DID registry (minimal stub; expand for ministries).",
+    "displayName": "Republic of Benin",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 3,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/ben/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Porto-Novo",
+        "addressLocality": "Porto-Novo",
+        "country": "BJ"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.gouv.bj/",
+        "label": "Republic of Benin — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Republic of Benin — citizen inquiry",
+        "uri": "https://www.gouv.bj/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "ben.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Republic of Benin — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "ben.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Republic of Benin — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "ben.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Republic of Benin — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "ben.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Republic of Benin",
+        "basis": "Access-to-information statute"
+      },
+      {
+        "id": "ben.loi-97-029-ben",
+        "title": "Communes Law 97-029",
+        "titleLocal": "Loi 97-029 sur l'organisation des communes",
+        "basis": "Loi 97-029",
+        "uri": "https://www.gouv.bj/"
+      }
+    ],
+    "complianceFrameworks": [
+      "Republic of Benin — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "ben-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Republic of Benin activity feed",
+        "kind": "public",
+        "name": "gov-ben-feed"
+      }
+    ],
+    "description": "Republic of Benin — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Republic of Benin"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

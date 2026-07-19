@@ -1,0 +1,122 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:nzl-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of New Zealand AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-nzl",
+  "nanoid": "g0vnzl01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "NZ",
+    "banner": "#00247d",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "nzl",
+    "contract": "Constitution Act 1986",
+    "description": "New Zealand Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "New Zealand / Aotearoa (New Zealand)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 4,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/nzl/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Parliament House",
+        "addressLocality": "Wellington",
+        "country": "NZ"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.govt.nz/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.legislation.govt.nz/"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "oia",
+        "label": "Official Information Act request",
+        "basis": "OIA 1982"
+      }
+    ],
+    "procedures": [],
+    "documentTemplates": [
+      {
+        "id": "nzl.municipal-government-act",
+        "title": "Municipal Government Act",
+        "titleLocal": "Municipal Government Act",
+        "basis": "General Administrative Law",
+        "uri": ""
+      }
+    ],
+    "complianceFrameworks": [
+      "Constitution Act 1986 + constitutional conventions",
+      "Official Information Act 1982",
+      "Administrative Decisions (Judicial Review) Act 1971"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "nzl-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "New Zealand government activity feed",
+        "kind": "public",
+        "name": "gov-nzl-feed"
+      }
+    ],
+    "description": "Government of New Zealand — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "New Zealand / Aotearoa (New Zealand)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

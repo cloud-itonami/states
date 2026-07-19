@@ -1,0 +1,149 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:kaz-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Kazakhstan AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution 1995"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-kaz",
+  "nanoid": "g0vkaz01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "KAZ",
+    "banner": "#000000",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "kaz",
+    "contract": "Constitution 1995",
+    "description": "Kazakhstan Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Қазақстан Республикасы (Republic of Kazakhstan)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 4,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/kaz/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Astana",
+        "addressLocality": "Astana",
+        "country": "KZ"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.gov.kz/",
+        "label": "gov.kz"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://adilet.zan.kz/",
+        "label": "Adilet legal DB"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Government of the Republic of Kazakhstan — citizen inquiry",
+        "uri": "https://www.gov.kz/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "kaz.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Government of the Republic of Kazakhstan — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "kaz.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Government of the Republic of Kazakhstan — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "kaz.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Government of the Republic of Kazakhstan — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "kaz.lmgus-kaz",
+        "title": "Law on Local State Administration",
+        "titleLocal": "Закон о местном государственном управлении и самоуправлении",
+        "basis": "ЗРК от 23.01.2001 No.148",
+        "uri": "https://adilet.zan.kz/"
+      },
+      {
+        "id": "kaz.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Government of the Republic of Kazakhstan",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Government of the Republic of Kazakhstan — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "kaz-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Kazakhstan government activity feed",
+        "kind": "public",
+        "name": "gov-kaz-feed"
+      }
+    ],
+    "description": "Government of Kazakhstan — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Қазақстан Республикасы (Republic of Kazakhstan)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

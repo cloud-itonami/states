@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_bhs_district_dst_73217057_green_turtle_cay"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_bhs_district_dst_73217057_green_turtle_cay">
+    <bpmn:participant id="Pool_bhs_district_dst_73217057_green_turtle_cay" name="Dst 73217057 Green Turtle Cay (73217057)" processRef="Process_bhs_district_dst_73217057_green_turtle_cay" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_bhs_district_dst_73217057_green_turtle_cay" name="Dst 73217057 Green Turtle Cay — General Public Services" isExecutable="true">
+    <bpmn:startEvent id="Start_bhs_district_dst_73217057_green_turtle_cay" name="Policy trigger
+received"><bpmn:outgoing>F_bhs_district_dst_73217057_green_turtle_cay_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:parallelGateway id="GW_bhs_district_dst_73217057_green_turtle_cay_open" name="Parallel checks">
+      <bpmn:incoming>F_bhs_district_dst_73217057_green_turtle_cay_01</bpmn:incoming>
+      <bpmn:outgoing>F_bhs_district_dst_73217057_green_turtle_cay_02</bpmn:outgoing>
+      <bpmn:outgoing>F_bhs_district_dst_73217057_green_turtle_cay_03</bpmn:outgoing>
+      <bpmn:outgoing>F_bhs_district_dst_73217057_green_turtle_cay_04</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:serviceTask id="T_bhs_district_dst_73217057_green_turtle_cay_policy" name="Draft Policy
+Proposal">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.bhs.district:dst-73217057-green-turtle-cay.draft_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="policy_output" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_bhs_district_dst_73217057_green_turtle_cay_02</bpmn:incoming>
+      <bpmn:outgoing>F_bhs_district_dst_73217057_green_turtle_cay_05</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_bhs_district_dst_73217057_green_turtle_cay_budget" name="Allocate Budget
+(COFOG 01)">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.bhs.district:dst-73217057-green-turtle-cay.allocate_budget" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="budget_execution_rate" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_bhs_district_dst_73217057_green_turtle_cay_03</bpmn:incoming>
+      <bpmn:outgoing>F_bhs_district_dst_73217057_green_turtle_cay_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_bhs_district_dst_73217057_green_turtle_cay_coord" name="Inter-Agency
+Coordination">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.bhs.district:dst-73217057-green-turtle-cay.coordinate" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="coordination_score" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_bhs_district_dst_73217057_green_turtle_cay_04</bpmn:incoming>
+      <bpmn:outgoing>F_bhs_district_dst_73217057_green_turtle_cay_07</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="GW_bhs_district_dst_73217057_green_turtle_cay_join" name="Checks complete">
+      <bpmn:incoming>F_bhs_district_dst_73217057_green_turtle_cay_05</bpmn:incoming>
+      <bpmn:incoming>F_bhs_district_dst_73217057_green_turtle_cay_06</bpmn:incoming>
+      <bpmn:incoming>F_bhs_district_dst_73217057_green_turtle_cay_07</bpmn:incoming>
+      <bpmn:outgoing>F_bhs_district_dst_73217057_green_turtle_cay_08</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:userTask id="T_bhs_district_dst_73217057_green_turtle_cay_review" name="Minister Review
+& Sign-off">
+      <bpmn:extensionElements>
+        <zeebe:assignmentDefinition assignee="gov-official" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_bhs_district_dst_73217057_green_turtle_cay_08</bpmn:incoming>
+      <bpmn:outgoing>F_bhs_district_dst_73217057_green_turtle_cay_09</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="GW_bhs_district_dst_73217057_green_turtle_cay_risk" name="Approved?" isMarkerVisible="true">
+      <bpmn:incoming>F_bhs_district_dst_73217057_green_turtle_cay_09</bpmn:incoming>
+      <bpmn:outgoing>F_bhs_district_dst_73217057_green_turtle_cay_10a</bpmn:outgoing>
+      <bpmn:outgoing>F_bhs_district_dst_73217057_green_turtle_cay_10b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_bhs_district_dst_73217057_green_turtle_cay_publish" name="Publish Policy
+& Notify Citizens">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.bhs.district:dst-73217057-green-turtle-cay.publish_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="publish" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_bhs_district_dst_73217057_green_turtle_cay_10a</bpmn:incoming>
+      <bpmn:outgoing>F_bhs_district_dst_73217057_green_turtle_cay_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_bhs_district_dst_73217057_green_turtle_cay_revise" name="Return for
+Revision">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.bhs.district:dst-73217057-green-turtle-cay.request_revision" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="revise" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_bhs_district_dst_73217057_green_turtle_cay_10b</bpmn:incoming>
+      <bpmn:outgoing>F_bhs_district_dst_73217057_green_turtle_cay_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_bhs_district_dst_73217057_green_turtle_cay" name="Process complete">
+      <bpmn:incoming>F_bhs_district_dst_73217057_green_turtle_cay_11</bpmn:incoming>
+      <bpmn:incoming>F_bhs_district_dst_73217057_green_turtle_cay_11b</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_bhs_district_dst_73217057_green_turtle_cay_01" sourceRef="Start_bhs_district_dst_73217057_green_turtle_cay" targetRef="GW_bhs_district_dst_73217057_green_turtle_cay_open">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_bhs_district_dst_73217057_green_turtle_cay_02" sourceRef="GW_bhs_district_dst_73217057_green_turtle_cay_open" targetRef="T_bhs_district_dst_73217057_green_turtle_cay_policy">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_bhs_district_dst_73217057_green_turtle_cay_03" sourceRef="GW_bhs_district_dst_73217057_green_turtle_cay_open" targetRef="T_bhs_district_dst_73217057_green_turtle_cay_budget">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_bhs_district_dst_73217057_green_turtle_cay_04" sourceRef="GW_bhs_district_dst_73217057_green_turtle_cay_open" targetRef="T_bhs_district_dst_73217057_green_turtle_cay_coord">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_bhs_district_dst_73217057_green_turtle_cay_05" sourceRef="T_bhs_district_dst_73217057_green_turtle_cay_policy" targetRef="GW_bhs_district_dst_73217057_green_turtle_cay_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_bhs_district_dst_73217057_green_turtle_cay_06" sourceRef="T_bhs_district_dst_73217057_green_turtle_cay_budget" targetRef="GW_bhs_district_dst_73217057_green_turtle_cay_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_bhs_district_dst_73217057_green_turtle_cay_07" sourceRef="T_bhs_district_dst_73217057_green_turtle_cay_coord" targetRef="GW_bhs_district_dst_73217057_green_turtle_cay_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_bhs_district_dst_73217057_green_turtle_cay_08" sourceRef="GW_bhs_district_dst_73217057_green_turtle_cay_join" targetRef="T_bhs_district_dst_73217057_green_turtle_cay_review">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_bhs_district_dst_73217057_green_turtle_cay_09" sourceRef="T_bhs_district_dst_73217057_green_turtle_cay_review" targetRef="GW_bhs_district_dst_73217057_green_turtle_cay_risk">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_bhs_district_dst_73217057_green_turtle_cay_10a" sourceRef="GW_bhs_district_dst_73217057_green_turtle_cay_risk" targetRef="T_bhs_district_dst_73217057_green_turtle_cay_publish" name="Approved">
+      <bpmn:conditionExpression>=approved = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_bhs_district_dst_73217057_green_turtle_cay_10b" sourceRef="GW_bhs_district_dst_73217057_green_turtle_cay_risk" targetRef="T_bhs_district_dst_73217057_green_turtle_cay_revise" name="Rejected">
+      <bpmn:conditionExpression>=approved = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_bhs_district_dst_73217057_green_turtle_cay_11" sourceRef="T_bhs_district_dst_73217057_green_turtle_cay_publish" targetRef="End_bhs_district_dst_73217057_green_turtle_cay">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_bhs_district_dst_73217057_green_turtle_cay_11b" sourceRef="T_bhs_district_dst_73217057_green_turtle_cay_revise" targetRef="End_bhs_district_dst_73217057_green_turtle_cay">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_bhs_district_dst_73217057_green_turtle_cay">
+    <bpmndi:BPMNPlane id="BPMNPlane_bhs_district_dst_73217057_green_turtle_cay" bpmnElement="Collaboration_bhs_district_dst_73217057_green_turtle_cay" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

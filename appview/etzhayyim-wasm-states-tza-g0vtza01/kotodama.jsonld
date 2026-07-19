@@ -1,0 +1,158 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:tza-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Tanzania AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English and Swahili.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-tza",
+  "nanoid": "g0vtza01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "TZ",
+    "banner": "#1eb53a",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "tza",
+    "contract": "Constitution of Tanzania 1977",
+    "description": "Tanzania Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Jamhuri ya Muungano wa Tanzania (United Republic of Tanzania)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 1,
+    "contractCount": 1,
+    "bpmnCount": 25,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/tza/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Dodoma",
+        "addressLocality": "Dodoma",
+        "country": "TZ"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.tanzania.go.tz/",
+        "label": "tanzania.go.tz"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.parliament.go.tz/",
+        "label": "Parliament"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "United Republic of Tanzania — citizen inquiry",
+        "uri": "https://www.tanzania.go.tz/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "tza.executive",
+        "title": "Executive",
+        "titleLocal": "Executive",
+        "authority": "Executive",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/tza/bpmn/executive.bpmn"
+      },
+      {
+        "id": "tza.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "United Republic of Tanzania — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "tza.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "United Republic of Tanzania — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "tza.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "United Republic of Tanzania — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "tza.lgua-8-1982",
+        "title": "LG Urban Authorities Act",
+        "titleLocal": "Local Government (Urban Authorities) Act 8/1982",
+        "basis": "Act No.8 of 1982",
+        "uri": "https://www.parliament.go.tz/"
+      },
+      {
+        "id": "tza.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "United Republic of Tanzania",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "United Republic of Tanzania — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "tza-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Tanzania government activity feed",
+        "kind": "public",
+        "name": "gov-tza-feed"
+      }
+    ],
+    "description": "Government of Tanzania — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Jamhuri ya Muungano wa Tanzania (United Republic of Tanzania)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

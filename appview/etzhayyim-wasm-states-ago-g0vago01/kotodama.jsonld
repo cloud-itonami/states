@@ -1,0 +1,158 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:ago-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Angola AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-ago",
+  "nanoid": "g0vago01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "AO",
+    "banner": "#000000",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "ago",
+    "contract": "Constitution of Angola 2010",
+    "description": "Angola Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "República de Angola (Republic of Angola)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 1,
+    "contractCount": 1,
+    "bpmnCount": 18,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/ago/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Luanda",
+        "addressLocality": "Luanda",
+        "country": "AO"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.governo.gov.ao/",
+        "label": "governo.gov.ao"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.parlamento.ao/",
+        "label": "Parliament"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Governo de Angola — citizen inquiry",
+        "uri": "https://www.governo.gov.ao/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "ago.executive",
+        "title": "Executive",
+        "titleLocal": "Executive",
+        "authority": "Executive",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/ago/bpmn/executive.bpmn"
+      },
+      {
+        "id": "ago.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Governo de Angola — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "ago.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Governo de Angola — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "ago.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Governo de Angola — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "ago.lal-27-2019",
+        "title": "Local Authorities Law 27/2019",
+        "titleLocal": "Lei das Autarquias Locais 27/2019",
+        "basis": "Lei no.27/2019",
+        "uri": "https://www.governo.gov.ao/"
+      },
+      {
+        "id": "ago.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Governo de Angola",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Governo de Angola — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "ago-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Angola government activity feed",
+        "kind": "public",
+        "name": "gov-ago-feed"
+      }
+    ],
+    "description": "Government of Angola — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "República de Angola (Republic of Angola)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

@@ -1,0 +1,158 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:cod-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of the Democratic Republic of the Congo AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-cod",
+  "nanoid": "g0vcod01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "CD",
+    "banner": "#000000",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "cod",
+    "contract": "Constitution of the DRC 2006",
+    "description": "DR Congo Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "République Démocratique du Congo (Democratic Republic of the Congo)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 1,
+    "contractCount": 1,
+    "bpmnCount": 25,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/cod/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Kinshasa",
+        "addressLocality": "Kinshasa",
+        "country": "CD"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.primature.cd/",
+        "label": "Primature"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.presidence.cd/",
+        "label": "Presidence"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Gouvernement de la RDC — citizen inquiry",
+        "uri": "https://www.primature.cd/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "cod.executive",
+        "title": "Executive",
+        "titleLocal": "Executive",
+        "authority": "Executive",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/cod/bpmn/executive.bpmn"
+      },
+      {
+        "id": "cod.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Gouvernement de la RDC — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "cod.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Gouvernement de la RDC — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "cod.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Gouvernement de la RDC — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "cod.loi-etd-08-016",
+        "title": "ETD Organic Law 08/016",
+        "titleLocal": "Loi organique 08/016 des entités territoriales décentralisées",
+        "basis": "Loi 08/016",
+        "uri": "https://www.leganet.cd/"
+      },
+      {
+        "id": "cod.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Gouvernement de la RDC",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Gouvernement de la RDC — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "cod-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "DR Congo government activity feed",
+        "kind": "public",
+        "name": "gov-cod-feed"
+      }
+    ],
+    "description": "Government of the DR Congo — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "République Démocratique du Congo (Democratic Republic of the Congo)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

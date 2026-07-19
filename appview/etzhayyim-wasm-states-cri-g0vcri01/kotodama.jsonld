@@ -1,0 +1,149 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:cri-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Costa Rica (República de Costa Rica) AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-cri",
+  "nanoid": "g0vcri01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "CR",
+    "banner": "#000000",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "cri",
+    "contract": "Constitución Política 1949",
+    "description": "Costa Rica Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "República de Costa Rica (Republic of Costa Rica)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 2,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/cri/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: San Jose",
+        "addressLocality": "San Jose",
+        "country": "CR"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.presidencia.go.cr/",
+        "label": "Presidencia"
+      },
+      {
+        "kind": "portal",
+        "uri": "http://www.pgrweb.go.cr/",
+        "label": "Legal system"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Gobierno de Costa Rica — citizen inquiry",
+        "uri": "https://www.presidencia.go.cr/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "cri.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Gobierno de Costa Rica — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "cri.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Gobierno de Costa Rica — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "cri.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Gobierno de Costa Rica — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "cri.cm-ley-7794",
+        "title": "Código Municipal",
+        "titleLocal": "Código Municipal Ley 7794/1998",
+        "basis": "Ley 7794",
+        "uri": "https://www.asamblea.go.cr/"
+      },
+      {
+        "id": "cri.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Gobierno de Costa Rica",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Gobierno de Costa Rica — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "cri-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Costa Rica government activity feed",
+        "kind": "public",
+        "name": "gov-cri-feed"
+      }
+    ],
+    "description": "Government of Costa Rica — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "República de Costa Rica (Republic of Costa Rica)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

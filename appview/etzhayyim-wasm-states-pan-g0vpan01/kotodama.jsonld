@@ -1,0 +1,149 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:pan-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Panama (República de Panamá) AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-pan",
+  "nanoid": "g0vpan01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "PA",
+    "banner": "#000000",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "pan",
+    "contract": "Constitución Política de la República de Panamá 1972/2004",
+    "description": "Panama Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "República de Panamá (Republic of Panama)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 2,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/pan/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Panama City",
+        "addressLocality": "Panama City",
+        "country": "PA"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.presidencia.gob.pa/",
+        "label": "Presidencia"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.organojudicial.gob.pa/",
+        "label": "Judicial"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Gobierno de Panama — citizen inquiry",
+        "uri": "https://www.presidencia.gob.pa/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "pan.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Gobierno de Panama — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "pan.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Gobierno de Panama — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "pan.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Gobierno de Panama — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "pan.ley-105-1973-pan",
+        "title": "Ley 105/1973",
+        "titleLocal": "Ley No.105/1973 régimen municipal",
+        "basis": "Ley No.105",
+        "uri": "https://www.asamblea.gob.pa/"
+      },
+      {
+        "id": "pan.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Gobierno de Panama",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Gobierno de Panama — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "pan-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Panama government activity feed",
+        "kind": "public",
+        "name": "gov-pan-feed"
+      }
+    ],
+    "description": "Government of Panama — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "República de Panamá (Republic of Panama)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

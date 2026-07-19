@@ -1,0 +1,144 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:guy-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Guyana (Co-operative Republic of Guyana) AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-guy",
+  "nanoid": "g0vguy01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "GU",
+    "banner": "#000000",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "guy",
+    "contract": "Constitution of the Co-operative Republic of Guyana 1980",
+    "description": "Guyana Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Co-operative Republic of Guyana",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 2,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/guy/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Georgetown",
+        "addressLocality": "Georgetown",
+        "country": "GY"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://parliament.gov.gy/",
+        "label": "Co-operative Republic of Guyana — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Co-operative Republic of Guyana — citizen inquiry",
+        "uri": "https://parliament.gov.gy/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "guy.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Co-operative Republic of Guyana — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "guy.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Co-operative Republic of Guyana — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "guy.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Co-operative Republic of Guyana — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "guy.mdc-cap-28-01-guy",
+        "title": "MDC Act",
+        "titleLocal": "Municipal and District Councils Act Cap 28:01",
+        "basis": "Cap.28:01",
+        "uri": "https://www.parliament.gov.gy/"
+      },
+      {
+        "id": "guy.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Co-operative Republic of Guyana",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Co-operative Republic of Guyana — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "guy-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Guyana government activity feed",
+        "kind": "public",
+        "name": "gov-guy-feed"
+      }
+    ],
+    "description": "Government of Guyana — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Co-operative Republic of Guyana"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

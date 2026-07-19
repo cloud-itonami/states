@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_tun_district_dst_70160824"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_tun_district_dst_70160824">
+    <bpmn:participant id="Pool_tun_district_dst_70160824" name="Dst 70160824 (70160824)" processRef="Process_tun_district_dst_70160824" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_tun_district_dst_70160824" name="Dst 70160824 — General Public Services" isExecutable="true">
+    <bpmn:startEvent id="Start_tun_district_dst_70160824" name="Policy trigger
+received"><bpmn:outgoing>F_tun_district_dst_70160824_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:parallelGateway id="GW_tun_district_dst_70160824_open" name="Parallel checks">
+      <bpmn:incoming>F_tun_district_dst_70160824_01</bpmn:incoming>
+      <bpmn:outgoing>F_tun_district_dst_70160824_02</bpmn:outgoing>
+      <bpmn:outgoing>F_tun_district_dst_70160824_03</bpmn:outgoing>
+      <bpmn:outgoing>F_tun_district_dst_70160824_04</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:serviceTask id="T_tun_district_dst_70160824_policy" name="Draft Policy
+Proposal">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.tun.district:dst-70160824.draft_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="policy_output" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_tun_district_dst_70160824_02</bpmn:incoming>
+      <bpmn:outgoing>F_tun_district_dst_70160824_05</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_tun_district_dst_70160824_budget" name="Allocate Budget
+(COFOG 01)">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.tun.district:dst-70160824.allocate_budget" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="budget_execution_rate" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_tun_district_dst_70160824_03</bpmn:incoming>
+      <bpmn:outgoing>F_tun_district_dst_70160824_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_tun_district_dst_70160824_coord" name="Inter-Agency
+Coordination">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.tun.district:dst-70160824.coordinate" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="coordination_score" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_tun_district_dst_70160824_04</bpmn:incoming>
+      <bpmn:outgoing>F_tun_district_dst_70160824_07</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="GW_tun_district_dst_70160824_join" name="Checks complete">
+      <bpmn:incoming>F_tun_district_dst_70160824_05</bpmn:incoming>
+      <bpmn:incoming>F_tun_district_dst_70160824_06</bpmn:incoming>
+      <bpmn:incoming>F_tun_district_dst_70160824_07</bpmn:incoming>
+      <bpmn:outgoing>F_tun_district_dst_70160824_08</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:userTask id="T_tun_district_dst_70160824_review" name="Minister Review
+& Sign-off">
+      <bpmn:extensionElements>
+        <zeebe:assignmentDefinition assignee="gov-official" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_tun_district_dst_70160824_08</bpmn:incoming>
+      <bpmn:outgoing>F_tun_district_dst_70160824_09</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="GW_tun_district_dst_70160824_risk" name="Approved?" isMarkerVisible="true">
+      <bpmn:incoming>F_tun_district_dst_70160824_09</bpmn:incoming>
+      <bpmn:outgoing>F_tun_district_dst_70160824_10a</bpmn:outgoing>
+      <bpmn:outgoing>F_tun_district_dst_70160824_10b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_tun_district_dst_70160824_publish" name="Publish Policy
+& Notify Citizens">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.tun.district:dst-70160824.publish_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="publish" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_tun_district_dst_70160824_10a</bpmn:incoming>
+      <bpmn:outgoing>F_tun_district_dst_70160824_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_tun_district_dst_70160824_revise" name="Return for
+Revision">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.tun.district:dst-70160824.request_revision" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="revise" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_tun_district_dst_70160824_10b</bpmn:incoming>
+      <bpmn:outgoing>F_tun_district_dst_70160824_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_tun_district_dst_70160824" name="Process complete">
+      <bpmn:incoming>F_tun_district_dst_70160824_11</bpmn:incoming>
+      <bpmn:incoming>F_tun_district_dst_70160824_11b</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_tun_district_dst_70160824_01" sourceRef="Start_tun_district_dst_70160824" targetRef="GW_tun_district_dst_70160824_open">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_tun_district_dst_70160824_02" sourceRef="GW_tun_district_dst_70160824_open" targetRef="T_tun_district_dst_70160824_policy">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_tun_district_dst_70160824_03" sourceRef="GW_tun_district_dst_70160824_open" targetRef="T_tun_district_dst_70160824_budget">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_tun_district_dst_70160824_04" sourceRef="GW_tun_district_dst_70160824_open" targetRef="T_tun_district_dst_70160824_coord">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_tun_district_dst_70160824_05" sourceRef="T_tun_district_dst_70160824_policy" targetRef="GW_tun_district_dst_70160824_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_tun_district_dst_70160824_06" sourceRef="T_tun_district_dst_70160824_budget" targetRef="GW_tun_district_dst_70160824_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_tun_district_dst_70160824_07" sourceRef="T_tun_district_dst_70160824_coord" targetRef="GW_tun_district_dst_70160824_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_tun_district_dst_70160824_08" sourceRef="GW_tun_district_dst_70160824_join" targetRef="T_tun_district_dst_70160824_review">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_tun_district_dst_70160824_09" sourceRef="T_tun_district_dst_70160824_review" targetRef="GW_tun_district_dst_70160824_risk">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_tun_district_dst_70160824_10a" sourceRef="GW_tun_district_dst_70160824_risk" targetRef="T_tun_district_dst_70160824_publish" name="Approved">
+      <bpmn:conditionExpression>=approved = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_tun_district_dst_70160824_10b" sourceRef="GW_tun_district_dst_70160824_risk" targetRef="T_tun_district_dst_70160824_revise" name="Rejected">
+      <bpmn:conditionExpression>=approved = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_tun_district_dst_70160824_11" sourceRef="T_tun_district_dst_70160824_publish" targetRef="End_tun_district_dst_70160824">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_tun_district_dst_70160824_11b" sourceRef="T_tun_district_dst_70160824_revise" targetRef="End_tun_district_dst_70160824">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_tun_district_dst_70160824">
+    <bpmndi:BPMNPlane id="BPMNPlane_tun_district_dst_70160824" bpmnElement="Collaboration_tun_district_dst_70160824" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

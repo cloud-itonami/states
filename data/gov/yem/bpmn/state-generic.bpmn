@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_yem_state_generic"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_yem_state_generic">
+    <bpmn:participant id="Pool_yem_state_generic" name="State Generic (y1e2s3g4)" processRef="Process_yem_state_generic" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_yem_state_generic" name="State Generic — General Public Services" isExecutable="true">
+    <bpmn:startEvent id="Start_yem_state_generic" name="Policy trigger
+received"><bpmn:outgoing>F_yem_state_generic_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:parallelGateway id="GW_yem_state_generic_open" name="Parallel checks">
+      <bpmn:incoming>F_yem_state_generic_01</bpmn:incoming>
+      <bpmn:outgoing>F_yem_state_generic_02</bpmn:outgoing>
+      <bpmn:outgoing>F_yem_state_generic_03</bpmn:outgoing>
+      <bpmn:outgoing>F_yem_state_generic_04</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:serviceTask id="T_yem_state_generic_policy" name="Draft Policy
+Proposal">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.yem.state-generic.draft_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="policy_output" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_yem_state_generic_02</bpmn:incoming>
+      <bpmn:outgoing>F_yem_state_generic_05</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_yem_state_generic_budget" name="Allocate Budget
+(COFOG 01)">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.yem.state-generic.allocate_budget" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="budget_execution_rate" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_yem_state_generic_03</bpmn:incoming>
+      <bpmn:outgoing>F_yem_state_generic_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_yem_state_generic_coord" name="Inter-Agency
+Coordination">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.yem.state-generic.coordinate" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="coordination_score" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_yem_state_generic_04</bpmn:incoming>
+      <bpmn:outgoing>F_yem_state_generic_07</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="GW_yem_state_generic_join" name="Checks complete">
+      <bpmn:incoming>F_yem_state_generic_05</bpmn:incoming>
+      <bpmn:incoming>F_yem_state_generic_06</bpmn:incoming>
+      <bpmn:incoming>F_yem_state_generic_07</bpmn:incoming>
+      <bpmn:outgoing>F_yem_state_generic_08</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:userTask id="T_yem_state_generic_review" name="Minister Review
+& Sign-off">
+      <bpmn:extensionElements>
+        <zeebe:assignmentDefinition assignee="gov-official" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_yem_state_generic_08</bpmn:incoming>
+      <bpmn:outgoing>F_yem_state_generic_09</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="GW_yem_state_generic_risk" name="Approved?" isMarkerVisible="true">
+      <bpmn:incoming>F_yem_state_generic_09</bpmn:incoming>
+      <bpmn:outgoing>F_yem_state_generic_10a</bpmn:outgoing>
+      <bpmn:outgoing>F_yem_state_generic_10b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_yem_state_generic_publish" name="Publish Policy
+& Notify Citizens">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.yem.state-generic.publish_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="publish" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_yem_state_generic_10a</bpmn:incoming>
+      <bpmn:outgoing>F_yem_state_generic_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_yem_state_generic_revise" name="Return for
+Revision">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.yem.state-generic.request_revision" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="revise" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_yem_state_generic_10b</bpmn:incoming>
+      <bpmn:outgoing>F_yem_state_generic_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_yem_state_generic" name="Process complete">
+      <bpmn:incoming>F_yem_state_generic_11</bpmn:incoming>
+      <bpmn:incoming>F_yem_state_generic_11b</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_yem_state_generic_01" sourceRef="Start_yem_state_generic" targetRef="GW_yem_state_generic_open">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_yem_state_generic_02" sourceRef="GW_yem_state_generic_open" targetRef="T_yem_state_generic_policy">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_yem_state_generic_03" sourceRef="GW_yem_state_generic_open" targetRef="T_yem_state_generic_budget">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_yem_state_generic_04" sourceRef="GW_yem_state_generic_open" targetRef="T_yem_state_generic_coord">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_yem_state_generic_05" sourceRef="T_yem_state_generic_policy" targetRef="GW_yem_state_generic_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_yem_state_generic_06" sourceRef="T_yem_state_generic_budget" targetRef="GW_yem_state_generic_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_yem_state_generic_07" sourceRef="T_yem_state_generic_coord" targetRef="GW_yem_state_generic_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_yem_state_generic_08" sourceRef="GW_yem_state_generic_join" targetRef="T_yem_state_generic_review">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_yem_state_generic_09" sourceRef="T_yem_state_generic_review" targetRef="GW_yem_state_generic_risk">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_yem_state_generic_10a" sourceRef="GW_yem_state_generic_risk" targetRef="T_yem_state_generic_publish" name="Approved">
+      <bpmn:conditionExpression>=approved = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_yem_state_generic_10b" sourceRef="GW_yem_state_generic_risk" targetRef="T_yem_state_generic_revise" name="Rejected">
+      <bpmn:conditionExpression>=approved = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_yem_state_generic_11" sourceRef="T_yem_state_generic_publish" targetRef="End_yem_state_generic">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_yem_state_generic_11b" sourceRef="T_yem_state_generic_revise" targetRef="End_yem_state_generic">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_yem_state_generic">
+    <bpmndi:BPMNPlane id="BPMNPlane_yem_state_generic" bpmnElement="Collaboration_yem_state_generic" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

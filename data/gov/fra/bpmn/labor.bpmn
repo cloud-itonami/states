@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_fra_labor"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_fra_labor">
+    <bpmn:participant id="Pool_fra_labor" name="Labor (f1r2l3a4)" processRef="Process_fra_labor" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_fra_labor" name="Labor — Economic Affairs / Licensing" isExecutable="true">
+    <bpmn:startEvent id="Start_fra_labor" name="License / Permit
+application received"><bpmn:outgoing>F_fra_labor_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:serviceTask id="T_fra_labor_screen" name="Screen Application
+(completeness check)">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.fra.labor.screen_application" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="processing_days" />
+          <zeebe:header key="cofog" value="04" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_fra_labor_01</bpmn:incoming>
+      <bpmn:outgoing>F_fra_labor_02</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="GW_fra_labor_complete" name="Complete?" isMarkerVisible="true">
+      <bpmn:incoming>F_fra_labor_02</bpmn:incoming>
+      <bpmn:outgoing>F_fra_labor_03a</bpmn:outgoing>
+      <bpmn:outgoing>F_fra_labor_03b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_fra_labor_return" name="Return for
+Additional Info">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.fra.labor.return_application" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_fra_labor_03b</bpmn:incoming>
+      <bpmn:outgoing>F_fra_labor_end1</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="GW_fra_labor_checks" name="Parallel review">
+      <bpmn:incoming>F_fra_labor_03a</bpmn:incoming>
+      <bpmn:outgoing>F_fra_labor_04a</bpmn:outgoing>
+      <bpmn:outgoing>F_fra_labor_04b</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:serviceTask id="T_fra_labor_legal" name="Legal Compliance
+Review">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.fra.labor.legal_review" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="compliance_pass_rate" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_fra_labor_04a</bpmn:incoming>
+      <bpmn:outgoing>F_fra_labor_05</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_fra_labor_technical" name="Technical
+Assessment">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.fra.labor.technical_assessment" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="technical_score" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_fra_labor_04b</bpmn:incoming>
+      <bpmn:outgoing>F_fra_labor_05b</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="GW_fra_labor_join" name="Reviews complete">
+      <bpmn:incoming>F_fra_labor_05</bpmn:incoming>
+      <bpmn:incoming>F_fra_labor_05b</bpmn:incoming>
+      <bpmn:outgoing>F_fra_labor_06</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:userTask id="T_fra_labor_decision" name="Approval Decision
+by Authority">
+      <bpmn:extensionElements>
+        <zeebe:assignmentDefinition assignee="gov-official" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_fra_labor_06</bpmn:incoming>
+      <bpmn:outgoing>F_fra_labor_07</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="GW_fra_labor_approve" name="Decision?" isMarkerVisible="true">
+      <bpmn:incoming>F_fra_labor_07</bpmn:incoming>
+      <bpmn:outgoing>F_fra_labor_08a</bpmn:outgoing>
+      <bpmn:outgoing>F_fra_labor_08b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_fra_labor_issue" name="Issue License
+/ Permit">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.fra.labor.issue_license" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="issue" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_fra_labor_08a</bpmn:incoming>
+      <bpmn:outgoing>F_fra_labor_end1</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_fra_labor_deny" name="Send Denial
+Notice">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.fra.labor.deny_application" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="deny" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_fra_labor_08b</bpmn:incoming>
+      <bpmn:outgoing>F_fra_labor_end1</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_fra_labor" name="Application
+processed">
+      <bpmn:incoming>F_fra_labor_end1</bpmn:incoming>
+      <bpmn:incoming>F_fra_labor_end1b</bpmn:incoming>
+      <bpmn:incoming>F_fra_labor_end1c</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_fra_labor_01" sourceRef="Start_fra_labor" targetRef="T_fra_labor_screen">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_fra_labor_02" sourceRef="T_fra_labor_screen" targetRef="GW_fra_labor_complete">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_fra_labor_03a" sourceRef="GW_fra_labor_complete" targetRef="GW_fra_labor_checks" name="Yes">
+      <bpmn:conditionExpression>=complete = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_fra_labor_03b" sourceRef="GW_fra_labor_complete" targetRef="T_fra_labor_return" name="No">
+      <bpmn:conditionExpression>=complete = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_fra_labor_04a" sourceRef="GW_fra_labor_checks" targetRef="T_fra_labor_legal">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_fra_labor_04b" sourceRef="GW_fra_labor_checks" targetRef="T_fra_labor_technical">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_fra_labor_05" sourceRef="T_fra_labor_legal" targetRef="GW_fra_labor_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_fra_labor_05b" sourceRef="T_fra_labor_technical" targetRef="GW_fra_labor_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_fra_labor_06" sourceRef="GW_fra_labor_join" targetRef="T_fra_labor_decision">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_fra_labor_07" sourceRef="T_fra_labor_decision" targetRef="GW_fra_labor_approve">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_fra_labor_08a" sourceRef="GW_fra_labor_approve" targetRef="T_fra_labor_issue" name="Approved">
+      <bpmn:conditionExpression>=approved = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_fra_labor_08b" sourceRef="GW_fra_labor_approve" targetRef="T_fra_labor_deny" name="Denied">
+      <bpmn:conditionExpression>=approved = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_fra_labor_end1" sourceRef="T_fra_labor_issue" targetRef="End_fra_labor">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_fra_labor_end1b" sourceRef="T_fra_labor_deny" targetRef="End_fra_labor">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_fra_labor_end1c" sourceRef="T_fra_labor_return" targetRef="End_fra_labor">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_fra_labor">
+    <bpmndi:BPMNPlane id="BPMNPlane_fra_labor" bpmnElement="Collaboration_fra_labor" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

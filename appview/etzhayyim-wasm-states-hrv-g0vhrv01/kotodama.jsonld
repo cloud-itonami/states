@@ -1,0 +1,149 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:hrv-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Croatia AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-hrv",
+  "nanoid": "g0vhrv01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "HR",
+    "banner": "#0070c0",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "hrv",
+    "contract": "Ustav Republike Hrvatske 1990",
+    "description": "Croatia Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Republika Hrvatska (Republic of Croatia)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 3,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/hrv/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Zagreb",
+        "addressLocality": "Zagreb",
+        "country": "HR"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://vlada.gov.hr/",
+        "label": "vlada.gov.hr"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://narodne-novine.nn.hr/",
+        "label": "Official Gazette"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Government of the Republic of Croatia — citizen inquiry",
+        "uri": "https://vlada.gov.hr/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "hrv.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Government of the Republic of Croatia — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "hrv.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Government of the Republic of Croatia — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "hrv.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Government of the Republic of Croatia — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "hrv.zlprs",
+        "title": "Local and Regional Government Act",
+        "titleLocal": "Zakon o lokalnoj i područnoj (regionalnoj) samoupravi",
+        "basis": "NN br. 33/01",
+        "uri": "https://www.zakon.hr/"
+      },
+      {
+        "id": "hrv.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Government of the Republic of Croatia",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Government of the Republic of Croatia — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "hrv-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Croatia government activity feed",
+        "kind": "public",
+        "name": "gov-hrv-feed"
+      }
+    ],
+    "description": "Government of Croatia — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Republika Hrvatska (Republic of Croatia)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

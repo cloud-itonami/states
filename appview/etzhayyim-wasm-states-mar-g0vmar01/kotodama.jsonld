@@ -1,0 +1,132 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:mar-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Morocco AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English, French, and Arabic.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-mar",
+  "nanoid": "g0vmar01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "MA",
+    "banner": "#c1272d",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "mar",
+    "contract": "الدستور المغربي 2011",
+    "description": "Morocco Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "المملكة المغربية (Kingdom of Morocco)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 1,
+    "contractCount": 1,
+    "bpmnCount": 18,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/mar/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Palais Royal",
+        "addressLocality": "Rabat",
+        "country": "MA"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.cg.gov.ma/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.sgg.gov.ma/"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "droit_acces",
+        "label": "Droit d'acces a l'information",
+        "basis": "Loi 31-13"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "mar.executive",
+        "title": "Executive",
+        "titleLocal": "Executive",
+        "authority": "Executive",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/mar/bpmn/executive.bpmn"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "mar.municipal-government-act",
+        "title": "Municipal Government Act",
+        "titleLocal": "Municipal Government Act",
+        "basis": "General Administrative Law",
+        "uri": ""
+      }
+    ],
+    "complianceFrameworks": [
+      "Constitution of the Kingdom of Morocco (2011)",
+      "Loi 31-13 (Droit d'accès à l'information)",
+      "Loi 03-01"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "mar-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Morocco government activity feed",
+        "kind": "public",
+        "name": "gov-mar-feed"
+      }
+    ],
+    "description": "Government of Morocco — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "المملكة المغربية (Kingdom of Morocco)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

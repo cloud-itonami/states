@@ -1,0 +1,122 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:swe-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Sweden AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-swe",
+  "nanoid": "g0vswe01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "SE",
+    "banner": "#006aa7",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "swe",
+    "contract": "Regeringsformen 1974",
+    "description": "Sweden Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Konungariket Sverige (Kingdom of Sweden)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 4,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/swe/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Rosenbad",
+        "addressLocality": "Stockholm",
+        "country": "SE"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.regeringen.se/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.riksdagen.se/sv/dokument-och-lagar/"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "offentlighet",
+        "label": "Offentlighetsprincipen",
+        "basis": "Tryckfrihetsforordningen"
+      }
+    ],
+    "procedures": [],
+    "documentTemplates": [
+      {
+        "id": "swe.kommunallagen",
+        "title": "Local Government Act",
+        "titleLocal": "Kommunallagen",
+        "basis": "SFS 2017:725",
+        "uri": "https://www.riksdagen.se/"
+      }
+    ],
+    "complianceFrameworks": [
+      "Regeringsformen (1974)",
+      "Tryckfrihetsförordningen (1949, Offentlighetsprincipen)",
+      "Förvaltningslagen (2017)"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "swe-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Sweden government activity feed",
+        "kind": "public",
+        "name": "gov-swe-feed"
+      }
+    ],
+    "description": "Government of Sweden — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Konungariket Sverige (Kingdom of Sweden)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

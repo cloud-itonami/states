@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_chn_ministry_of_public"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_chn_ministry_of_public">
+    <bpmn:participant id="Pool_chn_ministry_of_public" name="Ministry Of Public (security)" processRef="Process_chn_ministry_of_public" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_chn_ministry_of_public" name="Ministry Of Public — General Public Services" isExecutable="true">
+    <bpmn:startEvent id="Start_chn_ministry_of_public" name="Policy trigger
+received"><bpmn:outgoing>F_chn_ministry_of_public_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:parallelGateway id="GW_chn_ministry_of_public_open" name="Parallel checks">
+      <bpmn:incoming>F_chn_ministry_of_public_01</bpmn:incoming>
+      <bpmn:outgoing>F_chn_ministry_of_public_02</bpmn:outgoing>
+      <bpmn:outgoing>F_chn_ministry_of_public_03</bpmn:outgoing>
+      <bpmn:outgoing>F_chn_ministry_of_public_04</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:serviceTask id="T_chn_ministry_of_public_policy" name="Draft Policy
+Proposal">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.chn.ministry-of-public.draft_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="policy_output" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_chn_ministry_of_public_02</bpmn:incoming>
+      <bpmn:outgoing>F_chn_ministry_of_public_05</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_chn_ministry_of_public_budget" name="Allocate Budget
+(COFOG 01)">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.chn.ministry-of-public.allocate_budget" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="budget_execution_rate" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_chn_ministry_of_public_03</bpmn:incoming>
+      <bpmn:outgoing>F_chn_ministry_of_public_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_chn_ministry_of_public_coord" name="Inter-Agency
+Coordination">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.chn.ministry-of-public.coordinate" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="coordination_score" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_chn_ministry_of_public_04</bpmn:incoming>
+      <bpmn:outgoing>F_chn_ministry_of_public_07</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="GW_chn_ministry_of_public_join" name="Checks complete">
+      <bpmn:incoming>F_chn_ministry_of_public_05</bpmn:incoming>
+      <bpmn:incoming>F_chn_ministry_of_public_06</bpmn:incoming>
+      <bpmn:incoming>F_chn_ministry_of_public_07</bpmn:incoming>
+      <bpmn:outgoing>F_chn_ministry_of_public_08</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:userTask id="T_chn_ministry_of_public_review" name="Minister Review
+& Sign-off">
+      <bpmn:extensionElements>
+        <zeebe:assignmentDefinition assignee="gov-official" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_chn_ministry_of_public_08</bpmn:incoming>
+      <bpmn:outgoing>F_chn_ministry_of_public_09</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="GW_chn_ministry_of_public_risk" name="Approved?" isMarkerVisible="true">
+      <bpmn:incoming>F_chn_ministry_of_public_09</bpmn:incoming>
+      <bpmn:outgoing>F_chn_ministry_of_public_10a</bpmn:outgoing>
+      <bpmn:outgoing>F_chn_ministry_of_public_10b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_chn_ministry_of_public_publish" name="Publish Policy
+& Notify Citizens">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.chn.ministry-of-public.publish_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="publish" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_chn_ministry_of_public_10a</bpmn:incoming>
+      <bpmn:outgoing>F_chn_ministry_of_public_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_chn_ministry_of_public_revise" name="Return for
+Revision">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.chn.ministry-of-public.request_revision" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="revise" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_chn_ministry_of_public_10b</bpmn:incoming>
+      <bpmn:outgoing>F_chn_ministry_of_public_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_chn_ministry_of_public" name="Process complete">
+      <bpmn:incoming>F_chn_ministry_of_public_11</bpmn:incoming>
+      <bpmn:incoming>F_chn_ministry_of_public_11b</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_chn_ministry_of_public_01" sourceRef="Start_chn_ministry_of_public" targetRef="GW_chn_ministry_of_public_open">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_chn_ministry_of_public_02" sourceRef="GW_chn_ministry_of_public_open" targetRef="T_chn_ministry_of_public_policy">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_chn_ministry_of_public_03" sourceRef="GW_chn_ministry_of_public_open" targetRef="T_chn_ministry_of_public_budget">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_chn_ministry_of_public_04" sourceRef="GW_chn_ministry_of_public_open" targetRef="T_chn_ministry_of_public_coord">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_chn_ministry_of_public_05" sourceRef="T_chn_ministry_of_public_policy" targetRef="GW_chn_ministry_of_public_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_chn_ministry_of_public_06" sourceRef="T_chn_ministry_of_public_budget" targetRef="GW_chn_ministry_of_public_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_chn_ministry_of_public_07" sourceRef="T_chn_ministry_of_public_coord" targetRef="GW_chn_ministry_of_public_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_chn_ministry_of_public_08" sourceRef="GW_chn_ministry_of_public_join" targetRef="T_chn_ministry_of_public_review">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_chn_ministry_of_public_09" sourceRef="T_chn_ministry_of_public_review" targetRef="GW_chn_ministry_of_public_risk">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_chn_ministry_of_public_10a" sourceRef="GW_chn_ministry_of_public_risk" targetRef="T_chn_ministry_of_public_publish" name="Approved">
+      <bpmn:conditionExpression>=approved = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_chn_ministry_of_public_10b" sourceRef="GW_chn_ministry_of_public_risk" targetRef="T_chn_ministry_of_public_revise" name="Rejected">
+      <bpmn:conditionExpression>=approved = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_chn_ministry_of_public_11" sourceRef="T_chn_ministry_of_public_publish" targetRef="End_chn_ministry_of_public">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_chn_ministry_of_public_11b" sourceRef="T_chn_ministry_of_public_revise" targetRef="End_chn_ministry_of_public">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_chn_ministry_of_public">
+    <bpmndi:BPMNPlane id="BPMNPlane_chn_ministry_of_public" bpmnElement="Collaboration_chn_ministry_of_public" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

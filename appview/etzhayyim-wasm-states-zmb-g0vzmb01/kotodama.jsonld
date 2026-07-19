@@ -1,0 +1,149 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:zmb-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Zambia AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-zmb",
+  "nanoid": "g0vzmb01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "ZM",
+    "banner": "#198a00",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "zmb",
+    "contract": "Constitution of Zambia 2016",
+    "description": "Zambia Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Republic of Zambia",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 4,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/zmb/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Lusaka",
+        "addressLocality": "Lusaka",
+        "country": "ZM"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.zambia.gov.zm/",
+        "label": "zambia.gov.zm"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.parliament.gov.zm/",
+        "label": "Parliament"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Government of Zambia — citizen inquiry",
+        "uri": "https://www.zambia.gov.zm/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "zmb.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Government of Zambia — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "zmb.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Government of Zambia — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "zmb.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Government of Zambia — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "zmb.lga-cap-281-zmb",
+        "title": "Local Government Act",
+        "titleLocal": "Local Government Act Cap 281",
+        "basis": "Cap. 281",
+        "uri": "https://www.parliament.gov.zm/"
+      },
+      {
+        "id": "zmb.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Government of Zambia",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Government of Zambia — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "zmb-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Zambia government activity feed",
+        "kind": "public",
+        "name": "gov-zmb-feed"
+      }
+    ],
+    "description": "Government of Zambia — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Republic of Zambia"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

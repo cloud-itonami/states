@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_ind_district_mh_dst_475_gadchiroli"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_ind_district_mh_dst_475_gadchiroli">
+    <bpmn:participant id="Pool_ind_district_mh_dst_475_gadchiroli" name="Mh Dst 475 Gadchiroli (district)" processRef="Process_ind_district_mh_dst_475_gadchiroli" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_ind_district_mh_dst_475_gadchiroli" name="Mh Dst 475 Gadchiroli — General Public Services" isExecutable="true">
+    <bpmn:startEvent id="Start_ind_district_mh_dst_475_gadchiroli" name="Policy trigger
+received"><bpmn:outgoing>F_ind_district_mh_dst_475_gadchiroli_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:parallelGateway id="GW_ind_district_mh_dst_475_gadchiroli_open" name="Parallel checks">
+      <bpmn:incoming>F_ind_district_mh_dst_475_gadchiroli_01</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_mh_dst_475_gadchiroli_02</bpmn:outgoing>
+      <bpmn:outgoing>F_ind_district_mh_dst_475_gadchiroli_03</bpmn:outgoing>
+      <bpmn:outgoing>F_ind_district_mh_dst_475_gadchiroli_04</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:serviceTask id="T_ind_district_mh_dst_475_gadchiroli_policy" name="Draft Policy
+Proposal">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.ind.district:mh-dst-475-gadchiroli.draft_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="policy_output" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_ind_district_mh_dst_475_gadchiroli_02</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_mh_dst_475_gadchiroli_05</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_ind_district_mh_dst_475_gadchiroli_budget" name="Allocate Budget
+(COFOG 01)">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.ind.district:mh-dst-475-gadchiroli.allocate_budget" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="budget_execution_rate" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_ind_district_mh_dst_475_gadchiroli_03</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_mh_dst_475_gadchiroli_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_ind_district_mh_dst_475_gadchiroli_coord" name="Inter-Agency
+Coordination">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.ind.district:mh-dst-475-gadchiroli.coordinate" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="coordination_score" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_ind_district_mh_dst_475_gadchiroli_04</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_mh_dst_475_gadchiroli_07</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="GW_ind_district_mh_dst_475_gadchiroli_join" name="Checks complete">
+      <bpmn:incoming>F_ind_district_mh_dst_475_gadchiroli_05</bpmn:incoming>
+      <bpmn:incoming>F_ind_district_mh_dst_475_gadchiroli_06</bpmn:incoming>
+      <bpmn:incoming>F_ind_district_mh_dst_475_gadchiroli_07</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_mh_dst_475_gadchiroli_08</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:userTask id="T_ind_district_mh_dst_475_gadchiroli_review" name="Minister Review
+& Sign-off">
+      <bpmn:extensionElements>
+        <zeebe:assignmentDefinition assignee="gov-official" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_ind_district_mh_dst_475_gadchiroli_08</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_mh_dst_475_gadchiroli_09</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="GW_ind_district_mh_dst_475_gadchiroli_risk" name="Approved?" isMarkerVisible="true">
+      <bpmn:incoming>F_ind_district_mh_dst_475_gadchiroli_09</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_mh_dst_475_gadchiroli_10a</bpmn:outgoing>
+      <bpmn:outgoing>F_ind_district_mh_dst_475_gadchiroli_10b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_ind_district_mh_dst_475_gadchiroli_publish" name="Publish Policy
+& Notify Citizens">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.ind.district:mh-dst-475-gadchiroli.publish_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="publish" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_ind_district_mh_dst_475_gadchiroli_10a</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_mh_dst_475_gadchiroli_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_ind_district_mh_dst_475_gadchiroli_revise" name="Return for
+Revision">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.ind.district:mh-dst-475-gadchiroli.request_revision" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="revise" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_ind_district_mh_dst_475_gadchiroli_10b</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_mh_dst_475_gadchiroli_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_ind_district_mh_dst_475_gadchiroli" name="Process complete">
+      <bpmn:incoming>F_ind_district_mh_dst_475_gadchiroli_11</bpmn:incoming>
+      <bpmn:incoming>F_ind_district_mh_dst_475_gadchiroli_11b</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_ind_district_mh_dst_475_gadchiroli_01" sourceRef="Start_ind_district_mh_dst_475_gadchiroli" targetRef="GW_ind_district_mh_dst_475_gadchiroli_open">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_mh_dst_475_gadchiroli_02" sourceRef="GW_ind_district_mh_dst_475_gadchiroli_open" targetRef="T_ind_district_mh_dst_475_gadchiroli_policy">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_mh_dst_475_gadchiroli_03" sourceRef="GW_ind_district_mh_dst_475_gadchiroli_open" targetRef="T_ind_district_mh_dst_475_gadchiroli_budget">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_mh_dst_475_gadchiroli_04" sourceRef="GW_ind_district_mh_dst_475_gadchiroli_open" targetRef="T_ind_district_mh_dst_475_gadchiroli_coord">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_mh_dst_475_gadchiroli_05" sourceRef="T_ind_district_mh_dst_475_gadchiroli_policy" targetRef="GW_ind_district_mh_dst_475_gadchiroli_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_mh_dst_475_gadchiroli_06" sourceRef="T_ind_district_mh_dst_475_gadchiroli_budget" targetRef="GW_ind_district_mh_dst_475_gadchiroli_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_mh_dst_475_gadchiroli_07" sourceRef="T_ind_district_mh_dst_475_gadchiroli_coord" targetRef="GW_ind_district_mh_dst_475_gadchiroli_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_mh_dst_475_gadchiroli_08" sourceRef="GW_ind_district_mh_dst_475_gadchiroli_join" targetRef="T_ind_district_mh_dst_475_gadchiroli_review">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_mh_dst_475_gadchiroli_09" sourceRef="T_ind_district_mh_dst_475_gadchiroli_review" targetRef="GW_ind_district_mh_dst_475_gadchiroli_risk">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_mh_dst_475_gadchiroli_10a" sourceRef="GW_ind_district_mh_dst_475_gadchiroli_risk" targetRef="T_ind_district_mh_dst_475_gadchiroli_publish" name="Approved">
+      <bpmn:conditionExpression>=approved = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_mh_dst_475_gadchiroli_10b" sourceRef="GW_ind_district_mh_dst_475_gadchiroli_risk" targetRef="T_ind_district_mh_dst_475_gadchiroli_revise" name="Rejected">
+      <bpmn:conditionExpression>=approved = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_mh_dst_475_gadchiroli_11" sourceRef="T_ind_district_mh_dst_475_gadchiroli_publish" targetRef="End_ind_district_mh_dst_475_gadchiroli">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_mh_dst_475_gadchiroli_11b" sourceRef="T_ind_district_mh_dst_475_gadchiroli_revise" targetRef="End_ind_district_mh_dst_475_gadchiroli">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_ind_district_mh_dst_475_gadchiroli">
+    <bpmndi:BPMNPlane id="BPMNPlane_ind_district_mh_dst_475_gadchiroli" bpmnElement="Collaboration_ind_district_mh_dst_475_gadchiroli" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

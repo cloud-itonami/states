@@ -1,0 +1,3 @@
+{"path": "korean-peoples-army", "name": "Korean Peoples Army", "nameEn": "Korean Peoples Army", "website": "", "contract": "Defence Act", "tags": ["cofog:02", "defence", "office"], "orgTier": "office", "cofogCode": "02", "countryCode": "0"}
+{"path": "supreme-court", "name": "Supreme Court", "nameEn": "Supreme Court", "website": "", "contract": "Public Order and Safety Act", "tags": ["cofog:03", "public-order-safety", "office"], "orgTier": "office", "cofogCode": "03", "countryCode": "0"}
+{"path": "supreme-peoples", "name": "Supreme Peoples", "nameEn": "Supreme Peoples", "website": "", "contract": "General Public Services Act", "tags": ["cofog:01", "general-public-services", "office", "nanoid:assembly"], "orgTier": "office", "cofogCode": "01", "countryCode": "0"}

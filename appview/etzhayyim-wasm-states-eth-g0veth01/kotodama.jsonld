@@ -1,0 +1,158 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:eth-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Ethiopia AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English and Amharic.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-eth",
+  "nanoid": "g0veth01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "ET",
+    "banner": "#078930",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "eth",
+    "contract": "Constitution of Ethiopia 1995",
+    "description": "Ethiopia Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "የኢትዮጵያ ፌዴራላዊ ዲሞክራሲያዊ ሪፐብሊክ (Federal Democratic Republic of Ethiopia)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 1,
+    "contractCount": 1,
+    "bpmnCount": 30,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/eth/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Addis Ababa",
+        "addressLocality": "Addis Ababa",
+        "country": "ET"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.pmo.gov.et/",
+        "label": "Office of PM"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.fdrelaws.gov.et/",
+        "label": "Legal DB"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Federal Democratic Republic of Ethiopia — citizen inquiry",
+        "uri": "https://www.pmo.gov.et/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "eth.executive",
+        "title": "Executive",
+        "titleLocal": "Executive",
+        "authority": "Executive",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/eth/bpmn/executive.bpmn"
+      },
+      {
+        "id": "eth.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Federal Democratic Republic of Ethiopia — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "eth.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Federal Democratic Republic of Ethiopia — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "eth.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Federal Democratic Republic of Ethiopia — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "eth.proclamation-624-2009",
+        "title": "Urban LG Proclamation 624",
+        "titleLocal": "Urban Local Governments Proclamation 624/2009",
+        "basis": "Proclamation No.624/2009",
+        "uri": "https://www.ethiopialaw.com/"
+      },
+      {
+        "id": "eth.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Federal Democratic Republic of Ethiopia",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Federal Democratic Republic of Ethiopia — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "eth-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Ethiopia government activity feed",
+        "kind": "public",
+        "name": "gov-eth-feed"
+      }
+    ],
+    "description": "Government of Ethiopia — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "የኢትዮጵያ ፌዴራላዊ ዲሞክራሲያዊ ሪፐብሊክ (Federal Democratic Republic of Ethiopia)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

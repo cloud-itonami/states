@@ -1,0 +1,128 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:brb-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Barbados AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-brb",
+  "nanoid": "g0vbrb01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "BB",
+    "banner": "#00267F",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "parish-coverage"
+    ],
+    "category": "government",
+    "country": "brb",
+    "contract": "Constitution of Barbados 1966 (Republic 2021)",
+    "description": "Barbados Government — path-based DID registry for ministries and subnational units.",
+    "displayName": "Barbados (Republic of Barbados)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 0,
+    "bpmnCount": 0,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/brb/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Bridgetown",
+        "addressLocality": "Bridgetown",
+        "country": "BB"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://gisbarbados.gov.bb/",
+        "label": "Barbados — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Barbados — citizen inquiry",
+        "uri": "https://gisbarbados.gov.bb/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "bar.access_info",
+        "title": "Access to Public Information",
+        "authority": "Barbados"
+      },
+      {
+        "id": "bar.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Barbados — passport authority"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "bb.access_info.v1",
+        "title": "Access to public information request — template",
+        "authority": "Barbados"
+      }
+    ],
+    "complianceFrameworks": [
+      "Barbados — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "brb-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Barbados government activity feed",
+        "kind": "public",
+        "name": "gov-brb-feed"
+      }
+    ],
+    "description": "Government of Barbados — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Barbados (Republic of Barbados)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

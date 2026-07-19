@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_irn_military_islamic_revolutionary_guar"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_irn_military_islamic_revolutionary_guar">
+    <bpmn:participant id="Pool_irn_military_islamic_revolutionary_guar" name="Military Islamic Revolutionary Guar  (military)" processRef="Process_irn_military_islamic_revolutionary_guar" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_irn_military_islamic_revolutionary_guar" name="Military Islamic Revolutionary Guar  — Defence Operations" isExecutable="true">
+    <bpmn:startEvent id="Start_irn_military_islamic_revolutionary_guar" name="Readiness
+assessment triggered"><bpmn:outgoing>F_irn_military_islamic_revolutionary_guar_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:serviceTask id="T_irn_military_islamic_revolutionary_guar_assess" name="Assess Operational
+Readiness">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.irn.military-islamic-revolutionary-guar.assess_readiness" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="readiness_score" />
+          <zeebe:header key="cofog" value="02" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_irn_military_islamic_revolutionary_guar_01</bpmn:incoming>
+      <bpmn:outgoing>F_irn_military_islamic_revolutionary_guar_02</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="GW_irn_military_islamic_revolutionary_guar_ready" name="Readiness level?" isMarkerVisible="true">
+      <bpmn:incoming>F_irn_military_islamic_revolutionary_guar_02</bpmn:incoming>
+      <bpmn:outgoing>F_irn_military_islamic_revolutionary_guar_03a</bpmn:outgoing>
+      <bpmn:outgoing>F_irn_military_islamic_revolutionary_guar_03b</bpmn:outgoing>
+      <bpmn:outgoing>F_irn_military_islamic_revolutionary_guar_03c</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_irn_military_islamic_revolutionary_guar_ops" name="Execute Operations
+Plan">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.irn.military-islamic-revolutionary-guar.execute_ops" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="execute" />
+          <zeebe:header key="kpi" value="mission_success_rate" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_irn_military_islamic_revolutionary_guar_03a</bpmn:incoming>
+      <bpmn:outgoing>F_irn_military_islamic_revolutionary_guar_04</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_irn_military_islamic_revolutionary_guar_proc" name="Initiate Procurement
+& Logistics">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.irn.military-islamic-revolutionary-guar.procurement" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="procure" />
+          <zeebe:header key="kpi" value="procurement_cycle_days" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_irn_military_islamic_revolutionary_guar_03b</bpmn:incoming>
+      <bpmn:outgoing>F_irn_military_islamic_revolutionary_guar_04</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_irn_military_islamic_revolutionary_guar_alert" name="Raise Alert
+& Escalate">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.irn.military-islamic-revolutionary-guar.escalate" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="escalate" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_irn_military_islamic_revolutionary_guar_03c</bpmn:incoming>
+      <bpmn:outgoing>F_irn_military_islamic_revolutionary_guar_04</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_irn_military_islamic_revolutionary_guar_report" name="Submit Readiness
+Report">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.irn.military-islamic-revolutionary-guar.submit_report" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_irn_military_islamic_revolutionary_guar_04</bpmn:incoming>
+      <bpmn:outgoing>F_irn_military_islamic_revolutionary_guar_05</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_irn_military_islamic_revolutionary_guar" name="Assessment complete">
+      <bpmn:incoming>F_irn_military_islamic_revolutionary_guar_05</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_irn_military_islamic_revolutionary_guar_01" sourceRef="Start_irn_military_islamic_revolutionary_guar" targetRef="T_irn_military_islamic_revolutionary_guar_assess">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_irn_military_islamic_revolutionary_guar_02" sourceRef="T_irn_military_islamic_revolutionary_guar_assess" targetRef="GW_irn_military_islamic_revolutionary_guar_ready">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_irn_military_islamic_revolutionary_guar_03a" sourceRef="GW_irn_military_islamic_revolutionary_guar_ready" targetRef="T_irn_military_islamic_revolutionary_guar_ops" name="High">
+      <bpmn:conditionExpression>=readiness = 'high'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_irn_military_islamic_revolutionary_guar_03b" sourceRef="GW_irn_military_islamic_revolutionary_guar_ready" targetRef="T_irn_military_islamic_revolutionary_guar_proc" name="Medium">
+      <bpmn:conditionExpression>=readiness = 'medium'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_irn_military_islamic_revolutionary_guar_03c" sourceRef="GW_irn_military_islamic_revolutionary_guar_ready" targetRef="T_irn_military_islamic_revolutionary_guar_alert" name="Low">
+      <bpmn:conditionExpression>=readiness = 'low'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_irn_military_islamic_revolutionary_guar_04" sourceRef="T_irn_military_islamic_revolutionary_guar_ops" targetRef="T_irn_military_islamic_revolutionary_guar_report">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_irn_military_islamic_revolutionary_guar_04b" sourceRef="T_irn_military_islamic_revolutionary_guar_proc" targetRef="T_irn_military_islamic_revolutionary_guar_report">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_irn_military_islamic_revolutionary_guar_04c" sourceRef="T_irn_military_islamic_revolutionary_guar_alert" targetRef="T_irn_military_islamic_revolutionary_guar_report">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_irn_military_islamic_revolutionary_guar_05" sourceRef="T_irn_military_islamic_revolutionary_guar_report" targetRef="End_irn_military_islamic_revolutionary_guar">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_irn_military_islamic_revolutionary_guar">
+    <bpmndi:BPMNPlane id="BPMNPlane_irn_military_islamic_revolutionary_guar" bpmnElement="Collaboration_irn_military_islamic_revolutionary_guar" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,0 +1,144 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:est-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Estonia AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-est",
+  "nanoid": "g0vest01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "EE",
+    "banner": "#0072ce",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "est",
+    "contract": "Eesti Vabariigi põhiseadus 1992",
+    "description": "Estonia Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Eesti Vabariik (Republic of Estonia)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 3,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/est/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Tallinn",
+        "addressLocality": "Tallinn",
+        "country": "EE"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.valitsus.ee/",
+        "label": "Republic of Estonia — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Republic of Estonia — citizen inquiry",
+        "uri": "https://www.valitsus.ee/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "est.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Republic of Estonia — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "est.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Republic of Estonia — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "est.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Republic of Estonia — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "est.koks",
+        "title": "Local Government Organisation Act",
+        "titleLocal": "Kohaliku omavalitsuse korralduse seadus KOKS",
+        "basis": "RT I 1993, 37, 558",
+        "uri": "https://www.riigiteataja.ee/"
+      },
+      {
+        "id": "est.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Republic of Estonia",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Republic of Estonia — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "est-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Estonia government activity feed",
+        "kind": "public",
+        "name": "gov-est-feed"
+      }
+    ],
+    "description": "Government of Estonia — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Eesti Vabariik (Republic of Estonia)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

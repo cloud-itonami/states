@@ -1,0 +1,183 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:chn-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of China AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-chn",
+  "nanoid": "g0vchn01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "CN",
+    "banner": "#DE2910",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "chn",
+    "contract": "中华人民共和国宪法 (Constitution of PRC)",
+    "description": "China Government — path-based DID registry for ministries and subnational units.",
+    "displayName": "中华人民共和国政府 (Government of China)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 11,
+    "contractCount": 1,
+    "bpmnCount": 93,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/chn/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Zhongnanhai",
+        "addressLocality": "Beijing",
+        "country": "CN"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "http://www.gov.cn/"
+      },
+      {
+        "kind": "portal",
+        "uri": "http://www.npc.gov.cn/",
+        "label": "NPC"
+      },
+      {
+        "kind": "portal",
+        "uri": "http://www.court.gov.cn/"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "info_request",
+        "label": "国务院信息公开",
+        "uri": "http://www.gov.cn/xxgk/",
+        "basis": "政府信息公开条例"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "chn.defense-joint-staff-department",
+        "title": "Defense Joint Staff Department",
+        "titleLocal": "Defense Joint Staff Department",
+        "authority": "Defense Joint Staff Department",
+        "basis": "Defence Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/chn/bpmn/defense-joint-staff-department.bpmn"
+      },
+      {
+        "id": "chn.election-central-election-committee",
+        "title": "Election Central Election Committee",
+        "titleLocal": "Election Central Election Committee",
+        "authority": "Election Central Election Committee",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/chn/bpmn/election-central-election-committee.bpmn"
+      },
+      {
+        "id": "chn.national-health-commission",
+        "title": "National Health Commission",
+        "titleLocal": "National Health Commission",
+        "authority": "National Health Commission",
+        "basis": "Health Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/chn/bpmn/national-health-commission.bpmn"
+      },
+      {
+        "id": "chn.state",
+        "title": "State",
+        "titleLocal": "State",
+        "authority": "State",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/chn/bpmn/state.bpmn"
+      },
+      {
+        "id": "chn.ministry-of",
+        "title": "Ministry Of",
+        "titleLocal": "Ministry Of",
+        "authority": "Ministry Of",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/chn/bpmn/ministry-of.bpmn"
+      },
+      {
+        "id": "chn.ministry-of-education",
+        "title": "Ministry Of Education",
+        "titleLocal": "Ministry Of Education",
+        "authority": "Ministry Of Education",
+        "basis": "Education Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/chn/bpmn/ministry-of-education.bpmn"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "chn.urban-residents-committees-law",
+        "title": "Organic Law of Urban Residents Committees",
+        "titleLocal": "城市居民委员会组织法",
+        "basis": "Order No.21 of NPC Standing Committee 1989",
+        "uri": "https://www.gov.cn/"
+      }
+    ],
+    "complianceFrameworks": [
+      "中华人民共和国宪法 (1982, amended 2018)",
+      "政府信息公开条例 (2019)",
+      "行政许可法"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "chn-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "China government activity feed",
+        "kind": "public",
+        "name": "gov-chn-feed"
+      }
+    ],
+    "description": "Government of China — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "中华人民共和国政府 (Government of China)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

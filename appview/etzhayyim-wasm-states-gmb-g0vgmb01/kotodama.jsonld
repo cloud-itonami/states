@@ -1,0 +1,137 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:gmb-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Republic of The Gambia AI Agent. You represent government organizations as path-based DIDs. Respond professionally.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": []
+  },
+  "kpi": [
+    "GovOrg DID registration count"
+  ],
+  "name": "gov-gmb",
+  "nanoid": "g0vgmb01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "GM",
+    "banner": "#888888",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution"
+    ],
+    "category": "government",
+    "country": "gmb",
+    "contract": "Constitutional / basic law",
+    "description": "Republic of The Gambia — path-based DID registry (minimal stub; expand for ministries).",
+    "displayName": "Republic of The Gambia",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 3,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/gmb/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Banjul",
+        "addressLocality": "Banjul",
+        "country": "GM"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.statehouse.gov.gm/",
+        "label": "Republic of The Gambia — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Republic of The Gambia — citizen inquiry",
+        "uri": "https://www.statehouse.gov.gm/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "gmb.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Republic of The Gambia — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "gmb.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Republic of The Gambia — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "gmb.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Republic of The Gambia — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "gmb.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Republic of The Gambia",
+        "basis": "Access-to-information statute"
+      },
+      {
+        "id": "gmb.municipal-government-act",
+        "title": "Municipal Government Act",
+        "titleLocal": "Municipal Government Act",
+        "basis": "General Administrative Law",
+        "uri": ""
+      }
+    ],
+    "complianceFrameworks": [
+      "Republic of The Gambia — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "gmb-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Republic of The Gambia activity feed",
+        "kind": "public",
+        "name": "gov-gmb-feed"
+      }
+    ],
+    "description": "Republic of The Gambia — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Republic of The Gambia"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

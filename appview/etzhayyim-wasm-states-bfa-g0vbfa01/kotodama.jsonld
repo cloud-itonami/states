@@ -1,0 +1,137 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:bfa-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Burkina Faso AI Agent. You represent government organizations as path-based DIDs. Respond professionally.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": []
+  },
+  "kpi": [
+    "GovOrg DID registration count"
+  ],
+  "name": "gov-bfa",
+  "nanoid": "g0vbfa01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "BF",
+    "banner": "#888888",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution"
+    ],
+    "category": "government",
+    "country": "bfa",
+    "contract": "Constitutional / basic law",
+    "description": "Burkina Faso — path-based DID registry (minimal stub; expand for ministries).",
+    "displayName": "Burkina Faso",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 2,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/bfa/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Ouagadougou",
+        "addressLocality": "Ouagadougou",
+        "country": "BF"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.presidence.bf/",
+        "label": "Burkina Faso — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Burkina Faso — citizen inquiry",
+        "uri": "https://www.presidence.bf/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "bfa.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Burkina Faso — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "bfa.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Burkina Faso — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "bfa.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Burkina Faso — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "bfa.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Burkina Faso",
+        "basis": "Access-to-information statute"
+      },
+      {
+        "id": "bfa.cgct-055-2004-bfa",
+        "title": "CGCT Loi 055-2004",
+        "titleLocal": "Code général des collectivités territoriales Loi 055-2004",
+        "basis": "Loi 055-2004/AN",
+        "uri": "https://www.assemblee-nationale.bf/"
+      }
+    ],
+    "complianceFrameworks": [
+      "Burkina Faso — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "bfa-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Burkina Faso activity feed",
+        "kind": "public",
+        "name": "gov-bfa-feed"
+      }
+    ],
+    "description": "Burkina Faso — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Burkina Faso"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

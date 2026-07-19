@@ -1,0 +1,177 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:nga-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Nigeria AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-nga",
+  "nanoid": "g0vnga01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "NG",
+    "banner": "#008751",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "nga",
+    "contract": "Constitution of Nigeria 1999",
+    "description": "Nigeria Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Federal Republic of Nigeria",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 6,
+    "contractCount": 1,
+    "bpmnCount": 32,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/nga/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Aso Rock Villa",
+        "addressLocality": "Abuja",
+        "country": "NG"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.nigeria.gov.ng/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://lawpadi.com/"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "foi",
+        "label": "FOI request",
+        "basis": "FOI Act 2011"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "nga.defense-ministry-of-defence",
+        "title": "Defense Ministry Of Defence",
+        "titleLocal": "Defense Ministry Of Defence",
+        "authority": "Defense Ministry Of Defence",
+        "basis": "Defence Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/nga/bpmn/defense-ministry-of-defence.bpmn"
+      },
+      {
+        "id": "nga.finance-ministry-of-finance",
+        "title": "Finance Ministry Of Finance",
+        "titleLocal": "Finance Ministry Of Finance",
+        "authority": "Finance Ministry Of Finance",
+        "basis": "Economic Affairs Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/nga/bpmn/finance-ministry-of-finance.bpmn"
+      },
+      {
+        "id": "nga.foreign-ministry-of-foreign-affairs",
+        "title": "Foreign Ministry Of Foreign Affairs",
+        "titleLocal": "Foreign Ministry Of Foreign Affairs",
+        "authority": "Foreign Ministry Of Foreign Affairs",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/nga/bpmn/foreign-ministry-of-foreign-affairs.bpmn"
+      },
+      {
+        "id": "nga.interior-ministry-of-interior",
+        "title": "Interior Ministry Of Interior",
+        "titleLocal": "Interior Ministry Of Interior",
+        "authority": "Interior Ministry Of Interior",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/nga/bpmn/interior-ministry-of-interior.bpmn"
+      },
+      {
+        "id": "nga.justice-ministry-of-justice",
+        "title": "Justice Ministry Of Justice",
+        "titleLocal": "Justice Ministry Of Justice",
+        "authority": "Justice Ministry Of Justice",
+        "basis": "Public Order and Safety Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/nga/bpmn/justice-ministry-of-justice.bpmn"
+      },
+      {
+        "id": "nga.executive-state-house",
+        "title": "Executive State House",
+        "titleLocal": "Executive State House",
+        "authority": "Executive State House",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/nga/bpmn/executive-state-house.bpmn"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "nga.lga-1976-nga",
+        "title": "Local Government Act",
+        "titleLocal": "Local Government Act 1976 (revised)",
+        "basis": "Local Government Laws of the Federation",
+        "uri": "https://www.nassnig.org/"
+      }
+    ],
+    "complianceFrameworks": [
+      "Constitution of the Federal Republic of Nigeria (1999)",
+      "Freedom of Information Act 2011",
+      "Public Officers Protection Act"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "nga-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Nigeria government activity feed",
+        "kind": "public",
+        "name": "gov-nga-feed"
+      }
+    ],
+    "description": "Government of Nigeria — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Federal Republic of Nigeria"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

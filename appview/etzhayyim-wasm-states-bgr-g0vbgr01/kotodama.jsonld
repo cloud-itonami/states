@@ -1,0 +1,144 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:bgr-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Bulgaria AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-bgr",
+  "nanoid": "g0vbgr01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "BG",
+    "banner": "#ffffff",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "bgr",
+    "contract": "Конституция на България 1991",
+    "description": "Bulgaria Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Република България (Republic of Bulgaria)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 3,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/bgr/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Sofia",
+        "addressLocality": "Sofia",
+        "country": "BG"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.government.bg/",
+        "label": "Republic of Bulgaria — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Republic of Bulgaria — citizen inquiry",
+        "uri": "https://www.government.bg/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "bgr.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Republic of Bulgaria — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "bgr.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Republic of Bulgaria — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "bgr.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Republic of Bulgaria — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "bgr.zmcma",
+        "title": "Local Self-Government Act",
+        "titleLocal": "Закон за местното самоуправление и местната администрация",
+        "basis": "ЗМСМА обн. ДВ бр.77/17.09.1991",
+        "uri": "https://www.lex.bg/"
+      },
+      {
+        "id": "bgr.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Republic of Bulgaria",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Republic of Bulgaria — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "bgr-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Bulgaria government activity feed",
+        "kind": "public",
+        "name": "gov-bgr-feed"
+      }
+    ],
+    "description": "Government of Bulgaria — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Република България (Republic of Bulgaria)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

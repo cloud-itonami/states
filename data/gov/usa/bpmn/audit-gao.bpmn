@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_usa_audit_gao"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_usa_audit_gao">
+    <bpmn:participant id="Pool_usa_audit_gao" name="Audit Gao (u1s2a3d4)" processRef="Process_usa_audit_gao" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_usa_audit_gao" name="Audit Gao — General Public Services" isExecutable="true">
+    <bpmn:startEvent id="Start_usa_audit_gao" name="Policy trigger
+received"><bpmn:outgoing>F_usa_audit_gao_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:parallelGateway id="GW_usa_audit_gao_open" name="Parallel checks">
+      <bpmn:incoming>F_usa_audit_gao_01</bpmn:incoming>
+      <bpmn:outgoing>F_usa_audit_gao_02</bpmn:outgoing>
+      <bpmn:outgoing>F_usa_audit_gao_03</bpmn:outgoing>
+      <bpmn:outgoing>F_usa_audit_gao_04</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:serviceTask id="T_usa_audit_gao_policy" name="Draft Policy
+Proposal">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.usa.audit-gao.draft_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="policy_output" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_usa_audit_gao_02</bpmn:incoming>
+      <bpmn:outgoing>F_usa_audit_gao_05</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_usa_audit_gao_budget" name="Allocate Budget
+(COFOG 01)">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.usa.audit-gao.allocate_budget" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="budget_execution_rate" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_usa_audit_gao_03</bpmn:incoming>
+      <bpmn:outgoing>F_usa_audit_gao_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_usa_audit_gao_coord" name="Inter-Agency
+Coordination">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.usa.audit-gao.coordinate" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="coordination_score" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_usa_audit_gao_04</bpmn:incoming>
+      <bpmn:outgoing>F_usa_audit_gao_07</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="GW_usa_audit_gao_join" name="Checks complete">
+      <bpmn:incoming>F_usa_audit_gao_05</bpmn:incoming>
+      <bpmn:incoming>F_usa_audit_gao_06</bpmn:incoming>
+      <bpmn:incoming>F_usa_audit_gao_07</bpmn:incoming>
+      <bpmn:outgoing>F_usa_audit_gao_08</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:userTask id="T_usa_audit_gao_review" name="Minister Review
+& Sign-off">
+      <bpmn:extensionElements>
+        <zeebe:assignmentDefinition assignee="gov-official" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_usa_audit_gao_08</bpmn:incoming>
+      <bpmn:outgoing>F_usa_audit_gao_09</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="GW_usa_audit_gao_risk" name="Approved?" isMarkerVisible="true">
+      <bpmn:incoming>F_usa_audit_gao_09</bpmn:incoming>
+      <bpmn:outgoing>F_usa_audit_gao_10a</bpmn:outgoing>
+      <bpmn:outgoing>F_usa_audit_gao_10b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_usa_audit_gao_publish" name="Publish Policy
+& Notify Citizens">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.usa.audit-gao.publish_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="publish" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_usa_audit_gao_10a</bpmn:incoming>
+      <bpmn:outgoing>F_usa_audit_gao_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_usa_audit_gao_revise" name="Return for
+Revision">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.usa.audit-gao.request_revision" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="revise" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_usa_audit_gao_10b</bpmn:incoming>
+      <bpmn:outgoing>F_usa_audit_gao_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_usa_audit_gao" name="Process complete">
+      <bpmn:incoming>F_usa_audit_gao_11</bpmn:incoming>
+      <bpmn:incoming>F_usa_audit_gao_11b</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_usa_audit_gao_01" sourceRef="Start_usa_audit_gao" targetRef="GW_usa_audit_gao_open">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_usa_audit_gao_02" sourceRef="GW_usa_audit_gao_open" targetRef="T_usa_audit_gao_policy">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_usa_audit_gao_03" sourceRef="GW_usa_audit_gao_open" targetRef="T_usa_audit_gao_budget">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_usa_audit_gao_04" sourceRef="GW_usa_audit_gao_open" targetRef="T_usa_audit_gao_coord">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_usa_audit_gao_05" sourceRef="T_usa_audit_gao_policy" targetRef="GW_usa_audit_gao_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_usa_audit_gao_06" sourceRef="T_usa_audit_gao_budget" targetRef="GW_usa_audit_gao_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_usa_audit_gao_07" sourceRef="T_usa_audit_gao_coord" targetRef="GW_usa_audit_gao_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_usa_audit_gao_08" sourceRef="GW_usa_audit_gao_join" targetRef="T_usa_audit_gao_review">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_usa_audit_gao_09" sourceRef="T_usa_audit_gao_review" targetRef="GW_usa_audit_gao_risk">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_usa_audit_gao_10a" sourceRef="GW_usa_audit_gao_risk" targetRef="T_usa_audit_gao_publish" name="Approved">
+      <bpmn:conditionExpression>=approved = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_usa_audit_gao_10b" sourceRef="GW_usa_audit_gao_risk" targetRef="T_usa_audit_gao_revise" name="Rejected">
+      <bpmn:conditionExpression>=approved = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_usa_audit_gao_11" sourceRef="T_usa_audit_gao_publish" targetRef="End_usa_audit_gao">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_usa_audit_gao_11b" sourceRef="T_usa_audit_gao_revise" targetRef="End_usa_audit_gao">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_usa_audit_gao">
+    <bpmndi:BPMNPlane id="BPMNPlane_usa_audit_gao" bpmnElement="Collaboration_usa_audit_gao" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

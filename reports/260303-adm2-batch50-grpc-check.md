@@ -1,0 +1,61 @@
+# ADM2 Batch50 /api/grpc Connectivity Check
+
+- Date: 2026-03-03 (JST)
+- Namespace: kotodama-runtime
+- Method: kubectl port-forward + POST /api/grpc (JSON-RPC initialize)
+
+## Results
+- [OK] org-gov-jam-dst-85197757-brandon-hill-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-jam-dst-85197757-brandon-hill-component","version":"0.1.0"}}}
+- [OK] org-gov-nga-dst-18144591-eastern-obolo-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-nga-dst-18144591-eastern-obolo-component","version":"0.1.0"}}}
+- [OK] org-gov-vnm-dst-69623038-a-luoi-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-vnm-dst-69623038-a-luoi-component","version":"0.1.0"}}}
+- [OK] org-gov-cyp-dst-07074425-pachyammos-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-cyp-dst-07074425-pachyammos-component","version":"0.1.0"}}}
+- [OK] org-gov-lva-dst-12911719-makonkalna-pag-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-lva-dst-12911719-makonkalna-pag-component","version":"0.1.0"}}}
+- [OK] org-gov-hrv-dst-85125577-opcina-kapela-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-hrv-dst-85125577-opcina-kapela-component","version":"0.1.0"}}}
+- [OK] org-gov-aus-dst-92852260-albury-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-aus-dst-92852260-albury-component","version":"0.1.0"}}}
+- [OK] org-gov-lca-dst-50053031-st-lawrence-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-lca-dst-50053031-st-lawrence-component","version":"0.1.0"}}}
+- [OK] org-gov-arg-dst-95590927-arauco-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-arg-dst-95590927-arauco-component","version":"0.1.0"}}}
+- [OK] org-gov-idn-dst-11718524-aceh-barat-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-idn-dst-11718524-aceh-barat-component","version":"0.1.0"}}}
+- [OK] org-gov-ukr-dst-39401970-bakhchysarai-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-ukr-dst-39401970-bakhchysarai-component","version":"0.1.0"}}}
+- [OK] org-gov-irn-dst-20278107-shirwan-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-irn-dst-20278107-shirwan-component","version":"0.1.0"}}}
+- [OK] org-gov-nor-dst-41718177-vads-nor-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-nor-dst-41718177-vads-nor-component","version":"0.1.0"}}}
+- [OK] org-gov-afg-dst-70524975-deh-bala-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-afg-dst-70524975-deh-bala-component","version":"0.1.0"}}}
+- [OK] org-gov-pol-dst-12338773-powiat-oleski-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-pol-dst-12338773-powiat-oleski-component","version":"0.1.0"}}}
+- [OK] org-gov-twn-dst-03825455-dayuan-district-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-twn-dst-03825455-dayuan-district-component","version":"0.1.0"}}}
+- [OK] org-gov-egy-dst-52532681-10-ramadan-1-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-egy-dst-52532681-10-ramadan-1-component","version":"0.1.0"}}}
+- [OK] org-gov-nld-dst-19413910-groningen-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-nld-dst-19413910-groningen-component","version":"0.1.0"}}}
+- [OK] org-gov-gtm-dst-33773356-acatenango-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-gtm-dst-33773356-acatenango-component","version":"0.1.0"}}}
+- [OK] org-gov-mng-dst-98386240-adaacag-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-mng-dst-98386240-adaacag-component","version":"0.1.0"}}}
+- [OK] org-gov-ven-dst-36110472-acevedo-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-ven-dst-36110472-acevedo-component","version":"0.1.0"}}}
+- [OK] org-gov-yem-dst-93168039-al-qafr-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-yem-dst-93168039-al-qafr-component","version":"0.1.0"}}}
+- [OK] org-gov-prt-dst-08352996-vila-do-bispo-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-prt-dst-08352996-vila-do-bispo-component","version":"0.1.0"}}}
+- [OK] org-gov-hnd-dst-91690225-lago-de-yojoa-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-hnd-dst-91690225-lago-de-yojoa-component","version":"0.1.0"}}}
+- [OK] org-gov-ken-dst-98105650-ainabkoi-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-ken-dst-98105650-ainabkoi-component","version":"0.1.0"}}}
+- [OK] org-gov-swe-dst-30897975-kiruna-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-swe-dst-30897975-kiruna-component","version":"0.1.0"}}}
+- [OK] org-gov-slv-dst-91239783-metapan-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-slv-dst-91239783-metapan-component","version":"0.1.0"}}}
+- [OK] org-gov-bgr-dst-70161149-velingrad-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-bgr-dst-70161149-velingrad-component","version":"0.1.0"}}}
+- [OK] org-gov-tun-dst-70160824-unknown-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-tun-dst-70160824-unknown-component","version":"0.1.0"}}}
+- [OK] org-gov-gha-dst-48161032-adenta-municipal-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-gha-dst-48161032-adenta-municipal-component","version":"0.1.0"}}}
+- [OK] org-gov-pry-dst-28044563-25-de-diciembre-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-pry-dst-28044563-25-de-diciembre-component","version":"0.1.0"}}}
+- [OK] org-gov-kor-dst-67480447-sokcho-si-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-kor-dst-67480447-sokcho-si-component","version":"0.1.0"}}}
+- [OK] org-gov-ecu-dst-44444838-24-de-mayo-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-ecu-dst-44444838-24-de-mayo-component","version":"0.1.0"}}}
+- [OK] org-gov-gbr-dst-81186623-hartlepool-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-gbr-dst-81186623-hartlepool-component","version":"0.1.0"}}}
+- [OK] org-gov-est-dst-76024971-valjala-vald-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-est-dst-76024971-valjala-vald-component","version":"0.1.0"}}}
+- [OK] org-gov-svn-dst-84929236-kostel-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-svn-dst-84929236-kostel-component","version":"0.1.0"}}}
+- [OK] org-gov-btn-dst-50591258-athang-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-btn-dst-50591258-athang-component","version":"0.1.0"}}}
+- [OK] org-gov-uzb-dst-26470320-termez-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-uzb-dst-26470320-termez-component","version":"0.1.0"}}}
+- [OK] org-gov-hun-dst-21379182-boly-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-hun-dst-21379182-boly-component","version":"0.1.0"}}}
+- [OK] org-gov-khm-dst-06572883-mongkol-borei-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-khm-dst-06572883-mongkol-borei-component","version":"0.1.0"}}}
+- [OK] org-gov-per-dst-48955536-abancay-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-per-dst-48955536-abancay-component","version":"0.1.0"}}}
+- [OK] org-gov-cod-dst-52692002-aba-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-cod-dst-52692002-aba-component","version":"0.1.0"}}}
+- [OK] org-gov-sdn-dst-05557319-abassiya-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-sdn-dst-05557319-abassiya-component","version":"0.1.0"}}}
+- [OK] org-gov-prk-dst-13620970-anak-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-prk-dst-13620970-anak-component","version":"0.1.0"}}}
+- [OK] org-gov-kaz-dst-57631204-aksuskiy-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-kaz-dst-57631204-aksuskiy-component","version":"0.1.0"}}}
+- [OK] org-gov-tza-dst-00182608-arusha-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-tza-dst-00182608-arusha-component","version":"0.1.0"}}}
+- [OK] org-gov-che-dst-15583280-aarau-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-che-dst-15583280-aarau-component","version":"0.1.0"}}}
+- [OK] org-gov-cub-dst-67578630-niquero-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-cub-dst-67578630-niquero-component","version":"0.1.0"}}}
+- [OK] org-gov-irl-dst-72852508-ratoath-lea-7-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-irl-dst-72852508-ratoath-lea-7-component","version":"0.1.0"}}}
+- [OK] org-gov-mys-dst-75160244-tumpat-kotodama http=200 body={"id":1,"jsonrpc":"2.0","result":{"protocolVersion":"2024-11-05","serverInfo":{"name":"org-gov-mys-dst-75160244-tumpat-component","version":"0.1.0"}}}
+
+## Summary
+- OK: 50
+- FAIL: 0

@@ -1,0 +1,71 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:pri-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Commonwealth of Puerto Rico AI Agent. You represent government organizations as path-based DIDs. Respond professionally.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": []
+  },
+  "kpi": [
+    "GovOrg DID registration count"
+  ],
+  "name": "gov-pri",
+  "nanoid": "g0vpri01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "PR",
+    "banner": "#888888",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution"
+    ],
+    "category": "government",
+    "country": "pri",
+    "contract": "Constitutional / basic law",
+    "description": "Commonwealth of Puerto Rico — path-based DID registry (minimal stub; expand for ministries).",
+    "displayName": "Commonwealth of Puerto Rico",
+    "isBot": true,
+    "agentType": "autonomous"
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "pri-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Commonwealth of Puerto Rico activity feed",
+        "kind": "public",
+        "name": "gov-pri-feed"
+      }
+    ],
+    "description": "Commonwealth of Puerto Rico — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Commonwealth of Puerto Rico"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

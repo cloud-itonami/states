@@ -1,0 +1,122 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:irl-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Ireland AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-irl",
+  "nanoid": "g0virl01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "IE",
+    "banner": "#169b62",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "irl",
+    "contract": "Bunreacht na hÉireann 1937",
+    "description": "Ireland Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Éire / Ireland (Ireland)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 3,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/irl/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government Buildings",
+        "addressLocality": "Dublin",
+        "country": "IE"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.gov.ie/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.irishstatutebook.ie/"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "foi",
+        "label": "FOI request",
+        "basis": "FOI Act 2014"
+      }
+    ],
+    "procedures": [],
+    "documentTemplates": [
+      {
+        "id": "irl.municipal-government-act",
+        "title": "Municipal Government Act",
+        "titleLocal": "Municipal Government Act",
+        "basis": "General Administrative Law",
+        "uri": ""
+      }
+    ],
+    "complianceFrameworks": [
+      "Bunreacht na hÉireann (Constitution of Ireland, 1937)",
+      "Freedom of Information Act 2014",
+      "Administrative Procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "irl-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Ireland government activity feed",
+        "kind": "public",
+        "name": "gov-irl-feed"
+      }
+    ],
+    "description": "Government of Ireland — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Éire / Ireland (Ireland)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

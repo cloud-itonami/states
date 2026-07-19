@@ -1,0 +1,149 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:lbn-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Lebanon AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-lbn",
+  "nanoid": "g0vlbn01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "LB",
+    "banner": "#ffffff",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "lbn",
+    "contract": "الدستور اللبناني 1926",
+    "description": "Lebanon Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "الجمهورية اللبنانية (Lebanese Republic)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 2,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/lbn/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Beirut",
+        "addressLocality": "Beirut",
+        "country": "LB"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.presidency.gov.lb/",
+        "label": "Presidency"
+      },
+      {
+        "kind": "portal",
+        "uri": "http://www.pcm.gov.lb/",
+        "label": "Council of Ministers"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Republic of Lebanon — citizen inquiry",
+        "uri": "https://www.presidency.gov.lb/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "lbn.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Republic of Lebanon — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "lbn.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Republic of Lebanon — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "lbn.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Republic of Lebanon — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "lbn.law-118-1977-lbn",
+        "title": "Municipalities Law No.118/1977",
+        "titleLocal": "قانون البلديات رقم 118/1977",
+        "basis": "Law No.118 of 1977",
+        "uri": "https://www.legallaw.ul.edu.lb/"
+      },
+      {
+        "id": "lbn.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Republic of Lebanon",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Republic of Lebanon — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "lbn-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Lebanon government activity feed",
+        "kind": "public",
+        "name": "gov-lbn-feed"
+      }
+    ],
+    "description": "Government of Lebanon — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "الجمهورية اللبنانية (Lebanese Republic)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

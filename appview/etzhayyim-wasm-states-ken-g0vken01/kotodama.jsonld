@@ -1,0 +1,132 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:ken-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Kenya AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English and Swahili.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-ken",
+  "nanoid": "g0vken01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "KE",
+    "banner": "#006600",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "ken",
+    "contract": "Constitution of Kenya 2010",
+    "description": "Kenya Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Republic of Kenya",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 1,
+    "contractCount": 1,
+    "bpmnCount": 31,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/ken/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "State House",
+        "addressLocality": "Nairobi",
+        "country": "KE"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.president.go.ke/"
+      },
+      {
+        "kind": "portal",
+        "uri": "http://kenyalaw.org/"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "access_info",
+        "label": "Access to Information",
+        "basis": "Access to Information Act 2016"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "ken.executive",
+        "title": "Executive",
+        "titleLocal": "Executive",
+        "authority": "Executive",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/ken/bpmn/executive.bpmn"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "ken.county-government-act-2012",
+        "title": "County Government Act",
+        "titleLocal": "County Government Act 2012",
+        "basis": "No.17 of 2012",
+        "uri": "https://www.parliament.go.ke/"
+      }
+    ],
+    "complianceFrameworks": [
+      "Constitution of Kenya (2010)",
+      "Access to Information Act 2016",
+      "Fair Administrative Action Act 2015"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "ken-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Kenya government activity feed",
+        "kind": "public",
+        "name": "gov-ken-feed"
+      }
+    ],
+    "description": "Government of Kenya — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Republic of Kenya"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

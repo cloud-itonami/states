@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_ind_district_tg_dst_686_warangal_urban"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_ind_district_tg_dst_686_warangal_urban">
+    <bpmn:participant id="Pool_ind_district_tg_dst_686_warangal_urban" name="Tg Dst 686 Warangal Urban (district)" processRef="Process_ind_district_tg_dst_686_warangal_urban" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_ind_district_tg_dst_686_warangal_urban" name="Tg Dst 686 Warangal Urban — Economic Affairs / Licensing" isExecutable="true">
+    <bpmn:startEvent id="Start_ind_district_tg_dst_686_warangal_urban" name="License / Permit
+application received"><bpmn:outgoing>F_ind_district_tg_dst_686_warangal_urban_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:serviceTask id="T_ind_district_tg_dst_686_warangal_urban_screen" name="Screen Application
+(completeness check)">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.ind.district:tg-dst-686-warangal-urban.screen_application" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="processing_days" />
+          <zeebe:header key="cofog" value="04" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_ind_district_tg_dst_686_warangal_urban_01</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_tg_dst_686_warangal_urban_02</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="GW_ind_district_tg_dst_686_warangal_urban_complete" name="Complete?" isMarkerVisible="true">
+      <bpmn:incoming>F_ind_district_tg_dst_686_warangal_urban_02</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_tg_dst_686_warangal_urban_03a</bpmn:outgoing>
+      <bpmn:outgoing>F_ind_district_tg_dst_686_warangal_urban_03b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_ind_district_tg_dst_686_warangal_urban_return" name="Return for
+Additional Info">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.ind.district:tg-dst-686-warangal-urban.return_application" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_ind_district_tg_dst_686_warangal_urban_03b</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_tg_dst_686_warangal_urban_end1</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="GW_ind_district_tg_dst_686_warangal_urban_checks" name="Parallel review">
+      <bpmn:incoming>F_ind_district_tg_dst_686_warangal_urban_03a</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_tg_dst_686_warangal_urban_04a</bpmn:outgoing>
+      <bpmn:outgoing>F_ind_district_tg_dst_686_warangal_urban_04b</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:serviceTask id="T_ind_district_tg_dst_686_warangal_urban_legal" name="Legal Compliance
+Review">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.ind.district:tg-dst-686-warangal-urban.legal_review" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="compliance_pass_rate" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_ind_district_tg_dst_686_warangal_urban_04a</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_tg_dst_686_warangal_urban_05</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_ind_district_tg_dst_686_warangal_urban_technical" name="Technical
+Assessment">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.ind.district:tg-dst-686-warangal-urban.technical_assessment" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="technical_score" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_ind_district_tg_dst_686_warangal_urban_04b</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_tg_dst_686_warangal_urban_05b</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="GW_ind_district_tg_dst_686_warangal_urban_join" name="Reviews complete">
+      <bpmn:incoming>F_ind_district_tg_dst_686_warangal_urban_05</bpmn:incoming>
+      <bpmn:incoming>F_ind_district_tg_dst_686_warangal_urban_05b</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_tg_dst_686_warangal_urban_06</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:userTask id="T_ind_district_tg_dst_686_warangal_urban_decision" name="Approval Decision
+by Authority">
+      <bpmn:extensionElements>
+        <zeebe:assignmentDefinition assignee="gov-official" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_ind_district_tg_dst_686_warangal_urban_06</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_tg_dst_686_warangal_urban_07</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="GW_ind_district_tg_dst_686_warangal_urban_approve" name="Decision?" isMarkerVisible="true">
+      <bpmn:incoming>F_ind_district_tg_dst_686_warangal_urban_07</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_tg_dst_686_warangal_urban_08a</bpmn:outgoing>
+      <bpmn:outgoing>F_ind_district_tg_dst_686_warangal_urban_08b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_ind_district_tg_dst_686_warangal_urban_issue" name="Issue License
+/ Permit">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.ind.district:tg-dst-686-warangal-urban.issue_license" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="issue" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_ind_district_tg_dst_686_warangal_urban_08a</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_tg_dst_686_warangal_urban_end1</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_ind_district_tg_dst_686_warangal_urban_deny" name="Send Denial
+Notice">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.ind.district:tg-dst-686-warangal-urban.deny_application" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="deny" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_ind_district_tg_dst_686_warangal_urban_08b</bpmn:incoming>
+      <bpmn:outgoing>F_ind_district_tg_dst_686_warangal_urban_end1</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_ind_district_tg_dst_686_warangal_urban" name="Application
+processed">
+      <bpmn:incoming>F_ind_district_tg_dst_686_warangal_urban_end1</bpmn:incoming>
+      <bpmn:incoming>F_ind_district_tg_dst_686_warangal_urban_end1b</bpmn:incoming>
+      <bpmn:incoming>F_ind_district_tg_dst_686_warangal_urban_end1c</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_ind_district_tg_dst_686_warangal_urban_01" sourceRef="Start_ind_district_tg_dst_686_warangal_urban" targetRef="T_ind_district_tg_dst_686_warangal_urban_screen">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_tg_dst_686_warangal_urban_02" sourceRef="T_ind_district_tg_dst_686_warangal_urban_screen" targetRef="GW_ind_district_tg_dst_686_warangal_urban_complete">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_tg_dst_686_warangal_urban_03a" sourceRef="GW_ind_district_tg_dst_686_warangal_urban_complete" targetRef="GW_ind_district_tg_dst_686_warangal_urban_checks" name="Yes">
+      <bpmn:conditionExpression>=complete = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_tg_dst_686_warangal_urban_03b" sourceRef="GW_ind_district_tg_dst_686_warangal_urban_complete" targetRef="T_ind_district_tg_dst_686_warangal_urban_return" name="No">
+      <bpmn:conditionExpression>=complete = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_tg_dst_686_warangal_urban_04a" sourceRef="GW_ind_district_tg_dst_686_warangal_urban_checks" targetRef="T_ind_district_tg_dst_686_warangal_urban_legal">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_tg_dst_686_warangal_urban_04b" sourceRef="GW_ind_district_tg_dst_686_warangal_urban_checks" targetRef="T_ind_district_tg_dst_686_warangal_urban_technical">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_tg_dst_686_warangal_urban_05" sourceRef="T_ind_district_tg_dst_686_warangal_urban_legal" targetRef="GW_ind_district_tg_dst_686_warangal_urban_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_tg_dst_686_warangal_urban_05b" sourceRef="T_ind_district_tg_dst_686_warangal_urban_technical" targetRef="GW_ind_district_tg_dst_686_warangal_urban_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_tg_dst_686_warangal_urban_06" sourceRef="GW_ind_district_tg_dst_686_warangal_urban_join" targetRef="T_ind_district_tg_dst_686_warangal_urban_decision">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_tg_dst_686_warangal_urban_07" sourceRef="T_ind_district_tg_dst_686_warangal_urban_decision" targetRef="GW_ind_district_tg_dst_686_warangal_urban_approve">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_tg_dst_686_warangal_urban_08a" sourceRef="GW_ind_district_tg_dst_686_warangal_urban_approve" targetRef="T_ind_district_tg_dst_686_warangal_urban_issue" name="Approved">
+      <bpmn:conditionExpression>=approved = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_tg_dst_686_warangal_urban_08b" sourceRef="GW_ind_district_tg_dst_686_warangal_urban_approve" targetRef="T_ind_district_tg_dst_686_warangal_urban_deny" name="Denied">
+      <bpmn:conditionExpression>=approved = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_tg_dst_686_warangal_urban_end1" sourceRef="T_ind_district_tg_dst_686_warangal_urban_issue" targetRef="End_ind_district_tg_dst_686_warangal_urban">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_tg_dst_686_warangal_urban_end1b" sourceRef="T_ind_district_tg_dst_686_warangal_urban_deny" targetRef="End_ind_district_tg_dst_686_warangal_urban">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_district_tg_dst_686_warangal_urban_end1c" sourceRef="T_ind_district_tg_dst_686_warangal_urban_return" targetRef="End_ind_district_tg_dst_686_warangal_urban">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_ind_district_tg_dst_686_warangal_urban">
+    <bpmndi:BPMNPlane id="BPMNPlane_ind_district_tg_dst_686_warangal_urban" bpmnElement="Collaboration_ind_district_tg_dst_686_warangal_urban" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

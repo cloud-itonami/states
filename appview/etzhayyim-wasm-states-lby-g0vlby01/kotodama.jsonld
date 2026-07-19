@@ -1,0 +1,128 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:lby-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Libya AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-lby",
+  "nanoid": "g0vlby01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "LY",
+    "banner": "#000000",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "shabiyah-coverage"
+    ],
+    "category": "government",
+    "country": "lby",
+    "contract": "Constitutional Declaration of Libya 2011 (transitional)",
+    "description": "Libya Government — path-based DID registry for ministries and subnational units.",
+    "displayName": "State of Libya",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 0,
+    "bpmnCount": 0,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/lby/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Tripoli",
+        "addressLocality": "Tripoli",
+        "country": "LY"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.pm.gov.ly/",
+        "label": "State of Libya — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "State of Libya — citizen inquiry",
+        "uri": "https://www.pm.gov.ly/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "sta.access_info",
+        "title": "Access to Public Information",
+        "authority": "State of Libya"
+      },
+      {
+        "id": "sta.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "State of Libya — passport authority"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "ly.access_info.v1",
+        "title": "Access to public information request — template",
+        "authority": "State of Libya"
+      }
+    ],
+    "complianceFrameworks": [
+      "State of Libya — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "lby-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Libya government activity feed",
+        "kind": "public",
+        "name": "gov-lby-feed"
+      }
+    ],
+    "description": "Government of Libya — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "State of Libya"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

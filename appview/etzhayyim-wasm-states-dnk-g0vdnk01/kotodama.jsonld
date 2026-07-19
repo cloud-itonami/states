@@ -1,0 +1,122 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:dnk-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Denmark AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-dnk",
+  "nanoid": "g0vdnk01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "DK",
+    "banner": "#c60c30",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "dnk",
+    "contract": "Grundloven 1953",
+    "description": "Denmark Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Kongeriget Danmark (Kingdom of Denmark)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 3,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/dnk/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Statsministeriet",
+        "addressLocality": "Kobenhavn",
+        "country": "DK"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.stm.dk/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.retsinformation.dk/"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "offentlighedsloven",
+        "label": "Offentlighedsloven",
+        "basis": "Lov nr. 606 af 12. juni 2013"
+      }
+    ],
+    "procedures": [],
+    "documentTemplates": [
+      {
+        "id": "dnk.kommunestyrelsesloven",
+        "title": "Municipal Governance Act",
+        "titleLocal": "Lov om kommunernes styrelse",
+        "basis": "LBK nr 47 af 15/01/2019",
+        "uri": "https://www.retsinformation.dk/"
+      }
+    ],
+    "complianceFrameworks": [
+      "Danmarks Riges Grundlov (1953)",
+      "Offentlighedsloven (Lov nr. 606 af 12.06.2013)",
+      "Forvaltningsloven"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "dnk-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Denmark government activity feed",
+        "kind": "public",
+        "name": "gov-dnk-feed"
+      }
+    ],
+    "description": "Government of Denmark — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Kongeriget Danmark (Kingdom of Denmark)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

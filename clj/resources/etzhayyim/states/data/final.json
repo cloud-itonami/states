@@ -1,0 +1,92 @@
+{
+"and": [
+"Principality of Andorra",
+"Andorra la Vella",
+"AD",
+"https://www.govern.ad/"
+],
+"atg": [
+"Antigua and Barbuda",
+"Saint John's",
+"AG",
+"https://ab.gov.ag/"
+],
+"brb": [
+"Barbados",
+"Bridgetown",
+"BB",
+"https://gisbarbados.gov.bb/"
+],
+"dma": [
+"Commonwealth of Dominica",
+"Roseau",
+"DM",
+"https://dominica.gov.dm/"
+],
+"grd": [
+"Grenada",
+"Saint George's",
+"GD",
+"https://gov.gd/"
+],
+"kna": [
+"Federation of Saint Kitts and Nevis",
+"Basseterre",
+"KN",
+"https://www.gov.kn/"
+],
+"lby": [
+"State of Libya",
+"Tripoli",
+"LY",
+"https://www.pm.gov.ly/"
+],
+"lie": [
+"Principality of Liechtenstein",
+"Vaduz",
+"LI",
+"https://www.liechtenstein.li/"
+],
+"mhl": [
+"Republic of the Marshall Islands",
+"Majuro",
+"MH",
+"https://rmigovernment.org/"
+],
+"mlt": [
+"Republic of Malta",
+"Valletta",
+"MT",
+"https://www.gov.mt/"
+],
+"mne": [
+"Montenegro",
+"Podgorica",
+"ME",
+"https://www.gov.me/"
+],
+"nru": [
+"Republic of Nauru",
+"Yaren District",
+"NR",
+"https://www.naurugov.nr/"
+],
+"smr": [
+"Most Serene Republic of San Marino",
+"San Marino",
+"SM",
+"https://www.sanmarino.sm/"
+],
+"vat": [
+"Vatican City State / Holy See",
+"Vatican City",
+"VA",
+"https://www.vatican.va/"
+],
+"vct": [
+"Saint Vincent and the Grenadines",
+"Kingstown",
+"VC",
+"https://www.gov.vc/"
+]
+}

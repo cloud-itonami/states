@@ -1,0 +1,137 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:som-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Federal Republic of Somalia AI Agent. You represent government organizations as path-based DIDs. Respond professionally.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": []
+  },
+  "kpi": [
+    "GovOrg DID registration count"
+  ],
+  "name": "gov-som",
+  "nanoid": "g0vsom01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "SO",
+    "banner": "#888888",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution"
+    ],
+    "category": "government",
+    "country": "som",
+    "contract": "Constitutional / basic law",
+    "description": "Federal Republic of Somalia — path-based DID registry (minimal stub; expand for ministries).",
+    "displayName": "Federal Republic of Somalia",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 3,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/som/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Mogadishu",
+        "addressLocality": "Mogadishu",
+        "country": "SO"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.villasomalia.gov.so/",
+        "label": "Federal Republic of Somalia — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Federal Republic of Somalia — citizen inquiry",
+        "uri": "https://www.villasomalia.gov.so/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "som.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Federal Republic of Somalia — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "som.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Federal Republic of Somalia — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "som.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Federal Republic of Somalia — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "som.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Federal Republic of Somalia",
+        "basis": "Access-to-information statute"
+      },
+      {
+        "id": "som.municipal-government-act",
+        "title": "Municipal Government Act",
+        "titleLocal": "Municipal Government Act",
+        "basis": "General Administrative Law",
+        "uri": ""
+      }
+    ],
+    "complianceFrameworks": [
+      "Federal Republic of Somalia — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "som-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Federal Republic of Somalia activity feed",
+        "kind": "public",
+        "name": "gov-som-feed"
+      }
+    ],
+    "description": "Federal Republic of Somalia — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Federal Republic of Somalia"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

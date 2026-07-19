@@ -1,0 +1,144 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:ssd-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of South Sudan AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-ssd",
+  "nanoid": "g0vssd01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "SS",
+    "banner": "#000000",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "ssd",
+    "contract": "Transitional Constitution of South Sudan 2011",
+    "description": "South Sudan Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Republic of South Sudan",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 2,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/ssd/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Juba",
+        "addressLocality": "Juba",
+        "country": "SS"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.goss.org/",
+        "label": "Republic of South Sudan — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Republic of South Sudan — citizen inquiry",
+        "uri": "https://www.goss.org/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "ssd.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Republic of South Sudan — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "ssd.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Republic of South Sudan — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "ssd.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Republic of South Sudan — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "ssd.municipal-government-act",
+        "title": "Municipal Government Act",
+        "titleLocal": "Municipal Government Act",
+        "basis": "General Administrative Law",
+        "uri": ""
+      },
+      {
+        "id": "ssd.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Republic of South Sudan",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Republic of South Sudan — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "ssd-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "South Sudan government activity feed",
+        "kind": "public",
+        "name": "gov-ssd-feed"
+      }
+    ],
+    "description": "Government of South Sudan — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Republic of South Sudan"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

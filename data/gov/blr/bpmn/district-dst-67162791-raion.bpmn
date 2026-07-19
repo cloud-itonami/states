@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_blr_district_dst_67162791_raion"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_blr_district_dst_67162791_raion">
+    <bpmn:participant id="Pool_blr_district_dst_67162791_raion" name="Dst 67162791 Raion (67162791)" processRef="Process_blr_district_dst_67162791_raion" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_blr_district_dst_67162791_raion" name="Dst 67162791 Raion — General Public Services" isExecutable="true">
+    <bpmn:startEvent id="Start_blr_district_dst_67162791_raion" name="Policy trigger
+received"><bpmn:outgoing>F_blr_district_dst_67162791_raion_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:parallelGateway id="GW_blr_district_dst_67162791_raion_open" name="Parallel checks">
+      <bpmn:incoming>F_blr_district_dst_67162791_raion_01</bpmn:incoming>
+      <bpmn:outgoing>F_blr_district_dst_67162791_raion_02</bpmn:outgoing>
+      <bpmn:outgoing>F_blr_district_dst_67162791_raion_03</bpmn:outgoing>
+      <bpmn:outgoing>F_blr_district_dst_67162791_raion_04</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:serviceTask id="T_blr_district_dst_67162791_raion_policy" name="Draft Policy
+Proposal">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.blr.district:dst-67162791-raion.draft_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="policy_output" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_blr_district_dst_67162791_raion_02</bpmn:incoming>
+      <bpmn:outgoing>F_blr_district_dst_67162791_raion_05</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_blr_district_dst_67162791_raion_budget" name="Allocate Budget
+(COFOG 01)">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.blr.district:dst-67162791-raion.allocate_budget" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="budget_execution_rate" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_blr_district_dst_67162791_raion_03</bpmn:incoming>
+      <bpmn:outgoing>F_blr_district_dst_67162791_raion_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_blr_district_dst_67162791_raion_coord" name="Inter-Agency
+Coordination">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.blr.district:dst-67162791-raion.coordinate" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="coordination_score" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_blr_district_dst_67162791_raion_04</bpmn:incoming>
+      <bpmn:outgoing>F_blr_district_dst_67162791_raion_07</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="GW_blr_district_dst_67162791_raion_join" name="Checks complete">
+      <bpmn:incoming>F_blr_district_dst_67162791_raion_05</bpmn:incoming>
+      <bpmn:incoming>F_blr_district_dst_67162791_raion_06</bpmn:incoming>
+      <bpmn:incoming>F_blr_district_dst_67162791_raion_07</bpmn:incoming>
+      <bpmn:outgoing>F_blr_district_dst_67162791_raion_08</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:userTask id="T_blr_district_dst_67162791_raion_review" name="Minister Review
+& Sign-off">
+      <bpmn:extensionElements>
+        <zeebe:assignmentDefinition assignee="gov-official" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_blr_district_dst_67162791_raion_08</bpmn:incoming>
+      <bpmn:outgoing>F_blr_district_dst_67162791_raion_09</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="GW_blr_district_dst_67162791_raion_risk" name="Approved?" isMarkerVisible="true">
+      <bpmn:incoming>F_blr_district_dst_67162791_raion_09</bpmn:incoming>
+      <bpmn:outgoing>F_blr_district_dst_67162791_raion_10a</bpmn:outgoing>
+      <bpmn:outgoing>F_blr_district_dst_67162791_raion_10b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_blr_district_dst_67162791_raion_publish" name="Publish Policy
+& Notify Citizens">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.blr.district:dst-67162791-raion.publish_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="publish" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_blr_district_dst_67162791_raion_10a</bpmn:incoming>
+      <bpmn:outgoing>F_blr_district_dst_67162791_raion_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_blr_district_dst_67162791_raion_revise" name="Return for
+Revision">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.blr.district:dst-67162791-raion.request_revision" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="revise" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_blr_district_dst_67162791_raion_10b</bpmn:incoming>
+      <bpmn:outgoing>F_blr_district_dst_67162791_raion_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_blr_district_dst_67162791_raion" name="Process complete">
+      <bpmn:incoming>F_blr_district_dst_67162791_raion_11</bpmn:incoming>
+      <bpmn:incoming>F_blr_district_dst_67162791_raion_11b</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_blr_district_dst_67162791_raion_01" sourceRef="Start_blr_district_dst_67162791_raion" targetRef="GW_blr_district_dst_67162791_raion_open">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_blr_district_dst_67162791_raion_02" sourceRef="GW_blr_district_dst_67162791_raion_open" targetRef="T_blr_district_dst_67162791_raion_policy">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_blr_district_dst_67162791_raion_03" sourceRef="GW_blr_district_dst_67162791_raion_open" targetRef="T_blr_district_dst_67162791_raion_budget">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_blr_district_dst_67162791_raion_04" sourceRef="GW_blr_district_dst_67162791_raion_open" targetRef="T_blr_district_dst_67162791_raion_coord">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_blr_district_dst_67162791_raion_05" sourceRef="T_blr_district_dst_67162791_raion_policy" targetRef="GW_blr_district_dst_67162791_raion_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_blr_district_dst_67162791_raion_06" sourceRef="T_blr_district_dst_67162791_raion_budget" targetRef="GW_blr_district_dst_67162791_raion_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_blr_district_dst_67162791_raion_07" sourceRef="T_blr_district_dst_67162791_raion_coord" targetRef="GW_blr_district_dst_67162791_raion_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_blr_district_dst_67162791_raion_08" sourceRef="GW_blr_district_dst_67162791_raion_join" targetRef="T_blr_district_dst_67162791_raion_review">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_blr_district_dst_67162791_raion_09" sourceRef="T_blr_district_dst_67162791_raion_review" targetRef="GW_blr_district_dst_67162791_raion_risk">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_blr_district_dst_67162791_raion_10a" sourceRef="GW_blr_district_dst_67162791_raion_risk" targetRef="T_blr_district_dst_67162791_raion_publish" name="Approved">
+      <bpmn:conditionExpression>=approved = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_blr_district_dst_67162791_raion_10b" sourceRef="GW_blr_district_dst_67162791_raion_risk" targetRef="T_blr_district_dst_67162791_raion_revise" name="Rejected">
+      <bpmn:conditionExpression>=approved = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_blr_district_dst_67162791_raion_11" sourceRef="T_blr_district_dst_67162791_raion_publish" targetRef="End_blr_district_dst_67162791_raion">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_blr_district_dst_67162791_raion_11b" sourceRef="T_blr_district_dst_67162791_raion_revise" targetRef="End_blr_district_dst_67162791_raion">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_blr_district_dst_67162791_raion">
+    <bpmndi:BPMNPlane id="BPMNPlane_blr_district_dst_67162791_raion" bpmnElement="Collaboration_blr_district_dst_67162791_raion" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,0 +1,137 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:mrt-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Islamic Republic of Mauritania AI Agent. You represent government organizations as path-based DIDs. Respond professionally.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": []
+  },
+  "kpi": [
+    "GovOrg DID registration count"
+  ],
+  "name": "gov-mrt",
+  "nanoid": "g0vmrt01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "MR",
+    "banner": "#888888",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution"
+    ],
+    "category": "government",
+    "country": "mrt",
+    "contract": "Constitutional / basic law",
+    "description": "Islamic Republic of Mauritania — path-based DID registry (minimal stub; expand for ministries).",
+    "displayName": "Islamic Republic of Mauritania",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 2,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/mrt/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Nouakchott",
+        "addressLocality": "Nouakchott",
+        "country": "MR"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.presidence.mr/",
+        "label": "Islamic Republic of Mauritania — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Islamic Republic of Mauritania — citizen inquiry",
+        "uri": "https://www.presidence.mr/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "mrt.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Islamic Republic of Mauritania — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "mrt.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Islamic Republic of Mauritania — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "mrt.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Islamic Republic of Mauritania — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "mrt.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Islamic Republic of Mauritania",
+        "basis": "Access-to-information statute"
+      },
+      {
+        "id": "mrt.municipal-government-act",
+        "title": "Municipal Government Act",
+        "titleLocal": "Municipal Government Act",
+        "basis": "General Administrative Law",
+        "uri": ""
+      }
+    ],
+    "complianceFrameworks": [
+      "Islamic Republic of Mauritania — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "mrt-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Islamic Republic of Mauritania activity feed",
+        "kind": "public",
+        "name": "gov-mrt-feed"
+      }
+    ],
+    "description": "Islamic Republic of Mauritania — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Islamic Republic of Mauritania"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

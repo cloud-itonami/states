@@ -1,0 +1,149 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:kwt-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Kuwait AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-kwt",
+  "nanoid": "g0vkwt01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "KW",
+    "banner": "#007a3d",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "kwt",
+    "contract": "دستور الكويت 1962",
+    "description": "Kuwait Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "دولة الكويت (State of Kuwait)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 3,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/kwt/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Kuwait City",
+        "addressLocality": "Kuwait City",
+        "country": "KW"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.e.gov.kw/",
+        "label": "e.gov.kw"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.da.gov.kw/",
+        "label": "Audit Bureau"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Government of Kuwait — citizen inquiry",
+        "uri": "https://www.e.gov.kw/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "kwt.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Government of Kuwait — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "kwt.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Government of Kuwait — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "kwt.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Government of Kuwait — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "kwt.law-15-1964-kwt",
+        "title": "Law No.15/1964 on Municipalities",
+        "titleLocal": "قانون رقم 15 لسنة 1964 البلديات",
+        "basis": "Law No.15 of 1964",
+        "uri": "https://www.e.gov.kw/"
+      },
+      {
+        "id": "kwt.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Government of Kuwait",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Government of Kuwait — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "kwt-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Kuwait government activity feed",
+        "kind": "public",
+        "name": "gov-kwt-feed"
+      }
+    ],
+    "description": "Government of Kuwait — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "دولة الكويت (State of Kuwait)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

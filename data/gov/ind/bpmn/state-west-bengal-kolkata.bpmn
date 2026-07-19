@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_ind_state_west_bengal_kolkata"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_ind_state_west_bengal_kolkata">
+    <bpmn:participant id="Pool_ind_state_west_bengal_kolkata" name="Kolkata (state:we)" processRef="Process_ind_state_west_bengal_kolkata" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_ind_state_west_bengal_kolkata" name="Kolkata — General Public Services" isExecutable="true">
+    <bpmn:startEvent id="Start_ind_state_west_bengal_kolkata" name="Policy trigger
+received"><bpmn:outgoing>F_ind_state_west_bengal_kolkata_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:parallelGateway id="GW_ind_state_west_bengal_kolkata_open" name="Parallel checks">
+      <bpmn:incoming>F_ind_state_west_bengal_kolkata_01</bpmn:incoming>
+      <bpmn:outgoing>F_ind_state_west_bengal_kolkata_02</bpmn:outgoing>
+      <bpmn:outgoing>F_ind_state_west_bengal_kolkata_03</bpmn:outgoing>
+      <bpmn:outgoing>F_ind_state_west_bengal_kolkata_04</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:serviceTask id="T_ind_state_west_bengal_kolkata_policy" name="Draft Policy
+Proposal">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.ind.state:west-bengal:kolkata.draft_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="policy_output" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_ind_state_west_bengal_kolkata_02</bpmn:incoming>
+      <bpmn:outgoing>F_ind_state_west_bengal_kolkata_05</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_ind_state_west_bengal_kolkata_budget" name="Allocate Budget
+(COFOG 01)">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.ind.state:west-bengal:kolkata.allocate_budget" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="budget_execution_rate" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_ind_state_west_bengal_kolkata_03</bpmn:incoming>
+      <bpmn:outgoing>F_ind_state_west_bengal_kolkata_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_ind_state_west_bengal_kolkata_coord" name="Inter-Agency
+Coordination">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.ind.state:west-bengal:kolkata.coordinate" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="coordination_score" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_ind_state_west_bengal_kolkata_04</bpmn:incoming>
+      <bpmn:outgoing>F_ind_state_west_bengal_kolkata_07</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="GW_ind_state_west_bengal_kolkata_join" name="Checks complete">
+      <bpmn:incoming>F_ind_state_west_bengal_kolkata_05</bpmn:incoming>
+      <bpmn:incoming>F_ind_state_west_bengal_kolkata_06</bpmn:incoming>
+      <bpmn:incoming>F_ind_state_west_bengal_kolkata_07</bpmn:incoming>
+      <bpmn:outgoing>F_ind_state_west_bengal_kolkata_08</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:userTask id="T_ind_state_west_bengal_kolkata_review" name="Minister Review
+&amp; Sign-off">
+      <bpmn:extensionElements>
+        <zeebe:assignmentDefinition assignee="gov-official" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_ind_state_west_bengal_kolkata_08</bpmn:incoming>
+      <bpmn:outgoing>F_ind_state_west_bengal_kolkata_09</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="GW_ind_state_west_bengal_kolkata_risk" name="Approved?" isMarkerVisible="true">
+      <bpmn:incoming>F_ind_state_west_bengal_kolkata_09</bpmn:incoming>
+      <bpmn:outgoing>F_ind_state_west_bengal_kolkata_10a</bpmn:outgoing>
+      <bpmn:outgoing>F_ind_state_west_bengal_kolkata_10b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_ind_state_west_bengal_kolkata_publish" name="Publish Policy
+&amp; Notify Citizens">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.ind.state:west-bengal:kolkata.publish_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="publish" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_ind_state_west_bengal_kolkata_10a</bpmn:incoming>
+      <bpmn:outgoing>F_ind_state_west_bengal_kolkata_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_ind_state_west_bengal_kolkata_revise" name="Return for
+Revision">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.ind.state:west-bengal:kolkata.request_revision" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="revise" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_ind_state_west_bengal_kolkata_10b</bpmn:incoming>
+      <bpmn:outgoing>F_ind_state_west_bengal_kolkata_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_ind_state_west_bengal_kolkata" name="Process complete">
+      <bpmn:incoming>F_ind_state_west_bengal_kolkata_11</bpmn:incoming>
+      <bpmn:incoming>F_ind_state_west_bengal_kolkata_11b</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_ind_state_west_bengal_kolkata_01" sourceRef="Start_ind_state_west_bengal_kolkata" targetRef="GW_ind_state_west_bengal_kolkata_open">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_state_west_bengal_kolkata_02" sourceRef="GW_ind_state_west_bengal_kolkata_open" targetRef="T_ind_state_west_bengal_kolkata_policy">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_state_west_bengal_kolkata_03" sourceRef="GW_ind_state_west_bengal_kolkata_open" targetRef="T_ind_state_west_bengal_kolkata_budget">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_state_west_bengal_kolkata_04" sourceRef="GW_ind_state_west_bengal_kolkata_open" targetRef="T_ind_state_west_bengal_kolkata_coord">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_state_west_bengal_kolkata_05" sourceRef="T_ind_state_west_bengal_kolkata_policy" targetRef="GW_ind_state_west_bengal_kolkata_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_state_west_bengal_kolkata_06" sourceRef="T_ind_state_west_bengal_kolkata_budget" targetRef="GW_ind_state_west_bengal_kolkata_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_state_west_bengal_kolkata_07" sourceRef="T_ind_state_west_bengal_kolkata_coord" targetRef="GW_ind_state_west_bengal_kolkata_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_state_west_bengal_kolkata_08" sourceRef="GW_ind_state_west_bengal_kolkata_join" targetRef="T_ind_state_west_bengal_kolkata_review">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_state_west_bengal_kolkata_09" sourceRef="T_ind_state_west_bengal_kolkata_review" targetRef="GW_ind_state_west_bengal_kolkata_risk">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_state_west_bengal_kolkata_10a" sourceRef="GW_ind_state_west_bengal_kolkata_risk" targetRef="T_ind_state_west_bengal_kolkata_publish" name="Approved">
+      <bpmn:conditionExpression>=approved = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_state_west_bengal_kolkata_10b" sourceRef="GW_ind_state_west_bengal_kolkata_risk" targetRef="T_ind_state_west_bengal_kolkata_revise" name="Rejected">
+      <bpmn:conditionExpression>=approved = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_state_west_bengal_kolkata_11" sourceRef="T_ind_state_west_bengal_kolkata_publish" targetRef="End_ind_state_west_bengal_kolkata">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_ind_state_west_bengal_kolkata_11b" sourceRef="T_ind_state_west_bengal_kolkata_revise" targetRef="End_ind_state_west_bengal_kolkata">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_ind_state_west_bengal_kolkata">
+    <bpmndi:BPMNPlane id="BPMNPlane_ind_state_west_bengal_kolkata" bpmnElement="Collaboration_ind_state_west_bengal_kolkata" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

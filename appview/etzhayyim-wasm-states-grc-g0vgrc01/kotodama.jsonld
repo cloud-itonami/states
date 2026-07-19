@@ -1,0 +1,123 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:grc-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Greece AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-grc",
+  "nanoid": "g0vgrc01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "GR",
+    "banner": "#0d5eaf",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "grc",
+    "contract": "Σύνταγμα Ελλάδας 1975",
+    "description": "Greece Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Ελληνική Δημοκρατία (Hellenic Republic)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 3,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/grc/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Maximos Mansion",
+        "addressLocality": "Athens",
+        "country": "GR"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.gov.gr/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.et.gr/",
+        "label": "Ethniko Typografeio"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "dialavgeia",
+        "label": "Diavgeia",
+        "uri": "https://diavgeia.gov.gr/"
+      }
+    ],
+    "procedures": [],
+    "documentTemplates": [
+      {
+        "id": "grc.kdkn-3463-2006",
+        "title": "Municipal and Community Code",
+        "titleLocal": "Κώδικας Δήμων και Κοινοτήτων Ν.3463/2006",
+        "basis": "Ν.3463/2006 + Kallikratis 3852/2010",
+        "uri": "https://www.ypes.gr/"
+      }
+    ],
+    "complianceFrameworks": [
+      "Σύνταγμα της Ελλάδος (1975)",
+      "Διαύγεια (Ν. 3861/2010)",
+      "Κώδικας Διοικητικής Διαδικασίας"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "grc-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Greece government activity feed",
+        "kind": "public",
+        "name": "gov-grc-feed"
+      }
+    ],
+    "description": "Government of Greece — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Ελληνική Δημοκρατία (Hellenic Republic)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

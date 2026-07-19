@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_nga_finance_ministry_of_finance"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_nga_finance_ministry_of_finance">
+    <bpmn:participant id="Pool_nga_finance_ministry_of_finance" name="Finance Ministry Of Finance (n4g8f1r9)" processRef="Process_nga_finance_ministry_of_finance" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_nga_finance_ministry_of_finance" name="Finance Ministry Of Finance — Economic Affairs / Licensing" isExecutable="true">
+    <bpmn:startEvent id="Start_nga_finance_ministry_of_finance" name="License / Permit
+application received"><bpmn:outgoing>F_nga_finance_ministry_of_finance_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:serviceTask id="T_nga_finance_ministry_of_finance_screen" name="Screen Application
+(completeness check)">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.nga.finance-ministry-of-finance.screen_application" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="processing_days" />
+          <zeebe:header key="cofog" value="04" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_nga_finance_ministry_of_finance_01</bpmn:incoming>
+      <bpmn:outgoing>F_nga_finance_ministry_of_finance_02</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="GW_nga_finance_ministry_of_finance_complete" name="Complete?" isMarkerVisible="true">
+      <bpmn:incoming>F_nga_finance_ministry_of_finance_02</bpmn:incoming>
+      <bpmn:outgoing>F_nga_finance_ministry_of_finance_03a</bpmn:outgoing>
+      <bpmn:outgoing>F_nga_finance_ministry_of_finance_03b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_nga_finance_ministry_of_finance_return" name="Return for
+Additional Info">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.nga.finance-ministry-of-finance.return_application" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_nga_finance_ministry_of_finance_03b</bpmn:incoming>
+      <bpmn:outgoing>F_nga_finance_ministry_of_finance_end1</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="GW_nga_finance_ministry_of_finance_checks" name="Parallel review">
+      <bpmn:incoming>F_nga_finance_ministry_of_finance_03a</bpmn:incoming>
+      <bpmn:outgoing>F_nga_finance_ministry_of_finance_04a</bpmn:outgoing>
+      <bpmn:outgoing>F_nga_finance_ministry_of_finance_04b</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:serviceTask id="T_nga_finance_ministry_of_finance_legal" name="Legal Compliance
+Review">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.nga.finance-ministry-of-finance.legal_review" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="compliance_pass_rate" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_nga_finance_ministry_of_finance_04a</bpmn:incoming>
+      <bpmn:outgoing>F_nga_finance_ministry_of_finance_05</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_nga_finance_ministry_of_finance_technical" name="Technical
+Assessment">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.nga.finance-ministry-of-finance.technical_assessment" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="technical_score" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_nga_finance_ministry_of_finance_04b</bpmn:incoming>
+      <bpmn:outgoing>F_nga_finance_ministry_of_finance_05b</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="GW_nga_finance_ministry_of_finance_join" name="Reviews complete">
+      <bpmn:incoming>F_nga_finance_ministry_of_finance_05</bpmn:incoming>
+      <bpmn:incoming>F_nga_finance_ministry_of_finance_05b</bpmn:incoming>
+      <bpmn:outgoing>F_nga_finance_ministry_of_finance_06</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:userTask id="T_nga_finance_ministry_of_finance_decision" name="Approval Decision
+by Authority">
+      <bpmn:extensionElements>
+        <zeebe:assignmentDefinition assignee="gov-official" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_nga_finance_ministry_of_finance_06</bpmn:incoming>
+      <bpmn:outgoing>F_nga_finance_ministry_of_finance_07</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="GW_nga_finance_ministry_of_finance_approve" name="Decision?" isMarkerVisible="true">
+      <bpmn:incoming>F_nga_finance_ministry_of_finance_07</bpmn:incoming>
+      <bpmn:outgoing>F_nga_finance_ministry_of_finance_08a</bpmn:outgoing>
+      <bpmn:outgoing>F_nga_finance_ministry_of_finance_08b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_nga_finance_ministry_of_finance_issue" name="Issue License
+/ Permit">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.nga.finance-ministry-of-finance.issue_license" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="issue" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_nga_finance_ministry_of_finance_08a</bpmn:incoming>
+      <bpmn:outgoing>F_nga_finance_ministry_of_finance_end1</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_nga_finance_ministry_of_finance_deny" name="Send Denial
+Notice">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.nga.finance-ministry-of-finance.deny_application" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="deny" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_nga_finance_ministry_of_finance_08b</bpmn:incoming>
+      <bpmn:outgoing>F_nga_finance_ministry_of_finance_end1</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_nga_finance_ministry_of_finance" name="Application
+processed">
+      <bpmn:incoming>F_nga_finance_ministry_of_finance_end1</bpmn:incoming>
+      <bpmn:incoming>F_nga_finance_ministry_of_finance_end1b</bpmn:incoming>
+      <bpmn:incoming>F_nga_finance_ministry_of_finance_end1c</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_nga_finance_ministry_of_finance_01" sourceRef="Start_nga_finance_ministry_of_finance" targetRef="T_nga_finance_ministry_of_finance_screen">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_nga_finance_ministry_of_finance_02" sourceRef="T_nga_finance_ministry_of_finance_screen" targetRef="GW_nga_finance_ministry_of_finance_complete">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_nga_finance_ministry_of_finance_03a" sourceRef="GW_nga_finance_ministry_of_finance_complete" targetRef="GW_nga_finance_ministry_of_finance_checks" name="Yes">
+      <bpmn:conditionExpression>=complete = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_nga_finance_ministry_of_finance_03b" sourceRef="GW_nga_finance_ministry_of_finance_complete" targetRef="T_nga_finance_ministry_of_finance_return" name="No">
+      <bpmn:conditionExpression>=complete = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_nga_finance_ministry_of_finance_04a" sourceRef="GW_nga_finance_ministry_of_finance_checks" targetRef="T_nga_finance_ministry_of_finance_legal">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_nga_finance_ministry_of_finance_04b" sourceRef="GW_nga_finance_ministry_of_finance_checks" targetRef="T_nga_finance_ministry_of_finance_technical">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_nga_finance_ministry_of_finance_05" sourceRef="T_nga_finance_ministry_of_finance_legal" targetRef="GW_nga_finance_ministry_of_finance_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_nga_finance_ministry_of_finance_05b" sourceRef="T_nga_finance_ministry_of_finance_technical" targetRef="GW_nga_finance_ministry_of_finance_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_nga_finance_ministry_of_finance_06" sourceRef="GW_nga_finance_ministry_of_finance_join" targetRef="T_nga_finance_ministry_of_finance_decision">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_nga_finance_ministry_of_finance_07" sourceRef="T_nga_finance_ministry_of_finance_decision" targetRef="GW_nga_finance_ministry_of_finance_approve">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_nga_finance_ministry_of_finance_08a" sourceRef="GW_nga_finance_ministry_of_finance_approve" targetRef="T_nga_finance_ministry_of_finance_issue" name="Approved">
+      <bpmn:conditionExpression>=approved = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_nga_finance_ministry_of_finance_08b" sourceRef="GW_nga_finance_ministry_of_finance_approve" targetRef="T_nga_finance_ministry_of_finance_deny" name="Denied">
+      <bpmn:conditionExpression>=approved = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_nga_finance_ministry_of_finance_end1" sourceRef="T_nga_finance_ministry_of_finance_issue" targetRef="End_nga_finance_ministry_of_finance">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_nga_finance_ministry_of_finance_end1b" sourceRef="T_nga_finance_ministry_of_finance_deny" targetRef="End_nga_finance_ministry_of_finance">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_nga_finance_ministry_of_finance_end1c" sourceRef="T_nga_finance_ministry_of_finance_return" targetRef="End_nga_finance_ministry_of_finance">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_nga_finance_ministry_of_finance">
+    <bpmndi:BPMNPlane id="BPMNPlane_nga_finance_ministry_of_finance" bpmnElement="Collaboration_nga_finance_ministry_of_finance" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

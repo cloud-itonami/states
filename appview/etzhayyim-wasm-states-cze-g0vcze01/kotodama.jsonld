@@ -1,0 +1,149 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:cze-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of the Czech Republic AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-cze",
+  "nanoid": "g0vcze01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "CZ",
+    "banner": "#d7141a",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "cze",
+    "contract": "Ústava České republiky 1993",
+    "description": "Czech Republic Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Česká republika (Czech Republic)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 3,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/cze/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Prague",
+        "addressLocality": "Prague",
+        "country": "CZ"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.vlada.cz/",
+        "label": "vlada.cz"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.zakonyprolidi.cz/",
+        "label": "Legal database"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Government of the Czech Republic — citizen inquiry",
+        "uri": "https://www.vlada.cz/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "cze.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Government of the Czech Republic — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "cze.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Government of the Czech Republic — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "cze.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Government of the Czech Republic — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "cze.zakon-o-obcich-128-2000",
+        "title": "Municipal Act 128/2000",
+        "titleLocal": "Zákon o obcích 128/2000",
+        "basis": "Zákon č. 128/2000 Sb.",
+        "uri": "https://www.zakonyprolidi.cz/"
+      },
+      {
+        "id": "cze.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Government of the Czech Republic",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Government of the Czech Republic — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "cze-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Czech Republic government activity feed",
+        "kind": "public",
+        "name": "gov-cze-feed"
+      }
+    ],
+    "description": "Government of Czech Republic — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Česká republika (Czech Republic)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

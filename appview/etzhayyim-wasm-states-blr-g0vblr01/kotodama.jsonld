@@ -1,0 +1,149 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:blr-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Belarus AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-blr",
+  "nanoid": "g0vblr01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "BY",
+    "banner": "#000000",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "blr",
+    "contract": "Constitution of Belarus 1994 (amended 2022)",
+    "description": "Belarus Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Рэспубліка Беларусь (Republic of Belarus)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 3,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/blr/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Minsk",
+        "addressLocality": "Minsk",
+        "country": "BY"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.government.by/",
+        "label": "government.by"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://pravo.by/",
+        "label": "Legal portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Government of the Republic of Belarus — citizen inquiry",
+        "uri": "https://www.government.by/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "blr.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Government of the Republic of Belarus — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "blr.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Government of the Republic of Belarus — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "blr.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Government of the Republic of Belarus — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "blr.llg-blr",
+        "title": "Law on Local Government",
+        "titleLocal": "Закон о местном управлении и самоуправлении в Республике Беларусь",
+        "basis": "Закон от 4 января 2010 г. No.108-З",
+        "uri": "https://pravo.by/"
+      },
+      {
+        "id": "blr.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Government of the Republic of Belarus",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Government of the Republic of Belarus — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "blr-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Belarus government activity feed",
+        "kind": "public",
+        "name": "gov-blr-feed"
+      }
+    ],
+    "description": "Government of Belarus — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Рэспубліка Беларусь (Republic of Belarus)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

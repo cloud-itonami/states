@@ -1,0 +1,133 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:tha-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Thailand AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-tha",
+  "nanoid": "g0vtha01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "TH",
+    "banner": "#a51931",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "tha",
+    "contract": "รัฐธรรมนูญแห่งราชอาณาจักรไทย 2017",
+    "description": "Thailand Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "ราชอาณาจักรไทย (Kingdom of Thailand)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 1,
+    "contractCount": 1,
+    "bpmnCount": 79,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/tha/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government House",
+        "addressLocality": "Bangkok",
+        "country": "TH"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.thaigov.go.th/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.krisdika.go.th/",
+        "label": "Krisdika Law"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "oic",
+        "label": "Office of the Official Information Commission",
+        "basis": "Official Information Act B.E. 2540"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "tha.executive",
+        "title": "Executive",
+        "titleLocal": "Executive",
+        "authority": "Executive",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/tha/bpmn/executive.bpmn"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "tha.pao-act-2540",
+        "title": "Provincial Administration Organization Act",
+        "titleLocal": "พระราชบัญญัติองค์การบริหารส่วนจังหวัด พ.ศ. 2540",
+        "basis": "พ.ศ. 2540 (1997)",
+        "uri": "https://www.dla.go.th/"
+      }
+    ],
+    "complianceFrameworks": [
+      "รัฐธรรมนูญแห่งราชอาณาจักรไทย พ.ศ. 2560 (2017)",
+      "Official Information Act B.E. 2540 (1997)",
+      "Administrative Procedure Act B.E. 2539"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "tha-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Thailand government activity feed",
+        "kind": "public",
+        "name": "gov-tha-feed"
+      }
+    ],
+    "description": "Government of Thailand — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "ราชอาณาจักรไทย (Kingdom of Thailand)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

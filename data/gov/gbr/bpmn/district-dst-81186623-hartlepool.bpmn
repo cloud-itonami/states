@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_gbr_district_dst_81186623_hartlepool"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_gbr_district_dst_81186623_hartlepool">
+    <bpmn:participant id="Pool_gbr_district_dst_81186623_hartlepool" name="Dst 81186623 Hartlepool (81186623)" processRef="Process_gbr_district_dst_81186623_hartlepool" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_gbr_district_dst_81186623_hartlepool" name="Dst 81186623 Hartlepool — General Public Services" isExecutable="true">
+    <bpmn:startEvent id="Start_gbr_district_dst_81186623_hartlepool" name="Policy trigger
+received"><bpmn:outgoing>F_gbr_district_dst_81186623_hartlepool_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:parallelGateway id="GW_gbr_district_dst_81186623_hartlepool_open" name="Parallel checks">
+      <bpmn:incoming>F_gbr_district_dst_81186623_hartlepool_01</bpmn:incoming>
+      <bpmn:outgoing>F_gbr_district_dst_81186623_hartlepool_02</bpmn:outgoing>
+      <bpmn:outgoing>F_gbr_district_dst_81186623_hartlepool_03</bpmn:outgoing>
+      <bpmn:outgoing>F_gbr_district_dst_81186623_hartlepool_04</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:serviceTask id="T_gbr_district_dst_81186623_hartlepool_policy" name="Draft Policy
+Proposal">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.gbr.district:dst-81186623-hartlepool.draft_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="policy_output" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_gbr_district_dst_81186623_hartlepool_02</bpmn:incoming>
+      <bpmn:outgoing>F_gbr_district_dst_81186623_hartlepool_05</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_gbr_district_dst_81186623_hartlepool_budget" name="Allocate Budget
+(COFOG 01)">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.gbr.district:dst-81186623-hartlepool.allocate_budget" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="budget_execution_rate" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_gbr_district_dst_81186623_hartlepool_03</bpmn:incoming>
+      <bpmn:outgoing>F_gbr_district_dst_81186623_hartlepool_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_gbr_district_dst_81186623_hartlepool_coord" name="Inter-Agency
+Coordination">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.gbr.district:dst-81186623-hartlepool.coordinate" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="coordination_score" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_gbr_district_dst_81186623_hartlepool_04</bpmn:incoming>
+      <bpmn:outgoing>F_gbr_district_dst_81186623_hartlepool_07</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="GW_gbr_district_dst_81186623_hartlepool_join" name="Checks complete">
+      <bpmn:incoming>F_gbr_district_dst_81186623_hartlepool_05</bpmn:incoming>
+      <bpmn:incoming>F_gbr_district_dst_81186623_hartlepool_06</bpmn:incoming>
+      <bpmn:incoming>F_gbr_district_dst_81186623_hartlepool_07</bpmn:incoming>
+      <bpmn:outgoing>F_gbr_district_dst_81186623_hartlepool_08</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:userTask id="T_gbr_district_dst_81186623_hartlepool_review" name="Minister Review
+& Sign-off">
+      <bpmn:extensionElements>
+        <zeebe:assignmentDefinition assignee="gov-official" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_gbr_district_dst_81186623_hartlepool_08</bpmn:incoming>
+      <bpmn:outgoing>F_gbr_district_dst_81186623_hartlepool_09</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="GW_gbr_district_dst_81186623_hartlepool_risk" name="Approved?" isMarkerVisible="true">
+      <bpmn:incoming>F_gbr_district_dst_81186623_hartlepool_09</bpmn:incoming>
+      <bpmn:outgoing>F_gbr_district_dst_81186623_hartlepool_10a</bpmn:outgoing>
+      <bpmn:outgoing>F_gbr_district_dst_81186623_hartlepool_10b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_gbr_district_dst_81186623_hartlepool_publish" name="Publish Policy
+& Notify Citizens">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.gbr.district:dst-81186623-hartlepool.publish_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="publish" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_gbr_district_dst_81186623_hartlepool_10a</bpmn:incoming>
+      <bpmn:outgoing>F_gbr_district_dst_81186623_hartlepool_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_gbr_district_dst_81186623_hartlepool_revise" name="Return for
+Revision">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.gbr.district:dst-81186623-hartlepool.request_revision" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="revise" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_gbr_district_dst_81186623_hartlepool_10b</bpmn:incoming>
+      <bpmn:outgoing>F_gbr_district_dst_81186623_hartlepool_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_gbr_district_dst_81186623_hartlepool" name="Process complete">
+      <bpmn:incoming>F_gbr_district_dst_81186623_hartlepool_11</bpmn:incoming>
+      <bpmn:incoming>F_gbr_district_dst_81186623_hartlepool_11b</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_gbr_district_dst_81186623_hartlepool_01" sourceRef="Start_gbr_district_dst_81186623_hartlepool" targetRef="GW_gbr_district_dst_81186623_hartlepool_open">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_gbr_district_dst_81186623_hartlepool_02" sourceRef="GW_gbr_district_dst_81186623_hartlepool_open" targetRef="T_gbr_district_dst_81186623_hartlepool_policy">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_gbr_district_dst_81186623_hartlepool_03" sourceRef="GW_gbr_district_dst_81186623_hartlepool_open" targetRef="T_gbr_district_dst_81186623_hartlepool_budget">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_gbr_district_dst_81186623_hartlepool_04" sourceRef="GW_gbr_district_dst_81186623_hartlepool_open" targetRef="T_gbr_district_dst_81186623_hartlepool_coord">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_gbr_district_dst_81186623_hartlepool_05" sourceRef="T_gbr_district_dst_81186623_hartlepool_policy" targetRef="GW_gbr_district_dst_81186623_hartlepool_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_gbr_district_dst_81186623_hartlepool_06" sourceRef="T_gbr_district_dst_81186623_hartlepool_budget" targetRef="GW_gbr_district_dst_81186623_hartlepool_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_gbr_district_dst_81186623_hartlepool_07" sourceRef="T_gbr_district_dst_81186623_hartlepool_coord" targetRef="GW_gbr_district_dst_81186623_hartlepool_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_gbr_district_dst_81186623_hartlepool_08" sourceRef="GW_gbr_district_dst_81186623_hartlepool_join" targetRef="T_gbr_district_dst_81186623_hartlepool_review">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_gbr_district_dst_81186623_hartlepool_09" sourceRef="T_gbr_district_dst_81186623_hartlepool_review" targetRef="GW_gbr_district_dst_81186623_hartlepool_risk">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_gbr_district_dst_81186623_hartlepool_10a" sourceRef="GW_gbr_district_dst_81186623_hartlepool_risk" targetRef="T_gbr_district_dst_81186623_hartlepool_publish" name="Approved">
+      <bpmn:conditionExpression>=approved = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_gbr_district_dst_81186623_hartlepool_10b" sourceRef="GW_gbr_district_dst_81186623_hartlepool_risk" targetRef="T_gbr_district_dst_81186623_hartlepool_revise" name="Rejected">
+      <bpmn:conditionExpression>=approved = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_gbr_district_dst_81186623_hartlepool_11" sourceRef="T_gbr_district_dst_81186623_hartlepool_publish" targetRef="End_gbr_district_dst_81186623_hartlepool">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_gbr_district_dst_81186623_hartlepool_11b" sourceRef="T_gbr_district_dst_81186623_hartlepool_revise" targetRef="End_gbr_district_dst_81186623_hartlepool">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_gbr_district_dst_81186623_hartlepool">
+    <bpmndi:BPMNPlane id="BPMNPlane_gbr_district_dst_81186623_hartlepool" bpmnElement="Collaboration_gbr_district_dst_81186623_hartlepool" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

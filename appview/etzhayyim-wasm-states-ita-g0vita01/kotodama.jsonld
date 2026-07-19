@@ -1,0 +1,170 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:ita-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Italy AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-ita",
+  "nanoid": "g0vita01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "IT",
+    "banner": "#009246",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "ita",
+    "contract": "Costituzione della Repubblica Italiana 1948",
+    "description": "Italy Government — path-based DID registry for ministries and subnational units.",
+    "displayName": "Repubblica Italiana (Italian Republic)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 1,
+    "contractCount": 1,
+    "bpmnCount": 52,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/ita/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Palazzo Chigi",
+        "streetAddress": "Piazza Colonna 370",
+        "addressLocality": "Roma",
+        "postalCode": "00187",
+        "country": "IT"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.governo.it/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.normattiva.it/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.italia.it/"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "foia",
+        "label": "FOIA Italia",
+        "uri": "https://www.funzionepubblica.gov.it/foia",
+        "basis": "D.Lgs 97/2016"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "ita.executive",
+        "title": "Executive",
+        "titleLocal": "Executive",
+        "authority": "Executive",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/ita/bpmn/executive.bpmn"
+      },
+      {
+        "id": "ita.foia",
+        "title": "Richiesta FOIA - accesso civico",
+        "basis": "D.Lgs 97/2016",
+        "authority": "Ogni amministrazione",
+        "portalUri": "https://www.funzionepubblica.gov.it/foia"
+      },
+      {
+        "id": "ita.passaporto",
+        "title": "Richiesta passaporto",
+        "authority": "Questura",
+        "portalUri": "https://www.passaportonline.poliziadistato.it/"
+      },
+      {
+        "id": "ita.cie",
+        "title": "Carta d'Identita Elettronica",
+        "authority": "Comune",
+        "portalUri": "https://www.cartaidentita.interno.gov.it/"
+      },
+      {
+        "id": "ita.redditi",
+        "title": "Modello 730 - Dichiarazione dei Redditi",
+        "authority": "Agenzia delle Entrate",
+        "portalUri": "https://www.agenziaentrate.gov.it/"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "ita.tuel-2000",
+        "title": "Testo Unico Enti Locali",
+        "titleLocal": "TUEL D.Lgs. 267/2000",
+        "basis": "D.Lgs. 18 agosto 2000, n. 267",
+        "uri": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2000-08-18;267"
+      },
+      {
+        "id": "ita.mod730.v1",
+        "title": "Modello 730",
+        "authority": "AE",
+        "uri": "https://www.agenziaentrate.gov.it/portale/730"
+      }
+    ],
+    "complianceFrameworks": [
+      "Costituzione della Repubblica Italiana (1948)",
+      "D.Lgs. 97/2016 (FOIA)",
+      "Legge 241/1990 (Procedimento amministrativo)"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "ita-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Italy government activity feed",
+        "kind": "public",
+        "name": "gov-ita-feed"
+      }
+    ],
+    "description": "Government of Italy — AI Agent DID registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Repubblica Italiana (Italian Republic)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

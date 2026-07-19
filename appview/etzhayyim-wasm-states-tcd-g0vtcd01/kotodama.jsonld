@@ -1,0 +1,137 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:tcd-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Republic of Chad AI Agent. You represent government organizations as path-based DIDs. Respond professionally.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": []
+  },
+  "kpi": [
+    "GovOrg DID registration count"
+  ],
+  "name": "gov-tcd",
+  "nanoid": "g0vtcd01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "TC",
+    "banner": "#888888",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution"
+    ],
+    "category": "government",
+    "country": "tcd",
+    "contract": "Constitutional / basic law",
+    "description": "Republic of Chad — path-based DID registry (minimal stub; expand for ministries).",
+    "displayName": "Republic of Chad",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 2,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/tcd/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: N'Djamena",
+        "addressLocality": "N'Djamena",
+        "country": "TD"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.primature-tchad.org/",
+        "label": "Republic of Chad — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Republic of Chad — citizen inquiry",
+        "uri": "https://www.primature-tchad.org/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "tcd.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Republic of Chad — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "tcd.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Republic of Chad — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "tcd.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Republic of Chad — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "tcd.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Republic of Chad",
+        "basis": "Access-to-information statute"
+      },
+      {
+        "id": "tcd.loi-002-2000-tcd",
+        "title": "CTD Law 002/2000",
+        "titleLocal": "Loi 002/PR/2000 sur les collectivités territoriales décentralisées",
+        "basis": "Loi no.002/PR/2000",
+        "uri": "https://www.assemblee-nationale.td/"
+      }
+    ],
+    "complianceFrameworks": [
+      "Republic of Chad — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "tcd-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Republic of Chad activity feed",
+        "kind": "public",
+        "name": "gov-tcd-feed"
+      }
+    ],
+    "description": "Republic of Chad — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Republic of Chad"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

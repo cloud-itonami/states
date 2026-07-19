@@ -1,0 +1,158 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:npl-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Nepal AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-npl",
+  "nanoid": "g0vnpl01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "NP",
+    "banner": "#003087",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "npl",
+    "contract": "Nepal Constitution 2015",
+    "description": "Nepal Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "सङ्घीय लोकतान्त्रिक गणतन्त्र नेपाल (Federal Democratic Republic of Nepal)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 1,
+    "contractCount": 1,
+    "bpmnCount": 17,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/npl/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Kathmandu",
+        "addressLocality": "Kathmandu",
+        "country": "NP"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.nepal.gov.np/",
+        "label": "nepal.gov.np"
+      },
+      {
+        "kind": "portal",
+        "uri": "http://www.lawcommission.gov.np/",
+        "label": "Law Commission"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Government of Nepal — citizen inquiry",
+        "uri": "https://www.nepal.gov.np/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "npl.executive",
+        "title": "Executive",
+        "titleLocal": "Executive",
+        "authority": "Executive",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/npl/bpmn/executive.bpmn"
+      },
+      {
+        "id": "npl.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Government of Nepal — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "npl.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Government of Nepal — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "npl.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Government of Nepal — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "npl.lgoa-2074",
+        "title": "Local Government Operation Act 2074",
+        "titleLocal": "Local Government Operation Act 2074",
+        "basis": "Act 2074 (2017)",
+        "uri": "https://www.opmcm.gov.np/"
+      },
+      {
+        "id": "npl.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Government of Nepal",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Government of Nepal — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "npl-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Nepal government activity feed",
+        "kind": "public",
+        "name": "gov-npl-feed"
+      }
+    ],
+    "description": "Government of Nepal — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "सङ्घीय लोकतान्त्रिक गणतन्त्र नेपाल (Federal Democratic Republic of Nepal)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

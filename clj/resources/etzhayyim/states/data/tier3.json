@@ -1,0 +1,518 @@
+{
+"afg": [
+"Islamic Emirate of Afghanistan",
+"Kabul",
+"AF",
+"https://www.iea.gov.af/"
+],
+"alb": [
+"Republic of Albania",
+"Tirana",
+"AL",
+"https://kryeministria.al/"
+],
+"arm": [
+"Republic of Armenia",
+"Yerevan",
+"AM",
+"https://www.gov.am/"
+],
+"aze": [
+"Republic of Azerbaijan",
+"Baku",
+"AZ",
+"https://president.az/"
+],
+"bdi": [
+"Republic of Burundi",
+"Gitega",
+"BI",
+"https://presidence.gov.bi/"
+],
+"ben": [
+"Republic of Benin",
+"Porto-Novo",
+"BJ",
+"https://www.gouv.bj/"
+],
+"bfa": [
+"Burkina Faso",
+"Ouagadougou",
+"BF",
+"https://www.presidence.bf/"
+],
+"bgr": [
+"Republic of Bulgaria",
+"Sofia",
+"BG",
+"https://www.government.bg/"
+],
+"bhs": [
+"Commonwealth of The Bahamas",
+"Nassau",
+"BS",
+"https://opm.gov.bs/"
+],
+"bih": [
+"Bosnia and Herzegovina",
+"Sarajevo",
+"BA",
+"https://predsjednistvobih.ba/"
+],
+"blz": [
+"Belize",
+"Belmopan",
+"BZ",
+"https://www.belize.gov.bz/"
+],
+"brn": [
+"Nation of Brunei",
+"Bandar Seri Begawan",
+"BN",
+"https://www.pmo.gov.bn/"
+],
+"btn": [
+"Kingdom of Bhutan",
+"Thimphu",
+"BT",
+"https://www.gov.bt/"
+],
+"bwa": [
+"Republic of Botswana",
+"Gaborone",
+"BW",
+"https://www.gov.bw/"
+],
+"caf": [
+"Central African Republic",
+"Bangui",
+"CF",
+"https://www.gouv.cf/"
+],
+"cog": [
+"Republic of the Congo",
+"Brazzaville",
+"CG",
+"http://www.presidence.cg/"
+],
+"com": [
+"Union of the Comoros",
+"Moroni",
+"KM",
+"http://www.presidence-comores.km/"
+],
+"cpv": [
+"Republic of Cabo Verde",
+"Praia",
+"CV",
+"https://www.governo.cv/"
+],
+"cyp": [
+"Republic of Cyprus",
+"Nicosia",
+"CY",
+"https://www.presidency.gov.cy/"
+],
+"dji": [
+"Republic of Djibouti",
+"Djibouti",
+"DJ",
+"https://www.presidence.dj/"
+],
+"eri": [
+"State of Eritrea",
+"Asmara",
+"ER",
+"http://shabait.com/"
+],
+"est": [
+"Republic of Estonia",
+"Tallinn",
+"EE",
+"https://www.valitsus.ee/"
+],
+"fji": [
+"Republic of Fiji",
+"Suva",
+"FJ",
+"https://www.fiji.gov.fj/"
+],
+"fsm": [
+"Federated States of Micronesia",
+"Palikir",
+"FM",
+"https://www.fsmgov.org/"
+],
+"gab": [
+"Gabonese Republic",
+"Libreville",
+"GA",
+"https://www.presidence.ga/"
+],
+"geo": [
+"Georgia",
+"Tbilisi",
+"GE",
+"https://www.gov.ge/"
+],
+"gin": [
+"Republic of Guinea",
+"Conakry",
+"GN",
+"https://www.gouvernement.gov.gn/"
+],
+"gmb": [
+"Republic of The Gambia",
+"Banjul",
+"GM",
+"https://www.statehouse.gov.gm/"
+],
+"gnb": [
+"Republic of Guinea-Bissau",
+"Bissau",
+"GW",
+"https://www.presidencia.gw/"
+],
+"gnq": [
+"Republic of Equatorial Guinea",
+"Malabo",
+"GQ",
+"https://www.guineaecuatorialpress.com/"
+],
+"gum": [
+"Territory of Guam",
+"Hagatna",
+"GU",
+"https://www.guam.gov/"
+],
+"guy": [
+"Co-operative Republic of Guyana",
+"Georgetown",
+"GY",
+"https://parliament.gov.gy/"
+],
+"hkg": [
+"Hong Kong Special Administrative Region",
+"Hong Kong",
+"HK",
+"https://www.gov.hk/"
+],
+"hnd": [
+"Republic of Honduras",
+"Tegucigalpa",
+"HN",
+"https://www.presidencia.gob.hn/"
+],
+"hti": [
+"Republic of Haiti",
+"Port-au-Prince",
+"HT",
+"https://primature.gouv.ht/"
+],
+"irq": [
+"Republic of Iraq",
+"Baghdad",
+"IQ",
+"https://www.pmo.iq/"
+],
+"isl": [
+"Republic of Iceland",
+"Reykjavik",
+"IS",
+"https://www.government.is/"
+],
+"kgz": [
+"Kyrgyz Republic",
+"Bishkek",
+"KG",
+"https://www.president.kg/"
+],
+"kir": [
+"Republic of Kiribati",
+"Tarawa",
+"KI",
+"https://www.president.gov.ki/"
+],
+"lao": [
+"Lao People's Democratic Republic",
+"Vientiane",
+"LA",
+"https://www.laogov.gov.la/"
+],
+"lbr": [
+"Republic of Liberia",
+"Monrovia",
+"LR",
+"https://www.emansion.gov.lr/"
+],
+"lca": [
+"Saint Lucia",
+"Castries",
+"LC",
+"https://www.govt.lc/"
+],
+"lso": [
+"Kingdom of Lesotho",
+"Maseru",
+"LS",
+"https://www.gov.ls/"
+],
+"ltu": [
+"Republic of Lithuania",
+"Vilnius",
+"LT",
+"https://lrv.lt/"
+],
+"lux": [
+"Grand Duchy of Luxembourg",
+"Luxembourg",
+"LU",
+"https://gouvernement.lu/"
+],
+"lva": [
+"Republic of Latvia",
+"Riga",
+"LV",
+"https://www.mk.gov.lv/"
+],
+"mco": [
+"Principality of Monaco",
+"Monaco",
+"MC",
+"https://www.gouv.mc/"
+],
+"mdv": [
+"Republic of Maldives",
+"Male",
+"MV",
+"https://presidency.gov.mv/"
+],
+"mkd": [
+"Republic of North Macedonia",
+"Skopje",
+"MK",
+"https://vlada.mk/"
+],
+"mli": [
+"Republic of Mali",
+"Bamako",
+"ML",
+"https://www.koulouba.ml/"
+],
+"mng": [
+"Mongolia",
+"Ulaanbaatar",
+"MN",
+"https://mongolia.gov.mn/"
+],
+"mnp": [
+"Commonwealth of the Northern Mariana Islands",
+"Saipan",
+"MP",
+"https://www.governor.gov.mp/"
+],
+"mrt": [
+"Islamic Republic of Mauritania",
+"Nouakchott",
+"MR",
+"https://www.presidence.mr/"
+],
+"mwi": [
+"Republic of Malawi",
+"Lilongwe",
+"MW",
+"https://www.malawi.gov.mw/"
+],
+"nam": [
+"Republic of Namibia",
+"Windhoek",
+"NA",
+"https://www.op.gov.na/"
+],
+"ner": [
+"Republic of the Niger",
+"Niamey",
+"NE",
+"https://www.presidence.ne/"
+],
+"nic": [
+"Republic of Nicaragua",
+"Managua",
+"NI",
+"https://www.presidencia.gob.ni/"
+],
+"plw": [
+"Republic of Palau",
+"Ngerulmud",
+"PW",
+"https://www.palaugov.pw/"
+],
+"png": [
+"Independent State of Papua New Guinea",
+"Port Moresby",
+"PG",
+"https://www.pm.gov.pg/"
+],
+"pri": [
+"Commonwealth of Puerto Rico",
+"San Juan",
+"PR",
+"https://www.pr.gov/"
+],
+"prk": [
+"Democratic People's Republic of Korea",
+"Pyongyang",
+"KP",
+"http://www.kcna.kp/"
+],
+"pse": [
+"State of Palestine",
+"Ramallah",
+"PS",
+"https://www.palestinecabinet.gov.ps/"
+],
+"sdn": [
+"Republic of the Sudan",
+"Khartoum",
+"SD",
+"https://sudan.gov.sd/"
+],
+"slb": [
+"Solomon Islands",
+"Honiara",
+"SB",
+"https://solomons.gov.sb/"
+],
+"sle": [
+"Republic of Sierra Leone",
+"Freetown",
+"SL",
+"https://statehouse.gov.sl/"
+],
+"slv": [
+"Republic of El Salvador",
+"San Salvador",
+"SV",
+"https://www.presidencia.gob.sv/"
+],
+"som": [
+"Federal Republic of Somalia",
+"Mogadishu",
+"SO",
+"https://www.villasomalia.gov.so/"
+],
+"ssd": [
+"Republic of South Sudan",
+"Juba",
+"SS",
+"https://www.goss.org/"
+],
+"stp": [
+"Democratic Republic of Sao Tome and Principe",
+"Sao Tome",
+"ST",
+"https://www.presidencia.st/"
+],
+"sur": [
+"Republic of Suriname",
+"Paramaribo",
+"SR",
+"https://www.gov.sr/"
+],
+"svn": [
+"Republic of Slovenia",
+"Ljubljana",
+"SI",
+"https://www.gov.si/"
+],
+"swz": [
+"Kingdom of Eswatini",
+"Mbabane",
+"SZ",
+"https://www.gov.sz/"
+],
+"syc": [
+"Republic of Seychelles",
+"Victoria",
+"SC",
+"https://www.egov.sc/"
+],
+"syr": [
+"Syrian Arab Republic",
+"Damascus",
+"SY",
+"http://www.egov.sy/"
+],
+"tcd": [
+"Republic of Chad",
+"N'Djamena",
+"TD",
+"https://www.primature-tchad.org/"
+],
+"tgo": [
+"Togolese Republic",
+"Lome",
+"TG",
+"https://www.republicoftogo.com/"
+],
+"tjk": [
+"Republic of Tajikistan",
+"Dushanbe",
+"TJ",
+"https://www.president.tj/"
+],
+"tkm": [
+"Turkmenistan",
+"Ashgabat",
+"TM",
+"https://www.turkmenistan.gov.tm/"
+],
+"tls": [
+"Democratic Republic of Timor-Leste",
+"Dili",
+"TL",
+"https://timor-leste.gov.tl/"
+],
+"ton": [
+"Kingdom of Tonga",
+"Nuku'alofa",
+"TO",
+"https://www.pmo.gov.to/"
+],
+"tuv": [
+"Tuvalu",
+"Funafuti",
+"TV",
+"https://tuvalu-government.tv/"
+],
+"twn": [
+"Taiwan (Republic of China)",
+"Taipei",
+"TW",
+"https://www.ey.gov.tw/"
+],
+"vut": [
+"Republic of Vanuatu",
+"Port Vila",
+"VU",
+"https://www.gov.vu/"
+],
+"wsm": [
+"Independent State of Samoa",
+"Apia",
+"WS",
+"https://www.samoagovt.ws/"
+],
+"xkx": [
+"Republic of Kosovo",
+"Pristina",
+"XK",
+"https://kryeministri.rks-gov.net/"
+],
+"yem": [
+"Republic of Yemen",
+"Sana'a",
+"YE",
+"https://www.presidenthadi.gov.ye/"
+]
+}

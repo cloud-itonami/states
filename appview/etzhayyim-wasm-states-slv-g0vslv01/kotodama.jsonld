@@ -1,0 +1,144 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:slv-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of El Salvador (República de El Salvador) AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-slv",
+  "nanoid": "g0vslv01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "SL",
+    "banner": "#000000",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "slv",
+    "contract": "Constitución de la República de El Salvador 1983",
+    "description": "El Salvador Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "República de El Salvador (Republic of El Salvador)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 3,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/slv/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: San Salvador",
+        "addressLocality": "San Salvador",
+        "country": "SV"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.presidencia.gob.sv/",
+        "label": "Republic of El Salvador — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Republic of El Salvador — citizen inquiry",
+        "uri": "https://www.presidencia.gob.sv/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "slv.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Republic of El Salvador — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "slv.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Republic of El Salvador — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "slv.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Republic of El Salvador — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "slv.cm-decreto-274-1986",
+        "title": "Código Municipal",
+        "titleLocal": "Código Municipal Decreto 274/1986",
+        "basis": "Decreto No.274",
+        "uri": "https://www.asamblea.gob.sv/"
+      },
+      {
+        "id": "slv.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Republic of El Salvador",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Republic of El Salvador — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "slv-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "El Salvador government activity feed",
+        "kind": "public",
+        "name": "gov-slv-feed"
+      }
+    ],
+    "description": "Government of El Salvador — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "República de El Salvador (Republic of El Salvador)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

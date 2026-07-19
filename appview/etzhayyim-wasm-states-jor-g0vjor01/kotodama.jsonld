@@ -1,0 +1,149 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:jor-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Jordan AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-jor",
+  "nanoid": "g0vjor01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "JO",
+    "banner": "#007a3d",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "jor",
+    "contract": "الدستور الأردني 1952",
+    "description": "Jordan Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "المملكة الأردنية الهاشمية (Hashemite Kingdom of Jordan)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 2,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/jor/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Amman",
+        "addressLocality": "Amman",
+        "country": "JO"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.jordan.gov.jo/",
+        "label": "jordan.gov.jo"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.pm.gov.jo/",
+        "label": "PM Office"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Hashemite Kingdom of Jordan — citizen inquiry",
+        "uri": "https://www.jordan.gov.jo/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "jor.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Hashemite Kingdom of Jordan — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "jor.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Hashemite Kingdom of Jordan — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "jor.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Hashemite Kingdom of Jordan — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "jor.law-71-2015-jor",
+        "title": "Decentralization Law No.71/2015",
+        "titleLocal": "قانون الادارة المحلية رقم 71 لسنة 2015",
+        "basis": "Law No.71 of 2015",
+        "uri": "https://www.lob.gov.jo/"
+      },
+      {
+        "id": "jor.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Hashemite Kingdom of Jordan",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Hashemite Kingdom of Jordan — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "jor-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Jordan government activity feed",
+        "kind": "public",
+        "name": "gov-jor-feed"
+      }
+    ],
+    "description": "Government of Jordan — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "المملكة الأردنية الهاشمية (Hashemite Kingdom of Jordan)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

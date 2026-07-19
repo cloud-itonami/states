@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_isr_israel"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_isr_israel">
+    <bpmn:participant id="Pool_isr_israel" name="Israel (israel)" processRef="Process_isr_israel" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_isr_israel" name="Israel — Public Order & Safety" isExecutable="true">
+    <bpmn:startEvent id="Start_isr_israel" name="Incident
+reported"><bpmn:outgoing>F_isr_israel_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:serviceTask id="T_isr_israel_triage" name="Triage Incident
+(severity classification)">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.isr.israel.triage" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="response_time_minutes" />
+          <zeebe:header key="cofog" value="03" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_isr_israel_01</bpmn:incoming>
+      <bpmn:outgoing>F_isr_israel_02</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="GW_isr_israel_sev" name="Severity?" isMarkerVisible="true">
+      <bpmn:incoming>F_isr_israel_02</bpmn:incoming>
+      <bpmn:outgoing>F_isr_israel_03a</bpmn:outgoing>
+      <bpmn:outgoing>F_isr_israel_03b</bpmn:outgoing>
+      <bpmn:outgoing>F_isr_israel_03c</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_isr_israel_emergency" name="Deploy Emergency
+Response">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.isr.israel.emergency_response" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="emergency" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_isr_israel_03a</bpmn:incoming>
+      <bpmn:outgoing>F_isr_israel_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_isr_israel_investigate" name="Open Investigation
+& Assign Officers">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.isr.israel.investigate" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="investigate" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_isr_israel_03b</bpmn:incoming>
+      <bpmn:outgoing>F_isr_israel_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_isr_israel_log" name="Log Report
+& Close">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.isr.israel.log_close" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="log" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_isr_israel_03c</bpmn:incoming>
+      <bpmn:outgoing>F_isr_israel_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_isr_israel_report" name="File Incident
+Report">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.isr.israel.file_report" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_isr_israel_06</bpmn:incoming>
+      <bpmn:outgoing>F_isr_israel_07</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_isr_israel" name="Incident resolved">
+      <bpmn:incoming>F_isr_israel_07</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_isr_israel_01" sourceRef="Start_isr_israel" targetRef="T_isr_israel_triage">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_isr_israel_02" sourceRef="T_isr_israel_triage" targetRef="GW_isr_israel_sev">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_isr_israel_03a" sourceRef="GW_isr_israel_sev" targetRef="T_isr_israel_emergency" name="Critical">
+      <bpmn:conditionExpression>=severity = 'critical'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_isr_israel_03b" sourceRef="GW_isr_israel_sev" targetRef="T_isr_israel_investigate" name="Standard">
+      <bpmn:conditionExpression>=severity = 'standard'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_isr_israel_03c" sourceRef="GW_isr_israel_sev" targetRef="T_isr_israel_log" name="Minor">
+      <bpmn:conditionExpression>=severity = 'minor'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_isr_israel_06" sourceRef="T_isr_israel_emergency" targetRef="T_isr_israel_report">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_isr_israel_06b" sourceRef="T_isr_israel_investigate" targetRef="T_isr_israel_report">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_isr_israel_06c" sourceRef="T_isr_israel_log" targetRef="T_isr_israel_report">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_isr_israel_07" sourceRef="T_isr_israel_report" targetRef="End_isr_israel">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_isr_israel">
+    <bpmndi:BPMNPlane id="BPMNPlane_isr_israel" bpmnElement="Collaboration_isr_israel" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,0 +1,149 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:svk-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Slovakia AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-svk",
+  "nanoid": "g0vsvk01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "SK",
+    "banner": "#0b4ea2",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "svk",
+    "contract": "Ústava Slovenskej republiky 1992",
+    "description": "Slovakia Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Slovenská republika (Slovak Republic)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 2,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/svk/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Bratislava",
+        "addressLocality": "Bratislava",
+        "country": "SK"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.vlada.gov.sk/",
+        "label": "vlada.gov.sk"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.slov-lex.sk/",
+        "label": "Slov-Lex"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Government of the Slovak Republic — citizen inquiry",
+        "uri": "https://www.vlada.gov.sk/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "svk.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Government of the Slovak Republic — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "svk.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Government of the Slovak Republic — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "svk.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Government of the Slovak Republic — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "svk.zakon-369-1990",
+        "title": "Municipalities Act 369/1990",
+        "titleLocal": "Zákon o obecnom zriadení 369/1990",
+        "basis": "Zákon č. 369/1990 Zb.",
+        "uri": "https://www.slov-lex.sk/"
+      },
+      {
+        "id": "svk.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Government of the Slovak Republic",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Government of the Slovak Republic — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "svk-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Slovakia government activity feed",
+        "kind": "public",
+        "name": "gov-svk-feed"
+      }
+    ],
+    "description": "Government of Slovakia — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Slovenská republika (Slovak Republic)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

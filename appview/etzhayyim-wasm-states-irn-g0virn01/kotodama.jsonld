@@ -1,0 +1,203 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:irn-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Iran AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-irn",
+  "nanoid": "g0virn01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "IR",
+    "banner": "#239f40",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "irn",
+    "contract": "قانون اساسی جمهوری اسلامی 1979",
+    "description": "Iran Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "جمهوری اسلامی ایران (Islamic Republic of Iran)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 6,
+    "contractCount": 1,
+    "bpmnCount": 27,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/irn/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Tehran",
+        "addressLocality": "Tehran",
+        "country": "IR"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://president.ir/",
+        "label": "President"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.mfa.ir/",
+        "label": "MoFA"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Government of the Islamic Republic of Iran — citizen inquiry",
+        "uri": "https://president.ir/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "irn.executive",
+        "title": "Executive",
+        "titleLocal": "Executive",
+        "authority": "Executive",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/irn/bpmn/executive.bpmn"
+      },
+      {
+        "id": "irn.executive-presidents",
+        "title": "Executive Presidents",
+        "titleLocal": "Executive Presidents",
+        "authority": "Executive Presidents",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/irn/bpmn/executive-presidents.bpmn"
+      },
+      {
+        "id": "irn.legis-islamic-consult-assem",
+        "title": "Legis Islamic Consult Assem",
+        "titleLocal": "Legis Islamic Consult Assem",
+        "authority": "Legis Islamic Consult Assem",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/irn/bpmn/legis-islamic-consult-assem.bpmn"
+      },
+      {
+        "id": "irn.legislative-islamic-consultative-ass",
+        "title": "Legislative Islamic Consultative Ass",
+        "titleLocal": "Legislative Islamic Consultative Ass",
+        "authority": "Legislative Islamic Consultative Ass",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/irn/bpmn/legislative-islamic-consultative-ass.bpmn"
+      },
+      {
+        "id": "irn.mil-islamic-rgc",
+        "title": "Mil Islamic Rgc",
+        "titleLocal": "Mil Islamic Rgc",
+        "authority": "Mil Islamic Rgc",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/irn/bpmn/mil-islamic-rgc.bpmn"
+      },
+      {
+        "id": "irn.military-islamic-revolutionary-guar",
+        "title": "Military Islamic Revolutionary Guar ",
+        "titleLocal": "Military Islamic Revolutionary Guar ",
+        "authority": "Military Islamic Revolutionary Guar ",
+        "basis": "Defence Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/irn/bpmn/military-islamic-revolutionary-guar.bpmn"
+      },
+      {
+        "id": "irn.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Government of the Islamic Republic of Iran — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "irn.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Government of the Islamic Republic of Iran — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "irn.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Government of the Islamic Republic of Iran — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "irn.shorahai-islami",
+        "title": "Islamic Councils Law",
+        "titleLocal": "قانون شوراهای اسلامی",
+        "basis": "1365/3/29",
+        "uri": "https://www.ical.ir/"
+      },
+      {
+        "id": "irn.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Government of the Islamic Republic of Iran",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Government of the Islamic Republic of Iran — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "irn-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Iran government activity feed",
+        "kind": "public",
+        "name": "gov-irn-feed"
+      }
+    ],
+    "description": "Government of Iran — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "جمهوری اسلامی ایران (Islamic Republic of Iran)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

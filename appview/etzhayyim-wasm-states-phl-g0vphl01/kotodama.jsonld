@@ -1,0 +1,133 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:phl-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of the Philippines AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-phl",
+  "nanoid": "g0vphl01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "PH",
+    "banner": "#0038a8",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "phl",
+    "contract": "Saligang Batas ng Pilipinas 1987",
+    "description": "Philippines Government — path-based DID registry for departments, agencies, and subnational units.",
+    "displayName": "Republika ng Pilipinas (Republic of the Philippines)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 1,
+    "contractCount": 1,
+    "bpmnCount": 32,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/phl/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Malacanang Palace",
+        "addressLocality": "Manila",
+        "country": "PH"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.gov.ph/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.officialgazette.gov.ph/"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "foi",
+        "label": "eFOI",
+        "uri": "https://www.foi.gov.ph/",
+        "basis": "EO No. 2 s.2016"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "phl.executive",
+        "title": "Executive",
+        "titleLocal": "Executive",
+        "authority": "Executive",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/phl/bpmn/executive.bpmn"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "phl.lgc-ra-7160",
+        "title": "Local Government Code",
+        "titleLocal": "Local Government Code RA 7160/1991",
+        "basis": "Republic Act No.7160",
+        "uri": "https://www.officialgazette.gov.ph/"
+      }
+    ],
+    "complianceFrameworks": [
+      "1987 Philippine Constitution",
+      "Executive Order No. 2 s.2016 (FOI)",
+      "Administrative Code of 1987"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "phl-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Philippines government activity feed",
+        "kind": "public",
+        "name": "gov-phl-feed"
+      }
+    ],
+    "description": "Government of the Philippines — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Republika ng Pilipinas (Republic of the Philippines)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

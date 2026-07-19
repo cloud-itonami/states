@@ -1,0 +1,137 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:syc-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Republic of Seychelles AI Agent. You represent government organizations as path-based DIDs. Respond professionally.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": []
+  },
+  "kpi": [
+    "GovOrg DID registration count"
+  ],
+  "name": "gov-syc",
+  "nanoid": "g0vsyc01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "SY",
+    "banner": "#888888",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution"
+    ],
+    "category": "government",
+    "country": "syc",
+    "contract": "Constitutional / basic law",
+    "description": "Republic of Seychelles — path-based DID registry (minimal stub; expand for ministries).",
+    "displayName": "Republic of Seychelles",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 2,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/syc/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Victoria",
+        "addressLocality": "Victoria",
+        "country": "SC"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.egov.sc/",
+        "label": "Republic of Seychelles — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Republic of Seychelles — citizen inquiry",
+        "uri": "https://www.egov.sc/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "syc.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Republic of Seychelles — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "syc.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Republic of Seychelles — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "syc.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Republic of Seychelles — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "syc.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Republic of Seychelles",
+        "basis": "Access-to-information statute"
+      },
+      {
+        "id": "syc.municipal-government-act",
+        "title": "Municipal Government Act",
+        "titleLocal": "Municipal Government Act",
+        "basis": "General Administrative Law",
+        "uri": ""
+      }
+    ],
+    "complianceFrameworks": [
+      "Republic of Seychelles — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "syc-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Republic of Seychelles activity feed",
+        "kind": "public",
+        "name": "gov-syc-feed"
+      }
+    ],
+    "description": "Republic of Seychelles — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Republic of Seychelles"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

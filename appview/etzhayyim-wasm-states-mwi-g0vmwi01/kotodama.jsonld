@@ -1,0 +1,137 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:mwi-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Republic of Malawi AI Agent. You represent government organizations as path-based DIDs. Respond professionally.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": []
+  },
+  "kpi": [
+    "GovOrg DID registration count"
+  ],
+  "name": "gov-mwi",
+  "nanoid": "g0vmwi01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "MW",
+    "banner": "#888888",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution"
+    ],
+    "category": "government",
+    "country": "mwi",
+    "contract": "Constitutional / basic law",
+    "description": "Republic of Malawi — path-based DID registry (minimal stub; expand for ministries).",
+    "displayName": "Republic of Malawi",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 3,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/mwi/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Lilongwe",
+        "addressLocality": "Lilongwe",
+        "country": "MW"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.malawi.gov.mw/",
+        "label": "Republic of Malawi — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Republic of Malawi — citizen inquiry",
+        "uri": "https://www.malawi.gov.mw/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "mwi.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Republic of Malawi — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "mwi.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Republic of Malawi — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "mwi.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Republic of Malawi — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "mwi.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Republic of Malawi",
+        "basis": "Access-to-information statute"
+      },
+      {
+        "id": "mwi.lga-42-1998-mwi",
+        "title": "Local Government Act",
+        "titleLocal": "Local Government Act 42/1998",
+        "basis": "Act No.42 of 1998",
+        "uri": "https://www.parliament.gov.mw/"
+      }
+    ],
+    "complianceFrameworks": [
+      "Republic of Malawi — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "mwi-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Republic of Malawi activity feed",
+        "kind": "public",
+        "name": "gov-mwi-feed"
+      }
+    ],
+    "description": "Republic of Malawi — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Republic of Malawi"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

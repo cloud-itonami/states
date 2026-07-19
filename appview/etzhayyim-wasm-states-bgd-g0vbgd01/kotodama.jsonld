@@ -1,0 +1,180 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:bgd-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Bangladesh AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-bgd",
+  "nanoid": "g0vbgd01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "BD",
+    "banner": "#006a4e",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "bgd",
+    "contract": "Bangladesh Constitution 1972",
+    "description": "Bangladesh Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "গণপ্রজাতন্ত্রী বাংলাদেশ (People's Republic of Bangladesh)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 6,
+    "contractCount": 1,
+    "bpmnCount": 29,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/bgd/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Dhaka",
+        "addressLocality": "Dhaka",
+        "country": "BD"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://bangladesh.gov.bd/",
+        "label": "bangladesh.gov.bd"
+      },
+      {
+        "kind": "portal",
+        "uri": "http://bdlaws.minlaw.gov.bd/",
+        "label": "Laws of Bangladesh"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "bangladesh.rti",
+        "label": "RTI Application",
+        "basis": "RTI Act 2009",
+        "authority": "Each public authority"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "bgd.defense-ministry-of-defence",
+        "title": "Defense Ministry Of Defence",
+        "titleLocal": "Defense Ministry Of Defence",
+        "authority": "Defense Ministry Of Defence",
+        "basis": "Defence Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/bgd/bpmn/defense-ministry-of-defence.bpmn"
+      },
+      {
+        "id": "bgd.finance-ministry-of-finance",
+        "title": "Finance Ministry Of Finance",
+        "titleLocal": "Finance Ministry Of Finance",
+        "authority": "Finance Ministry Of Finance",
+        "basis": "Economic Affairs Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/bgd/bpmn/finance-ministry-of-finance.bpmn"
+      },
+      {
+        "id": "bgd.foreign-ministry-of-foreign-affairs",
+        "title": "Foreign Ministry Of Foreign Affairs",
+        "titleLocal": "Foreign Ministry Of Foreign Affairs",
+        "authority": "Foreign Ministry Of Foreign Affairs",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/bgd/bpmn/foreign-ministry-of-foreign-affairs.bpmn"
+      },
+      {
+        "id": "bgd.interior-ministry-of-home-affairs",
+        "title": "Interior Ministry Of Home Affairs",
+        "titleLocal": "Interior Ministry Of Home Affairs",
+        "authority": "Interior Ministry Of Home Affairs",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/bgd/bpmn/interior-ministry-of-home-affairs.bpmn"
+      },
+      {
+        "id": "bgd.justice-ministry-of-law-justice",
+        "title": "Justice Ministry Of Law Justice",
+        "titleLocal": "Justice Ministry Of Law Justice",
+        "authority": "Justice Ministry Of Law Justice",
+        "basis": "Public Order and Safety Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/bgd/bpmn/justice-ministry-of-law-justice.bpmn"
+      },
+      {
+        "id": "bgd.executive-pmo",
+        "title": "Executive Pmo",
+        "titleLocal": "Executive Pmo",
+        "authority": "Executive Pmo",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/bgd/bpmn/executive-pmo.bpmn"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "bgd.local-government-act-bgd",
+        "title": "Local Government Act 1994",
+        "titleLocal": "Local Government Act 1994",
+        "basis": "Act XIV of 1994",
+        "uri": "https://www.molgrd.gov.bd/"
+      }
+    ],
+    "complianceFrameworks": [
+      "Government of Bangladesh — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "bgd-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Bangladesh government activity feed",
+        "kind": "public",
+        "name": "gov-bgd-feed"
+      }
+    ],
+    "description": "Government of Bangladesh — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "গণপ্রজাতন্ত্রী বাংলাদেশ (People's Republic of Bangladesh)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

@@ -1,0 +1,137 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:cog-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Republic of the Congo AI Agent. You represent government organizations as path-based DIDs. Respond professionally.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": []
+  },
+  "kpi": [
+    "GovOrg DID registration count"
+  ],
+  "name": "gov-cog",
+  "nanoid": "g0vcog01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "CO",
+    "banner": "#888888",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution"
+    ],
+    "category": "government",
+    "country": "cog",
+    "contract": "Constitutional / basic law",
+    "description": "Republic of the Congo — path-based DID registry (minimal stub; expand for ministries).",
+    "displayName": "Republic of the Congo",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 3,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/cog/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Brazzaville",
+        "addressLocality": "Brazzaville",
+        "country": "CG"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "http://www.presidence.cg/",
+        "label": "Republic of the Congo — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Republic of the Congo — citizen inquiry",
+        "uri": "http://www.presidence.cg/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "cog.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Republic of the Congo — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "cog.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Republic of the Congo — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "cog.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Republic of the Congo — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "cog.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Republic of the Congo",
+        "basis": "Access-to-information statute"
+      },
+      {
+        "id": "cog.municipal-government-act",
+        "title": "Municipal Government Act",
+        "titleLocal": "Municipal Government Act",
+        "basis": "General Administrative Law",
+        "uri": ""
+      }
+    ],
+    "complianceFrameworks": [
+      "Republic of the Congo — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "cog-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Republic of the Congo activity feed",
+        "kind": "public",
+        "name": "gov-cog-feed"
+      }
+    ],
+    "description": "Republic of the Congo — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Republic of the Congo"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

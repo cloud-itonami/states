@@ -1,0 +1,158 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:ven-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Venezuela (República Bolivariana de Venezuela) AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-ven",
+  "nanoid": "g0vven01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "VE",
+    "banner": "#000000",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "ven",
+    "contract": "Constitución de la República Bolivariana de Venezuela 1999",
+    "description": "Venezuela Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "República Bolivariana de Venezuela (Bolivarian Republic of Venezuela)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 1,
+    "contractCount": 1,
+    "bpmnCount": 19,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/ven/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Caracas",
+        "addressLocality": "Caracas",
+        "country": "VE"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "http://www.gobiernoenlinea.ve/",
+        "label": "Gobierno en Linea"
+      },
+      {
+        "kind": "portal",
+        "uri": "http://www.mppre.gob.ve/",
+        "label": "MPPRE"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Gobierno de Venezuela — citizen inquiry",
+        "uri": "http://www.gobiernoenlinea.ve/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "ven.executive",
+        "title": "Executive",
+        "titleLocal": "Executive",
+        "authority": "Executive",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/ven/bpmn/executive.bpmn"
+      },
+      {
+        "id": "ven.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Gobierno de Venezuela — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "ven.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Gobierno de Venezuela — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "ven.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Gobierno de Venezuela — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "ven.loppm-2010",
+        "title": "LOPPM 2010",
+        "titleLocal": "Ley Orgánica del Poder Público Municipal 2010",
+        "basis": "GORBV No.39.163 de 2009",
+        "uri": "https://www.asambleanacional.gob.ve/"
+      },
+      {
+        "id": "ven.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Gobierno de Venezuela",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Gobierno de Venezuela — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "ven-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Venezuela government activity feed",
+        "kind": "public",
+        "name": "gov-ven-feed"
+      }
+    ],
+    "description": "Government of Venezuela — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "República Bolivariana de Venezuela (Bolivarian Republic of Venezuela)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

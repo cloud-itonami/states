@@ -1,0 +1,137 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:ton-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Kingdom of Tonga AI Agent. You represent government organizations as path-based DIDs. Respond professionally.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": []
+  },
+  "kpi": [
+    "GovOrg DID registration count"
+  ],
+  "name": "gov-ton",
+  "nanoid": "g0vton01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "TO",
+    "banner": "#888888",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution"
+    ],
+    "category": "government",
+    "country": "ton",
+    "contract": "Constitutional / basic law",
+    "description": "Kingdom of Tonga — path-based DID registry (minimal stub; expand for ministries).",
+    "displayName": "Kingdom of Tonga",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 2,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/ton/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Nuku'alofa",
+        "addressLocality": "Nuku'alofa",
+        "country": "TO"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.pmo.gov.to/",
+        "label": "Kingdom of Tonga — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Kingdom of Tonga — citizen inquiry",
+        "uri": "https://www.pmo.gov.to/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "ton.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Kingdom of Tonga — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "ton.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Kingdom of Tonga — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "ton.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Kingdom of Tonga — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "ton.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Kingdom of Tonga",
+        "basis": "Access-to-information statute"
+      },
+      {
+        "id": "ton.municipal-government-act",
+        "title": "Municipal Government Act",
+        "titleLocal": "Municipal Government Act",
+        "basis": "General Administrative Law",
+        "uri": ""
+      }
+    ],
+    "complianceFrameworks": [
+      "Kingdom of Tonga — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "ton-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Kingdom of Tonga activity feed",
+        "kind": "public",
+        "name": "gov-ton-feed"
+      }
+    ],
+    "description": "Kingdom of Tonga — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Kingdom of Tonga"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

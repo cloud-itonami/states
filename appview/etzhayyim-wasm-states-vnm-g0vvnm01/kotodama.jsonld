@@ -1,0 +1,133 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:vnm-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Vietnam AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-vnm",
+  "nanoid": "g0vvnm01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "VN",
+    "banner": "#da251d",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "vnm",
+    "contract": "Hiến pháp Việt Nam 2013",
+    "description": "Vietnam Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Cộng hòa Xã hội chủ nghĩa Việt Nam (Socialist Republic of Vietnam)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 1,
+    "contractCount": 1,
+    "bpmnCount": 31,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/vnm/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Presidential Palace",
+        "addressLocality": "Hanoi",
+        "country": "VN"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "http://chinhphu.vn/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://vbpl.vn/",
+        "label": "Legal documents"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "info_request",
+        "label": "Access to Information",
+        "basis": "Law 104/2016/QH13"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "vnm.executive",
+        "title": "Executive",
+        "titleLocal": "Executive",
+        "authority": "Executive",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/vnm/bpmn/executive.bpmn"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "vnm.lgoa-77-2015",
+        "title": "Law on Local Government Organization 77/2015",
+        "titleLocal": "Luật Tổ chức chính quyền địa phương 77/2015/QH13",
+        "basis": "77/2015/QH13",
+        "uri": "https://thuvienphapluat.vn/"
+      }
+    ],
+    "complianceFrameworks": [
+      "Hiến pháp 2013 (Constitution)",
+      "Luật 104/2016/QH13 (Access to Information)",
+      "Luật Xử lý vi phạm hành chính"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "vnm-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Vietnam government activity feed",
+        "kind": "public",
+        "name": "gov-vnm-feed"
+      }
+    ],
+    "description": "Government of Vietnam — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Cộng hòa Xã hội chủ nghĩa Việt Nam (Socialist Republic of Vietnam)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

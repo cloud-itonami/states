@@ -1,0 +1,132 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:egy-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Egypt AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English and Arabic.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-egy",
+  "nanoid": "g0vagy01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "EG",
+    "banner": "#ce1126",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "egy",
+    "contract": "الدستور المصري 2014",
+    "description": "Egypt Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "جمهورية مصر العربية (Arab Republic of Egypt)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 1,
+    "contractCount": 1,
+    "bpmnCount": 32,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/egy/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Al-Ittihadiya Palace",
+        "addressLocality": "Cairo",
+        "country": "EG"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.cabinet.gov.eg/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.presidency.eg/"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Government of the Arab Republic of Egypt — citizen inquiry",
+        "uri": "https://www.cabinet.gov.eg/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "egy.executive",
+        "title": "Executive",
+        "titleLocal": "Executive",
+        "authority": "Executive",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/egy/bpmn/executive.bpmn"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "egy.municipal-government-act",
+        "title": "Municipal Government Act",
+        "titleLocal": "Municipal Government Act",
+        "basis": "General Administrative Law",
+        "uri": ""
+      }
+    ],
+    "complianceFrameworks": [
+      "Constitution of Egypt (2014)",
+      "Law No. 47 of 1978 (Access)",
+      "Administrative Judiciary Law"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "egy-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Egypt government activity feed",
+        "kind": "public",
+        "name": "gov-egy-feed"
+      }
+    ],
+    "description": "Government of Egypt — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "جمهورية مصر العربية (Arab Republic of Egypt)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

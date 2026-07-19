@@ -1,0 +1,128 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:mhl-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Marshall Islands AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-mhl",
+  "nanoid": "g0vmhl01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "MH",
+    "banner": "#003087",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "atoll-coverage"
+    ],
+    "category": "government",
+    "country": "mhl",
+    "contract": "Constitution of the Marshall Islands 1979 + Compact of Free Association with USA",
+    "description": "Marshall Islands Government — path-based DID registry for ministries and subnational units.",
+    "displayName": "Republic of the Marshall Islands",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 0,
+    "bpmnCount": 0,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/mhl/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Majuro",
+        "addressLocality": "Majuro",
+        "country": "MH"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://rmigovernment.org/",
+        "label": "Republic of the Marshall Islands — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Republic of the Marshall Islands — citizen inquiry",
+        "uri": "https://rmigovernment.org/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "rep.access_info",
+        "title": "Access to Public Information",
+        "authority": "Republic of the Marshall Islands"
+      },
+      {
+        "id": "rep.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Republic of the Marshall Islands — passport authority"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "mh.access_info.v1",
+        "title": "Access to public information request — template",
+        "authority": "Republic of the Marshall Islands"
+      }
+    ],
+    "complianceFrameworks": [
+      "Republic of the Marshall Islands — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "mhl-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Marshall Islands government activity feed",
+        "kind": "public",
+        "name": "gov-mhl-feed"
+      }
+    ],
+    "description": "Government of Marshall Islands — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Republic of the Marshall Islands"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

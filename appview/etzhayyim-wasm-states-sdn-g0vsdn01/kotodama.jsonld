@@ -1,0 +1,153 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:sdn-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Sudan AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English and Arabic.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-sdn",
+  "nanoid": "g0vsdn01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "SD",
+    "banner": "#d21034",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "sdn",
+    "contract": "Constitutional Document 2019",
+    "description": "Sudan Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "جمهورية السودان (Republic of Sudan)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 1,
+    "contractCount": 1,
+    "bpmnCount": 19,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/sdn/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Khartoum",
+        "addressLocality": "Khartoum",
+        "country": "SD"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://sudan.gov.sd/",
+        "label": "Republic of the Sudan — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Republic of the Sudan — citizen inquiry",
+        "uri": "https://sudan.gov.sd/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "sdn.executive",
+        "title": "Executive",
+        "titleLocal": "Executive",
+        "authority": "Executive",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/sdn/bpmn/executive.bpmn"
+      },
+      {
+        "id": "sdn.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Republic of the Sudan — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "sdn.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Republic of the Sudan — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "sdn.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Republic of the Sudan — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "sdn.municipal-government-act",
+        "title": "Municipal Government Act",
+        "titleLocal": "Municipal Government Act",
+        "basis": "General Administrative Law",
+        "uri": ""
+      },
+      {
+        "id": "sdn.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Republic of the Sudan",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Republic of the Sudan — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "sdn-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Sudan government activity feed",
+        "kind": "public",
+        "name": "gov-sdn-feed"
+      }
+    ],
+    "description": "Government of Sudan — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "جمهورية السودان (Republic of Sudan)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

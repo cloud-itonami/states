@@ -1,0 +1,178 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:kor-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of South Korea AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-kor",
+  "nanoid": "g0vkor01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "KR",
+    "banner": "#003478",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "kor",
+    "contract": "정부조직법 (Government Organization Act)",
+    "description": "South Korea Government — path-based DID registry for ministries and subnational units.",
+    "displayName": "대한민국 정부 (Government of Korea)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 2,
+    "contractCount": 1,
+    "bpmnCount": 44,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/kor/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Yongsan Presidential Office",
+        "streetAddress": "22 Itaewon-ro",
+        "addressLocality": "Yongsan-gu",
+        "addressRegion": "Seoul",
+        "country": "KR"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.korea.kr/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.law.go.kr/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.gov.kr/",
+        "label": "Government24"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "info_request",
+        "label": "정보공개포털",
+        "uri": "https://www.open.go.kr/",
+        "basis": "정보공개법"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "kor.executive-blue-house",
+        "title": "Executive Blue House",
+        "titleLocal": "Executive Blue House",
+        "authority": "Executive Blue House",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/kor/bpmn/executive-blue-house.bpmn"
+      },
+      {
+        "id": "kor.military-ministry-of-national",
+        "title": "Military Ministry Of National",
+        "titleLocal": "Military Ministry Of National",
+        "authority": "Military Ministry Of National",
+        "basis": "Defence Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/kor/bpmn/military-ministry-of-national.bpmn"
+      },
+      {
+        "id": "kor.info_request",
+        "title": "정보공개청구",
+        "basis": "공공기관의 정보공개에 관한 법률",
+        "portalUri": "https://www.open.go.kr/"
+      },
+      {
+        "id": "kor.passport",
+        "title": "여권 발급",
+        "authority": "Ministry of Foreign Affairs",
+        "portalUri": "https://www.passport.go.kr/"
+      },
+      {
+        "id": "kor.resident",
+        "title": "주민등록증",
+        "authority": "Municipal office",
+        "portalUri": "https://www.gov.kr/"
+      },
+      {
+        "id": "kor.tax",
+        "title": "종합소득세 신고",
+        "authority": "National Tax Service",
+        "portalUri": "https://www.nts.go.kr/"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "kor.local-autonomy-act",
+        "title": "Local Autonomy Act",
+        "titleLocal": "지방자치법",
+        "basis": "Act No. 17893",
+        "uri": "https://www.law.go.kr/"
+      },
+      {
+        "id": "kor.info_request.v1",
+        "title": "정보공개청구서 서식",
+        "uri": "https://www.open.go.kr/pa/PADA000_popup.do"
+      }
+    ],
+    "complianceFrameworks": [
+      "대한민국 헌법 (Constitution, 1948)",
+      "공공기관의 정보공개에 관한 법률 (2014)",
+      "행정절차법"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "kor-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "South Korea government activity feed",
+        "kind": "public",
+        "name": "gov-kor-feed"
+      }
+    ],
+    "description": "Government of South Korea — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "대한민국 정부 (Government of Korea)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

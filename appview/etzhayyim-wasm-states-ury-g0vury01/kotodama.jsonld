@@ -1,0 +1,149 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:ury-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Uruguay (República Oriental del Uruguay) AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-ury",
+  "nanoid": "g0vury01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "UR",
+    "banner": "#000000",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "ury",
+    "contract": "Constitución de la República Oriental del Uruguay 1967",
+    "description": "Uruguay Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "República Oriental del Uruguay (Oriental Republic of Uruguay)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 3,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/ury/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Montevideo",
+        "addressLocality": "Montevideo",
+        "country": "UY"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.gub.uy/",
+        "label": "gub.uy"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.impo.com.uy/",
+        "label": "IMPO legal DB"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Gobierno del Uruguay — citizen inquiry",
+        "uri": "https://www.gub.uy/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "ury.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Gobierno del Uruguay — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "ury.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Gobierno del Uruguay — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "ury.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Gobierno del Uruguay — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "ury.lom-9515-1935",
+        "title": "LOM 9515/1935",
+        "titleLocal": "Ley Orgánica Municipal 9515/1935",
+        "basis": "Ley 9515",
+        "uri": "https://www.parlamento.gub.uy/"
+      },
+      {
+        "id": "ury.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Gobierno del Uruguay",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Gobierno del Uruguay — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "ury-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Uruguay government activity feed",
+        "kind": "public",
+        "name": "gov-ury-feed"
+      }
+    ],
+    "description": "Government of Uruguay — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "República Oriental del Uruguay (Oriental Republic of Uruguay)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

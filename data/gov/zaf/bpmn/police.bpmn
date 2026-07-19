@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_zaf_police"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_zaf_police">
+    <bpmn:participant id="Pool_zaf_police" name="Police (z1a2p3o4)" processRef="Process_zaf_police" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_zaf_police" name="Police — Public Order & Safety" isExecutable="true">
+    <bpmn:startEvent id="Start_zaf_police" name="Incident
+reported"><bpmn:outgoing>F_zaf_police_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:serviceTask id="T_zaf_police_triage" name="Triage Incident
+(severity classification)">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.zaf.police.triage" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="response_time_minutes" />
+          <zeebe:header key="cofog" value="03" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_zaf_police_01</bpmn:incoming>
+      <bpmn:outgoing>F_zaf_police_02</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="GW_zaf_police_sev" name="Severity?" isMarkerVisible="true">
+      <bpmn:incoming>F_zaf_police_02</bpmn:incoming>
+      <bpmn:outgoing>F_zaf_police_03a</bpmn:outgoing>
+      <bpmn:outgoing>F_zaf_police_03b</bpmn:outgoing>
+      <bpmn:outgoing>F_zaf_police_03c</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_zaf_police_emergency" name="Deploy Emergency
+Response">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.zaf.police.emergency_response" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="emergency" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_zaf_police_03a</bpmn:incoming>
+      <bpmn:outgoing>F_zaf_police_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_zaf_police_investigate" name="Open Investigation
+& Assign Officers">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.zaf.police.investigate" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="investigate" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_zaf_police_03b</bpmn:incoming>
+      <bpmn:outgoing>F_zaf_police_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_zaf_police_log" name="Log Report
+& Close">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.zaf.police.log_close" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="log" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_zaf_police_03c</bpmn:incoming>
+      <bpmn:outgoing>F_zaf_police_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_zaf_police_report" name="File Incident
+Report">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.zaf.police.file_report" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_zaf_police_06</bpmn:incoming>
+      <bpmn:outgoing>F_zaf_police_07</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_zaf_police" name="Incident resolved">
+      <bpmn:incoming>F_zaf_police_07</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_zaf_police_01" sourceRef="Start_zaf_police" targetRef="T_zaf_police_triage">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_zaf_police_02" sourceRef="T_zaf_police_triage" targetRef="GW_zaf_police_sev">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_zaf_police_03a" sourceRef="GW_zaf_police_sev" targetRef="T_zaf_police_emergency" name="Critical">
+      <bpmn:conditionExpression>=severity = 'critical'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_zaf_police_03b" sourceRef="GW_zaf_police_sev" targetRef="T_zaf_police_investigate" name="Standard">
+      <bpmn:conditionExpression>=severity = 'standard'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_zaf_police_03c" sourceRef="GW_zaf_police_sev" targetRef="T_zaf_police_log" name="Minor">
+      <bpmn:conditionExpression>=severity = 'minor'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_zaf_police_06" sourceRef="T_zaf_police_emergency" targetRef="T_zaf_police_report">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_zaf_police_06b" sourceRef="T_zaf_police_investigate" targetRef="T_zaf_police_report">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_zaf_police_06c" sourceRef="T_zaf_police_log" targetRef="T_zaf_police_report">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_zaf_police_07" sourceRef="T_zaf_police_report" targetRef="End_zaf_police">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_zaf_police">
+    <bpmndi:BPMNPlane id="BPMNPlane_zaf_police" bpmnElement="Collaboration_zaf_police" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

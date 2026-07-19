@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_svn_district_dst_84929236"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_svn_district_dst_84929236">
+    <bpmn:participant id="Pool_svn_district_dst_84929236" name="Dst 84929236 (84929236)" processRef="Process_svn_district_dst_84929236" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_svn_district_dst_84929236" name="Dst 84929236 — General Public Services" isExecutable="true">
+    <bpmn:startEvent id="Start_svn_district_dst_84929236" name="Policy trigger
+received"><bpmn:outgoing>F_svn_district_dst_84929236_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:parallelGateway id="GW_svn_district_dst_84929236_open" name="Parallel checks">
+      <bpmn:incoming>F_svn_district_dst_84929236_01</bpmn:incoming>
+      <bpmn:outgoing>F_svn_district_dst_84929236_02</bpmn:outgoing>
+      <bpmn:outgoing>F_svn_district_dst_84929236_03</bpmn:outgoing>
+      <bpmn:outgoing>F_svn_district_dst_84929236_04</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:serviceTask id="T_svn_district_dst_84929236_policy" name="Draft Policy
+Proposal">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.svn.district:dst-84929236.draft_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="policy_output" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_svn_district_dst_84929236_02</bpmn:incoming>
+      <bpmn:outgoing>F_svn_district_dst_84929236_05</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_svn_district_dst_84929236_budget" name="Allocate Budget
+(COFOG 01)">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.svn.district:dst-84929236.allocate_budget" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="budget_execution_rate" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_svn_district_dst_84929236_03</bpmn:incoming>
+      <bpmn:outgoing>F_svn_district_dst_84929236_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_svn_district_dst_84929236_coord" name="Inter-Agency
+Coordination">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.svn.district:dst-84929236.coordinate" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="coordination_score" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_svn_district_dst_84929236_04</bpmn:incoming>
+      <bpmn:outgoing>F_svn_district_dst_84929236_07</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="GW_svn_district_dst_84929236_join" name="Checks complete">
+      <bpmn:incoming>F_svn_district_dst_84929236_05</bpmn:incoming>
+      <bpmn:incoming>F_svn_district_dst_84929236_06</bpmn:incoming>
+      <bpmn:incoming>F_svn_district_dst_84929236_07</bpmn:incoming>
+      <bpmn:outgoing>F_svn_district_dst_84929236_08</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:userTask id="T_svn_district_dst_84929236_review" name="Minister Review
+& Sign-off">
+      <bpmn:extensionElements>
+        <zeebe:assignmentDefinition assignee="gov-official" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_svn_district_dst_84929236_08</bpmn:incoming>
+      <bpmn:outgoing>F_svn_district_dst_84929236_09</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="GW_svn_district_dst_84929236_risk" name="Approved?" isMarkerVisible="true">
+      <bpmn:incoming>F_svn_district_dst_84929236_09</bpmn:incoming>
+      <bpmn:outgoing>F_svn_district_dst_84929236_10a</bpmn:outgoing>
+      <bpmn:outgoing>F_svn_district_dst_84929236_10b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_svn_district_dst_84929236_publish" name="Publish Policy
+& Notify Citizens">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.svn.district:dst-84929236.publish_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="publish" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_svn_district_dst_84929236_10a</bpmn:incoming>
+      <bpmn:outgoing>F_svn_district_dst_84929236_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_svn_district_dst_84929236_revise" name="Return for
+Revision">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.svn.district:dst-84929236.request_revision" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="revise" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_svn_district_dst_84929236_10b</bpmn:incoming>
+      <bpmn:outgoing>F_svn_district_dst_84929236_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_svn_district_dst_84929236" name="Process complete">
+      <bpmn:incoming>F_svn_district_dst_84929236_11</bpmn:incoming>
+      <bpmn:incoming>F_svn_district_dst_84929236_11b</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_svn_district_dst_84929236_01" sourceRef="Start_svn_district_dst_84929236" targetRef="GW_svn_district_dst_84929236_open">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_svn_district_dst_84929236_02" sourceRef="GW_svn_district_dst_84929236_open" targetRef="T_svn_district_dst_84929236_policy">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_svn_district_dst_84929236_03" sourceRef="GW_svn_district_dst_84929236_open" targetRef="T_svn_district_dst_84929236_budget">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_svn_district_dst_84929236_04" sourceRef="GW_svn_district_dst_84929236_open" targetRef="T_svn_district_dst_84929236_coord">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_svn_district_dst_84929236_05" sourceRef="T_svn_district_dst_84929236_policy" targetRef="GW_svn_district_dst_84929236_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_svn_district_dst_84929236_06" sourceRef="T_svn_district_dst_84929236_budget" targetRef="GW_svn_district_dst_84929236_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_svn_district_dst_84929236_07" sourceRef="T_svn_district_dst_84929236_coord" targetRef="GW_svn_district_dst_84929236_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_svn_district_dst_84929236_08" sourceRef="GW_svn_district_dst_84929236_join" targetRef="T_svn_district_dst_84929236_review">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_svn_district_dst_84929236_09" sourceRef="T_svn_district_dst_84929236_review" targetRef="GW_svn_district_dst_84929236_risk">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_svn_district_dst_84929236_10a" sourceRef="GW_svn_district_dst_84929236_risk" targetRef="T_svn_district_dst_84929236_publish" name="Approved">
+      <bpmn:conditionExpression>=approved = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_svn_district_dst_84929236_10b" sourceRef="GW_svn_district_dst_84929236_risk" targetRef="T_svn_district_dst_84929236_revise" name="Rejected">
+      <bpmn:conditionExpression>=approved = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_svn_district_dst_84929236_11" sourceRef="T_svn_district_dst_84929236_publish" targetRef="End_svn_district_dst_84929236">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_svn_district_dst_84929236_11b" sourceRef="T_svn_district_dst_84929236_revise" targetRef="End_svn_district_dst_84929236">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_svn_district_dst_84929236">
+    <bpmndi:BPMNPlane id="BPMNPlane_svn_district_dst_84929236" bpmnElement="Collaboration_svn_district_dst_84929236" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

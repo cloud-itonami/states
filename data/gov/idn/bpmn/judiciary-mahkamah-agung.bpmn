@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_idn_judiciary_mahkamah_agung"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_idn_judiciary_mahkamah_agung">
+    <bpmn:participant id="Pool_idn_judiciary_mahkamah_agung" name="Judiciary Mahkamah Agung (i1d2s3c4)" processRef="Process_idn_judiciary_mahkamah_agung" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_idn_judiciary_mahkamah_agung" name="Judiciary Mahkamah Agung — Public Order & Safety" isExecutable="true">
+    <bpmn:startEvent id="Start_idn_judiciary_mahkamah_agung" name="Incident
+reported"><bpmn:outgoing>F_idn_judiciary_mahkamah_agung_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:serviceTask id="T_idn_judiciary_mahkamah_agung_triage" name="Triage Incident
+(severity classification)">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.idn.judiciary-mahkamah-agung.triage" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="response_time_minutes" />
+          <zeebe:header key="cofog" value="03" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_idn_judiciary_mahkamah_agung_01</bpmn:incoming>
+      <bpmn:outgoing>F_idn_judiciary_mahkamah_agung_02</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="GW_idn_judiciary_mahkamah_agung_sev" name="Severity?" isMarkerVisible="true">
+      <bpmn:incoming>F_idn_judiciary_mahkamah_agung_02</bpmn:incoming>
+      <bpmn:outgoing>F_idn_judiciary_mahkamah_agung_03a</bpmn:outgoing>
+      <bpmn:outgoing>F_idn_judiciary_mahkamah_agung_03b</bpmn:outgoing>
+      <bpmn:outgoing>F_idn_judiciary_mahkamah_agung_03c</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_idn_judiciary_mahkamah_agung_emergency" name="Deploy Emergency
+Response">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.idn.judiciary-mahkamah-agung.emergency_response" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="emergency" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_idn_judiciary_mahkamah_agung_03a</bpmn:incoming>
+      <bpmn:outgoing>F_idn_judiciary_mahkamah_agung_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_idn_judiciary_mahkamah_agung_investigate" name="Open Investigation
+& Assign Officers">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.idn.judiciary-mahkamah-agung.investigate" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="investigate" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_idn_judiciary_mahkamah_agung_03b</bpmn:incoming>
+      <bpmn:outgoing>F_idn_judiciary_mahkamah_agung_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_idn_judiciary_mahkamah_agung_log" name="Log Report
+& Close">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.idn.judiciary-mahkamah-agung.log_close" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="log" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_idn_judiciary_mahkamah_agung_03c</bpmn:incoming>
+      <bpmn:outgoing>F_idn_judiciary_mahkamah_agung_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_idn_judiciary_mahkamah_agung_report" name="File Incident
+Report">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.idn.judiciary-mahkamah-agung.file_report" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_idn_judiciary_mahkamah_agung_06</bpmn:incoming>
+      <bpmn:outgoing>F_idn_judiciary_mahkamah_agung_07</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_idn_judiciary_mahkamah_agung" name="Incident resolved">
+      <bpmn:incoming>F_idn_judiciary_mahkamah_agung_07</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_idn_judiciary_mahkamah_agung_01" sourceRef="Start_idn_judiciary_mahkamah_agung" targetRef="T_idn_judiciary_mahkamah_agung_triage">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_idn_judiciary_mahkamah_agung_02" sourceRef="T_idn_judiciary_mahkamah_agung_triage" targetRef="GW_idn_judiciary_mahkamah_agung_sev">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_idn_judiciary_mahkamah_agung_03a" sourceRef="GW_idn_judiciary_mahkamah_agung_sev" targetRef="T_idn_judiciary_mahkamah_agung_emergency" name="Critical">
+      <bpmn:conditionExpression>=severity = 'critical'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_idn_judiciary_mahkamah_agung_03b" sourceRef="GW_idn_judiciary_mahkamah_agung_sev" targetRef="T_idn_judiciary_mahkamah_agung_investigate" name="Standard">
+      <bpmn:conditionExpression>=severity = 'standard'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_idn_judiciary_mahkamah_agung_03c" sourceRef="GW_idn_judiciary_mahkamah_agung_sev" targetRef="T_idn_judiciary_mahkamah_agung_log" name="Minor">
+      <bpmn:conditionExpression>=severity = 'minor'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_idn_judiciary_mahkamah_agung_06" sourceRef="T_idn_judiciary_mahkamah_agung_emergency" targetRef="T_idn_judiciary_mahkamah_agung_report">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_idn_judiciary_mahkamah_agung_06b" sourceRef="T_idn_judiciary_mahkamah_agung_investigate" targetRef="T_idn_judiciary_mahkamah_agung_report">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_idn_judiciary_mahkamah_agung_06c" sourceRef="T_idn_judiciary_mahkamah_agung_log" targetRef="T_idn_judiciary_mahkamah_agung_report">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_idn_judiciary_mahkamah_agung_07" sourceRef="T_idn_judiciary_mahkamah_agung_report" targetRef="End_idn_judiciary_mahkamah_agung">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_idn_judiciary_mahkamah_agung">
+    <bpmndi:BPMNPlane id="BPMNPlane_idn_judiciary_mahkamah_agung" bpmnElement="Collaboration_idn_judiciary_mahkamah_agung" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

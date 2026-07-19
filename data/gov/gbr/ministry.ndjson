@@ -1,0 +1,3 @@
+{"path": "cabinet", "name": "Cabinet", "nameEn": "Cabinet", "website": "", "contract": "General Public Services Act", "tags": ["cofog:01", "general-public-services", "executive"], "orgTier": "executive", "cofogCode": "01", "countryCode": "gbr"}
+{"path": "executive", "name": "Executive", "nameEn": "Executive", "website": "", "contract": "General Public Services Act", "tags": ["cofog:01", "general-public-services", "executive", "nanoid:g1b2e3x4"], "orgTier": "executive", "cofogCode": "01", "countryCode": "gbr"}
+{"path": "ministry-of", "name": "Ministry Of", "nameEn": "Ministry Of", "website": "", "contract": "General Public Services Act", "tags": ["cofog:01", "general-public-services", "ministry"], "orgTier": "ministry", "cofogCode": "01", "countryCode": "gbr"}

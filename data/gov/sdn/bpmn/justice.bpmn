@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_sdn_justice"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_sdn_justice">
+    <bpmn:participant id="Pool_sdn_justice" name="Justice (s1d2j3u4)" processRef="Process_sdn_justice" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_sdn_justice" name="Justice — Public Order & Safety" isExecutable="true">
+    <bpmn:startEvent id="Start_sdn_justice" name="Incident
+reported"><bpmn:outgoing>F_sdn_justice_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:serviceTask id="T_sdn_justice_triage" name="Triage Incident
+(severity classification)">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.sdn.justice.triage" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="response_time_minutes" />
+          <zeebe:header key="cofog" value="03" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_sdn_justice_01</bpmn:incoming>
+      <bpmn:outgoing>F_sdn_justice_02</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="GW_sdn_justice_sev" name="Severity?" isMarkerVisible="true">
+      <bpmn:incoming>F_sdn_justice_02</bpmn:incoming>
+      <bpmn:outgoing>F_sdn_justice_03a</bpmn:outgoing>
+      <bpmn:outgoing>F_sdn_justice_03b</bpmn:outgoing>
+      <bpmn:outgoing>F_sdn_justice_03c</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_sdn_justice_emergency" name="Deploy Emergency
+Response">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.sdn.justice.emergency_response" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="emergency" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_sdn_justice_03a</bpmn:incoming>
+      <bpmn:outgoing>F_sdn_justice_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_sdn_justice_investigate" name="Open Investigation
+& Assign Officers">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.sdn.justice.investigate" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="investigate" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_sdn_justice_03b</bpmn:incoming>
+      <bpmn:outgoing>F_sdn_justice_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_sdn_justice_log" name="Log Report
+& Close">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.sdn.justice.log_close" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="log" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_sdn_justice_03c</bpmn:incoming>
+      <bpmn:outgoing>F_sdn_justice_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_sdn_justice_report" name="File Incident
+Report">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.sdn.justice.file_report" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_sdn_justice_06</bpmn:incoming>
+      <bpmn:outgoing>F_sdn_justice_07</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_sdn_justice" name="Incident resolved">
+      <bpmn:incoming>F_sdn_justice_07</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_sdn_justice_01" sourceRef="Start_sdn_justice" targetRef="T_sdn_justice_triage">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_sdn_justice_02" sourceRef="T_sdn_justice_triage" targetRef="GW_sdn_justice_sev">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_sdn_justice_03a" sourceRef="GW_sdn_justice_sev" targetRef="T_sdn_justice_emergency" name="Critical">
+      <bpmn:conditionExpression>=severity = 'critical'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_sdn_justice_03b" sourceRef="GW_sdn_justice_sev" targetRef="T_sdn_justice_investigate" name="Standard">
+      <bpmn:conditionExpression>=severity = 'standard'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_sdn_justice_03c" sourceRef="GW_sdn_justice_sev" targetRef="T_sdn_justice_log" name="Minor">
+      <bpmn:conditionExpression>=severity = 'minor'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_sdn_justice_06" sourceRef="T_sdn_justice_emergency" targetRef="T_sdn_justice_report">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_sdn_justice_06b" sourceRef="T_sdn_justice_investigate" targetRef="T_sdn_justice_report">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_sdn_justice_06c" sourceRef="T_sdn_justice_log" targetRef="T_sdn_justice_report">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_sdn_justice_07" sourceRef="T_sdn_justice_report" targetRef="End_sdn_justice">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_sdn_justice">
+    <bpmndi:BPMNPlane id="BPMNPlane_sdn_justice" bpmnElement="Collaboration_sdn_justice" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

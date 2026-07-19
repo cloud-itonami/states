@@ -1,0 +1,137 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:caf-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Central African Republic AI Agent. You represent government organizations as path-based DIDs. Respond professionally.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": []
+  },
+  "kpi": [
+    "GovOrg DID registration count"
+  ],
+  "name": "gov-caf",
+  "nanoid": "g0vcaf01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "CA",
+    "banner": "#888888",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution"
+    ],
+    "category": "government",
+    "country": "caf",
+    "contract": "Constitutional / basic law",
+    "description": "Central African Republic — path-based DID registry (minimal stub; expand for ministries).",
+    "displayName": "Central African Republic",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 2,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/caf/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Bangui",
+        "addressLocality": "Bangui",
+        "country": "CF"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.gouv.cf/",
+        "label": "Central African Republic — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Central African Republic — citizen inquiry",
+        "uri": "https://www.gouv.cf/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "caf.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Central African Republic — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "caf.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Central African Republic — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "caf.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Central African Republic — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "caf.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Central African Republic",
+        "basis": "Access-to-information statute"
+      },
+      {
+        "id": "caf.municipal-government-act",
+        "title": "Municipal Government Act",
+        "titleLocal": "Municipal Government Act",
+        "basis": "General Administrative Law",
+        "uri": ""
+      }
+    ],
+    "complianceFrameworks": [
+      "Central African Republic — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "caf-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Central African Republic activity feed",
+        "kind": "public",
+        "name": "gov-caf-feed"
+      }
+    ],
+    "description": "Central African Republic — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Central African Republic"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

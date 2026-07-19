@@ -1,0 +1,144 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:cyp-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Cyprus AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-cyp",
+  "nanoid": "g0vcyp01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "CY",
+    "banner": "#ffffff",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "cyp",
+    "contract": "Constitution of Cyprus 1960",
+    "description": "Cyprus Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Κυπριακή Δημοκρατία (Republic of Cyprus)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 3,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/cyp/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Nicosia",
+        "addressLocality": "Nicosia",
+        "country": "CY"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.presidency.gov.cy/",
+        "label": "Republic of Cyprus — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Republic of Cyprus — citizen inquiry",
+        "uri": "https://www.presidency.gov.cy/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "cyp.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Republic of Cyprus — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "cyp.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Republic of Cyprus — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "cyp.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Republic of Cyprus — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "cyp.nomioi-111-85",
+        "title": "Municipalities Law 111/85",
+        "titleLocal": "Ο Περί Δήμων Νόμος Ν.111/85",
+        "basis": "Ν.111/85",
+        "uri": "https://www.cylaw.org/"
+      },
+      {
+        "id": "cyp.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Republic of Cyprus",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Republic of Cyprus — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "cyp-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Cyprus government activity feed",
+        "kind": "public",
+        "name": "gov-cyp-feed"
+      }
+    ],
+    "description": "Government of Cyprus — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Κυπριακή Δημοκρατία (Republic of Cyprus)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

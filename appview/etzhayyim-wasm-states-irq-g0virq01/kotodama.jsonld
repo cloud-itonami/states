@@ -1,0 +1,153 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:irq-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Iraq AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution 2005"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-irq",
+  "nanoid": "g0virq01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "IRQ",
+    "banner": "#000000",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "irq",
+    "contract": "Constitution 2005",
+    "description": "Iraq Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "جمهورية العراق (Republic of Iraq)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 1,
+    "contractCount": 1,
+    "bpmnCount": 19,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/irq/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Baghdad",
+        "addressLocality": "Baghdad",
+        "country": "IQ"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.pmo.iq/",
+        "label": "Republic of Iraq — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Republic of Iraq — citizen inquiry",
+        "uri": "https://www.pmo.iq/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "irq.executive",
+        "title": "Executive",
+        "titleLocal": "Executive",
+        "authority": "Executive",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/irq/bpmn/executive.bpmn"
+      },
+      {
+        "id": "irq.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Republic of Iraq — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "irq.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Republic of Iraq — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "irq.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Republic of Iraq — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "irq.law-21-2008-irq",
+        "title": "Governorates Law No.21/2008",
+        "titleLocal": "قانون المحافظات رقم 21/2008",
+        "basis": "Law No.21 of 2008",
+        "uri": "https://www.moj.gov.iq/"
+      },
+      {
+        "id": "irq.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Republic of Iraq",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Republic of Iraq — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "irq-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Iraq government activity feed",
+        "kind": "public",
+        "name": "gov-irq-feed"
+      }
+    ],
+    "description": "Government of Iraq — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "جمهورية العراق (Republic of Iraq)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_kor_gwangyeok_gwangju_gwangju"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_kor_gwangyeok_gwangju_gwangju">
+    <bpmn:participant id="Pool_kor_gwangyeok_gwangju_gwangju" name="Gwangju (gwangyeo)" processRef="Process_kor_gwangyeok_gwangju_gwangju" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_kor_gwangyeok_gwangju_gwangju" name="Gwangju — General Public Services" isExecutable="true">
+    <bpmn:startEvent id="Start_kor_gwangyeok_gwangju_gwangju" name="Policy trigger
+received"><bpmn:outgoing>F_kor_gwangyeok_gwangju_gwangju_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:parallelGateway id="GW_kor_gwangyeok_gwangju_gwangju_open" name="Parallel checks">
+      <bpmn:incoming>F_kor_gwangyeok_gwangju_gwangju_01</bpmn:incoming>
+      <bpmn:outgoing>F_kor_gwangyeok_gwangju_gwangju_02</bpmn:outgoing>
+      <bpmn:outgoing>F_kor_gwangyeok_gwangju_gwangju_03</bpmn:outgoing>
+      <bpmn:outgoing>F_kor_gwangyeok_gwangju_gwangju_04</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:serviceTask id="T_kor_gwangyeok_gwangju_gwangju_policy" name="Draft Policy
+Proposal">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.kor.gwangyeok:gwangju:gwangju.draft_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="policy_output" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_kor_gwangyeok_gwangju_gwangju_02</bpmn:incoming>
+      <bpmn:outgoing>F_kor_gwangyeok_gwangju_gwangju_05</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_kor_gwangyeok_gwangju_gwangju_budget" name="Allocate Budget
+(COFOG 01)">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.kor.gwangyeok:gwangju:gwangju.allocate_budget" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="budget_execution_rate" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_kor_gwangyeok_gwangju_gwangju_03</bpmn:incoming>
+      <bpmn:outgoing>F_kor_gwangyeok_gwangju_gwangju_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_kor_gwangyeok_gwangju_gwangju_coord" name="Inter-Agency
+Coordination">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.kor.gwangyeok:gwangju:gwangju.coordinate" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="coordination_score" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_kor_gwangyeok_gwangju_gwangju_04</bpmn:incoming>
+      <bpmn:outgoing>F_kor_gwangyeok_gwangju_gwangju_07</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="GW_kor_gwangyeok_gwangju_gwangju_join" name="Checks complete">
+      <bpmn:incoming>F_kor_gwangyeok_gwangju_gwangju_05</bpmn:incoming>
+      <bpmn:incoming>F_kor_gwangyeok_gwangju_gwangju_06</bpmn:incoming>
+      <bpmn:incoming>F_kor_gwangyeok_gwangju_gwangju_07</bpmn:incoming>
+      <bpmn:outgoing>F_kor_gwangyeok_gwangju_gwangju_08</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:userTask id="T_kor_gwangyeok_gwangju_gwangju_review" name="Minister Review
+&amp; Sign-off">
+      <bpmn:extensionElements>
+        <zeebe:assignmentDefinition assignee="gov-official" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_kor_gwangyeok_gwangju_gwangju_08</bpmn:incoming>
+      <bpmn:outgoing>F_kor_gwangyeok_gwangju_gwangju_09</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="GW_kor_gwangyeok_gwangju_gwangju_risk" name="Approved?" isMarkerVisible="true">
+      <bpmn:incoming>F_kor_gwangyeok_gwangju_gwangju_09</bpmn:incoming>
+      <bpmn:outgoing>F_kor_gwangyeok_gwangju_gwangju_10a</bpmn:outgoing>
+      <bpmn:outgoing>F_kor_gwangyeok_gwangju_gwangju_10b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_kor_gwangyeok_gwangju_gwangju_publish" name="Publish Policy
+&amp; Notify Citizens">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.kor.gwangyeok:gwangju:gwangju.publish_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="publish" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_kor_gwangyeok_gwangju_gwangju_10a</bpmn:incoming>
+      <bpmn:outgoing>F_kor_gwangyeok_gwangju_gwangju_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_kor_gwangyeok_gwangju_gwangju_revise" name="Return for
+Revision">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.kor.gwangyeok:gwangju:gwangju.request_revision" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="revise" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_kor_gwangyeok_gwangju_gwangju_10b</bpmn:incoming>
+      <bpmn:outgoing>F_kor_gwangyeok_gwangju_gwangju_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_kor_gwangyeok_gwangju_gwangju" name="Process complete">
+      <bpmn:incoming>F_kor_gwangyeok_gwangju_gwangju_11</bpmn:incoming>
+      <bpmn:incoming>F_kor_gwangyeok_gwangju_gwangju_11b</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_kor_gwangyeok_gwangju_gwangju_01" sourceRef="Start_kor_gwangyeok_gwangju_gwangju" targetRef="GW_kor_gwangyeok_gwangju_gwangju_open">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_kor_gwangyeok_gwangju_gwangju_02" sourceRef="GW_kor_gwangyeok_gwangju_gwangju_open" targetRef="T_kor_gwangyeok_gwangju_gwangju_policy">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_kor_gwangyeok_gwangju_gwangju_03" sourceRef="GW_kor_gwangyeok_gwangju_gwangju_open" targetRef="T_kor_gwangyeok_gwangju_gwangju_budget">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_kor_gwangyeok_gwangju_gwangju_04" sourceRef="GW_kor_gwangyeok_gwangju_gwangju_open" targetRef="T_kor_gwangyeok_gwangju_gwangju_coord">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_kor_gwangyeok_gwangju_gwangju_05" sourceRef="T_kor_gwangyeok_gwangju_gwangju_policy" targetRef="GW_kor_gwangyeok_gwangju_gwangju_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_kor_gwangyeok_gwangju_gwangju_06" sourceRef="T_kor_gwangyeok_gwangju_gwangju_budget" targetRef="GW_kor_gwangyeok_gwangju_gwangju_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_kor_gwangyeok_gwangju_gwangju_07" sourceRef="T_kor_gwangyeok_gwangju_gwangju_coord" targetRef="GW_kor_gwangyeok_gwangju_gwangju_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_kor_gwangyeok_gwangju_gwangju_08" sourceRef="GW_kor_gwangyeok_gwangju_gwangju_join" targetRef="T_kor_gwangyeok_gwangju_gwangju_review">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_kor_gwangyeok_gwangju_gwangju_09" sourceRef="T_kor_gwangyeok_gwangju_gwangju_review" targetRef="GW_kor_gwangyeok_gwangju_gwangju_risk">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_kor_gwangyeok_gwangju_gwangju_10a" sourceRef="GW_kor_gwangyeok_gwangju_gwangju_risk" targetRef="T_kor_gwangyeok_gwangju_gwangju_publish" name="Approved">
+      <bpmn:conditionExpression>=approved = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_kor_gwangyeok_gwangju_gwangju_10b" sourceRef="GW_kor_gwangyeok_gwangju_gwangju_risk" targetRef="T_kor_gwangyeok_gwangju_gwangju_revise" name="Rejected">
+      <bpmn:conditionExpression>=approved = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_kor_gwangyeok_gwangju_gwangju_11" sourceRef="T_kor_gwangyeok_gwangju_gwangju_publish" targetRef="End_kor_gwangyeok_gwangju_gwangju">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_kor_gwangyeok_gwangju_gwangju_11b" sourceRef="T_kor_gwangyeok_gwangju_gwangju_revise" targetRef="End_kor_gwangyeok_gwangju_gwangju">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_kor_gwangyeok_gwangju_gwangju">
+    <bpmndi:BPMNPlane id="BPMNPlane_kor_gwangyeok_gwangju_gwangju" bpmnElement="Collaboration_kor_gwangyeok_gwangju_gwangju" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

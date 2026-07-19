@@ -1,0 +1,149 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:hun-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Hungary AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-hun",
+  "nanoid": "g0vhun01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "HU",
+    "banner": "#ce2939",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "hun",
+    "contract": "Alaptörvény 2011",
+    "description": "Hungary Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Magyarország (Hungary)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 3,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/hun/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Budapest",
+        "addressLocality": "Budapest",
+        "country": "HU"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://kormany.hu/",
+        "label": "kormany.hu"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://njt.hu/",
+        "label": "National Legislation"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Government of Hungary — citizen inquiry",
+        "uri": "https://kormany.hu/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "hun.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Government of Hungary — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "hun.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Government of Hungary — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "hun.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Government of Hungary — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "hun.mott-2011",
+        "title": "Local Governments Act",
+        "titleLocal": "Mötv. 2011. évi CLXXXIX. tv.",
+        "basis": "2011. évi CLXXXIX. törvény",
+        "uri": "https://njt.hu/"
+      },
+      {
+        "id": "hun.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Government of Hungary",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Government of Hungary — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "hun-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Hungary government activity feed",
+        "kind": "public",
+        "name": "gov-hun-feed"
+      }
+    ],
+    "description": "Government of Hungary — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Magyarország (Hungary)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

@@ -1,0 +1,137 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:gnq-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Republic of Equatorial Guinea AI Agent. You represent government organizations as path-based DIDs. Respond professionally.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": []
+  },
+  "kpi": [
+    "GovOrg DID registration count"
+  ],
+  "name": "gov-gnq",
+  "nanoid": "g0vgnq01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "GN",
+    "banner": "#888888",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution"
+    ],
+    "category": "government",
+    "country": "gnq",
+    "contract": "Constitutional / basic law",
+    "description": "Republic of Equatorial Guinea — path-based DID registry (minimal stub; expand for ministries).",
+    "displayName": "Republic of Equatorial Guinea",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 2,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/gnq/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Malabo",
+        "addressLocality": "Malabo",
+        "country": "GQ"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.guineaecuatorialpress.com/",
+        "label": "Republic of Equatorial Guinea — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Republic of Equatorial Guinea — citizen inquiry",
+        "uri": "https://www.guineaecuatorialpress.com/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "gnq.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Republic of Equatorial Guinea — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "gnq.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Republic of Equatorial Guinea — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "gnq.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Republic of Equatorial Guinea — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "gnq.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Republic of Equatorial Guinea",
+        "basis": "Access-to-information statute"
+      },
+      {
+        "id": "gnq.municipal-government-act",
+        "title": "Municipal Government Act",
+        "titleLocal": "Municipal Government Act",
+        "basis": "General Administrative Law",
+        "uri": ""
+      }
+    ],
+    "complianceFrameworks": [
+      "Republic of Equatorial Guinea — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "gnq-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Republic of Equatorial Guinea activity feed",
+        "kind": "public",
+        "name": "gov-gnq-feed"
+      }
+    ],
+    "description": "Republic of Equatorial Guinea — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Republic of Equatorial Guinea"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

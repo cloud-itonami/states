@@ -1,0 +1,149 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:civ-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Côte d'Ivoire AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-civ",
+  "nanoid": "g0vciv01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "CI",
+    "banner": "#000000",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "civ",
+    "contract": "Constitution of Côte d'Ivoire 2016",
+    "description": "Côte d'Ivoire Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "République de Côte d'Ivoire (Republic of Côte d'Ivoire)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 3,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/civ/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Yamoussoukro",
+        "addressLocality": "Yamoussoukro",
+        "country": "CI"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.gouv.ci/",
+        "label": "gouv.ci"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.presidence.ci/",
+        "label": "Presidence"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Gouvernement de Cote d'Ivoire — citizen inquiry",
+        "uri": "https://www.gouv.ci/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "civ.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Gouvernement de Cote d'Ivoire — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "civ.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Gouvernement de Cote d'Ivoire — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "civ.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Gouvernement de Cote d'Ivoire — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "civ.loi-2001-476",
+        "title": "OGAT Law 2001-476",
+        "titleLocal": "Loi 2001-476 sur l'organisation générale de l'Administration du Territoire",
+        "basis": "Loi no.2001-476",
+        "uri": "https://www.gouv.ci/"
+      },
+      {
+        "id": "civ.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Gouvernement de Cote d'Ivoire",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Gouvernement de Cote d'Ivoire — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "civ-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Côte d'Ivoire government activity feed",
+        "kind": "public",
+        "name": "gov-civ-feed"
+      }
+    ],
+    "description": "Government of Côte d'Ivoire — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "République de Côte d'Ivoire (Republic of Côte d'Ivoire)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

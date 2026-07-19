@@ -1,0 +1,158 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:gha-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Ghana AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-gha",
+  "nanoid": "g0vgha01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "GH",
+    "banner": "#006b3f",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "gha",
+    "contract": "Constitution of Ghana 1992",
+    "description": "Ghana Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Republic of Ghana",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 1,
+    "contractCount": 1,
+    "bpmnCount": 19,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/gha/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Accra",
+        "addressLocality": "Accra",
+        "country": "GH"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.ghana.gov.gh/",
+        "label": "ghana.gov.gh"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.parliament.gh/",
+        "label": "Parliament"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Government of Ghana — citizen inquiry",
+        "uri": "https://www.ghana.gov.gh/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "gha.executive",
+        "title": "Executive",
+        "titleLocal": "Executive",
+        "authority": "Executive",
+        "basis": "General Public Services Act",
+        "portalUri": "",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/gha/bpmn/executive.bpmn"
+      },
+      {
+        "id": "gha.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Government of Ghana — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "gha.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Government of Ghana — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "gha.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Government of Ghana — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "gha.local-governance-act-936",
+        "title": "Local Governance Act",
+        "titleLocal": "Local Governance Act 936/2016",
+        "basis": "Act 936 of 2016",
+        "uri": "https://www.parliament.gh/"
+      },
+      {
+        "id": "gha.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Government of Ghana",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Government of Ghana — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "gha-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Ghana government activity feed",
+        "kind": "public",
+        "name": "gov-gha-feed"
+      }
+    ],
+    "description": "Government of Ghana — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Republic of Ghana"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

@@ -1,0 +1,782 @@
+{
+"jpn": [
+"Japan",
+"east_asia"
+],
+"chn": [
+"China",
+"east_asia"
+],
+"kor": [
+"South Korea",
+"east_asia"
+],
+"prk": [
+"North Korea",
+"east_asia"
+],
+"mng": [
+"Mongolia",
+"east_asia"
+],
+"idn": [
+"Indonesia",
+"southeast_asia"
+],
+"tha": [
+"Thailand",
+"southeast_asia"
+],
+"sgp": [
+"Singapore",
+"southeast_asia"
+],
+"mys": [
+"Malaysia",
+"southeast_asia"
+],
+"phl": [
+"Philippines",
+"southeast_asia"
+],
+"vnm": [
+"Vietnam",
+"southeast_asia"
+],
+"mmr": [
+"Myanmar",
+"southeast_asia"
+],
+"khm": [
+"Cambodia",
+"southeast_asia"
+],
+"lao": [
+"Laos",
+"southeast_asia"
+],
+"brn": [
+"Brunei",
+"southeast_asia"
+],
+"tls": [
+"Timor-Leste",
+"southeast_asia"
+],
+"ind": [
+"India",
+"south_asia"
+],
+"pak": [
+"Pakistan",
+"south_asia"
+],
+"bgd": [
+"Bangladesh",
+"south_asia"
+],
+"lka": [
+"Sri Lanka",
+"south_asia"
+],
+"npl": [
+"Nepal",
+"south_asia"
+],
+"btn": [
+"Bhutan",
+"south_asia"
+],
+"mdv": [
+"Maldives",
+"south_asia"
+],
+"afg": [
+"Afghanistan",
+"south_asia"
+],
+"kaz": [
+"Kazakhstan",
+"central_asia"
+],
+"uzb": [
+"Uzbekistan",
+"central_asia"
+],
+"tkm": [
+"Turkmenistan",
+"central_asia"
+],
+"kgz": [
+"Kyrgyzstan",
+"central_asia"
+],
+"tjk": [
+"Tajikistan",
+"central_asia"
+],
+"tur": [
+"Turkey",
+"western_asia"
+],
+"sau": [
+"Saudi Arabia",
+"western_asia"
+],
+"are": [
+"UAE",
+"western_asia"
+],
+"isr": [
+"Israel",
+"western_asia"
+],
+"irn": [
+"Iran",
+"western_asia"
+],
+"irq": [
+"Iraq",
+"western_asia"
+],
+"jor": [
+"Jordan",
+"western_asia"
+],
+"lbn": [
+"Lebanon",
+"western_asia"
+],
+"syr": [
+"Syria",
+"western_asia"
+],
+"yem": [
+"Yemen",
+"western_asia"
+],
+"omn": [
+"Oman",
+"western_asia"
+],
+"kwt": [
+"Kuwait",
+"western_asia"
+],
+"qat": [
+"Qatar",
+"western_asia"
+],
+"bhr": [
+"Bahrain",
+"western_asia"
+],
+"pse": [
+"Palestine",
+"western_asia"
+],
+"cyp": [
+"Cyprus",
+"western_asia"
+],
+"geo": [
+"Georgia",
+"western_asia"
+],
+"arm": [
+"Armenia",
+"western_asia"
+],
+"aze": [
+"Azerbaijan",
+"western_asia"
+],
+"gbr": [
+"United Kingdom",
+"western_europe"
+],
+"fra": [
+"France",
+"western_europe"
+],
+"deu": [
+"Germany",
+"western_europe"
+],
+"che": [
+"Switzerland",
+"western_europe"
+],
+"nld": [
+"Netherlands",
+"western_europe"
+],
+"bel": [
+"Belgium",
+"western_europe"
+],
+"aut": [
+"Austria",
+"western_europe"
+],
+"irl": [
+"Ireland",
+"western_europe"
+],
+"lux": [
+"Luxembourg",
+"western_europe"
+],
+"mco": [
+"Monaco",
+"western_europe"
+],
+"lie": [
+"Liechtenstein",
+"western_europe"
+],
+"and": [
+"Andorra",
+"western_europe"
+],
+"swe": [
+"Sweden",
+"northern_europe"
+],
+"nor": [
+"Norway",
+"northern_europe"
+],
+"fin": [
+"Finland",
+"northern_europe"
+],
+"dnk": [
+"Denmark",
+"northern_europe"
+],
+"isl": [
+"Iceland",
+"northern_europe"
+],
+"est": [
+"Estonia",
+"northern_europe"
+],
+"lva": [
+"Latvia",
+"northern_europe"
+],
+"ltu": [
+"Lithuania",
+"northern_europe"
+],
+"ita": [
+"Italy",
+"southern_europe"
+],
+"esp": [
+"Spain",
+"southern_europe"
+],
+"prt": [
+"Portugal",
+"southern_europe"
+],
+"grc": [
+"Greece",
+"southern_europe"
+],
+"hrv": [
+"Croatia",
+"southern_europe"
+],
+"svn": [
+"Slovenia",
+"southern_europe"
+],
+"mlt": [
+"Malta",
+"southern_europe"
+],
+"smr": [
+"San Marino",
+"southern_europe"
+],
+"vat": [
+"Vatican City",
+"southern_europe"
+],
+"mne": [
+"Montenegro",
+"southern_europe"
+],
+"mkd": [
+"North Macedonia",
+"southern_europe"
+],
+"pol": [
+"Poland",
+"eastern_europe"
+],
+"rou": [
+"Romania",
+"eastern_europe"
+],
+"hun": [
+"Hungary",
+"eastern_europe"
+],
+"cze": [
+"Czech Republic",
+"eastern_europe"
+],
+"svk": [
+"Slovakia",
+"eastern_europe"
+],
+"ukr": [
+"Ukraine",
+"eastern_europe"
+],
+"blr": [
+"Belarus",
+"eastern_europe"
+],
+"bgr": [
+"Bulgaria",
+"eastern_europe"
+],
+"srb": [
+"Serbia",
+"eastern_europe"
+],
+"bih": [
+"Bosnia and Herzegovina",
+"eastern_europe"
+],
+"alb": [
+"Albania",
+"eastern_europe"
+],
+"rus": [
+"Russia",
+"eastern_europe"
+],
+"usa": [
+"United States",
+"north_america"
+],
+"can": [
+"Canada",
+"north_america"
+],
+"mex": [
+"Mexico",
+"north_america"
+],
+"gtm": [
+"Guatemala",
+"central_america"
+],
+"hnd": [
+"Honduras",
+"central_america"
+],
+"slv": [
+"El Salvador",
+"central_america"
+],
+"nic": [
+"Nicaragua",
+"central_america"
+],
+"cri": [
+"Costa Rica",
+"central_america"
+],
+"pan": [
+"Panama",
+"central_america"
+],
+"blz": [
+"Belize",
+"central_america"
+],
+"cub": [
+"Cuba",
+"caribbean"
+],
+"dom": [
+"Dominican Republic",
+"caribbean"
+],
+"hti": [
+"Haiti",
+"caribbean"
+],
+"jam": [
+"Jamaica",
+"caribbean"
+],
+"bhs": [
+"Bahamas",
+"caribbean"
+],
+"brb": [
+"Barbados",
+"caribbean"
+],
+"atg": [
+"Antigua and Barbuda",
+"caribbean"
+],
+"dma": [
+"Dominica",
+"caribbean"
+],
+"grd": [
+"Grenada",
+"caribbean"
+],
+"lca": [
+"Saint Lucia",
+"caribbean"
+],
+"vct": [
+"Saint Vincent and the Grenadines",
+"caribbean"
+],
+"kna": [
+"Saint Kitts and Nevis",
+"caribbean"
+],
+"tto": [
+"Trinidad and Tobago",
+"caribbean"
+],
+"bra": [
+"Brazil",
+"south_america"
+],
+"arg": [
+"Argentina",
+"south_america"
+],
+"col": [
+"Colombia",
+"south_america"
+],
+"chl": [
+"Chile",
+"south_america"
+],
+"per": [
+"Peru",
+"south_america"
+],
+"ven": [
+"Venezuela",
+"south_america"
+],
+"ecu": [
+"Ecuador",
+"south_america"
+],
+"bol": [
+"Bolivia",
+"south_america"
+],
+"pry": [
+"Paraguay",
+"south_america"
+],
+"ury": [
+"Uruguay",
+"south_america"
+],
+"guy": [
+"Guyana",
+"south_america"
+],
+"sur": [
+"Suriname",
+"south_america"
+],
+"aus": [
+"Australia",
+"oceania"
+],
+"nzl": [
+"New Zealand",
+"oceania"
+],
+"fji": [
+"Fiji",
+"oceania"
+],
+"png": [
+"Papua New Guinea",
+"oceania"
+],
+"slb": [
+"Solomon Islands",
+"oceania"
+],
+"vut": [
+"Vanuatu",
+"oceania"
+],
+"wsm": [
+"Samoa",
+"oceania"
+],
+"ton": [
+"Tonga",
+"oceania"
+],
+"kir": [
+"Kiribati",
+"oceania"
+],
+"fsm": [
+"Micronesia",
+"oceania"
+],
+"mhl": [
+"Marshall Islands",
+"oceania"
+],
+"plw": [
+"Palau",
+"oceania"
+],
+"tuv": [
+"Tuvalu",
+"oceania"
+],
+"nru": [
+"Nauru",
+"oceania"
+],
+"egy": [
+"Egypt",
+"northern_africa"
+],
+"dza": [
+"Algeria",
+"northern_africa"
+],
+"mar": [
+"Morocco",
+"northern_africa"
+],
+"tun": [
+"Tunisia",
+"northern_africa"
+],
+"lby": [
+"Libya",
+"northern_africa"
+],
+"sdn": [
+"Sudan",
+"northern_africa"
+],
+"ssd": [
+"South Sudan",
+"northern_africa"
+],
+"nga": [
+"Nigeria",
+"west_africa"
+],
+"gha": [
+"Ghana",
+"west_africa"
+],
+"civ": [
+"Cote d'Ivoire",
+"west_africa"
+],
+"sen": [
+"Senegal",
+"west_africa"
+],
+"mli": [
+"Mali",
+"west_africa"
+],
+"bfa": [
+"Burkina Faso",
+"west_africa"
+],
+"ner": [
+"Niger",
+"west_africa"
+],
+"gin": [
+"Guinea",
+"west_africa"
+],
+"sle": [
+"Sierra Leone",
+"west_africa"
+],
+"lbr": [
+"Liberia",
+"west_africa"
+],
+"tgo": [
+"Togo",
+"west_africa"
+],
+"ben": [
+"Benin",
+"west_africa"
+],
+"gmb": [
+"Gambia",
+"west_africa"
+],
+"gnb": [
+"Guinea-Bissau",
+"west_africa"
+],
+"cpv": [
+"Cabo Verde",
+"west_africa"
+],
+"mrt": [
+"Mauritania",
+"west_africa"
+],
+"ken": [
+"Kenya",
+"east_africa"
+],
+"eth": [
+"Ethiopia",
+"east_africa"
+],
+"tza": [
+"Tanzania",
+"east_africa"
+],
+"uga": [
+"Uganda",
+"east_africa"
+],
+"rwa": [
+"Rwanda",
+"east_africa"
+],
+"bdi": [
+"Burundi",
+"east_africa"
+],
+"som": [
+"Somalia",
+"east_africa"
+],
+"eri": [
+"Eritrea",
+"east_africa"
+],
+"dji": [
+"Djibouti",
+"east_africa"
+],
+"com": [
+"Comoros",
+"east_africa"
+],
+"syc": [
+"Seychelles",
+"east_africa"
+],
+"cod": [
+"DR Congo",
+"central_africa"
+],
+"cog": [
+"Republic of the Congo",
+"central_africa"
+],
+"cmr": [
+"Cameroon",
+"central_africa"
+],
+"gab": [
+"Gabon",
+"central_africa"
+],
+"gnq": [
+"Equatorial Guinea",
+"central_africa"
+],
+"caf": [
+"Central African Republic",
+"central_africa"
+],
+"tcd": [
+"Chad",
+"central_africa"
+],
+"stp": [
+"Sao Tome and Principe",
+"central_africa"
+],
+"zaf": [
+"South Africa",
+"southern_africa"
+],
+"ago": [
+"Angola",
+"southern_africa"
+],
+"moz": [
+"Mozambique",
+"southern_africa"
+],
+"zmb": [
+"Zambia",
+"southern_africa"
+],
+"zwe": [
+"Zimbabwe",
+"southern_africa"
+],
+"bwa": [
+"Botswana",
+"southern_africa"
+],
+"nam": [
+"Namibia",
+"southern_africa"
+],
+"mwi": [
+"Malawi",
+"southern_africa"
+],
+"lso": [
+"Lesotho",
+"southern_africa"
+],
+"swz": [
+"Eswatini",
+"southern_africa"
+],
+"mdg": [
+"Madagascar",
+"east_africa"
+],
+"twn": [
+"Taiwan",
+"east_asia"
+],
+"xkx": [
+"Kosovo",
+"eastern_europe"
+]
+}

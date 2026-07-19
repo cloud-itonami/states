@@ -1,0 +1,144 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:hnd-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Honduras (República de Honduras) AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-hnd",
+  "nanoid": "g0vhnd01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "HN",
+    "banner": "#000000",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "hnd",
+    "contract": "Constitución de la República de Honduras 1982",
+    "description": "Honduras Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "República de Honduras (Republic of Honduras)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 3,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/hnd/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Tegucigalpa",
+        "addressLocality": "Tegucigalpa",
+        "country": "HN"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.presidencia.gob.hn/",
+        "label": "Republic of Honduras — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Republic of Honduras — citizen inquiry",
+        "uri": "https://www.presidencia.gob.hn/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "hnd.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Republic of Honduras — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "hnd.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Republic of Honduras — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "hnd.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Republic of Honduras — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "hnd.lm-decreto-134-1990",
+        "title": "Ley Municipalidades",
+        "titleLocal": "Ley de Municipalidades Decreto 134-1990",
+        "basis": "Decreto 134-1990",
+        "uri": "https://www.congreso.gob.hn/"
+      },
+      {
+        "id": "hnd.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Republic of Honduras",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Republic of Honduras — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "hnd-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Honduras government activity feed",
+        "kind": "public",
+        "name": "gov-hnd-feed"
+      }
+    ],
+    "description": "Government of Honduras — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "República de Honduras (Republic of Honduras)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

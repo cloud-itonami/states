@@ -1,0 +1,144 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:tls-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Timor-Leste AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-tls",
+  "nanoid": "g0vtls01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "TL",
+    "banner": "#DC241F",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "municipality-coverage"
+    ],
+    "category": "government",
+    "country": "tls",
+    "contract": "Constituição da Repúblika Demokrátika Timor-Leste 2002",
+    "description": "Timor-Leste Government — path-based DID registry for ministries and municipalities.",
+    "displayName": "Repúblika Demokrátika Timor-Leste",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 2,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/tls/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Dili",
+        "addressLocality": "Dili",
+        "country": "TL"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://timor-leste.gov.tl/",
+        "label": "Democratic Republic of Timor-Leste — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Democratic Republic of Timor-Leste — citizen inquiry",
+        "uri": "https://timor-leste.gov.tl/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "tls.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Democratic Republic of Timor-Leste — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "tls.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Democratic Republic of Timor-Leste — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "tls.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Democratic Republic of Timor-Leste — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "tls.municipal-government-act",
+        "title": "Municipal Government Act",
+        "titleLocal": "Municipal Government Act",
+        "basis": "General Administrative Law",
+        "uri": ""
+      },
+      {
+        "id": "tls.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Democratic Republic of Timor-Leste",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Democratic Republic of Timor-Leste — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "tls-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Timor-Leste government activity feed",
+        "kind": "public",
+        "name": "gov-tls-feed"
+      }
+    ],
+    "description": "Government of Timor-Leste — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Repúblika Demokrátika Timor-Leste"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

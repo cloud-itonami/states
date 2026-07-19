@@ -1,0 +1,125 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:lka-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Sri Lanka AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-lka",
+  "nanoid": "g0vlka01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "LK",
+    "banner": "#8d153a",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "lka",
+    "contract": "Constitution of Sri Lanka 1978",
+    "description": "Sri Lanka Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "ශ්‍රී ලංකා / இலங்கை (Democratic Socialist Republic of Sri Lanka)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 3,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/lka/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Colombo",
+        "addressLocality": "Colombo",
+        "country": "LK"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.gov.lk/",
+        "label": "gov.lk"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.parliament.lk/",
+        "label": "Parliament"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "srilanka.rti",
+        "label": "Right to Information",
+        "basis": "RTI Act 2016",
+        "authority": "Each public authority"
+      }
+    ],
+    "procedures": [],
+    "documentTemplates": [
+      {
+        "id": "lka.provincial-councils-act-42-1987",
+        "title": "Provincial Councils Act",
+        "titleLocal": "Provincial Councils Act No.42/1987",
+        "basis": "Act No.42 of 1987",
+        "uri": "https://www.parliament.lk/"
+      }
+    ],
+    "complianceFrameworks": [
+      "Government of Sri Lanka — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "lka-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Sri Lanka government activity feed",
+        "kind": "public",
+        "name": "gov-lka-feed"
+      }
+    ],
+    "description": "Government of Sri Lanka — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "ශ්‍රී ලංකා / இலங்கை (Democratic Socialist Republic of Sri Lanka)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

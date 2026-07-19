@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_mex_health"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_mex_health">
+    <bpmn:participant id="Pool_mex_health" name="Health (m1x2h3e4)" processRef="Process_mex_health" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_mex_health" name="Health — Health Administration" isExecutable="true">
+    <bpmn:startEvent id="Start_mex_health" name="Health policy
+cycle initiated"><bpmn:outgoing>F_mex_health_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:parallelGateway id="GW_mex_health_open" name="Parallel health checks">
+      <bpmn:incoming>F_mex_health_01</bpmn:incoming>
+      <bpmn:outgoing>F_mex_health_02a</bpmn:outgoing>
+      <bpmn:outgoing>F_mex_health_02b</bpmn:outgoing>
+      <bpmn:outgoing>F_mex_health_02c</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:serviceTask id="T_mex_health_surveillance" name="Epidemiological
+Surveillance">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.mex.health.surveillance" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="disease_incidence_rate" />
+          <zeebe:header key="cofog" value="07" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_mex_health_02a</bpmn:incoming>
+      <bpmn:outgoing>F_mex_health_03</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_mex_health_license" name="Healthcare Provider
+Licensing">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.mex.health.license_provider" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="licensed_facilities" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_mex_health_02b</bpmn:incoming>
+      <bpmn:outgoing>F_mex_health_03b</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_mex_health_drug" name="Drug & Medical
+Device Approval">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.mex.health.drug_approval" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="approval_cycle_days" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_mex_health_02c</bpmn:incoming>
+      <bpmn:outgoing>F_mex_health_03c</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="GW_mex_health_join" name="Reviews complete">
+      <bpmn:incoming>F_mex_health_03</bpmn:incoming>
+      <bpmn:incoming>F_mex_health_03b</bpmn:incoming>
+      <bpmn:incoming>F_mex_health_03c</bpmn:incoming>
+      <bpmn:outgoing>F_mex_health_04</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:serviceTask id="T_mex_health_policy" name="Update Health
+Policy">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.mex.health.update_policy" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_mex_health_04</bpmn:incoming>
+      <bpmn:outgoing>F_mex_health_05</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_mex_health" name="Health cycle complete">
+      <bpmn:incoming>F_mex_health_05</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_mex_health_01" sourceRef="Start_mex_health" targetRef="GW_mex_health_open">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_mex_health_02a" sourceRef="GW_mex_health_open" targetRef="T_mex_health_surveillance">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_mex_health_02b" sourceRef="GW_mex_health_open" targetRef="T_mex_health_license">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_mex_health_02c" sourceRef="GW_mex_health_open" targetRef="T_mex_health_drug">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_mex_health_03" sourceRef="T_mex_health_surveillance" targetRef="GW_mex_health_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_mex_health_03b" sourceRef="T_mex_health_license" targetRef="GW_mex_health_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_mex_health_03c" sourceRef="T_mex_health_drug" targetRef="GW_mex_health_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_mex_health_04" sourceRef="GW_mex_health_join" targetRef="T_mex_health_policy">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_mex_health_05" sourceRef="T_mex_health_policy" targetRef="End_mex_health">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_mex_health">
+    <bpmndi:BPMNPlane id="BPMNPlane_mex_health" bpmnElement="Collaboration_mex_health" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

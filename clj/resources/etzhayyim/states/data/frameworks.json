@@ -1,0 +1,232 @@
+{
+"jpn": [
+"日本国憲法 (Constitution of Japan, 1947)",
+"行政機関情報公開法 (1999)",
+"地方自治法 (1947)"
+],
+"usa": [
+"U.S. Constitution (1789)",
+"Freedom of Information Act (5 U.S.C. §552)",
+"Administrative Procedure Act (1946)"
+],
+"gbr": [
+"Uncodified constitution (Parliamentary sovereignty)",
+"Freedom of Information Act 2000",
+"Human Rights Act 1998"
+],
+"deu": [
+"Grundgesetz (Basic Law, 1949)",
+"Informationsfreiheitsgesetz (IFG, 2005)",
+"Verwaltungsverfahrensgesetz"
+],
+"fra": [
+"Constitution de 1958 (Fifth Republic)",
+"Loi n°78-753 du 17 juillet 1978 (CADA)",
+"Code des relations entre le public et l'administration"
+],
+"ita": [
+"Costituzione della Repubblica Italiana (1948)",
+"D.Lgs. 97/2016 (FOIA)",
+"Legge 241/1990 (Procedimento amministrativo)"
+],
+"can": [
+"Constitution Act, 1867 + Charter of Rights (1982)",
+"Access to Information Act (R.S.C. 1985)",
+"Privacy Act (R.S.C. 1985)"
+],
+"esp": [
+"Constitución Española de 1978",
+"Ley 19/2013 de Transparencia",
+"Ley 39/2015 del Procedimiento Administrativo"
+],
+"kor": [
+"대한민국 헌법 (Constitution, 1948)",
+"공공기관의 정보공개에 관한 법률 (2014)",
+"행정절차법"
+],
+"aus": [
+"Constitution of Australia (1901)",
+"Freedom of Information Act 1982",
+"Administrative Decisions (Judicial Review) Act 1977"
+],
+"bra": [
+"Constituição da República Federativa do Brasil (1988)",
+"Lei 12.527/2011 (LAI)",
+"Lei 9.784/1999 (Processo administrativo)"
+],
+"ind": [
+"Constitution of India (1950)",
+"Right to Information Act 2005",
+"Administrative Tribunals Act 1985"
+],
+"mex": [
+"Constitución Política (1917)",
+"Ley General de Transparencia (LGTAIP, 2015)",
+"Ley Federal de Procedimiento Administrativo"
+],
+"zaf": [
+"Constitution of the Republic of South Africa (1996)",
+"Promotion of Access to Information Act (2000)",
+"Promotion of Administrative Justice Act (2000)"
+],
+"rus": [
+"Конституция Российской Федерации (1993)",
+"Федеральный закон от 09.02.2009 N 8-ФЗ (Об обеспечении доступа)",
+"Административный процессуальный кодекс"
+],
+"chn": [
+"中华人民共和国宪法 (1982, amended 2018)",
+"政府信息公开条例 (2019)",
+"行政许可法"
+],
+"idn": [
+"UUD 1945 (Constitution)",
+"UU 14/2008 Keterbukaan Informasi Publik",
+"UU 30/2014 Administrasi Pemerintahan"
+],
+"sau": [
+"Basic Law of Governance (1992)",
+"Royal Decrees / Sharia",
+"Law of the Public Prosecution"
+],
+"tur": [
+"Türkiye Cumhuriyeti Anayasası (1982)",
+"Bilgi Edinme Hakkı Kanunu 4982 (2003)",
+"İdari Yargılama Usulü Kanunu"
+],
+"arg": [
+"Constitución Nacional Argentina (1853/1994)",
+"Ley 27.275 de Acceso a la Información Pública",
+"Ley 19.549 de Procedimiento Administrativo"
+],
+"che": [
+"Bundesverfassung (1999)",
+"Öffentlichkeitsgesetz (BGÖ, 2004)",
+"Verwaltungsverfahrensgesetz"
+],
+"nld": [
+"Grondwet van het Koninkrijk der Nederlanden",
+"Wet open overheid (Woo, 2022)",
+"Algemene wet bestuursrecht"
+],
+"bel": [
+"Constitution belge / Belgische Grondwet (1831)",
+"Loi du 11 avril 1994 (Transparence)",
+"Loi du 29 juillet 1991"
+],
+"swe": [
+"Regeringsformen (1974)",
+"Tryckfrihetsförordningen (1949, Offentlighetsprincipen)",
+"Förvaltningslagen (2017)"
+],
+"nor": [
+"Grunnloven (1814)",
+"Offentleglova (2006)",
+"Forvaltningsloven (1967)"
+],
+"fin": [
+"Suomen perustuslaki (1999)",
+"Laki viranomaisten toiminnan julkisuudesta 621/1999",
+"Hallintolaki 434/2003"
+],
+"dnk": [
+"Danmarks Riges Grundlov (1953)",
+"Offentlighedsloven (Lov nr. 606 af 12.06.2013)",
+"Forvaltningsloven"
+],
+"pol": [
+"Konstytucja Rzeczypospolitej Polskiej (1997)",
+"Ustawa z 6 września 2001 o dostępie do informacji publicznej",
+"Kodeks postępowania administracyjnego"
+],
+"grc": [
+"Σύνταγμα της Ελλάδος (1975)",
+"Διαύγεια (Ν. 3861/2010)",
+"Κώδικας Διοικητικής Διαδικασίας"
+],
+"prt": [
+"Constituição da República Portuguesa (1976)",
+"Lei 26/2016 (LADAJP)",
+"Código do Procedimento Administrativo"
+],
+"aut": [
+"Bundesverfassungsgesetz (B-VG, 1920)",
+"Auskunftspflichtgesetz (BGBl. Nr. 287/1987)",
+"Allgemeines Verwaltungsverfahrensgesetz"
+],
+"irl": [
+"Bunreacht na hÉireann (Constitution of Ireland, 1937)",
+"Freedom of Information Act 2014",
+"Administrative Procedure legislation"
+],
+"isr": [
+"Basic Laws of Israel",
+"Freedom of Information Law 5758-1998",
+"Administrative Courts Law 2000"
+],
+"sgp": [
+"Constitution of the Republic of Singapore (1965)",
+"Public Sector (Governance) Act 2018",
+"Government Procurement Act"
+],
+"tha": [
+"รัฐธรรมนูญแห่งราชอาณาจักรไทย พ.ศ. 2560 (2017)",
+"Official Information Act B.E. 2540 (1997)",
+"Administrative Procedure Act B.E. 2539"
+],
+"vnm": [
+"Hiến pháp 2013 (Constitution)",
+"Luật 104/2016/QH13 (Access to Information)",
+"Luật Xử lý vi phạm hành chính"
+],
+"phl": [
+"1987 Philippine Constitution",
+"Executive Order No. 2 s.2016 (FOI)",
+"Administrative Code of 1987"
+],
+"mys": [
+"Perlembagaan Persekutuan (Federal Constitution, 1957)",
+"State-level Right to Information Enactments",
+"Administrative justice via judicial review"
+],
+"nzl": [
+"Constitution Act 1986 + constitutional conventions",
+"Official Information Act 1982",
+"Administrative Decisions (Judicial Review) Act 1971"
+],
+"chl": [
+"Constitución Política de 1980",
+"Ley 20.285 sobre Acceso a la Información Pública",
+"Ley 19.880 de Procedimiento Administrativo"
+],
+"col": [
+"Constitución de 1991",
+"Ley 1712 de 2014 (Transparencia)",
+"Ley 1437 de 2011 (CPACA)"
+],
+"per": [
+"Constitución Política del Perú 1993",
+"Ley 27806 de Transparencia",
+"Ley 27444 Procedimiento Administrativo General"
+],
+"nga": [
+"Constitution of the Federal Republic of Nigeria (1999)",
+"Freedom of Information Act 2011",
+"Public Officers Protection Act"
+],
+"ken": [
+"Constitution of Kenya (2010)",
+"Access to Information Act 2016",
+"Fair Administrative Action Act 2015"
+],
+"egy": [
+"Constitution of Egypt (2014)",
+"Law No. 47 of 1978 (Access)",
+"Administrative Judiciary Law"
+],
+"mar": [
+"Constitution of the Kingdom of Morocco (2011)",
+"Loi 31-13 (Droit d'accès à l'information)",
+"Loi 03-01"
+]
+}

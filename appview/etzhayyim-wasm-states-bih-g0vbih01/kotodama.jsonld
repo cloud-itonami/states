@@ -1,0 +1,144 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:bih-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Bosnia and Herzegovina AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-bih",
+  "nanoid": "g0vbih01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "BA",
+    "banner": "#003da5",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "bih",
+    "contract": "Ustav BiH 1995 (Dayton)",
+    "description": "Bosnia and Herzegovina Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "Bosna i Hercegovina (Bosnia and Herzegovina)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 2,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/bih/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Sarajevo",
+        "addressLocality": "Sarajevo",
+        "country": "BA"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://predsjednistvobih.ba/",
+        "label": "Bosnia and Herzegovina — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Bosnia and Herzegovina — citizen inquiry",
+        "uri": "https://predsjednistvobih.ba/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "bih.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Bosnia and Herzegovina — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "bih.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Bosnia and Herzegovina — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "bih.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Bosnia and Herzegovina — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "bih.zopls",
+        "title": "Law on Principles of Local Self-Government",
+        "titleLocal": "Zakon o principima lokalne samouprave u FBiH / RS",
+        "basis": "Sl. glasnik BiH 49/06",
+        "uri": "https://www.fbihvlada.gov.ba/"
+      },
+      {
+        "id": "bih.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Bosnia and Herzegovina",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Bosnia and Herzegovina — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "bih-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Bosnia and Herzegovina government activity feed",
+        "kind": "public",
+        "name": "gov-bih-feed"
+      }
+    ],
+    "description": "Government of Bosnia and Herzegovina — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Bosna i Hercegovina (Bosnia and Herzegovina)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

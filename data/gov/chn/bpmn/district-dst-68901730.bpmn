@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_chn_district_dst_68901730"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_chn_district_dst_68901730">
+    <bpmn:participant id="Pool_chn_district_dst_68901730" name="Dst 68901730 (mohexian)" processRef="Process_chn_district_dst_68901730" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_chn_district_dst_68901730" name="Dst 68901730 — General Public Services" isExecutable="true">
+    <bpmn:startEvent id="Start_chn_district_dst_68901730" name="Policy trigger
+received"><bpmn:outgoing>F_chn_district_dst_68901730_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:parallelGateway id="GW_chn_district_dst_68901730_open" name="Parallel checks">
+      <bpmn:incoming>F_chn_district_dst_68901730_01</bpmn:incoming>
+      <bpmn:outgoing>F_chn_district_dst_68901730_02</bpmn:outgoing>
+      <bpmn:outgoing>F_chn_district_dst_68901730_03</bpmn:outgoing>
+      <bpmn:outgoing>F_chn_district_dst_68901730_04</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:serviceTask id="T_chn_district_dst_68901730_policy" name="Draft Policy
+Proposal">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.chn.district:dst-68901730.draft_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="policy_output" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_chn_district_dst_68901730_02</bpmn:incoming>
+      <bpmn:outgoing>F_chn_district_dst_68901730_05</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_chn_district_dst_68901730_budget" name="Allocate Budget
+(COFOG 01)">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.chn.district:dst-68901730.allocate_budget" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="budget_execution_rate" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_chn_district_dst_68901730_03</bpmn:incoming>
+      <bpmn:outgoing>F_chn_district_dst_68901730_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_chn_district_dst_68901730_coord" name="Inter-Agency
+Coordination">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.chn.district:dst-68901730.coordinate" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="coordination_score" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_chn_district_dst_68901730_04</bpmn:incoming>
+      <bpmn:outgoing>F_chn_district_dst_68901730_07</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="GW_chn_district_dst_68901730_join" name="Checks complete">
+      <bpmn:incoming>F_chn_district_dst_68901730_05</bpmn:incoming>
+      <bpmn:incoming>F_chn_district_dst_68901730_06</bpmn:incoming>
+      <bpmn:incoming>F_chn_district_dst_68901730_07</bpmn:incoming>
+      <bpmn:outgoing>F_chn_district_dst_68901730_08</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:userTask id="T_chn_district_dst_68901730_review" name="Minister Review
+& Sign-off">
+      <bpmn:extensionElements>
+        <zeebe:assignmentDefinition assignee="gov-official" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_chn_district_dst_68901730_08</bpmn:incoming>
+      <bpmn:outgoing>F_chn_district_dst_68901730_09</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="GW_chn_district_dst_68901730_risk" name="Approved?" isMarkerVisible="true">
+      <bpmn:incoming>F_chn_district_dst_68901730_09</bpmn:incoming>
+      <bpmn:outgoing>F_chn_district_dst_68901730_10a</bpmn:outgoing>
+      <bpmn:outgoing>F_chn_district_dst_68901730_10b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_chn_district_dst_68901730_publish" name="Publish Policy
+& Notify Citizens">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.chn.district:dst-68901730.publish_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="publish" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_chn_district_dst_68901730_10a</bpmn:incoming>
+      <bpmn:outgoing>F_chn_district_dst_68901730_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_chn_district_dst_68901730_revise" name="Return for
+Revision">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.chn.district:dst-68901730.request_revision" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="revise" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_chn_district_dst_68901730_10b</bpmn:incoming>
+      <bpmn:outgoing>F_chn_district_dst_68901730_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_chn_district_dst_68901730" name="Process complete">
+      <bpmn:incoming>F_chn_district_dst_68901730_11</bpmn:incoming>
+      <bpmn:incoming>F_chn_district_dst_68901730_11b</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_chn_district_dst_68901730_01" sourceRef="Start_chn_district_dst_68901730" targetRef="GW_chn_district_dst_68901730_open">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_chn_district_dst_68901730_02" sourceRef="GW_chn_district_dst_68901730_open" targetRef="T_chn_district_dst_68901730_policy">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_chn_district_dst_68901730_03" sourceRef="GW_chn_district_dst_68901730_open" targetRef="T_chn_district_dst_68901730_budget">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_chn_district_dst_68901730_04" sourceRef="GW_chn_district_dst_68901730_open" targetRef="T_chn_district_dst_68901730_coord">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_chn_district_dst_68901730_05" sourceRef="T_chn_district_dst_68901730_policy" targetRef="GW_chn_district_dst_68901730_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_chn_district_dst_68901730_06" sourceRef="T_chn_district_dst_68901730_budget" targetRef="GW_chn_district_dst_68901730_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_chn_district_dst_68901730_07" sourceRef="T_chn_district_dst_68901730_coord" targetRef="GW_chn_district_dst_68901730_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_chn_district_dst_68901730_08" sourceRef="GW_chn_district_dst_68901730_join" targetRef="T_chn_district_dst_68901730_review">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_chn_district_dst_68901730_09" sourceRef="T_chn_district_dst_68901730_review" targetRef="GW_chn_district_dst_68901730_risk">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_chn_district_dst_68901730_10a" sourceRef="GW_chn_district_dst_68901730_risk" targetRef="T_chn_district_dst_68901730_publish" name="Approved">
+      <bpmn:conditionExpression>=approved = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_chn_district_dst_68901730_10b" sourceRef="GW_chn_district_dst_68901730_risk" targetRef="T_chn_district_dst_68901730_revise" name="Rejected">
+      <bpmn:conditionExpression>=approved = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_chn_district_dst_68901730_11" sourceRef="T_chn_district_dst_68901730_publish" targetRef="End_chn_district_dst_68901730">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_chn_district_dst_68901730_11b" sourceRef="T_chn_district_dst_68901730_revise" targetRef="End_chn_district_dst_68901730">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_chn_district_dst_68901730">
+    <bpmndi:BPMNPlane id="BPMNPlane_chn_district_dst_68901730" bpmnElement="Collaboration_chn_district_dst_68901730" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

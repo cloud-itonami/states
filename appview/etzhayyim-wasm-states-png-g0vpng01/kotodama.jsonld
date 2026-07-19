@@ -1,0 +1,144 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:png-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Papua New Guinea AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-png",
+  "nanoid": "g0vpng01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "PG",
+    "banner": "#000000",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "province-coverage"
+    ],
+    "category": "government",
+    "country": "png",
+    "contract": "Constitution of Papua New Guinea 1975",
+    "description": "Papua New Guinea Government — path-based DID registry for ministries and subnational units.",
+    "displayName": "Independent State of Papua New Guinea",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 3,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/png/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Government seat: Port Moresby",
+        "addressLocality": "Port Moresby",
+        "country": "PG"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.pm.gov.pg/",
+        "label": "Independent State of Papua New Guinea — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Independent State of Papua New Guinea — citizen inquiry",
+        "uri": "https://www.pm.gov.pg/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "png.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Independent State of Papua New Guinea — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "png.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Independent State of Papua New Guinea — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "png.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Independent State of Papua New Guinea — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "png.municipal-government-act",
+        "title": "Municipal Government Act",
+        "titleLocal": "Municipal Government Act",
+        "basis": "General Administrative Law",
+        "uri": ""
+      },
+      {
+        "id": "png.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Independent State of Papua New Guinea",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Independent State of Papua New Guinea — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "png-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Papua New Guinea government activity feed",
+        "kind": "public",
+        "name": "gov-png-feed"
+      }
+    ],
+    "description": "Government of Papua New Guinea — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Independent State of Papua New Guinea"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

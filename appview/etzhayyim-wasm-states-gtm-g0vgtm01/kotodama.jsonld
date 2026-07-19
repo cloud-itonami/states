@@ -1,0 +1,149 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:gtm-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Guatemala (República de Guatemala) AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-gtm",
+  "nanoid": "g0vgtm01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "GT",
+    "banner": "#000000",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "gtm",
+    "contract": "Constitución Política de la República de Guatemala 1985",
+    "description": "Guatemala Government — path-based DID registry for ministries, departments, and subnational units.",
+    "displayName": "República de Guatemala (Republic of Guatemala)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 1,
+    "bpmnCount": 3,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/gtm/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Guatemala City",
+        "addressLocality": "Guatemala City",
+        "country": "GT"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.guatemala.gob.gt/",
+        "label": "guatemala.gob.gt"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.congreso.gob.gt/",
+        "label": "Congreso"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Gobierno de Guatemala — citizen inquiry",
+        "uri": "https://www.guatemala.gob.gt/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "gtm.access_info",
+        "title": "Access to Public Information / Right to Know",
+        "authority": "Gobierno de Guatemala — each public authority",
+        "basis": "Constitutional or administrative access-to-information provision"
+      },
+      {
+        "id": "gtm.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Gobierno de Guatemala — passport authority",
+        "basis": "Immigration / nationality law"
+      },
+      {
+        "id": "gtm.civil_registration",
+        "title": "Civil Registration — birth / marriage / death",
+        "authority": "Gobierno de Guatemala — civil registry office",
+        "basis": "Civil registration statute"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "gtm.cm-decreto-12-2002",
+        "title": "Código Municipal",
+        "titleLocal": "Código Municipal Decreto 12-2002",
+        "basis": "Decreto 12-2002",
+        "uri": "https://www.congreso.gob.gt/"
+      },
+      {
+        "id": "gtm.access_info_request.v1",
+        "title": "Request for access to public information — template",
+        "authority": "Gobierno de Guatemala",
+        "basis": "Access-to-information statute"
+      }
+    ],
+    "complianceFrameworks": [
+      "Gobierno de Guatemala — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "gtm-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Guatemala government activity feed",
+        "kind": "public",
+        "name": "gov-gtm-feed"
+      }
+    ],
+    "description": "Government of Guatemala — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "República de Guatemala (Republic of Guatemala)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

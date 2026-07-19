@@ -1,0 +1,157 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:mex-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Mexico AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English and Spanish.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-mex",
+  "nanoid": "g0vmex01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "MX",
+    "banner": "#006847",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "state-coverage"
+    ],
+    "category": "government",
+    "country": "mex",
+    "contract": "Constitución Política de los Estados Unidos Mexicanos 1917",
+    "description": "Mexico Government — path-based DID registry for secretarías and subnational units.",
+    "displayName": "Gobierno de los Estados Unidos Mexicanos (Government of Mexico)",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 1,
+    "contractCount": 1,
+    "bpmnCount": 86,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/mex/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Palacio Nacional",
+        "addressLocality": "Ciudad de Mexico",
+        "country": "MX"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://www.gob.mx/"
+      },
+      {
+        "kind": "portal",
+        "uri": "https://www.dof.gob.mx/"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "transparencia",
+        "label": "Plataforma Nacional de Transparencia",
+        "uri": "https://www.plataformadetransparencia.org.mx/",
+        "basis": "LGTAIP"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "mex.executive-presidencia",
+        "title": "Executive Presidencia",
+        "titleLocal": "Executive Presidencia",
+        "authority": "Executive Presidencia",
+        "basis": "General Public Services Act",
+        "portalUri": "https://www.gob.mx/presidencia",
+        "bpmnRef": "60-apps/etzhayyim-project-states/data/gov/mex/bpmn/executive-presidencia.bpmn"
+      },
+      {
+        "id": "mex.transparencia",
+        "title": "Solicitud de acceso a informacion",
+        "basis": "LGTAIP",
+        "portalUri": "https://www.plataformadetransparencia.org.mx/"
+      },
+      {
+        "id": "mex.pasaporte",
+        "title": "Pasaporte mexicano",
+        "authority": "SRE",
+        "portalUri": "https://www.gob.mx/tramites/ficha/pasaporte-ordinario/SRE138"
+      },
+      {
+        "id": "mex.curp",
+        "title": "CURP",
+        "authority": "RENAPO",
+        "portalUri": "https://www.gob.mx/curp/"
+      },
+      {
+        "id": "mex.sat",
+        "title": "Declaracion anual SAT",
+        "authority": "SAT",
+        "portalUri": "https://www.sat.gob.mx/"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "mex.constitucion-art-115",
+        "title": "Constitución Política Art.115",
+        "titleLocal": "Constitución Política Art.115",
+        "basis": "Constitución Política Art.115",
+        "uri": "https://www.diputados.gob.mx/LeyesBiblio/pdf/CPEUM.pdf"
+      }
+    ],
+    "complianceFrameworks": [
+      "Constitución Política (1917)",
+      "Ley General de Transparencia (LGTAIP, 2015)",
+      "Ley Federal de Procedimiento Administrativo"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "mex-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Mexico government activity feed",
+        "kind": "public",
+        "name": "gov-mex-feed"
+      }
+    ],
+    "description": "Government of Mexico — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Gobierno de los Estados Unidos Mexicanos (Government of Mexico)"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

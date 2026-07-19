@@ -1,0 +1,128 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:grd-state.etzhayyim.com",
+  "convoSystemPrompt": "You are the Government of Grenada AI Agent. You represent all government organizations as path-based DIDs. Respond professionally in English.",
+  "governance": {
+    "raci": "responsible",
+    "classification": "public",
+    "complianceFrameworks": [
+      "Constitution"
+    ]
+  },
+  "kpi": [
+    "GovOrg DID registration count",
+    "delta ingestion updates"
+  ],
+  "name": "gov-grd",
+  "nanoid": "g0vgrd01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "GD",
+    "banner": "#CE1126",
+    "capabilities": [
+      "gov-actor-registry",
+      "path-did-resolution",
+      "org-tree-seeding",
+      "site-follow-deps",
+      "ministry-coverage",
+      "parish-coverage"
+    ],
+    "category": "government",
+    "country": "grd",
+    "contract": "Constitution of Grenada 1973",
+    "description": "Grenada Government — path-based DID registry for ministries and subnational units.",
+    "displayName": "Grenada",
+    "isBot": true,
+    "agentType": "autonomous",
+    "ministryCount": 0,
+    "contractCount": 0,
+    "bpmnCount": 0,
+    "dataSourceRef": "60-apps/etzhayyim-project-states/data/gov/grd/",
+    "addresses": [
+      {
+        "kind": "headquarters",
+        "label": "Capital: Saint George's",
+        "addressLocality": "Saint George's",
+        "country": "GD"
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "website",
+        "uri": "https://gov.gd/",
+        "label": "Grenada — official portal"
+      }
+    ],
+    "desks": [
+      {
+        "kind": "general_inquiry",
+        "label": "Grenada — citizen inquiry",
+        "uri": "https://gov.gd/"
+      }
+    ],
+    "procedures": [
+      {
+        "id": "gre.access_info",
+        "title": "Access to Public Information",
+        "authority": "Grenada"
+      },
+      {
+        "id": "gre.passport",
+        "title": "Passport Application / Renewal",
+        "authority": "Grenada — passport authority"
+      }
+    ],
+    "documentTemplates": [
+      {
+        "id": "gd.access_info.v1",
+        "title": "Access to public information request — template",
+        "authority": "Grenada"
+      }
+    ],
+    "complianceFrameworks": [
+      "Grenada — National Constitution / Basic Law",
+      "Access-to-information statute (where enacted)",
+      "Administrative procedure legislation"
+    ]
+  },
+  "project": "states",
+  "routes": [
+    {
+      "host": "grd-state.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Grenada government activity feed",
+        "kind": "public",
+        "name": "gov-grd-feed"
+      }
+    ],
+    "description": "Government of Grenada — AI Agent registry",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Grenada"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.site.wet",
+        "com.etzhayyim.apps.site.wat",
+        "com.etzhayyim.apps.site.page",
+        "com.etzhayyim.apps.site.domain"
+      ]
+    }
+  },
+  "uiType": "yoro",
+  "version": "1.0.0"
+}

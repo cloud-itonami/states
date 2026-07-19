@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_grc_district_dst_65940454_anatolikis_makedonias_kai_thr"
+    targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="5.17.0"
+    modeler:executionPlatform="Camunda Cloud"
+    modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_grc_district_dst_65940454_anatolikis_makedonias_kai_thr">
+    <bpmn:participant id="Pool_grc_district_dst_65940454_anatolikis_makedonias_kai_thr" name="Dst 65940454 Anatolikis Makedonias Kai Thr (65940454)" processRef="Process_grc_district_dst_65940454_anatolikis_makedonias_kai_thr" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_grc_district_dst_65940454_anatolikis_makedonias_kai_thr" name="Dst 65940454 Anatolikis Makedonias Kai Thr — General Public Services" isExecutable="true">
+    <bpmn:startEvent id="Start_grc_district_dst_65940454_anatolikis_makedonias_kai_thr" name="Policy trigger
+received"><bpmn:outgoing>F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_01</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:parallelGateway id="GW_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_open" name="Parallel checks">
+      <bpmn:incoming>F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_01</bpmn:incoming>
+      <bpmn:outgoing>F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_02</bpmn:outgoing>
+      <bpmn:outgoing>F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_03</bpmn:outgoing>
+      <bpmn:outgoing>F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_04</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:serviceTask id="T_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_policy" name="Draft Policy
+Proposal">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.grc.district:dst-65940454-anatolikis-makedonias-kai-thr.draft_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="policy_output" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_02</bpmn:incoming>
+      <bpmn:outgoing>F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_05</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_budget" name="Allocate Budget
+(COFOG 01)">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.grc.district:dst-65940454-anatolikis-makedonias-kai-thr.allocate_budget" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="budget_execution_rate" />
+          <zeebe:header key="cofog" value="01" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_03</bpmn:incoming>
+      <bpmn:outgoing>F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_coord" name="Inter-Agency
+Coordination">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.grc.district:dst-65940454-anatolikis-makedonias-kai-thr.coordinate" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="kpi" value="coordination_score" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_04</bpmn:incoming>
+      <bpmn:outgoing>F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_07</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="GW_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_join" name="Checks complete">
+      <bpmn:incoming>F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_05</bpmn:incoming>
+      <bpmn:incoming>F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_06</bpmn:incoming>
+      <bpmn:incoming>F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_07</bpmn:incoming>
+      <bpmn:outgoing>F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_08</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:userTask id="T_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_review" name="Minister Review
+& Sign-off">
+      <bpmn:extensionElements>
+        <zeebe:assignmentDefinition assignee="gov-official" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_08</bpmn:incoming>
+      <bpmn:outgoing>F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_09</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="GW_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_risk" name="Approved?" isMarkerVisible="true">
+      <bpmn:incoming>F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_09</bpmn:incoming>
+      <bpmn:outgoing>F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_10a</bpmn:outgoing>
+      <bpmn:outgoing>F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_10b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="T_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_publish" name="Publish Policy
+& Notify Citizens">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.grc.district:dst-65940454-anatolikis-makedonias-kai-thr.publish_policy" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="publish" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_10a</bpmn:incoming>
+      <bpmn:outgoing>F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="T_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_revise" name="Return for
+Revision">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="gov.grc.district:dst-65940454-anatolikis-makedonias-kai-thr.request_revision" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="action" value="revise" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_10b</bpmn:incoming>
+      <bpmn:outgoing>F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_grc_district_dst_65940454_anatolikis_makedonias_kai_thr" name="Process complete">
+      <bpmn:incoming>F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_11</bpmn:incoming>
+      <bpmn:incoming>F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_11b</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_01" sourceRef="Start_grc_district_dst_65940454_anatolikis_makedonias_kai_thr" targetRef="GW_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_open">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_02" sourceRef="GW_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_open" targetRef="T_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_policy">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_03" sourceRef="GW_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_open" targetRef="T_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_budget">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_04" sourceRef="GW_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_open" targetRef="T_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_coord">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_05" sourceRef="T_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_policy" targetRef="GW_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_06" sourceRef="T_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_budget" targetRef="GW_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_07" sourceRef="T_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_coord" targetRef="GW_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_join">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_08" sourceRef="GW_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_join" targetRef="T_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_review">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_09" sourceRef="T_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_review" targetRef="GW_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_risk">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_10a" sourceRef="GW_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_risk" targetRef="T_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_publish" name="Approved">
+      <bpmn:conditionExpression>=approved = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_10b" sourceRef="GW_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_risk" targetRef="T_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_revise" name="Rejected">
+      <bpmn:conditionExpression>=approved = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_11" sourceRef="T_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_publish" targetRef="End_grc_district_dst_65940454_anatolikis_makedonias_kai_thr">
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_11b" sourceRef="T_grc_district_dst_65940454_anatolikis_makedonias_kai_thr_revise" targetRef="End_grc_district_dst_65940454_anatolikis_makedonias_kai_thr">
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_grc_district_dst_65940454_anatolikis_makedonias_kai_thr">
+    <bpmndi:BPMNPlane id="BPMNPlane_grc_district_dst_65940454_anatolikis_makedonias_kai_thr" bpmnElement="Collaboration_grc_district_dst_65940454_anatolikis_makedonias_kai_thr" />
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
