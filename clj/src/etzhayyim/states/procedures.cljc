@@ -5,12 +5,12 @@
   plus 1 document template to tier-3 countries (those with only minimal static
   data and no existing procedures). Countries in the RICH set are skipped."
   (:require [etzhayyim.states.profile :as profile]
-            [clojure.string :as str]))
+            [kotoba.lang.text :as str]))
 
 (defn standard-procs
   "Port of standard_procs(iso3, name)."
   [iso3 name]
-  (let [iso (str/lower-case iso3)]
+  (let [iso (str/lower iso3)]
     [{"id" (str iso ".access_info")
       "title" "Access to Public Information / Right to Know"
       "authority" (str name " — each public authority")

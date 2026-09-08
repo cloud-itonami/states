@@ -6,13 +6,13 @@
   written; src/app.ts and wrangler.jsonc remain absent (deploy will fail until
   added) — the stub is enough for enrich-kotodama-profiles to work."
   (:require [etzhayyim.states.profile :as profile]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             #?(:clj [clojure.java.io :as io])))
 
 (defn nanoid-for
   "Port of nanoid_for(iso): g0v{iso}01 (4-3-2 = 8 chars)."
   [iso]
-  (str "g0v" (str/lower-case iso) "01"))
+  (str "g0v" (str/lower iso) "01"))
 
 (defn make-stub
   "Port of make_stub(iso, display_name) — the minimal kotodama.jsonld map."
@@ -27,7 +27,7 @@
      "name" (str "gov-" iso)
      "nanoid" nanoid
      "performerType" "service"
-     "profile" {"avatar" (subs (str/upper-case iso) 0 (min 2 (count iso)))
+     "profile" {"avatar" (subs (str/upper iso) 0 (min 2 (count iso)))
                 "banner" "#888888"
                 "capabilities" ["gov-actor-registry" "path-did-resolution"]
                 "category" "government"

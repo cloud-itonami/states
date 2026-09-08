@@ -6,7 +6,7 @@
   builders are pure (data in -> data out); file/NDJSON I/O is isolated in -main."
   (:require [etzhayyim.states.profile :as profile :refer [slug put-body]]
             [cheshire.core :as json]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             #?(:clj [clojure.java.io :as io])))
 
 (def repo "states.etzhayyim.com")
