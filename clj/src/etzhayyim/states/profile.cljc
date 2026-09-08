@@ -13,7 +13,7 @@
   Per ADR-2606280030 (60-apps python -> clj migration). JSON via cheshire,
   errors via ex-info, no RisingWave/heavy-numerics (none needed here)."
   (:require [cheshire.core :as json]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             #?(:clj [clojure.java.io :as io])))
 
 ;; ---------------------------------------------------------------------------
@@ -55,7 +55,7 @@
   "Port of emit-state-records.slug(): lowercase, non-alnum runs -> '-',
   trim leading/trailing '-', cap at 48 chars, default 'x' when empty."
   [s]
-  (let [s (-> (str s) str/lower-case)
+  (let [s (-> (str s) str/lower)
         s (str/replace s #"[^a-z0-9]+" "-")
         s (str/replace s #"^-+|-+$" "")
         s (subs s 0 (min 48 (count s)))]
@@ -70,4 +70,4 @@
   "entry.get('displayName') or iso.upper() — the recurring fallback in the scripts."
   [entry iso]
   (or (get entry "displayName")
-      (str/upper-case iso)))
+      (str/upper iso)))

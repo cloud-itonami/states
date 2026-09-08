@@ -8,9 +8,9 @@
     - ext   : tier-2 countries -> addresses + multi contacts + optional desks
     - tier3 : remaining countries -> addresses + 1 website contact"
   (:require [etzhayyim.states.profile :as profile]
-            [clojure.string :as str]))
+            [kotoba.lang.text :as str]))
 
-(defn- lower3 [name] (str/lower-case (subs name 0 (min 3 (count name)))))
+(defn- lower3 [name] (str/lower (subs name 0 (min 3 (count name)))))
 
 (defn build-final
   "Port of extend-static-final.build([name capital country website])."
@@ -25,7 +25,7 @@
     {"id" (str (lower3 name) ".passport") "title" "Passport Application / Renewal"
      "authority" (str name " — passport authority")}]
    "documentTemplates"
-   [{"id" (str (str/lower-case country) ".access_info.v1")
+   [{"id" (str (str/lower country) ".access_info.v1")
      "title" "Access to public information request — template" "authority" name}]})
 
 (defn build-ext

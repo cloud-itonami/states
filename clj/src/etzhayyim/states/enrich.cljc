@@ -7,7 +7,7 @@
     - list-fill      : set only when the profile field is empty (preserve rich edits)
     - list-id-merge  : keep existing, append new entries by `id`"
   (:require [etzhayyim.states.profile :as profile]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             #?(:clj [clojure.java.io :as io])))
 
 (def scalar-fields ["ministryCount" "contractCount" "bpmnCount" "dataSourceRef"])
