@@ -118,7 +118,7 @@ Two things to notice.
 **The `dataSourceRef` is wrong.** Every record this code emits today points at
 `60-apps/etzhayyim-project-states/data/gov/<iso>/`, a monorepo path that does
 not exist in this repository. The same stale prefix is baked into `bpmnRef` on
-every procedure. It is a string literal in `clj/src/etzhayyim/states/emit_records.cljc`.
+every procedure. It is a string literal in `clj/src/etzhayyim/states/emit_records.kotoba`.
 
 **There is no driver.** `emit-country` is pure — it returns the bodies, it does
 not write them. `scripts/upload-state-records.sh` expects
@@ -236,7 +236,7 @@ for those, a *duplicate* directory is created instead. Japan's real manifest is
 same country.**
 
 The fix is one character (`(nth parts 4)` → `(nth parts 3)` in
-`clj/src/etzhayyim/states/stubs.cljc`) plus a test that pins
+`clj/src/etzhayyim/states/stubs.kotoba`) plus a test that pins
 `(contains? (existing-isos "appview") "jpn")`. That has not been done here, on
 purpose: this pass changed documentation only, and a behaviour fix belongs with
 the test that proves it.
