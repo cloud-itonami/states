@@ -15,7 +15,7 @@ not have; read it before trying.
 
 ```bash
 cd clj
-bb test
+kbb -M:test
 ```
 
 Expected, and observed:
@@ -99,7 +99,7 @@ The record builders are pure and work on the committed corpus. Save this as
 ```
 
 ```bash
-cd clj && bb /tmp/probe-emit.clj
+cd clj && kbb /tmp/probe-emit.cljk
 ```
 
 Observed:
@@ -151,7 +151,7 @@ cp scripts/static-profile-data.json /tmp/states-dry/scripts/
 cd clj
 for ns in frameworks desks procedures extend; do
   printf '%-12s ' "$ns"
-  bb -m etzhayyim.states.$ns /tmp/states-dry/scripts/static-profile-data.json | tail -1
+  kbb -m etzhayyim.states.$ns /tmp/states-dry/scripts/static-profile-data.json | tail -1
 done
 ```
 
@@ -169,7 +169,7 @@ frameworks: 46`, which counts countries *touched*, not countries *changed*.
 Parsing both files and comparing confirms it:
 
 ```bash
-cd clj && bb -e '(require (quote [cheshire.core :as json]))
+cd clj && kbb -e '(require (quote [cheshire.core :as json]))
 (println (= (json/parse-string (slurp "../scripts/static-profile-data.json") false)
             (json/parse-string (slurp "/tmp/states-dry/scripts/static-profile-data.json") false)))'
 # true
@@ -186,7 +186,7 @@ With no argument it fails outright, because its app-root default is the
 pre-extraction monorepo path:
 
 ```bash
-cd clj && bb -m etzhayyim.states.stubs; echo "EXIT=$?"
+cd clj && kbb -m etzhayyim.states.stubs; echo "EXIT=$?"
 # java.io.FileNotFoundException:
 #   60-apps/etzhayyim-project-states/scripts/static-profile-data.json
 # EXIT=1
@@ -199,7 +199,7 @@ returned set never contains an ISO code, `(contains? existing iso)` is always
 false, and every one of the 199 countries is treated as missing. Verify:
 
 ```bash
-cd clj && bb -e '(require (quote [etzhayyim.states.stubs :as s]))
+cd clj && kbb -e '(require (quote [etzhayyim.states.stubs :as s]))
 (def e (s/existing-isos "../appview"))
 (println (count e) (vec (take 3 (sort e))) (contains? e "jpn"))'
 # 199 [d3yqp37e g0vafg01 g0vago01] false
@@ -210,7 +210,7 @@ Measure the blast radius on a copy — **never on the repository**:
 ```bash
 rm -rf /tmp/states-stub && mkdir -p /tmp/states-stub
 cp -R scripts appview /tmp/states-stub/
-cd clj && bb -m etzhayyim.states.stubs /tmp/states-stub | tail -1
+cd clj && kbb -m etzhayyim.states.stubs /tmp/states-stub | tail -1
 # created 199 stub kotodama.jsonld files
 ```
 

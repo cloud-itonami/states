@@ -61,7 +61,7 @@ here so the next person does not rediscover them.
    They contain a raw `&` in attribute values. `tools/gen-bpmn.py` learned to
    XML-escape at some point and nobody regenerated: running it today produces
    3,626 files, **all** well-formed. See quickstart §5.
-2. **`bb -m etzhayyim.states.stubs` destroys the appview tree.**
+2. **`kbb -m etzhayyim.states.stubs` destroys the appview tree.**
    `existing-isos` reads the wrong `-`-separated segment, so it returns nanoids
    (`g0vjpn01`) instead of ISO codes (`jpn`) and every country looks missing.
    Running it against a copy of this tree overwrote **196 of 199** rich
