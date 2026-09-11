@@ -1,6 +1,6 @@
 ;; Scoped bb.edn for the etzhayyim-project-states clj port (ADR-2606280030).
 ;; Pure-stdlib data tooling — cheshire + clojure.test are built into babashka,
-;; so no external deps. Run tests with:  bb test   (or)  bb run_tests.clj
+;; so no external deps. Run tests with:  bb test   (or)  kbb run_tests.cljk
 {:paths ["src" "resources" "test"]
  :tasks
  {test {:doc "Run the clojure.test suite under babashka"

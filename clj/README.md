@@ -10,7 +10,7 @@ ported faithfully to a plain `.cljc` namespace (pure fns + thin `-main`).
 
 ```bash
 cd 60-apps/etzhayyim-project-states/clj
-bb test          # clojure.test suite (run_tests.clj) — 26 tests / 88 assertions
+kbb -M:test          # clojure.test suite (run_tests.clj) — 26 tests / 88 assertions
 ```
 
 cheshire (JSON) and clojure.test are built into babashka, so this `bb.edn` has
